@@ -1,0 +1,35 @@
+name: CodeQL
+
+on:
+  push:
+    paths:
+      - "**.js"
+      - "!scripts/test/*.js"
+      - .github/workflows/CodeQL.yaml
+      - .github/codeql-config.yml
+  pull_request:
+    paths:
+      - "**.js"
+      - "!scripts/test/*.js"
+      - .github/workflows/CodeQL.yaml
+      - .github/codeql-config.yml
+  workflow_dispatch:
+  schedule:
+    - cron: 15 0 * * *
+
+concurrency:
+  group: ${{ github.workflow_ref }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  CodeQL:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript
+          config-file: ./.github/codeql-config.yml
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
