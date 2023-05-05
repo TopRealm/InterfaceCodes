@@ -17,10 +17,7 @@ for filename in os.listdir("src"):
         text_old = page.text()
         if text_old != text_new:
             summary = "bot: synchronized from Github"
-            # page.edit(text_new, summary)
-            page_test = site.pages[f"User:Blossomstripe/沙盒"]
-            text_test = page_test.text() + "\ntest"
-            page_test.edit(text_test, "github-test")
+            page.edit(text_new, summary)
             print(filename, "\t", "changed")
         else:
             print(filename, "\t", "not_changed")
