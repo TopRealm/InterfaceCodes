@@ -1,0 +1,36 @@
+name: Sync Gadgets
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - src/*.js
+      - src/*.css
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+    paths:
+      - src/*.js
+      - src/*.css
+
+jobs:
+  sync_gadgets:
+    if: >-
+      github.event.push ||
+      github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+      - name: sync
+        env:
+          MW_BOT_PASSWORD: ${{ secrets.MW_BOT_PASSWORD }}
+        run: |
+          pip install mwclient
+          python scripts/sync_gadgets.py
