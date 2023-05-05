@@ -1,1 +1,0 @@
-mw.loader.load('https://cdn.jsdelivr.net/npm/mediawiki-inpageedit');

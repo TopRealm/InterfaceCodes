@@ -1,1 +1,0 @@
-mw.loader.load('https://cdn.jsdelivr.net/npm/wikiplus-core@latest/dist/Main.js');
