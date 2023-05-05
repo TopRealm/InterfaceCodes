@@ -17,8 +17,7 @@ def sync_file(site: mwclient.Site, page_name: str, page_text: str):
         print(page_name, "\t", "not_changed")
 
 site = mwclient.Site("wiki.zorua.top", scheme="https", path="/")
-# site.login("Github-bot", os.environ["MW_BOT_PASSWORD"])
-site.login("Github-bot", "ZoruaFox-20230322")
+site.login("Github-bot", os.environ["MW_BOT_PASSWORD"])
 
 for dir in DIR:
     dir_whole = os.path.join("src", dir)
