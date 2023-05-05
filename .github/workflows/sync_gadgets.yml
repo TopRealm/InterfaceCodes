@@ -7,20 +7,9 @@ on:
     paths:
       - src/*.js
       - src/*.css
-  pull_request:
-    types:
-      - closed
-    branches:
-      - master
-    paths:
-      - src/*.js
-      - src/*.css
 
 jobs:
   sync_gadgets:
-    if: >-
-      github.event_name == 'push' ||
-      github.event.pull_request.merged
     runs-on: ubuntu-latest
     env:
       MW_BOT_PASSWORD: ${{ secrets.MW_BOT_PASSWORD }}

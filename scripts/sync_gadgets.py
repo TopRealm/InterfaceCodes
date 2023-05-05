@@ -20,7 +20,7 @@ for filename in os.listdir("src"):
             summary = "bot: synchronized from Github"
             # page.edit(text_new, summary)
             page_test = site.pages[f"User:Blossomstripe/沙盒"]
-            text_test = page_test.text() + "\ntest"
+            text_test = page_test.text() + "\n\ntest"
             page_test.edit(text_test, "github-test")
             print(filename, "\t", "changed")
         else:
