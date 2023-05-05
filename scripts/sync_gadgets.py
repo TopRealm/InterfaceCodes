@@ -3,7 +3,7 @@ import os
 import mwclient
 
 # Directories of files that will be checked for updates
-# "src" no included
+# "src" not included
 DIR = ["", "Gadget", "Group"]
 
 def sync_file(site: mwclient.Site, page_name: str, page_text: str):
