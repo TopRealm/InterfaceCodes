@@ -1,0 +1,53 @@
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ *
+ * @source <zh.wikipedia.org/wiki/MediaWiki:Gadget-AdvancedSiteNotices.css>
+ */
+#asn-area {
+	display: flex;
+	height: 4em;
+	flex-direction: row;
+	align-items: center;
+	padding: 0 0.5em;
+	border: 1px solid #ccc;
+	background: #fafbfc;
+	overflow-y: hidden;
+}
+
+#asn-name {
+	min-width: 3em;
+	order: 1;
+	border-radius: 0.25em;
+	background: #36c;
+	color: #fff;
+	text-align: center;
+}
+
+#asn-dismissable-notice {
+	display: block;
+	width: 100%;
+	order: 2;
+	margin: 1em 0.5em;
+	background: transparent;
+}
+
+#advancedSiteNotices {
+	word-break: break-word;
+}
+
+#asn-dismiss {
+	min-width: 2em;
+	order: 3;
+	font-size: 150%;
+	text-align: center;
+}
+
+#asn-dismiss a {
+	color: #000;
+}
+
+#asn-dismiss a:hover {
+	color: #36c;
+	text-decoration: none;
+}
