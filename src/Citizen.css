@@ -1,0 +1,50 @@
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ */
+/* <nowiki> */
+/* 此处的CSS只会影响使用Citizen皮肤的用户 */
+
+/* Variables */
+:root {
+	--fonts-sans: 'Noto Sans', 'Source Sans 3', 'Source Sans Pro', 'Noto Sans SC', 'Source Han Sans SC', 'Helvetica',
+		'Roboto', 'SFProDisplay-Regular', 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'STHeiti SC',
+		'WenQuanYi Micro Hei', -apple-system, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+		'Segoe UI Symbol';
+	--fonts-serif: 'Noto Serif', 'Source Serif', 'Noto Serif SC', 'Source Han Serif SC', 'Linux Libertine', 'Georgia',
+		'Times New Roman', 'Times', 'STSong', 'SimSun', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	--fonts-monospace: 'Noto Mono', 'Source Code Pro', 'Source Han Mono SC', 'Consolas', 'Monaco', 'Courier', monospace,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+:root:lang(zh-hant) {
+	--fonts-sans: 'Noto Sans', 'Source Sans 3', 'Source Han Sans TC', 'Noto Sans TC', 'Source Sans Pro', 'Helvetica',
+		'Roboto', 'SFProDisplay-Regular', 'PingFang TC', 'Hiragino Sans CNS', 'Heiti TC', 'STHeiti TC',
+		'WenQuanYi Micro Hei', -apple-system, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+		'Segoe UI Symbol';
+	--fonts-serif: 'Noto Serif', 'Source Serif', 'Noto Serif TC', 'Source Han Serif TC', 'Linux Libertine', 'Georgia',
+		'Times New Roman', 'Times', 'MingLiU', 'SimSun', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	--fonts-monospace: 'Noto Mono', 'Source Code Pro', 'Source Han Mono TC', 'Consolas', 'Monaco', 'Courier', monospace,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+#siteSub {
+	display: none;
+}
+/* Page-specific rules */
+.page-有兽档案馆_首页.action-view .mw-body-header {
+	display: none;
+}
+
+
+/* [[Special:小工具]]标题 */
+.mw-special-Gadgets h1,
+.mw-special-Gadgets h2,
+.mw-special-Gadgets h3,
+.mw-special-Gadgets h4,
+.mw-special-Gadgets h5,
+.mw-special-Gadgets h6 {
+	display: block !important;
+}
+
+/* </nowiki> */

@@ -1,0 +1,23 @@
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ *
+ * @source <rs.miraheze.org/wiki/MediaWiki:Gadget-collapsible.css>
+ */
+.collapsetoggle {
+	font-weight: normal;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.mw-content-ltr .collapsetoggle {
+	margin-right: 0;
+	margin-left: 0.5em;
+}
+
+.mw-content-rtl .collapsetoggle {
+	margin-right: 0.5em;
+	margin-left: 0;
+}
