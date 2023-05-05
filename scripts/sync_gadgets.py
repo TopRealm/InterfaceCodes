@@ -11,7 +11,7 @@ def sync_file(site: mwclient.Site, page_name: str, page_text: str):
     text_old = page.text()
     if text_old != page_text:
         summary = "Git更新：代码仓库同步更新"
-        # page.edit(text_new, summary)
+        page.edit(text_new, summary)
         print(page_name, "\t", "changed")
     else:
         print(page_name, "\t", "not_changed")
