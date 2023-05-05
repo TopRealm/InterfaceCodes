@@ -19,7 +19,7 @@ on:
 jobs:
   sync_gadgets:
     if: >-
-      github.event.push ||
+      github.event_name == 'push' ||
       github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
