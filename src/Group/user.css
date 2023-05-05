@@ -1,0 +1,60 @@
+/* <nowiki> */
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ *
+ * @source <zh.wikipedia.org/wiki/MediaWiki:Common.css>
+ * @source <zh.wikipedia.org/wiki/MediaWiki:Group-user.css>
+ */
+/* 这里放置的CSS将只影响注册用户 */
+#mwe-upwiz-upload-ctrl-flickr-container {
+	display: none !important;
+}
+
+/* Hide items that have class="anonymous-show". */
+.anonymous-show {
+	display: none !important;
+}
+
+/* Show hidden items that have class="user-show". */
+div.user-show,
+p.user-show {
+	display: block !important;
+}
+
+span.user-show,
+small.user-show {
+	display: inline !important;
+}
+
+table.user-show {
+	display: table !important;
+}
+
+tr.user-show {
+	display: table-row !important;
+}
+
+td.user-show {
+	display: table-cell !important;
+}
+
+li.user-show {
+	display: list-item !important;
+}
+
+/* Edit Form CSS */
+.mw-editform #editpage-copywarn {
+	font-size: 1em !important;
+}
+
+.ext-WikiEditor-twopanes-TwoPaneLayout .ext-WikiEditor-twopanes-pane2 {
+	border-right: 1px solid;
+}
+
+/* 允许注册用户查看被保护的页面源代码 */
+#ca-viewsource {
+	display: block !important;
+}
+
+/* </nowiki> */
