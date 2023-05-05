@@ -4,7 +4,6 @@ import mwclient
 
 site = mwclient.Site("wiki.zorua.top", scheme="https", path="/")
 site.login("Github-bot", os.environ["MW_BOT_PASSWORD"])
-print(os.environ)
 
 for filename in os.listdir("src"):
     file_whole_name = os.path.join("src", filename)
