@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  */
-/* 这里放置的CSS只会影响使用Gongbi皮肤的用户 */
+/* 此处的CSS只会影响使用Gongbi皮肤的用户 */
 /* 隐去Logo */
 .mw-wiki-logo.fallback {
 	height: 0 !important;
