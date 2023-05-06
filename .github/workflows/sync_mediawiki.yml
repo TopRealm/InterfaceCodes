@@ -9,7 +9,7 @@ on:
       - src/**/*.css
 
 jobs:
-  sync_gadgets:
+  sync_codes:
     runs-on: ubuntu-latest
     env:
       MW_BOT_PASSWORD: ${{ secrets.MW_BOT_PASSWORD }}
