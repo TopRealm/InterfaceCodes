@@ -1,4 +1,4 @@
-name: Sync Gadgets
+name: Sync Mediawiki Interface Codes
 
 on:
   push:
@@ -20,6 +20,4 @@ jobs:
           python-version: '3.9'
           cache: 'pip'
       - name: sync
-        run: |
-          pip install mwclient
-          python scripts/sync_gadgets.py
+        run: python scripts/sync_mediawiki.py
