@@ -5,8 +5,8 @@ on:
     branches:
       - master
     paths:
-      - src/*.js
-      - src/*.css
+      - src/**/*.js
+      - src/**/*.css
 
 jobs:
   sync_gadgets:
