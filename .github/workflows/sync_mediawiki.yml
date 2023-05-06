@@ -20,4 +20,6 @@ jobs:
           python-version: '3.9'
           cache: 'pip'
       - name: sync
-        run: python scripts/sync_mediawiki.py
+        run: |
+          pip install -r scripts/requirements.txt
+          python scripts/sync_mediawiki.py
