@@ -25,8 +25,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return;
     }
     if (method === 'init') {
-      var dom = document.querySelector('.menu__item--login') || document.querySelector('#pt-login') || document.querySelector('.vector-user-menu-login');
-      dom === null || dom === void 0 ? void 0 : dom.addEventListener('click', function (event) {
+      var element = document.querySelector('.menu__item--login') || document.querySelector('#pt-login') || document.querySelector('.vector-user-menu-login');
+      element === null || element === void 0 ? void 0 : element.addEventListener('click', function (event) {
         event.preventDefault();
         ajaxLoginMain();
       });
@@ -73,8 +73,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'help for I agree with the relevant terms': localize({
           en: 'When you login, it means that you have carefully read, fully understood and agreed to comply with the <a rel="noopener" target="_blank" href="/wiki/LIB:TOS" title="Terms of Service">Terms of Service</a>, <a rel="noopener" target="_blank" href="/wiki/LIB:PIPP" title="Personal Information Protection Policy">Personal Information Protection Policy</a> and <a rel="noopener" target="_blank" href="/wiki/LIB:DAGZC" title="General Principles">General Principles</a>.',
           ja: 'ログインをすると、あなたは本サイトの『<a rel="noopener" target="_blank" href="/wiki/LIB:TOS" title="利用規約">利用規約</a>』『<a rel="noopener" target="_blank" href="/wiki/LIB:PIPP" title="個人情報保護方針">個人情報保護条例</a>』『<a rel="noopener" target="_blank" href="/wiki/LIB:GP" title="档案馆章程">档案馆章程</a>』を十分に理解し、同意したことになります。',
-          hans: '登录时，即代表您已仔细阅读、充分了解并同意遵守本网站的《<a rel="noopener" target="_blank" href="/wiki/LIB:TOS" title="用户协议">用户协议</a>》《<a rel="noopener" target="_blank" href="/wiki/LIB:PIPP" title="个人信息保护条例">个人信息保护条例</a>》《<a rel="noopener" target="_blank" href="/wiki/LIB:GP" title="档案馆章程">档案馆章程</a>》。',
-          hant: '登錄時，即代表您已仔細閱讀、充分了解並同意遵守本網站的《<a rel="noopener" target="_blank" href="/wiki/LIB:TOS" title="用戶協議">用戶協議</a>》《<a rel="noopener" target="_blank" href="/wiki/LIB:PIPP" title="個人信息保護条例">個人信息保護条例</a>》《<a rel="noopener" target="_blank" href="/wiki/LIB:GP" title="档案馆章程">档案馆章程</a>》。'
+          'zh-hans': '登录时，即代表您已仔细阅读、充分了解并同意遵守本网站的《<a rel="noopener" target="_blank" href="/wiki/LIB:TOS" title="用户协议">用户协议</a>》《<a rel="noopener" target="_blank" href="/wiki/LIB:PIPP" title="个人信息保护条例">个人信息保护条例</a>》《<a rel="noopener" target="_blank" href="/wiki/LIB:GP" title="档案馆章程">档案馆章程</a>》。',
+          'zh-hant': '登錄時，即代表您已仔細閱讀、充分了解並同意遵守本網站的《<a rel="noopener" target="_blank" href="/wiki/LIB:TOS" title="用戶協議">用戶協議</a>》《<a rel="noopener" target="_blank" href="/wiki/LIB:PIPP" title="個人信息保護条例">個人信息保護条例</a>》《<a rel="noopener" target="_blank" href="/wiki/LIB:GP" title="档案馆章程">档案馆章程</a>》。'
         }),
         'I agree with the relevant terms': localize({
           ja: '関連する規約を読み、同意',
@@ -193,10 +193,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
     };
     var messages = function messages(key) {
-      return getKey(key, i18nMessages()).toString();
+      return getKey(key, i18nMessages());
     };
-    var messageDialog = new OO.ui.MessageDialog(),
-      windowManager = new OO.ui.WindowManager();
+    var messageDialog = new OO.ui.MessageDialog();
+    var windowManager = new OO.ui.WindowManager();
     var nameInput = new OO.ui.TextInputWidget({
       icon: 'userAvatar',
       placeholder: messages('Username'),
@@ -403,7 +403,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _ref.apply(this, arguments);
       };
     }();
-    var isValid = function isValid() {
+    var checkValid = function checkValid() {
       var agreedTos = agreeTosCheckbox.isSelected();
       var filled = !([nameInput.getValue(), pwdInput.getValue()].indexOf('') !== -1);
       if (!agreedTos) {
@@ -411,11 +411,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else if (!filled) {
         ding(messages('The username or password cannot be empty'), true);
       }
-      var valid = agreedTos && filled;
-      return valid;
+      var isValid = agreedTos && filled;
+      return isValid;
     };
     pwdInput.on('enter', function () {
-      if (isValid()) {
+      if (checkValid()) {
         doLogin();
       }
     });
@@ -423,7 +423,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     messageDialog.getActionProcess = function (action) {
       if (action === 'login') {
         return new OO.ui.Process(function () {
-          if (isValid()) {
+          if (checkValid()) {
             doLogin();
           }
         });
