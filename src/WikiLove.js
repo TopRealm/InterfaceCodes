@@ -12,6 +12,7 @@
 delete $.wikiLoveOptions.types.barnstar;
 delete $.wikiLoveOptions.types.kitten;
 delete $.wikiLoveOptions.types.food;
+delete $.wikiLoveOptions.types.goat;
 
 
 /* </nowiki> */
