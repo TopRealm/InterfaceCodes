@@ -133,8 +133,8 @@
     // If not, set it to null.
     uncat_regexp: /\{\{\s*[Uu]ncategorized\s*[^}]*\}\}\s*(<!--.*?-->\s*)?/g,
     // The images used for the little indication icon. Should not need changing.
-    existsYes: "//tu.zhongwen.wiki/images/qiuwen/thumb/b/be/P_yes.svg/20px-P_yes.svg.png",
-    existsNo: "//tu.zhongwen.wiki/images/qiuwen/thumb/4/42/P_no.svg/20px-P_no.svg.png",
+    existsYes: "//wiki.zorua.top/images/thumb/b/be/P_yes.svg/24px-P_yes.svg.png",
+    existsNo: "//wiki.zorua.top/images/thumb/4/42/P_no.svg/24px-P_no.svg.png",
     // a list of categories which can be removed by removing a template
     // key: the category without namespace
     // value: A regexp matching the template name, again without namespace
