@@ -6,10 +6,13 @@
  */
 /* 在最近修改、监视列表、条目历史记录等位置以特殊格式显示有特殊权限的用户 */
 /* 档案理事会：紫黑 */
+.markrights-responsibleoperator::after,
 .markrights-bureaucrat::after {
 	color: #800080;
 }
-
+.markrights-responsibleoperator::after {
+	content: '责';
+}
 .markrights-bureaucrat::after {
 	content: "理";
 }
