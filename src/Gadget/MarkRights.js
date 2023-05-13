@@ -10,6 +10,10 @@
 $(function () {
   var groups = {
     // 全站管理型权限
+    responsibleoperator: {
+      list: [],
+      "class": "markrights-responsibleoperator"
+    },
     bureaucrat: {
       list: [],
       "class": "markrights-bureaucrat"
