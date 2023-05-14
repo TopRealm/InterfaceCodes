@@ -48,7 +48,7 @@
 }
 /*维基友爱心型 */
 #ca-wikilove.icon a {
-  background-image: url("/skins/Gongbi/resources/images/heart-grey.svg");
+	display: none !important;
 }
 
 /* </nowiki> */
