@@ -46,5 +46,9 @@
 .mw-special-Gadgets h6 {
 	display: block !important;
 }
+/*维基友爱心型 */
+#ca-wikilove.icon a {
+  background-image: url("/w/extensions/WikiLove/resources/images/heart-icon-citizen.png");
+}
 
 /* </nowiki> */
