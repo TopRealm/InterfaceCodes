@@ -1,0 +1,33 @@
+/* <nowiki> */
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ *
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/DisambigLinks>
+ * @author Kaldari, Cyberpower678, Alexander Misel, Artoria2e5, WaitSpring <me@waitspring.com> and other Qiuwen Baike Contributors.
+ */
+a.mw-disambig {
+	color: #f17600;
+}
+
+a.mw-redirect {
+	color: #93c;
+}
+
+a.mw-disambig.mw-disambig:visited {
+	color: #d2711b;
+}
+
+a.mw-redirect:visited {
+	color: #800080;
+}
+
+a.mw-disambig.mw-redirect {
+	color: #ff6421;
+}
+
+a.mw-disambig.mw-redirect:visited {
+	color: #d2711b;
+}
+
+/* </nowiki> */
