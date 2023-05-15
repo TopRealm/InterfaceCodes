@@ -1,21 +1,19 @@
-'use strict';
-
-/* <nowiki> */
 /**
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <zh.wikipedia.org/w/index.php?oldid=65190708>
- * @dependency jquery.ui, mediawiki.storage
+ * @base <https://zh.wikipedia.org/w/index.php?oldid=65190708>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Wikicache>
+ * @dependency jquery.ui, mediawiki.storage, mediawiki.util
  */
-(function ($, mw) {
+/* <nowiki> */
+(function wikicache($, mw) {
   window.wikiCache = {
     version: '0.2.0',
     _msgs: {
       'no-reminder': '不再提醒',
       more: '更多信息',
       ok: '确定',
-      'delete': '删除',
       load: '载入',
       ignore: '忽略',
       'bracket-left': '（',
@@ -41,60 +39,56 @@
     _settings: {
       'autosave-interval': 120
     },
-    _style: '.wikicache-dialog{font-size:1em}.wikicache-notice{z-index:99;position:fixed;left:0;bottom:0;height:1.6em;font-size:.8em;line-height:1.6em;white-space:nowrap;border-bottom:1px solid #a7d7f9;border-right:1px solid #a7d7f9;display:none}.wikicache-notice .ui-dialog-titlebar-close{float:right;display:inline-block}.wikicache-dialog a,.wikicache-notice a{color:#0645ad}.wikicache-dialog a:visited,.wikicache-notice a:visited{color:#0b0080}.wikicache-error-message{background:url("https://tu.zhongwen.wiki/images/qiuwen/thumb/0/09/Cross_Mark_(Red).svg/48px-Cross_Mark_(Red).svg.png") no-repeat 0;padding-left:60px;min-height:48px}',
+    _style: '.wikicache-dialog{font-size:1em}.wikicache-notice{position:fixed;bottom:0;left:0;z-index:99;display:none;height:1.6em;border-right:1px solid #a7d7f9;border-bottom:1px solid #a7d7f9;white-space:nowrap;font-size:.8em;line-height:1.6em}.wikicache-notice .ui-dialog-titlebar-close{float:right;display:inline-block}.wikicache-dialog a,.wikicache-notice a{color:#0645ad}.wikicache-dialog a:visited,.wikicache-notice a:visited{color:#0b0080}.wikicache-error-message{padding-left:60px;min-height:48px;background:url("https://tu.zhongwen.wiki/images/qiuwen/thumb/0/09/Cross_Mark_(Red).svg/48px-Cross_Mark_(Red).svg.png") no-repeat 0}',
     _autoSaveArea: {
-      '#wpTextbox1': function wpTextbox1(el, val) {
-        if (val) {
-          el.val(val);
+      '#wpTextbox1': function wpTextbox1(element, value) {
+        if (value) {
+          element.val(value);
         } else {
-          return el.val();
+          return element.val();
         }
       },
-      '#wpSummary': function wpSummary(el, val) {
-        if (val) {
-          el.val(val);
+      '#wpSummary': function wpSummary(element, value) {
+        if (value) {
+          element.val(value);
         } else {
-          return el.val();
+          return element.val();
         }
       }
     },
     init: function init() {
       var action = mw.config.get('wgAction');
-      if (action === 'edit' || action === 'submit') {
+      if (['edit', 'submit'].indexOf(action) !== -1) {
         window.wikiCache._initEdit();
       } else if (action === 'view') {
         window.wikiCache._initView();
       }
     },
     _initView: function _initView() {
-      mw.loader.using(['jquery.ui'], function () {
-        if (window.localStorage) {
-          window.wikiCache._loadStyle();
-          window.wikiCache._loadSettings();
-        }
-      });
+      if (window.localStorage) {
+        window.wikiCache._loadStyle();
+        window.wikiCache._loadSettings();
+      }
     },
     _initEdit: function _initEdit() {
-      mw.loader.using(['jquery.ui'], function () {
-        window.wikiCache._loadStyle();
-        var errdlg = window.wikiCache._errorDialog;
-        var msgs = window.wikiCache._msgs;
-        if (!window.localStorage) {
-          errdlg(0, msgs['not-support-title'], msgs['not-support'], mw.util.getUrl(msgs['not-support-more-link']));
-          return;
-        }
-        $('#editform').on('wikiCacheSettingsUpdate', window.wikiCache._autoSave).on('submit', window.wikiCache._onSubmit);
-        window.wikiCache._loadSettings();
-        window.wikiCache._defaultNotice();
-        if (window.location.hash.includes('wikicache=autoload')) {
-          window.wikiCache._load();
-        } else {
-          window.wikiCache._initLoad();
-        }
-      });
+      window.wikiCache._loadStyle();
+      var errdlg = window.wikiCache._errorDialog;
+      var msgs = window.wikiCache._msgs;
+      if (!window.localStorage) {
+        errdlg(0, msgs['not-support-title'], msgs['not-support'], mw.util.getUrl(msgs['not-support-more-link']));
+        return;
+      }
+      $('#editform').on('wikiCacheSettingsUpdate', window.wikiCache._autoSave).on('submit', window.wikiCache._onSubmit);
+      window.wikiCache._loadSettings();
+      window.wikiCache._defaultNotice();
+      if (window.location.hash.indexOf('wikicache=autoload') !== -1) {
+        window.wikiCache._load();
+      } else {
+        window.wikiCache._initLoad();
+      }
     },
     _loadStyle: function _loadStyle() {
-      $('head').append("<style type=\"text/css\">".concat(window.wikiCache._style, "</style>"));
+      mw.util.addCSS(window.wikiCache._style);
     },
     _loadSettings: function _loadSettings() {
       var settings = mw.storage.getObject('wikicache-settings');
@@ -117,10 +111,7 @@
       buttons[msgs.ok] = function () {
         $(this).dialog('close').remove();
       };
-      $('<div>').attr({
-        title: title,
-        'class': 'wikicache-dialog wikicache-error'
-      }).append($('<div>').attr('class', 'wikicache-error-message').html("".concat(msg, "&nbsp;").concat(msgs['bracket-left'])).append($('<a>').attr('href', more).html(msgs.more)).append(msgs['bracket-right'])).append($('<p>').append($('<input>').attr({
+      $('<div>').addClass('wikicache-dialog wikicache-error').attr('title', title).append($('<div>').addClass('wikicache-error-message').html("".concat(msg, "&nbsp;").concat(msgs['bracket-left'])).append($('<a>').attr('href', more).html(msgs.more)).append(msgs['bracket-right'])).append($('<p>').append($('<input>').attr({
         id: noreminderid,
         type: 'checkbox',
         name: 'noreminder'
@@ -148,26 +139,23 @@
     _notice: function _notice(msg, more) {
       var notice = $('#wikicache-notice');
       if (notice.length === 0) {
-        notice = $('<div>').attr({
-          id: 'wikicache-notice',
-          'class': 'ui-widget-content wikicache-notice'
-        });
+        notice = $('<div>').addClass('ui-widget-content wikicache-notice').attr('id', 'wikicache-notice');
       }
       notice.empty().off('mouseenter').off('mouseleave').append(msg).appendTo($('body')).fadeIn();
       if (more instanceof Object) {
         notice.on('mouseenter', function () {
           var msgs = window.wikiCache._msgs;
-          var el = $('<span>').attr('class', 'wikicache-more').appendTo(notice).append(msgs['bracket-left']);
+          var el = $('<span>').addClass('wikicache-more').appendTo(notice).append(msgs['bracket-left']);
           var first = true;
           el.appendTo(notice);
-          for (var _msg2 in more) {
-            if (Object.prototype.hasOwnProperty.call(more, _msg2)) {
-              if (!first) {
-                el.append('&nbsp;|&nbsp;');
-              } else {
+          for (var _msg in more) {
+            if (Object.prototype.hasOwnProperty.call(more, _msg)) {
+              if (first) {
                 first = false;
+              } else {
+                el.append('&nbsp;|&nbsp;');
               }
-              el.append($('<a>').attr('href', '#').html(_msg2).on('click', more[_msg2]));
+              el.append($('<a>').attr('href', '#').html(_msg).on('click', more[_msg]));
             }
           }
           el.append(msgs['bracket-right']);
@@ -183,10 +171,7 @@
       buttons[msgs.ok] = function () {
         $(this).dialog('close');
       };
-      var dia = $('<div>').attr({
-        'class': 'wikicache-dialog',
-        title: msgs['settings-title']
-      }).append($('<p>').append($('<label>').attr('for', 'autosave-interval').html(msgs['settings-autosave-interval'])).append($('<input>').attr({
+      var dia = $('<div>').addClass('wikicache-dialog').attr('title', msgs['settings-title']).append($('<p>').append($('<label>').attr('for', 'autosave-interval').html(msgs['settings-autosave-interval'])).append($('<input>').attr({
         id: 'autosave-interval',
         type: 'text',
         size: 5
@@ -198,23 +183,27 @@
         width: 400,
         beforeClose: function beforeClose() {
           var interval = $('#autosave-interval', dia).val();
-          if (!Number.isNaN(interval)) {
+          if (Number.isNaN(interval)) {
+            mw.notify(msgs['settings-autosave-interval-invalid'], {
+              type: 'error'
+            });
+            return false;
+          } else {
             interval = Number.parseInt(interval);
             if (interval < 10) {
-              alert(msgs['settings-autosave-interval-too-small']);
+              mw.notify(msgs['settings-autosave-interval-too-small'], {
+                type: 'error'
+              });
               return false;
             }
             settings['autosave-interval'] = interval;
-          } else {
-            alert(msgs['settings-autosave-interval-invalid']);
-            return false;
           }
           window.wikiCache._saveSettings();
         }
       });
       return false;
     },
-    _autoSaveId: null,
+    _autoSaveId: undefined,
     _autoSave: function _autoSave() {
       clearTimeout(window.wikiCache._autoSaveId);
       window.wikiCache._autoSaveId = setTimeout(function () {
@@ -238,7 +227,7 @@
       if (section) {
         thekey += "_".concat(section);
       }
-      mw.storage.setObject(thekey, autosave);
+      mw.storage.setObject(thekey, autosave, 2592e3); // 30 days
       setTimeout(window.wikiCache._defaultNotice, 1000);
     },
     _initLoad: function _initLoad() {
@@ -289,10 +278,9 @@
       if (section) {
         thekey += "_".concat(section);
       }
-      mw.storage.setObject(thekey, null);
+      mw.storage.remove(thekey);
     }
   };
   $(window.wikiCache.init);
-})(jQuery, mediaWiki);
-
+})($, mw);
 /* </nowiki> */
