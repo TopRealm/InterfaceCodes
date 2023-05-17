@@ -6,10 +6,11 @@ import mwclient
 # "src" not included
 DIR = ["", "Gadget", "Group"]
 
-def sync_file(site: mwclient.Site, page_name: str, page_text: str):
+def sync_file(site: mwclient.Site, page_name: str, text_new: str):
     page = site.pages[page_name]
     text_old = page.text()
-    if text_old != page_text:
+    # MediaWiki will automatically strip all blank characters at the tail of codes
+    if text_old != text_new.rstrip():
         summary = "Git更新：代码仓库同步更新"
         page.edit(text_new, summary)
         print(page_name, "\t", "changed")
