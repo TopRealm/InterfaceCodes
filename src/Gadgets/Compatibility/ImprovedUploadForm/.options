@@ -1,0 +1,1 @@
+ResourceLoader|default|hidden|dependencies=ext.gadget.SiteCommonJS,mediawiki.user,mediawiki.util,site,user|rights=upload|targets=desktop,mobile
