@@ -57,8 +57,6 @@ for block_name in blocks:
 
 gadgets_def.append(PAGE_BOTTOM)
 sync_file(site, "MediaWiki:Gadgets-definition", "".join(gadgets_def))
-with open("log", "w", encoding="utf-8") as pfile:
-    pfile.write("".join(gadgets_def))
 
 
 # 同步src/Gadgets中的文件
