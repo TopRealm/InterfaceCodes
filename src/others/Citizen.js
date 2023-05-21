@@ -1,4 +1,8 @@
-'use strict'
+'use strict';
+/* <nowiki> */
+/*
+* _addText: '{{Gadget Header|license=CC-BY-SA-4.0|import=no}}'
+*/
 /* 这里的任何JavaScript将为使用Citizen皮肤的用户加载 */
 mw.loader.using( [ 'mediawiki.util' ] ).done( function() {
 	/* Trigger search box when click on the fake search button on main page */
@@ -11,3 +15,5 @@ mw.loader.using( [ 'mediawiki.util' ] ).done( function() {
 		} );
 	}
 } );
+
+/* </nowiki> */
