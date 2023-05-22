@@ -693,6 +693,19 @@ div.thumb div a img {
 	display: none;
 }
 
+@media screen {
+	.page-Fanmade_同人主页.action-view .mw-body-header {
+		display: none !important;
+	}
+}
+
+/* 隐藏同人主页标题与编辑栏 */
+
+/* 隐藏同人主页下方的Catlink */
+.page-Fanmade_同人主页.action-view #catlinks {
+	display: none;
+}
+
 /* 未归类 */
 /* For display uneditable section */
 .noedit .editsection,
