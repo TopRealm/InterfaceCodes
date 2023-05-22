@@ -50,14 +50,14 @@
 #toc{
  display: block;
  position: fixed;
- transition: max-width 2s, max-height 2s,min-width 2s,min-height 2s,background 5s;
- z-index:999;
+ transition: max-width 2s, max-height 2s, min-width 2s, min-height 2s, background 5s;
+ z-index: 999;
  top: 40px;
  right: 0px;
  min-width: 100px;
  max-width: 120px;
  max-height: 30px;
- overflow-y:scroll ;
+ overflow-y: scroll ;
  border: 1px solid #aaa;
  border-radius: 0 0 1px 1px;
  -moz-border-radius: 0 0 1px 1px;
@@ -70,7 +70,7 @@
 #toc:hover{
  display: block;
  position: fixed;
- transition: max-width 2s, max-height 2s,min-width 2s,min-height 2s,background 5s;
+ transition: max-width 2s, max-height 2s, min-width 2s, min-height 2s, background 5s;
  z-index:999;
  top: 40px;
  right: 0px;
