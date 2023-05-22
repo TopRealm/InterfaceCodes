@@ -37,18 +37,22 @@ site.login("Github-bot", os.environ["MW_BOT_PASSWORD"])
 gadgets_def = [PAGE_TOP]
 blocks = os.listdir("./src/Gadgets")
 blocks = [i for i in blocks if os.path.isdir(f"./src/Gadgets/{i}")]
+blocks.sort()
 
 for block_name in blocks:
     gadgets_def.append(f"\n== {block_name} ==\n")
     block_dir = os.path.join("./src/Gadgets", block_name)
     gadgets = os.listdir(block_dir)
     gadgets = [i for i in gadgets if os.path.isdir(os.path.join(block_dir, i))]
+    gadgets.sort()
 
     for gadget_name in gadgets:
         gadget_dir = os.path.join(block_dir, gadget_name)
         gadget_files = os.listdir(gadget_dir)
         # 忽略所有以.开头的文件
         gadget_files = [i for i in gadget_files if (os.path.isfile(os.path.join(gadget_dir, i)) and i[0] != ".")]
+        gadget_files.sort()
+        
         with open(os.path.join(gadget_dir, ".options"), "r", encoding="utf-8") as pfile:
             gadget_options = pfile.read().strip()
         
