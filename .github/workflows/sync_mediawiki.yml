@@ -1,6 +1,7 @@
 name: Sync Mediawiki Interface Codes
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -20,7 +21,7 @@ jobs:
         with:
           python-version: '3.9'
           cache: 'pip'
-      - name: sync
+      - name: Synchronize with Mediawiki
         run: |
           pip install -r scripts/requirements.txt
           python scripts/sync_mediawiki.py
