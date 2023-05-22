@@ -4,18 +4,18 @@ on:
   push:
     paths:
       - "**.js"
+      - "**.py"
       - "!scripts/test/*.js"
       - .github/workflows/CodeQL.yaml
       - .github/codeql-config.yml
   pull_request:
     paths:
       - "**.js"
+      - "**.py"
       - "!scripts/test/*.js"
       - .github/workflows/CodeQL.yaml
       - .github/codeql-config.yml
   workflow_dispatch:
-  schedule:
-    - cron: 15 0 * * *
 
 concurrency:
   group: ${{ github.workflow_ref }}-${{ github.ref }}
