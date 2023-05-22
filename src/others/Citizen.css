@@ -47,7 +47,48 @@
 	display: block !important;
 }
 /*目录样式 */
+#toc{
+ display: block;
+ position: fixed;
+ transition: max-width 2s, max-height 2s,min-width 2s,min-height 2s,background 5s;
+ z-index:999;
+ top: 40px;
+ right: 0px;
+ min-width: 100px;
+ max-width: 120px;
+ max-height: 30px;
+ overflow-y:scroll ;
+ border: 1px solid #aaa;
+ border-radius: 0 0 1px 1px;
+ -moz-border-radius: 0 0 1px 1px;
+ background: rgba(238,238,238,1);
+ padding: 12px;
+ overflow-x: hidden;
 
+}
+
+#toc:hover{
+ display: block;
+ position: fixed;
+ transition: max-width 2s, max-height 2s,min-width 2s,min-height 2s,background 5s;
+ z-index:999;
+ top: 40px;
+ right: 0px;
+ min-width: 100px;
+ max-width: 350px;
+ max-height:600px;
+ overflow-y: scroll;
+ border: 1px solid #aaa;
+ border-radius: 0 0 1px 1px;
+ -moz-border-radius: 0 0 1px 1px;
+ background: rgba(250,251,252,1);
+ padding: 12px;
+ overflow-x: hidden;
+
+ 
+}
+ 
+body { overflow-x: hidden;}
 
 
 /* </nowiki> */
