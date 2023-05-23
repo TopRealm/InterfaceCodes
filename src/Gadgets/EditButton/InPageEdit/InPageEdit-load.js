@@ -1,1 +1,1 @@
-mw.loader.load('https://cdn.jsdelivr.net/npm/mediawiki-inpageedit');
+mw.loader.load('https://unpkg.com/mediawiki-inpageedit')
