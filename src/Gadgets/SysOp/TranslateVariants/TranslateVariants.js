@@ -6,6 +6,17 @@
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/TranslateVariants>
  * @dependency ext.gadget.i18n, mediawiki.api, mediawiki.diff.styles, mediawiki.util
  */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
 /* <nowiki> */
 'use strict';
 
@@ -16,7 +27,8 @@
   var getKey = function getKey(key, object) {
     return isValidKey(key, object) ? object[key] : key;
   };
-  var localize = i18n.localize;
+  var _i18n = i18n,
+    localize = _i18n.localize;
   var TranslateVariantsSummary = '自动转换变体自[[$1]] via [[MediaWiki:Gadget-TranslateVariants.js|TranslateVariants]]';
   var main = function main() {
     var langs = new Set(['zh', 'zh-hans', 'zh-cn', 'zh-my', 'zh-sg', 'zh-hant', 'zh-hk', 'zh-mo', 'zh-tw']);
