@@ -44,13 +44,7 @@
       'zh-tw': '中國臺灣繁體'
     };
     var result = {};
-    var api = new mw.Api({
-      ajax: {
-        headers: {
-          'Api-User-Agent': "Qiuwen/1.1 (TranslateVariants/1.1; ".concat(mw.config.get('wgWikiID'), ")")
-        }
-      }
-    });
+    var api = new mw.Api();
     var basepagetext = '';
     var table = $('<div>').attr('id', 'TranslateVariants').prependTo('#bodyContent');
     $('<div>').css('color', 'red').text(localize({
