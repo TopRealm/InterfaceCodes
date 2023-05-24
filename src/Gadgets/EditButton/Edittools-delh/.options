@@ -1,1 +1,1 @@
-ResourceLoader|dependencies=ext.gadget.Edittools-vector,ext.gadget.SiteCommonJS|rights=autoconfirmed|targets=desktop,mobile
+ResourceLoader|dependencies=ext.gadget.Edittools-vector,ext.gadget.i18n|rights=autoconfirmed|targets=desktop,mobile

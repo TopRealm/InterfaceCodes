@@ -1,0 +1,78 @@
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ *
+ * @base <https://zh.wikipedia.org/wiki/Special:Permalink/59753812>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Ding>
+ */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
+#ding button {
+	box-sizing: border-box;
+	padding: 0 0.7em;
+	border: 0.2em solid #fff;
+	border-radius: 9em;
+	margin: 0 0.2em;
+	background: 0 0;
+	color: inherit;
+	font-weight: inherit;
+}
+
+#ding button:active {
+	background: hsla(0deg 0% 100%/60%);
+	background: rgb(255 255 255 / 20%);
+}
+
+.ding_inner {
+	position: fixed;
+	z-index: 9999;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: auto;
+	padding: 0.6em 2em;
+	margin: 0 0 auto;
+	box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+	font-size: 86%;
+	font-weight: 700;
+	line-height: 1.4em;
+	opacity: 1;
+	text-align: center;
+	transform: translateY(-130%);
+	transition: all 0.2s;
+}
+
+.ding_default {
+	background-color: #eaecf0;
+	color: #000;
+}
+
+.ding_info,
+.ding_success,
+.ding_warning {
+	color: #fff;
+}
+
+.ding_info {
+	background-color: #36c;
+}
+
+.ding_success {
+	background-color: #00af89;
+}
+
+.ding_warning {
+	background-color: #d33;
+}
+
+/* </nowiki> */

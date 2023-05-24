@@ -1,1 +1,1 @@
-ResourceLoader|dependencies=ext.gadget.SiteCommonJS|rights=edit|targets=desktop,mobile
+ResourceLoader|dependencies=ext.gadget.i18n,mediawiki.api,mediawiki.jqueryMsg,mediawiki.user,mediawiki.util,user.options|rights=edit|targets=desktop,mobile

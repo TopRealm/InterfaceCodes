@@ -1,10 +1,23 @@
 /**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
+/**
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <zh.wikipedia.org/w/index.php?title=MediaWiki:Gadget-navpop.css&oldid=825269631>
+ * @base <https://zh.wikipedia.org/w/index.php?title=MediaWiki:Gadget-navpop.css&oldid=825269631>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Popups>
  */
-.popupMoreLink {
+ .popupMoreLink {
 	display: block;
 	cursor: pointer;
 	text-align: right;
@@ -166,3 +179,5 @@ a.popup_change_title_link {
 	padding: 0 !important;
 	background: none !important;
 }
+
+/* </nowiki> */
