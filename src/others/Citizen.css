@@ -31,11 +31,11 @@
 #siteSub {
 	display: none;
 }
+
 /* Page-specific rules */
 .page-有兽档案馆_首页.action-view .mw-body-header {
 	display: none;
 }
-
 
 /* [[Special:小工具]]标题 */
 .mw-special-Gadgets h1,
@@ -47,7 +47,59 @@
 	display: block !important;
 }
 
-/*目录样式 */
+/* WIKI背景图 */
+body {
+	background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+		url(https://wiki.zorua.top/images/3/3a/%E6%9C%89%E5%85%BD%E7%84%89%E5%8A%A8%E7%94%BB%E6%88%AA%E5%9B%BE.png) no-repeat fixed 100% 0;
+	background-size: cover;
+}
+
+/* 内容框样式 */
+#mw-content-text {
+	padding: 2em 1.8em 2em 1.8em;
+	background: rgb(255 255 255 / 84%);
+	border-radius: 10px;
+	color: #000000;
+	line-height: 2.14285714;
+}
+
+.mw-content-ltr ol {
+	margin: 0.3em 0 0 1em;
+}
+
+.img-tx2 img {
+	border-radius: 3px;
+}
+
+/*折叠目录*/
+.toc::-webkit-scrollbar {
+	display: none;
+}
+
+.toc,
+#toc {
+	z-index: 999;
+	display: block;
+	position: fixed;
+	top: 20%;
+	left: 0px;
+	min-width: 220px;
+	max-width: 350px;
+	max-height: 1%;
+	overflow-y: scroll;
+	background: url(https://wiki.zorua.top/images/8/83/%E5%8F%B3%E7%AE%AD%E5%A4%B4.png) right top/40px no-repeat, rgba(249, 249, 249, 0.85);
+	padding-left: 10px;
+	transform: translate3d(-200px, 0, 0);
+	transition: max-height 0.5s, transform ease-in-out 0.5s;
+}
+
+toc:hover,
+#toc:hover {
+	transform: translate3d(0, 0, 0);
+	max-height: 60%;
+	background: url(https://wiki.zorua.top/images/8/81/%E7%9B%AE%E5%BD%95%E4%BD%BF%E7%94%A8%E6%8F%90%E7%A4%BA.png) left top/210px no-repeat, rgba(249, 249, 249, 0.85);
+	transition: max-height 0.5s, transform 0.5s, background 0.5s;
+}
 
 
 /* </nowiki> */
