@@ -1,11 +1,24 @@
 /**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
+/**
  * SPDX-License-Identifier: CC-BY-NC-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-NC-SA-4.0}}'
  *
- * @source <llwiki.org/zh/MediaWiki:Gadget-definitions.css>
+ * @base <https://llwiki.org/zh/MediaWiki:Gadget-definitions.css>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Definitions>
  * @author Bhsd <https://llwiki.org/zh/User:Bhsd>
  */
-.defTable span > a {
+ .defTable span > a {
 	margin-left: 1ch;
 }
 
@@ -20,3 +33,5 @@
 .defTable .oo-ui-tagItemWidget {
 	display: block;
 }
+
+/* </nowiki> */

@@ -2,13 +2,26 @@
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <rs.miraheze.org/wiki/MediaWiki:Gadget-collapsible.css>
+ * @base <https://zh.wikipedia.org/wiki/MediaWiki:Gadget-NavFrame.css>
+ * @base <https://www.mediawiki.org/wiki/MediaWiki:Gadget-NavFrame.css>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/NavFrame>
  */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
 .collapsetoggle {
 	font-weight: normal;
 	-webkit-user-select: none;
 	-moz-user-select: none;
-	-ms-user-select: none;
 	user-select: none;
 }
 
@@ -21,3 +34,5 @@
 	margin-right: 0.5em;
 	margin-left: 0;
 }
+
+/* </nowiki> */

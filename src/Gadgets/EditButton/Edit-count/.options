@@ -1,1 +1,1 @@
-ResourceLoader|default|rights=edit|targets=desktop,mobile
+ResourceLoader|dependencies=ext.gadget.Ding,ext.gadget.i18n|rights=skipcaptcha|targets=desktop,mobile

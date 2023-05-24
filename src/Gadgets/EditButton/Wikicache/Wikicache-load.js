@@ -6,8 +6,19 @@
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Wikicache>
  * @dependency jquery.ui, mediawiki.storage, mediawiki.util
  */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
 /* <nowiki> */
-(function wikicache($, mw) {
+$(function wikicache() {
   window.wikiCache = {
     version: '0.2.0',
     _msgs: {
@@ -39,7 +50,7 @@
     _settings: {
       'autosave-interval': 120
     },
-    _style: '.wikicache-dialog{font-size:1em}.wikicache-notice{position:fixed;bottom:0;left:0;z-index:99;display:none;height:1.6em;border-right:1px solid #a7d7f9;border-bottom:1px solid #a7d7f9;white-space:nowrap;font-size:.8em;line-height:1.6em}.wikicache-notice .ui-dialog-titlebar-close{float:right;display:inline-block}.wikicache-dialog a,.wikicache-notice a{color:#0645ad}.wikicache-dialog a:visited,.wikicache-notice a:visited{color:#0b0080}.wikicache-error-message{padding-left:60px;min-height:48px;background:url("https://tu.zhongwen.wiki/images/qiuwen/thumb/0/09/Cross_Mark_(Red).svg/48px-Cross_Mark_(Red).svg.png") no-repeat 0}',
+    _style: '.wikicache-dialog{font-size:1em}.wikicache-notice{position:fixed;bottom:0;left:0;z-index:99;display:none;height:1.6em;border-right:1px solid #a7d7f9;border-bottom:1px solid #a7d7f9;white-space:nowrap;font-size:.8em;line-height:1.6em}.wikicache-notice .ui-dialog-titlebar-close{float:right;display:inline-block}.wikicache-dialog a,.wikicache-notice a{color:#0645ad}.wikicache-dialog a:visited,.wikicache-notice a:visited{color:#0b0080}.wikicache-error-message{padding-left:60px;min-height:48px;background:url("//wiki.zorua.top/images/thumb/0/09/Cross_Mark_%28Red%29.svg/50px-Cross_Mark_%28Red%29.svg.png") no-repeat 0}',
     _autoSaveArea: {
       '#wpTextbox1': function wpTextbox1(element, value) {
         if (value) {
@@ -72,10 +83,10 @@
     },
     _initEdit: function _initEdit() {
       window.wikiCache._loadStyle();
-      var errdlg = window.wikiCache._errorDialog;
+      var errorDialog = window.wikiCache._errorDialog;
       var msgs = window.wikiCache._msgs;
       if (!window.localStorage) {
-        errdlg(0, msgs['not-support-title'], msgs['not-support'], mw.util.getUrl(msgs['not-support-more-link']));
+        errorDialog(0, msgs['not-support-title'], msgs['not-support'], mw.util.getUrl(msgs['not-support-more-link']));
         return;
       }
       $('#editform').on('wikiCacheSettingsUpdate', window.wikiCache._autoSave).on('submit', window.wikiCache._onSubmit);
@@ -145,20 +156,20 @@
       if (more instanceof Object) {
         notice.on('mouseenter', function () {
           var msgs = window.wikiCache._msgs;
-          var el = $('<span>').addClass('wikicache-more').appendTo(notice).append(msgs['bracket-left']);
+          var element = $('<span>').addClass('wikicache-more').appendTo(notice).append(msgs['bracket-left']);
           var first = true;
-          el.appendTo(notice);
-          for (var _msg in more) {
-            if (Object.prototype.hasOwnProperty.call(more, _msg)) {
-              if (first) {
-                first = false;
+          element.appendTo(notice);
+          for (var message in more) {
+            if (Object.prototype.hasOwnProperty.call(more, message)) {
+              if (!first) {
+                element.append('&nbsp;|&nbsp;');
               } else {
-                el.append('&nbsp;|&nbsp;');
+                first = false;
               }
-              el.append($('<a>').attr('href', '#').html(_msg).on('click', more[_msg]));
+              element.append($('<a>').attr('href', '#').html(message).on('click', more[message]));
             }
           }
-          el.append(msgs['bracket-right']);
+          element.append(msgs['bracket-right']);
         }).on('mouseleave', function () {
           $('.wikicache-more', this).remove();
         });
@@ -183,12 +194,7 @@
         width: 400,
         beforeClose: function beforeClose() {
           var interval = $('#autosave-interval', dia).val();
-          if (Number.isNaN(interval)) {
-            mw.notify(msgs['settings-autosave-interval-invalid'], {
-              type: 'error'
-            });
-            return false;
-          } else {
+          if (!Number.isNaN(interval)) {
             interval = Number.parseInt(interval);
             if (interval < 10) {
               mw.notify(msgs['settings-autosave-interval-too-small'], {
@@ -197,13 +203,18 @@
               return false;
             }
             settings['autosave-interval'] = interval;
+          } else {
+            mw.notify(msgs['settings-autosave-interval-invalid'], {
+              type: 'error'
+            });
+            return false;
           }
           window.wikiCache._saveSettings();
         }
       });
       return false;
     },
-    _autoSaveId: undefined,
+    _autoSaveId: null,
     _autoSave: function _autoSave() {
       clearTimeout(window.wikiCache._autoSaveId);
       window.wikiCache._autoSaveId = setTimeout(function () {
@@ -282,5 +293,5 @@
     }
   };
   $(window.wikiCache.init);
-})($, mw);
+});
 /* </nowiki> */

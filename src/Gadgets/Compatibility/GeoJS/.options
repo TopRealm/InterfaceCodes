@@ -1,1 +1,1 @@
-ResourceLoader|default|dependencies=mediawiki.storage|targets=desktop,mobile
+ResourceLoader|default|hidden|dependencies=mediawiki.storage|targets=desktop,mobile

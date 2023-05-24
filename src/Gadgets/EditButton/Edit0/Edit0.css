@@ -5,6 +5,17 @@
  * @base <https://zh.wikipedia.org/wiki/MediaWiki:Gadget-edit0.css>
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Edit0>
  */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
 /* <nowiki> */
 body.ltr h1.firstHeading .mw-editsection-bracket:first-of-type,
 body.rtl h1.firstHeading .mw-editsection-bracket:not(:first-of-type) {
