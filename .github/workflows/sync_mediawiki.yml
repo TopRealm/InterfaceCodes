@@ -10,6 +10,11 @@ on:
       - src/**/*.css
       - src/**/.options
 
+# Disallow parallel running
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   sync_codes:
     runs-on: ubuntu-latest
