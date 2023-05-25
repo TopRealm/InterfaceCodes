@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/GeoLocation>
- * @dependency ext.gadget.GeoJS, mediawiki.api, mediawiki.Title
+ * @dependency ext.gadget.Geo, mediawiki.api, mediawiki.Title
  */
 /**
  * +--------------------------------------------------------+
@@ -332,7 +332,13 @@ $( /*#__PURE__*/function () {
           getRegionName = function getRegionName(key) {
             return _regionList[key] || key;
           };
-          api = new mw.Api();
+          api = new mw.Api({
+            ajax: {
+              headers: {
+                'Api-User-Agent': "Qiuwen/1.1 (GeoLocation/1.1; ".concat(mw.config.get('wgWikiID'), "; user=").concat((_mw$config$get = mw.config.get('wgUserName')) !== null && _mw$config$get !== void 0 ? _mw$config$get : '', ")")
+              }
+            }
+          });
           getLocation = /*#__PURE__*/function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
               var IPGeolocationDesc, appendIcon, getUserGeoIP, response, groups;
@@ -376,8 +382,8 @@ $( /*#__PURE__*/function () {
                       getUserGeoIP();
                     } else if (groups.indexOf('bot') !== -1) {
                       appendIcon('机器人', 'blue', 'settings');
-                    } else if (groups.indexOf('责任运营') !== -1) {
-                      appendIcon('责任运营', 'blue', 'userAvatar');
+                    } else if (groups.indexOf('qiuwen') !== -1) {
+                      appendIcon('站长', 'blue', 'userAvatar');
                     }
                     _context.next = 13;
                     break;
