@@ -50,7 +50,7 @@
 /* WIKI背景图 */
 body {
 	background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-		url(https://wiki.zorua.top/images/3/3a/%E6%9C%89%E5%85%BD%E7%84%89%E5%8A%A8%E7%94%BB%E6%88%AA%E5%9B%BE.png?20230525015937) no-repeat fixed 100% 0;
+		url(https://wiki.zorua.top/images/3/3a/%E6%9C%89%E5%85%BD%E7%84%89%E5%8A%A8%E7%94%BB%E6%88%AA%E5%9B%BE.png) no-repeat fixed 100% 0;
 	background-size: cover;
 }
 
