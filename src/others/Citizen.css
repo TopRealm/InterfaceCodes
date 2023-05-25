@@ -66,10 +66,8 @@ header.mw-body-header{
 	height: auto;
 }
 
-/* 隐藏 子页面栏*/
-#contentSub .subpages,
-	.mw-body-header:before,
-#editor-switch-button {
+/*隐藏标题原背景*/
+.mw-body-header:before{
 	display:none;
 }
 
