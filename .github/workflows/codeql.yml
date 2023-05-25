@@ -3,20 +3,10 @@ name: CodeQL
 on:
   push:
     paths:
-      - "**.js"
-      - "**.py"
-      - "**.css"
-      - "!scripts/test/*.js"
-      - .github/workflows/CodeQL.yaml
-      - .github/codeql-config.yml
+      - ./**/*
   pull_request:
     paths:
-      - "**.js"
-      - "**.py"
-      - "**.css"
-      - "!scripts/test/*.js"
-      - .github/workflows/CodeQL.yaml
-      - .github/codeql-config.yml
+      - ./**/*
   workflow_dispatch:
 
 concurrency:
