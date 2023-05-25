@@ -382,8 +382,6 @@ $( /*#__PURE__*/function () {
                       getUserGeoIP();
                     } else if (groups.indexOf('bot') !== -1) {
                       appendIcon('机器人', 'blue', 'settings');
-                    } else if (groups.indexOf('qiuwen') !== -1) {
-                      appendIcon('站长', 'blue', 'userAvatar');
                     }
                     _context.next = 13;
                     break;
