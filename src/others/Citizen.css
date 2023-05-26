@@ -72,7 +72,7 @@ header.mw-body-header{
 }
 
 /* 内容框样式 */
-#mw-content-text {
+.mw-body-content {
 	padding: 2em 1.8em 2em 1.8em;
 	background: rgb(240 248 255 / 65%);
 	border-radius: 10px;
