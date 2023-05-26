@@ -2,11 +2,7 @@ name: CodeQL
 
 on:
   push:
-    paths:
-      - ./**/*
   pull_request:
-    paths:
-      - ./**/*
   workflow_dispatch:
 
 concurrency:
