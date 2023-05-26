@@ -111,7 +111,7 @@ header.mw-body-header{
 	transition: max-height 0.5s, transform ease-in-out 0.5s;
 }
 
-toc:hover,
+.toc:hover,
 #toc:hover {
 	transform: translate3d(0, 0, 0);
 	max-height: 60%;
