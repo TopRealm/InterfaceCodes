@@ -48,7 +48,7 @@
 }
 
 /* 手机端字体大小适配 */
-@media screen and (max-width: 767px) {body { font-size: 13px; }}
+@media screen and (max-width: 767px) {body { font-size: 15px; }}
 
 /* WIKI背景图 */
 body {
