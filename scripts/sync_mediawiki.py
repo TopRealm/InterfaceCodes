@@ -114,9 +114,10 @@ for block_name in blocks:
         gadget_files = [i for i in gadget_files if (os.path.isfile(os.path.join(gadget_dir, i)) and i[0] != ".")]
 
         for gadget_file_name in gadget_files:
-            with open(os.path.join(gadget_dir, gadget_file_name), "r", encoding="utf-8") as pfile:
+            gadget_file_whole_name = os.path.join(gadget_dir, gadget_file_name)
+            with open(gadget_file_whole_name, "r", encoding="utf-8") as pfile:
                 text_new = pfile.read()
-            sync_file(site, f"MediaWiki:Gadget-{gadget_file_name}", text_new, gadget_file_name)
+            sync_file(site, f"MediaWiki:Gadget-{gadget_file_name}", text_new, gadget_file_whole_name)
 
 
 # 同步src/others中的文件
