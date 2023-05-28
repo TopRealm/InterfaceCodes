@@ -10,7 +10,7 @@
  * |         === WARNING: GLOBAL GADGET FILE ===            |
  * +--------------------------------------------------------+
  * |      All changes should be made in the repository,     |
- * |              otherwise they will be lost.              |
+ * |              otherwise they will be lost!              |
  * +--------------------------------------------------------+
  * |        Changes to this page affect many users.         |
  * |  Please discuss changes at Talk page before editing.   |
