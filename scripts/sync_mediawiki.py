@@ -1,4 +1,5 @@
 import os
+import subprocess as sp
 
 import mwclient
 
@@ -10,7 +11,7 @@ PAGE_TOP = """<div class=\"mw-message-box mw-message-box-notice\">
 *[[Special:Gadgets]]
 *[[Special:GadgetUsage]]
 *[[Special:参数设置#mw-prefsection-gadgets]]
-*本页面由[[User:Github-bot|]]自动维护。最后一次更新时间：{{#time: Y-m-d H:i:s "(CST)"|{{REVISIONTIMESTAMP}}}}
+*本页面由[[User:Github-bot|Github-bot]]自动维护。最后一次更新时间：{{#time: Y-m-d H:i:s "(CST)"|{{REVISIONTIMESTAMP}}}}
 </div>
 <div style='font-family:monospace; word-break:break-all;'>
 """
@@ -18,20 +19,54 @@ PAGE_BOTTOM = """
 </div>
 """
 
-def sync_file(site: mwclient.Site, page_name: str, text_new: str):
+def last_commit_hash(file_name: str) -> str:
+    """调用bash的git命令，获取给定文件的最后一次commit哈希值。
+
+    Args:
+        file_name (str): 文件路径
+
+    Raises:
+        Exception: 若git返回的哈希值未通过格式检查，则抛出异常
+
+    Returns:
+        str: 获取的完整SHA-1哈希值
+    """    
+    cmd = f"git log --pretty=format:\"%H\" -1 -- {file_name}"
+    commit_hash = sp.run(cmd, stdout=sp.PIPE, shell=True).stdout.decode("utf-8").strip()
+    # 格式检查
+    if commit_hash.isalnum() and len(commit_hash) == 40:
+        return commit_hash
+    else:
+        raise Exception("获取Commit Hash失败：格式检查未通过")
+
+
+def sync_file(site: mwclient.Site, page_name: str, text_new: str, file_name=None) -> None:
+    """将传入的新内容与MediaWiki对应页面内容进行比对，若不一致则对页面进行更新。
+
+    Args:
+        site (mwclient.Site): 已登录的mwclient.Site对象
+        page_name (str): 目标MediaWiki页面名称
+        text_new (str): 用于比对的新内容
+        file_name (_type_, optional): 文件名，用于调用last_commit_hash函数获取commit记录。默认值为None，即不在编辑摘要中记录commit哈希
+    """    
     page = site.pages[page_name]
     text_old = page.text()
     # MediaWiki会自动删除上传文本末尾的空白字符
     if text_old != text_new.rstrip():
         summary = "Git更新：代码仓库同步更新"
+        if file_name is not None:
+            commit_hash = last_commit_hash(file_name)
+            summary += f" ([https://github.com/TopRealm/InterfaceCodes/commit/{commit_hash} {commit_hash[:7]}])"
         page.edit(text_new, summary)
         print(page_name, "\t", "changed")
     else:
         print(page_name, "\t", "not_changed")
 
+
 # 登录MediaWiki
 site = mwclient.Site("wiki.zorua.top", scheme="https", path="/")
 site.login("Github-bot", os.environ["MW_BOT_PASSWORD"])
+
 
 # 生成Gadgets-definition
 gadgets_def = [PAGE_TOP]
@@ -81,7 +116,7 @@ for block_name in blocks:
         for gadget_file_name in gadget_files:
             with open(os.path.join(gadget_dir, gadget_file_name), "r", encoding="utf-8") as pfile:
                 text_new = pfile.read()
-            sync_file(site, f"MediaWiki:Gadget-{gadget_file_name}", text_new)
+            sync_file(site, f"MediaWiki:Gadget-{gadget_file_name}", text_new, gadget_file_name)
 
 
 # 同步src/others中的文件
@@ -100,4 +135,4 @@ for sub_dir in DIR:
         else:
             page_name = f"MediaWiki:{file_name}"
         
-        sync_file(site, page_name, text_new)
+        sync_file(site, page_name, text_new, file_whole_name)
