@@ -51,11 +51,6 @@ $( /*#__PURE__*/function () {
                 ja: '未知',
                 zh: '未知'
               }),
-              Webmaster: localize({
-                ja: 'ウェブマスター',
-                'zh-hans': '站长',
-                'zh-hant': '站長'
-              }),
               'Update IP location information': localize({
                 ja: 'IP地域の情報を更新',
                 'zh-hans': '更新IP属地信息',
