@@ -1,1 +1,1 @@
-ResourceLoader|dependencies=ext.gadget.Geo,mediawiki.Title,mediawiki.api|targets=desktop,mobile
+ResourceLoader|dependencies=ext.gadget.Geo,ext.gadget.i18n,mediawiki.Title,mediawiki.api|targets=desktop,mobile
