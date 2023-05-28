@@ -25,8 +25,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 $( /*#__PURE__*/function () {
   var _geoLocation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-    var _mw$config$get;
-    var _yield$Geo, country, region, countryList, regionList, _countryList, _regionList, getCountryName, getRegionName, api, getLocation, storeLocation;
+    var _yield$Geo, country, region, countryList, regionList, _countryList, _regionList, getCountryName, getRegionName, scriptPath, getLocation, storeLocation;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
@@ -332,13 +331,7 @@ $( /*#__PURE__*/function () {
           getRegionName = function getRegionName(key) {
             return _regionList[key] || key;
           };
-          api = new mw.Api({
-            ajax: {
-              headers: {
-                'Api-User-Agent': "Qiuwen/1.1 (GeoLocation/1.1; ".concat(mw.config.get('wgWikiID'), "; user=").concat((_mw$config$get = mw.config.get('wgUserName')) !== null && _mw$config$get !== void 0 ? _mw$config$get : '', ")")
-              }
-            }
-          });
+          scriptPath = mw.config.get('wgServer') + mw.config.get('wgScriptPath');
           getLocation = /*#__PURE__*/function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
               var IPGeolocationDesc, appendIcon, getUserGeoIP, response, groups;
@@ -354,7 +347,7 @@ $( /*#__PURE__*/function () {
                       $indicator.appendTo($('.mw-indicators'));
                     };
                     getUserGeoIP = function getUserGeoIP() {
-                      $.getJSON("".concat(mw.config.get('wgServer') + mw.config.get('wgScriptPath'), "/wiki/User:").concat(mw.config.get('wgRelevantUserName'), "/GeoIP.json?action=raw&ctype=application/json")).done(function (response) {
+                      $.getJSON("".concat(scriptPath, "/index.php?title=User:").concat(mw.config.get('wgRelevantUserName'), "/GeoIP.json&action=raw&ctype=application/json")).done(function (response) {
                         var _getCountryName, _getRegionName;
                         var countryText = (_getCountryName = getCountryName(response.country)) !== null && _getCountryName !== void 0 ? _getCountryName : '未知';
                         var regionText = response.country === 'CN' ? (_getRegionName = getRegionName(response.region)) !== null && _getRegionName !== void 0 ? _getRegionName : '' : '';
@@ -369,8 +362,10 @@ $( /*#__PURE__*/function () {
                     };
                     _context.prev = 3;
                     _context.next = 6;
-                    return api.get({
+                    return $.get("".concat(scriptPath, "/api.php"), {
                       action: 'query',
+                      format: 'json',
+                      formatversion: '2',
                       list: 'users',
                       ususers: mw.config.get('wgRelevantUserName'),
                       usprop: 'groups'
@@ -382,6 +377,8 @@ $( /*#__PURE__*/function () {
                       getUserGeoIP();
                     } else if (groups.indexOf('bot') !== -1) {
                       appendIcon('机器人', 'blue', 'settings');
+                    } else if (groups.indexOf('qiuwen') !== -1) {
+                      appendIcon('站长', 'blue', 'userAvatar');
                     }
                     _context.next = 13;
                     break;
@@ -404,7 +401,7 @@ $( /*#__PURE__*/function () {
               return _regeneratorRuntime().wrap(function _callee2$(_context2) {
                 while (1) switch (_context2.prev = _context2.next) {
                   case 0:
-                    if (!(country === '' || mw.config.get('wgUserGroups').indexOf('bot') !== -1 || mw.config.get('wgUserGroups').indexOf('qiuwen') !== -1 || !mw.config.get('wgUserName') || !(mw.config.get('wgUserGroups').indexOf('autoconfirmed') !== -1) || !(mw.config.get('wgUserGroups').indexOf('confirmed') !== -1))) {
+                    if (!(country === '' || mw.config.get('wgUserGroups').indexOf('bot') !== -1 || mw.config.get('wgUserGroups').indexOf('qiuwen') !== -1 || !mw.config.get('wgUserName') || !(mw.config.get('wgUserGroups').indexOf('autoconfirmed') !== -1 || mw.config.get('wgUserGroups').indexOf('confirmed') !== -1))) {
                       _context2.next = 2;
                       break;
                     }
@@ -421,26 +418,32 @@ $( /*#__PURE__*/function () {
                     }
                     return _context2.abrupt("return");
                   case 8:
-                    _context2.next = 12;
-                    break;
-                  case 10:
-                    _context2.prev = 10;
-                    _context2.t0 = _context2["catch"](2);
-                  case 12:
-                    _context2.next = 14;
-                    return api.postWithEditToken({
+                    _context2.next = 10;
+                    return $.post("".concat(scriptPath, "/api.php"), {
                       action: 'edit',
+                      format: 'json',
+                      formatversion: '2',
+                      contentformat: 'application/json',
+                      contentmodel: 'json',
                       title: "User:".concat(mw.config.get('wgUserName'), "/GeoIP.json"),
                       text: "{\"country\":\"".concat(country, "\",\"region\":\"").concat(region, "\"}"),
                       summary: '更新IP属地信息',
                       minor: 1,
-                      watchlist: 'unwatch'
+                      recreate: 1,
+                      watchlist: 'unwatch',
+                      token: mw.user.tokens.get('csrfToken')
                     });
+                  case 10:
+                    _context2.next = 14;
+                    break;
+                  case 12:
+                    _context2.prev = 12;
+                    _context2.t0 = _context2["catch"](2);
                   case 14:
                   case "end":
                     return _context2.stop();
                 }
-              }, _callee2, null, [[2, 10]]);
+              }, _callee2, null, [[2, 12]]);
             }));
             return function storeLocation() {
               return _ref2.apply(this, arguments);
