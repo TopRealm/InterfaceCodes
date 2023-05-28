@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/GeoLocation>
- * @dependency ext.gadget.Geo, mediawiki.api, mediawiki.Title
+ * @dependency ext.gadget.Geo, ext.gadget.i18n, mediawiki.api, mediawiki.Title
  */
 /**
  * +--------------------------------------------------------+
@@ -25,13 +25,51 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 $( /*#__PURE__*/function () {
   var _geoLocation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-    var _yield$Geo, country, region, countryList, regionList, _countryList, _regionList, getCountryName, getRegionName, scriptPath, getLocation, storeLocation;
+    var i18nMessages, messages, message, _yield$Geo, country, region, countryList, regionList, _countryList, _regionList, getCountryName, getRegionName, scriptPath, getLocation, storeLocation;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
-          _context4.next = 2;
+          i18nMessages = function i18nMessages() {
+            var _i18n = i18n,
+              localize = _i18n.localize;
+            return {
+              ': ': localize({
+                ja: '：',
+                zh: '：'
+              }),
+              'IP Location': localize({
+                ja: 'IP地域',
+                'zh-hans': 'IP属地',
+                'zh-hant': 'IP屬地'
+              }),
+              Bot: localize({
+                ja: 'ボット',
+                'zh-hans': '机器人',
+                'zh-hant': '機械人'
+              }),
+              Unknown: localize({
+                ja: '未知',
+                zh: '未知'
+              }),
+              Webmaster: localize({
+                ja: 'ウェブマスター',
+                'zh-hans': '站长',
+                'zh-hant': '站長'
+              }),
+              'Update IP location information': localize({
+                ja: 'IP地域の情報を更新',
+                'zh-hans': '更新IP属地信息',
+                'zh-hant': '更新IP屬地資訊'
+              })
+            };
+          };
+          messages = i18nMessages();
+          message = function message(key) {
+            return messages[key] || key;
+          };
+          _context4.next = 5;
           return Geo();
-        case 2:
+        case 5:
           _yield$Geo = _context4.sent;
           country = _yield$Geo.country;
           region = _yield$Geo.region;
@@ -338,7 +376,7 @@ $( /*#__PURE__*/function () {
               return _regeneratorRuntime().wrap(function _callee$(_context) {
                 while (1) switch (_context.prev = _context.next) {
                   case 0:
-                    IPGeolocationDesc = 'IP属地';
+                    IPGeolocationDesc = message('IP Location');
                     appendIcon = function appendIcon(indicatorText, spanClass, icon) {
                       var $indicator = $('<div>').addClass("mw-indicator mw-indicator-geolocation mw-geolocation-".concat(spanClass)).attr('id', 'mw-indicator-geolocation').append($('<span>').addClass("mw-geolocation-filter-".concat(spanClass, " mw-geolocation-icon mw-geolocation-icon-").concat(icon !== null && icon !== void 0 ? icon : 'globe')).attr({
                         alt: indicatorText !== null && indicatorText !== void 0 ? indicatorText : IPGeolocationDesc,
@@ -351,11 +389,11 @@ $( /*#__PURE__*/function () {
                         var _getCountryName, _getRegionName;
                         var countryText = (_getCountryName = getCountryName(response.country)) !== null && _getCountryName !== void 0 ? _getCountryName : '未知';
                         var regionText = response.country === 'CN' ? (_getRegionName = getRegionName(response.region)) !== null && _getRegionName !== void 0 ? _getRegionName : '' : '';
-                        var indicatorText = "".concat(IPGeolocationDesc, "\uFF1A").concat(countryText).concat(regionText);
+                        var indicatorText = "".concat(IPGeolocationDesc).concat(message(': ')).concat(countryText).concat(regionText);
                         var spanClass = 'green';
                         appendIcon(indicatorText, spanClass, 'globe');
                       }).fail(function () {
-                        var indicatorText = "".concat(IPGeolocationDesc, "\uFF1A\u672A\u77E5");
+                        var indicatorText = "".concat(IPGeolocationDesc).concat(message(': ')).concat(message('Unknown'));
                         var spanClass = 'orange';
                         appendIcon(indicatorText, spanClass, 'helpNotice');
                       });
@@ -376,9 +414,9 @@ $( /*#__PURE__*/function () {
                     if ((groups.indexOf('autoconfirmed') !== -1 || groups.indexOf('confirmed') !== -1) && !(groups.indexOf('bot') !== -1)) {
                       getUserGeoIP();
                     } else if (groups.indexOf('bot') !== -1) {
-                      appendIcon('机器人', 'blue', 'settings');
+                      appendIcon(message('Bot'), 'blue', 'settings');
                     } else if (groups.indexOf('qiuwen') !== -1) {
-                      appendIcon('站长', 'blue', 'userAvatar');
+                      appendIcon(message('Webmaster'), 'blue', 'userAvatar');
                     }
                     _context.next = 13;
                     break;
@@ -427,7 +465,7 @@ $( /*#__PURE__*/function () {
                       contentmodel: 'json',
                       title: "User:".concat(mw.config.get('wgUserName'), "/GeoIP.json"),
                       text: "{\"country\":\"".concat(country, "\",\"region\":\"").concat(region, "\"}"),
-                      summary: '更新IP属地信息',
+                      summary: message('Update IP location information'),
                       minor: 1,
                       recreate: 1,
                       watchlist: 'unwatch',
@@ -470,7 +508,7 @@ $( /*#__PURE__*/function () {
               }
             }, _callee3);
           })));
-        case 15:
+        case 18:
         case "end":
           return _context4.stop();
       }
