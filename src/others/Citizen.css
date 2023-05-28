@@ -50,28 +50,28 @@
 /*统一手机端用户字体大小修改版*/
 @media screen and (max-width: 767px) {
 	body { 
-		font-size:3vw
+		font-size:16px
 	}
 	h1{
-		font-size:6vw
+		font-size:32px
 	}
 	h2{
-		font-size:5vw
+		font-size:28px
 	}
 	h3{
-		font-size:4vw
+		font-size:24px
 	}
 	h4{
-		font-size:3vw
+		font-size:20px
 	}
 	h5{
-		font-size:3vw
+		font-size:18px
 	}
 	h6{
-		font-size:3vw
+		font-size:16px
 	}
 	p{
-		max-height: 70%
+		max-height: 100%
 	}
 }
 
