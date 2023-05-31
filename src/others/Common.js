@@ -11,7 +11,7 @@
  * 为登录用户加载，请编辑[[MediaWiki:Group-user.js]]。
  */
 (function (mw) {
-  mw.loader.using(['ext.gadget.SiteCommonJS', 'ext.gadget.GeoJS']);
+  mw.loader.using(['ext.gadget.SiteCommonJS', 'ext.gadget.Geo']);
 })(mediaWiki);
 
 /* </nowiki> */
