@@ -253,16 +253,5 @@
     mw.hook('ve.saveDialog.stateChanged').add(addStatement);
   });
   // 自动替换不当的HTML标记语法
-  $(function () {
-    if (/<br *\/>|<hr *\/>|<([^>]+)\/>|<\/ref( *name[^>]+)>|< *([^>]+?) *>/g.exec(String($('#wpTextbox1').val()))) {
-      var _String, _String$replace, _String$replace$repla, _String$replace$repla2, _String$replace$repla3, _$;
-      var $wpTextbox1ValOld = $('#wpTextbox1').val();
-      $('#wpTextbox1').val((_String = String((_$ = $('#wpTextbox1')) === null || _$ === void 0 ? void 0 : _$.val())) === null || _String === void 0 ? void 0 : (_String$replace = _String.replace(/<br *\/>/g, '<br>')) === null || _String$replace === void 0 ? void 0 : (_String$replace$repla = _String$replace.replace(/<hr *\/>/g, '<hr>')) === null || _String$replace$repla === void 0 ? void 0 : (_String$replace$repla2 = _String$replace$repla.replace(/<([^>]+)\/>/g, '</$1>')) === null || _String$replace$repla2 === void 0 ? void 0 : (_String$replace$repla3 = _String$replace$repla2.replace(/<\/ref( *name[^>]+)>/g, '<ref$1/>')) === null || _String$replace$repla3 === void 0 ? void 0 : _String$replace$repla3.replace(/< *(h[^>]+?) *>/g, '<$1>'));
-      var $wpTextbox1ValNew = $('#wpTextbox1').val();
-      if ($wpTextbox1ValOld !== $wpTextbox1ValNew) {
-        $('#wpSummary').val("".concat(String($('#wpSummary').val()), " ").concat(window.wgULS('半自动编辑（修复无效自封闭标签）', '半自動編輯（修復无效自封闭标签）')));
-      }
-    }
-  });
-})();
+
 /* </nowiki> */
