@@ -253,5 +253,6 @@
     mw.hook('ve.saveDialog.stateChanged').add(addStatement);
   });
   // 自动替换不当的HTML标记语法
-
+  
+})();
 /* </nowiki> */
