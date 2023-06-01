@@ -1,0 +1,18 @@
+/* <nowiki> */
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ *
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/DisambigLinks>
+ * @author Kaldari, Cyberpower678, Alexander Misel, Artoria2e5, WaitSpring <me@waitspring.com> and other Qiuwen Baike Contributors.
+ */
+
+img.userlink-avatar {
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    width: 1.5em;
+    border-radius: 15%;
+    margin-top: -0.2em;
+}
+
+/* </nowiki> */
