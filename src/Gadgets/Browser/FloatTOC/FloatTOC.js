@@ -4,7 +4,7 @@
  *
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/FloatTOC>
  * @author 安忆 <i@anyi.in>
- * @dependency ext.gadget.i18n, mediawiki.notification
+ * @dependency ext.gadget.i18n, mediawiki.notification, mediawiki.util
  */
 /**
  * +--------------------------------------------------------+
