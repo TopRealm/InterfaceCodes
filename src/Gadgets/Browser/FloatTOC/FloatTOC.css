@@ -1,0 +1,84 @@
+/**
+ * SPDX-License-Identifier: GPL-3.0
+ * _addText: '{{Gadget Header|license=GPL-3.0}}'
+ *
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/FloatTOC>
+ * @author 安忆 <i@anyi.in>
+ * @dependency ext.gadget.i18n, mediawiki.notification
+ */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
+#floatTOC {
+	padding: 1em;
+	cursor: auto;
+}
+
+#floatTOC .toc {
+	margin: 0 auto;
+}
+
+#floatTOC #close {
+	display: block;
+	margin-bottom: -2rem;
+	cursor: pointer;
+	text-align: right;
+}
+
+#floatToc-opener {
+	position: fixed;
+	top: 10.5%;
+	right: 2rem;
+	display: flex;
+	width: 2rem;
+	height: 2rem;
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	border-radius: 25px;
+	box-shadow: 0 0 2px 2px rgb(0 0 0 / 10%);
+	cursor: pointer;
+	font-size: 0.5rem;
+}
+
+.citizen-body-header--sticky #floatToc-opener {
+	z-index: 13;
+	top: 8%;
+}
+
+.skin-citizen #floatToc-opener span:last-child {
+	color: #000;
+	opacity: 0.6;
+}
+
+.skin-vector-legacy #floatTOC .toc {
+	padding-top: 1em;
+	font-size: 1em;
+}
+
+.skin-vector-legacy #floatTOC #close {
+	margin-bottom: -1.5em;
+}
+
+.skin-vector-legacy #floatToc-opener {
+	top: 2rem;
+	background: #f8f9fa;
+	font-size: 0.95em;
+}
+
+.ve-activated #floatToc-opener {
+	display: none;
+}
+
+/* </nowiki> */
