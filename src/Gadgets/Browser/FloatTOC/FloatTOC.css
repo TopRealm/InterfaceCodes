@@ -82,6 +82,32 @@
 .ve-activated #floatToc-opener {
 	display: none;
 }
-
+.toc,
+#toc {
+	margin-top:50px;
+	background:rgba(240,255,240,0.3);
+	border-radius: 10px;
+	height: 450px;
+	font-size:16px;
+	font-family:Kaiti;
+	font-weight: Bold;
+}
+.mw-notification-noautohide{
+	margin-top:50px;
+	background:rgba(240,255,240,0.8);
+	border-radius: 10px;
+	height: 484px;
+}
+#floatToc-opener{
+	border-radius: 10px;
+	background:#FFFFFF;
+	width: 45px;
+    height: 45px;
+    margin-top:65px;
+	position: fixed;
+	right: 20px;
+	font-size:13px;
+    z-index: 999;
+}
 #toc {display:none}
 /* </nowiki> */
