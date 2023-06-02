@@ -71,18 +71,20 @@ $(function floatTOC() {
     var isShow = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
     var _preNotification = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
     (_preNotification2 = _preNotification) === null || _preNotification2 === void 0 ? void 0 : _preNotification2.close();
-    if (isShow === true) {
-      $floatTocOpener.fadeIn();
-      if (sessionStorage.getItem(id) === 'close') {
-        return;
-      }
-    } else {
-      $floatTocOpener.fadeOut();
-      if (isShow === 'open') {
+    switch (isShow) {
+      case true:
+        if (sessionStorage.getItem(id) === 'close') {
+          $floatTocOpener.fadeIn();
+          return;
+        }
+        break;
+      case 'open':
+        $floatTocOpener.fadeOut();
         sessionStorage.setItem(id, 'open');
-      } else {
+        break;
+      default:
+        $floatTocOpener.fadeOut();
         return;
-      }
     }
     _preNotification = mw.notification.notify($floatToc, {
       id: id,
