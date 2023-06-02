@@ -49,14 +49,18 @@
 	justify-content: center;
 	padding: 0.5rem;
 	border-radius: 25px;
+	backdrop-filter: saturate(50%) blur(16px);
+	background: rgb(255 255 255 / 95%);
 	box-shadow: 0 0 2px 2px rgb(0 0 0 / 10%);
 	cursor: pointer;
 	font-size: 0.5rem;
 }
 
-.citizen-body-header--sticky #floatToc-opener {
-	z-index: 13;
-	top: 8%;
+@media screen and (max-width: 720px), screen and (max-height: 800px) {
+	.citizen-body-header--sticky #floatToc-opener {
+		top: 21%;
+		right: 1rem;
+	}
 }
 
 .skin-citizen #floatToc-opener span:last-child {
@@ -65,12 +69,15 @@
 }
 
 .skin-vector-legacy #floatTOC .toc {
+	display: block;
+	max-height: 90vh;
 	padding-top: 1em;
 	font-size: 1em;
+	word-break: keep-all;
 }
 
 .skin-vector-legacy #floatTOC #close {
-	margin-bottom: -1.5em;
+	margin-bottom: -1.35em;
 }
 
 .skin-vector-legacy #floatToc-opener {
@@ -82,33 +89,5 @@
 .ve-activated #floatToc-opener {
 	display: none;
 }
-.toc,
-#toc {
-	margin-top:50px;
-	background:rgba(240,255,240,0.3);
-	border-radius: 10px;
-	height: 450px;
-	font-size:16px;
-	font-family:Kaiti;
-	font-weight: Bold;
-}
-.mw-notification-noautohide{
-	margin-top:50px;
-	background:rgba(240,255,240,0.8);
-	border-radius: 10px;
-	height: 484px;
-}
-#floatToc-opener{
-	border-radius: 10px;
-	background:#FFFFFF;
-	width: 45px;
-    height: 45px;
-    margin-top:65px;
-	position: fixed;
-	right: 20px;
-	font-size:13px;
-    z-index: 999;
-}
 
-#toc {display:none}
 /* </nowiki> */
