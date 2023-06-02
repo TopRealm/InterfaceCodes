@@ -24,6 +24,8 @@
 }
 
 #floatTOC .toc {
+	overflow: auto;
+	max-height: 80vh;
 	margin: 0 auto;
 }
 
