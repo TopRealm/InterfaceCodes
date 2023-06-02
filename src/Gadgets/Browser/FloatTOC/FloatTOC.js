@@ -4,7 +4,7 @@
  *
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/FloatTOC>
  * @author 安忆 <i@anyi.in>
- * @dependency ext.gadget.i18n, mediawiki.notification
+ * @dependency ext.gadget.i18n, mediawiki.notification, mediawiki.util
  */
 /**
  * +--------------------------------------------------------+
@@ -47,8 +47,7 @@ $(function floatTOC() {
       }),
       Contents: localize({
         ja: '目次',
-        'zh-hans': '目录',
-        'zh-hant': '目錄'
+        zh: '目录'
       }),
       ' (Click to collapse)': localize({
         ja: '（クリックして折り畳み）',
@@ -67,7 +66,7 @@ $(function floatTOC() {
     return messages[key] || key;
   };
   var id = 'floatTOC';
-  var style = mw.util.addCSS('.mw-notification{transform:translateX(999px)}.mw-notification-visible{transform:translateX(0)}');
+  var style = mw.util.addCSS('.mw-notification-area{right:unset}.mw-notification{transform:translateX(-999px)}.mw-notification-visible{transform:translateX(0)}');
   style.disabled = true;
   var toc = originToc.cloneNode(true);
   (_toc$querySelector = toc.querySelector('input')) === null || _toc$querySelector === void 0 ? void 0 : _toc$querySelector.remove();
