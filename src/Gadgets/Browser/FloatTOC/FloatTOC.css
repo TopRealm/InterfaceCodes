@@ -108,7 +108,7 @@
 	font-weight: Bold;
 	line-height:18px;
 }
-.toc:not(#toc) {
+.mw-notification-content .toc {
 	margin-top:0;
 	background:rgba(240,255,240,0.6);
 	border-radius: 10px;
