@@ -27,6 +27,11 @@
 	overflow: auto;
 	max-height: 80vh;
 	margin: 0 auto;
+	border-radius: 10px;
+	font-size: 16px;
+	font-family: Kaiti;
+	font-weight: Bold;
+	line-height: 18px;
 }
 
 #floatTOC #close {
@@ -34,6 +39,26 @@
 	margin-bottom: -2rem;
 	cursor: pointer;
 	text-align: right;
+}
+
+#floatToc-opener {
+	position: fixed;
+	top: 15.5%;
+	right: 2rem;
+	display: flex;
+	width: 2rem;
+	height: 2rem;
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	border-radius: 25px;
+	backdrop-filter: saturate(50%) blur(16px);
+	background: rgb(255 255 255 / 95%);
+	box-shadow: 0 0 2px 2px rgb(0 0 0 / 10%);
+	cursor: pointer;
+	font-size: 0.5rem;
 }
 
 @media screen and (max-width: 720px), screen and (max-height: 800px) {
@@ -70,45 +95,4 @@
 	display: none;
 }
 
-#mw-toc-heading{
-	font-size:10px;
-	font-family:Kaiti;
-	font-weight: Bold;
-	height:30px;
-}
-#toc{
-	background:rgba(240,255,240,0.8);
-	border-radius: 10px;
-	font-size:16px;
-	font-family:Kaiti;
-	font-weight: Bold;
-	line-height:18px;
-}
-.toc:not(#toc) {
-	margin-top:0;
-	background:rgba(240,255,240,0.6);
-	border-radius: 10px;
-	height: 30rem;
-	font-size:16px;
-	font-family:Kaiti;
-	font-weight: Bold;
-}
-.mw-notification-noautohide{
-	margin-top:50px;
-	background:rgba(240,255,240,0.8);
-	border-radius: 10px;
-	height: 32rem;
-}
-#floatToc-opener{
-	border-radius: 10px;
-	background:#EBFFEF;
-	width: 2rem;
-    height:2rem;
-    margin-top:27rem;
-	position: fixed;
-	margin-right:20rem;
-	font-size:0.5rem;
-    z-index: 999;
-    text-align:center;
-}
 /* </nowiki> */
