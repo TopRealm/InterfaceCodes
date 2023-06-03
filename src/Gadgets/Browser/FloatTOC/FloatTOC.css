@@ -27,6 +27,11 @@
 	overflow: auto;
 	max-height: 80vh;
 	margin: 0 auto;
+	border-radius: 10px;
+	font-size: 16px;
+	font-family: Kaiti;
+	font-weight: Bold;
+	line-height: 18px;
 }
 
 #floatTOC #close {
@@ -38,7 +43,7 @@
 
 #floatToc-opener {
 	position: fixed;
-	top: 10.5%;
+	top: 15.5%;
 	right: 2rem;
 	display: flex;
 	width: 2rem;
