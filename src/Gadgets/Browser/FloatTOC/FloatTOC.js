@@ -132,7 +132,7 @@ $(function floatTOC() {
     return;
   }
   // 使TOC默认状态为关闭，除非用户已手动指定
-  sessionStorage.getItem("".concat(id, "-originTOC")) ? : sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
+  sessionStorage.getItem("".concat(id, "-originTOC")) ? {} : sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
   var isCollapse = sessionStorage.getItem("".concat(id, "-originTOC")) === 'close';
   var $originTocHeading = $('#toc #mw-toc-heading');
   var $originTocItem = $('#toc ul');
