@@ -147,6 +147,8 @@ $(function floatTOC() {
   if (!$body.hasClass('skin-citizen')) {
     return;
   }
+  // 手动添加，尝试使TOC默认状态为关闭
+  sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
   var isCollapse = sessionStorage.getItem("".concat(id, "-originTOC")) === 'close';
   var $originTocHeading = $('#toc #mw-toc-heading');
   var $originTocItem = $('#toc ul');
