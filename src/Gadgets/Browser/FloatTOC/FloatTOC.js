@@ -50,12 +50,12 @@ $(function floatTOC() {
         'zh-hans': '目录',
         'zh-hant': '目錄'
       }),
-      ' (Click to collapse)': localize({
+      ' (Click to expand)': localize({
         ja: '（クリックして折り畳み）',
         'zh-hans': '（点击以折叠）',
         'zh-hant': '（點擊以摺叠）'
       }),
-      ' (Click to expand)': localize({
+      ' (Click to collapse)': localize({
         ja: '（クリックして展開）',
         'zh-hans': '（点击以展开）',
         'zh-hant': '（點擊以展開）'
