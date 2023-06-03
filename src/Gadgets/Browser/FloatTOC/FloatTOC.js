@@ -131,8 +131,8 @@ $(function floatTOC() {
   if (!$body.hasClass('skin-citizen')) {
     return;
   }
-  // 手动添加，尝试使TOC默认状态为关闭
-  !sessionStorage.getItem("".concat(id, "-originTOC")) && sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
+  // 使TOC默认状态为关闭，除非用户已手动指定
+  sessionStorage.getItem("".concat(id, "-originTOC")) ? : sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
   var isCollapse = sessionStorage.getItem("".concat(id, "-originTOC")) === 'close';
   var $originTocHeading = $('#toc #mw-toc-heading');
   var $originTocItem = $('#toc ul');
