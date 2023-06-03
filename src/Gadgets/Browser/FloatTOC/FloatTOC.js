@@ -142,19 +142,19 @@ $(function floatTOC() {
   });
   observer.observe(originToc);
   $floatTocOpener.on('click', function () {
-    preNotification = showToc('open');
+    preNotification = showToc('close');
   });
   if (!$body.hasClass('skin-citizen')) {
     return;
   }
-  var isCollapse = sessionStorage.getItem("".concat(id, "-originTOC")) === 'close';
+  var isCollapse = sessionStorage.getItem("".concat(id, "-originTOC")) === 'open';
   var $originTocHeading = $('#toc #mw-toc-heading');
   var $originTocItem = $('#toc ul');
   var originTocHeadingText = $originTocHeading.text();
   if (isCollapse) {
     $originTocItem.fadeOut();
   }
-  $originTocHeading.css('cursor', 'pointer').text("".concat(originTocHeadingText).concat(isCollapse ? message(' (Click to expand)') : message(' (Click to collapse)'))).on('click', function () {
+  $originTocHeading.css('cursor', 'pointer').text("".concat(originTocHeadingText).concat(isCollapse ? message(' (Click to collapse)') : message(' (Click to expand)'))).on('click', function () {
     isCollapse = !isCollapse;
     if (isCollapse) {
       sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
