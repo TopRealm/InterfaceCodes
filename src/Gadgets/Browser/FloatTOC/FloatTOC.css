@@ -131,12 +131,13 @@
 	border-radius: 10px;
 	background: #EBFFEF;
 	width: 2rem;
-    	height: 2rem;
-    	margin-top: 27rem;
+	height: 2rem;
+	margin-top: 27rem;
 	position: fixed;
-	margin-right: 20rem;
+	margin-left:0;
 	font-size: 0.5rem;
-    	z-index: 999;
-    	text-align: center;
+	z-index: 999;
+	text-align: center;
 }
+
 /* </nowiki> */
