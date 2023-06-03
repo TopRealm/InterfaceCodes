@@ -67,8 +67,6 @@ $(function floatTOC() {
     return messages[key] || key;
   };
   var id = 'floatTOC';
-  var style = mw.util.addCSS('.mw-notification{transform:translateX(999px)}.mw-notification-visible{transform:translateX(0)}');
-  style.disabled = true;
   var toc = originToc.cloneNode(true);
   (_toc$querySelector = toc.querySelector('input')) === null || _toc$querySelector === void 0 ? void 0 : _toc$querySelector.remove();
   (_toc$querySelector2 = toc.querySelector('.toctogglespan')) === null || _toc$querySelector2 === void 0 ? void 0 : _toc$querySelector2.remove();
@@ -80,17 +78,6 @@ $(function floatTOC() {
   }).append($('<span>').addClass('citizen-ui-icon mw-ui-icon-wikimedia-reference'), $('<span>').text(message('Contents'))).hide().appendTo($body);
   var isShow;
   var preNotification;
-  var disableStyleTimer;
-  var disableStyle = function disableStyle() {
-    if (disableStyleTimer) {
-      clearTimeout(disableStyleTimer);
-    }
-    disableStyleTimer = setTimeout(function () {
-      if (!isShow) {
-        style.disabled = true;
-      }
-    }, 5000);
-  };
   var showToc = function showToc() {
     var _preNotification2;
     var _isShow = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
@@ -110,10 +97,8 @@ $(function floatTOC() {
         break;
       default:
         $floatTocOpener.fadeOut();
-        disableStyle();
         return;
     }
-    style.disabled = false;
     _preNotification = mw.notification.notify($floatToc, {
       id: id,
       autoHide: false
@@ -125,7 +110,6 @@ $(function floatTOC() {
         _preNotification.close();
         $floatTocOpener.fadeIn();
         sessionStorage.setItem(id, 'close');
-        disableStyle();
       }
     });
     return _preNotification;
@@ -148,7 +132,7 @@ $(function floatTOC() {
     return;
   }
   // 手动添加，尝试使TOC默认状态为关闭
-  sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
+  !sessionStorage.getItem("".concat(id, "-originTOC")) && sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
   var isCollapse = sessionStorage.getItem("".concat(id, "-originTOC")) === 'close';
   var $originTocHeading = $('#toc #mw-toc-heading');
   var $originTocItem = $('#toc ul');
