@@ -33,6 +33,25 @@
 	font-weight: Bold;
 	line-height: 18px;
 }
+#floatToc-opener {
+	position: fixed;
+	top: 15.5%;
+	right: 2rem;
+	display: flex;
+	width: 2rem;
+	height: 2rem;
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	border-radius: 25px;
+	backdrop-filter: saturate(50%) blur(16px);
+	background: rgb(255 255 255 / 95%);
+	box-shadow: 0 0 2px 2px rgb(0 0 0 / 10%);
+	cursor: pointer;
+	font-size: 0.5rem;
+}
 
 #floatTOC #close {
 	display: block;
