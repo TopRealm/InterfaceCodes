@@ -19,8 +19,8 @@ PAGE_BOTTOM = """
 </div>
 """
 
-def last_commit_hash(file_name: str) -> str:
-    """调用bash的git命令，获取给定文件的最后一次commit哈希值。
+def last_commit_info(file_name: str) -> tuple:
+    """调用bash的git命令，获取给定文件的最后一次commit哈希值及留言。
 
     Args:
         file_name (str): 文件路径
@@ -29,13 +29,15 @@ def last_commit_hash(file_name: str) -> str:
         Exception: 若git返回的哈希值未通过格式检查，则抛出异常
 
     Returns:
-        str: 获取的完整SHA-1哈希值
+        tuple: (获取的完整SHA-1哈希值, 留言)
     """    
-    cmd = f"git log --pretty=format:\"%H\" -1 -- {file_name}"
-    commit_hash = sp.run(cmd, stdout=sp.PIPE, shell=True).stdout.decode("utf-8").strip()
+    cmd = f"git log --pretty=format:\"%H %s\" -1 -- {file_name}"
+    ans = sp.run(cmd, stdout=sp.PIPE, shell=True).stdout.decode("utf-8").strip()
+    commit_hash = ans.split(" ", 1)[0]
+    commit_msg = ans.split(" ", 1)[1]
     # 格式检查
     if commit_hash.isalnum() and len(commit_hash) == 40:
-        return commit_hash
+        return (commit_hash, commit_msg)
     else:
         raise Exception("获取Commit Hash失败：格式检查未通过")
 
@@ -53,10 +55,10 @@ def sync_file(site: mwclient.Site, page_name: str, text_new: str, file_name=None
     text_old = page.text()
     # MediaWiki会自动删除上传文本末尾的空白字符
     if text_old != text_new.rstrip():
-        summary = "Git更新：代码仓库同步更新"
+        summary = "Git更新："
         if file_name is not None:
-            commit_hash = last_commit_hash(file_name)
-            summary += f" ([https://github.com/TopRealm/InterfaceCodes/commit/{commit_hash} {commit_hash[:7]}])"
+            commit_hash, commit_msg = last_commit_info(file_name)
+            summary += f"([https://github.com/TopRealm/InterfaceCodes/commit/{commit_hash} {commit_hash[:7]}]) {commit_msg}"
         page.edit(text_new, summary)
         print(page_name, "\t", "changed")
     else:
