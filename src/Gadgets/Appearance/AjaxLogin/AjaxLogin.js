@@ -25,15 +25,15 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 (function ajaxLogin() {
+  if ('ontouchstart' in document) {
+    return;
+  }
   var ding = function ding(value) {
     var autoHide = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'default';
     autoHide ? DingExposedInterface(value, type) : DingExposedInterface(value, type, 'long');
   };
   var ajaxLoginMain = function ajaxLoginMain(method) {
-    if ('ontouchstart' in document) {
-      return;
-    }
     if (method === 'init') {
       var element = document.querySelector('.menu__item--login') || document.querySelector('#pt-login') || document.querySelector('.vector-user-menu-login');
       element === null || element === void 0 ? void 0 : element.addEventListener('click', function (event) {
