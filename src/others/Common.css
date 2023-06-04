@@ -486,14 +486,6 @@ div.hatnote + div.hatnote {
 	text-decoration: none !important;
 }
 
-/* 页底二维码 */
-#footer-info-copyright > .wechat {
-	width: 72px;
-	margin: 0 1em 1em;
-	float: right;
-	font-size: 0.8em;
-}
-
 /* {{Coord}}模板 */
 .geo-default,
 .geo-multi-punct {
@@ -521,15 +513,6 @@ div.hatnote + div.hatnote {
 		url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAbCAMAAABRPb9kAAAAnFBMVEUAAAAJCQkAAAAGBgbsGibqGiOPFBlHDhE5Dg8iDA3tHCUGBgbtHCTuGyQMDAwHBwcAAAD////tHCQAAADuJS27u7v3lZn6w8WGhob0eHz80tT6vL/5srXrHiZ3d3fxUVfd3d32iI3zaG4hISH95udjY2PyWF7+8vP83t/819j4n6OhaWy2VFjwQkjmHCPiGyLt7e31gYZYWFjvNTx0vtNSAAAAEXRSTlMA+AzWRBf8+vn58uni2f7CGZi35rQAAADWSURBVHjandADmsUwFIbhXBvnr4NrG/vf29RIxt/j87YRY6xmlRrUWV5t6+S9xpNCaj7lzdZWIxcNctEhFwNCmZqQns2AxyJqVtMhzY+h1TOh1wrno64J3VGLDdG+uFqXNoYM6qZsrXAEBmAn5WmFq5TuDlhKKQMghoCOBwrmtNnQE4I4X+awsknOybU3+xBsIAfPoyCEaCqIaF4sJQKEoA7RH8vlO4cVEALn5FaWWvEdgCvnIlA48Qz6d/Me9z5Ys9k5e1rnTrP5zev+B7aO1jYFyyiED7SaLK1LMuvVAAAAAElFTkSuQmCC');
 	background: no-repeat 100%/16px
 		url("data:image/svg+xml;background-position:100%;background-repeat:no-repeat;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 16'%3E%3Cpath fill='%23fff' d='M1.708 15.633V.367h7.008l3.586 3.583v11.683z'/%3E%3Cpath d='M8.564.734l3.37 3.368v11.163H2.076V.734h6.489M8.868 0H1.34v16h11.328V3.798z'/%3E%3Cpath fill='%23fff' d='M12.302 15.633H1.708V.367h7.008l.083.083v3.42h3.423l.08.08z'/%3E%3Cpath d='M8.432.734v3.503h3.503v11.029h-9.86V.734h6.357M8.867 0H1.341v16h11.328V3.798l-.296-.295H9.165V.298zm2.318 3.293H9.411V1.5l1.774 1.73z'/%3E%3Cpath d='M9.778 2.37l.57.556h-.57V2.37m-.23-1.25h-.505v2.54h2.509v-.585z'/%3E%3Cg fill='%23ed1c24'%3E%3Cpath d='M13.644 12.321H.366v-5.36l.677-.676v.85h11.924v-.85l.677.676z'/%3E%3Cpath d='M13.266 7.005l.08.08v4.938H.664V7.085l.08-.08v.43h12.521v-.43m-.596-1.44v1.273H1.34V5.564L.067 6.838v5.782h13.875V6.838z'/%3E%3C/g%3E%3Cpath d='M2.145 11.733V7.915h1.398q.311 0 .593.065.282.058.493.211.212.147.335.394.13.24.13.599 0 .352-.13.605-.123.252-.335.417-.211.158-.487.24-.276.077-.576.077h-.41v1.21zm1.01-2.009h.364q.3 0 .44-.14.148-.142.148-.4t-.159-.364-.452-.106h-.34zm2.561 2.009V7.915h1.128q.435 0 .793.106.364.105.623.334t.399.588q.147.358.147.863t-.141.87-.4.599q-.252.235-.605.346-.346.112-.757.112zm1.01-.81h.06q.205 0 .387-.048.182-.052.311-.176.135-.123.212-.34t.076-.553-.076-.546-.212-.329q-.129-.117-.311-.158-.182-.047-.388-.047h-.059zm2.761.81V7.915h2.49v.846h-1.48v.728h1.27v.846h-1.27v1.398z' fill='%23fff'/%3E%3C/svg%3E");
-}
-
-/* 非求闻跨站链接以绿色标记 */
-.mw-parser-output a.extiw:not([href*='.qiuwenbaike.cn']):not([href*='.qiuwen.wiki']) {
-	color: #084;
-}
-
-.mw-parser-output a.extiw:not([href*='.qiuwenbaike.cn']):not([href*='.qiuwen.wiki']):visited {
-	color: #062;
 }
 
 /* {{僻字}} */
@@ -751,53 +734,38 @@ table.filehistory {
 		repeat;
 }
 
-/* 求闻百科首页背景图 */
-@media screen {
-	.page-Qiuwen_首页.skin-citizen.action-view .mw-body,
-	.page-Qiuwen_首页.skin-vector.action-view .mw-body,
-	.page-Qiuwen_首页.skin-gongbi.action-view #mw-content,
-	.page-Template_首页.skin-citizen.action-view .mw-body,
-	.page-Template_首页.skin-vector.action-view .mw-body,
-	.page-Template_首页.skin-gongbi.action-view #mw-content {
-		background: url('//tu.zhongwen.wiki/images/qiuwen/thumb/7/7d/Qiuwen_Icon_Background_%28faded%29.svg/128px-Qiuwen_Icon_Background_%28faded%29.svg.png')
-			repeat;
-
-		/* background: linear-gradient( to bottom, rgba( 251, 252, 254, .5 ), rgba( 251, 252, 254, .5 ) ), url( "//tu.zhongwen.wiki/images/qiuwen/thumb/4/4d/Qiuwen_icon_background.svg/125px-Qiuwen_icon_background.svg.png" ) repeat; */
-	}
-}
-
 /* 隐藏首页的页顶、页尾及其他无用要素 */
-.page-Qiuwen_首页.action-view .mw-indicators,
-.page-Qiuwen_首页.action-view #contentSub,
-.page-Qiuwen_首页.action-view #siteSub,
-.page-Qiuwen_首页.action-view .firstHeading,
-.page-Qiuwen_首页.action-view .mw-redirectedfrom,
-.page-Qiuwen_首页.action-view .vector-article-toolbar,
-.page-Qiuwen_首页.action-view #mw-page-header-links,
-.page-Qiuwen_首页.action-view #mw-related-navigation {
+.page-有兽档案馆_首页.action-view .mw-indicators,
+.page-有兽档案馆_首页.action-view #contentSub,
+.page-有兽档案馆_首页.action-view #siteSub,
+.page-有兽档案馆_首页.action-view .firstHeading,
+.page-有兽档案馆_首页.action-view .mw-redirectedfrom,
+.page-有兽档案馆_首页.action-view .vector-article-toolbar,
+.page-有兽档案馆_首页.action-view #mw-page-header-links,
+.page-有兽档案馆_首页.action-view #mw-related-navigation {
 	display: none !important;
 }
 
 /* 禁止删除首页 */
-.rootpage-Qiuwen_首页 #ca-delete,
-.rootpage-Qiuwen_首页 #deleteconfirm,
+.rootpage-有兽档案馆_首页 #ca-delete,
+.rootpage-有兽档案馆_首页 #deleteconfirm,
 .rootpage-Template_首页 #ca-delete,
 .rootpage-Template_首页 #deleteconfirm {
 	display: none !important;
 }
 
 /* 隐藏首页下方的Catlink */
-.page-Qiuwen_首页.action-view #catlinks {
+.page-有兽档案馆_首页.action-view #catlinks {
 	display: none;
 }
 
 /* 隐藏首页下方的“最后编辑于” */
-.page-Qiuwen_首页 #footer-info-lastmod {
+.page-有兽档案馆_首页 #footer-info-lastmod {
 	display: none;
 }
 
 /* 隐藏首页下方的Easy Archive未启用提示 */
-.page-Qiuwen_首页 #easy_archive_enable_notice {
+.page-有兽档案馆_首页 #easy_archive_enable_notice {
 	display: none;
 }
 
@@ -865,7 +833,7 @@ div.user-block {
  * [[Mediawiki:Group-autoconfirmed.css]],
  * [[MediaWiki:Group-user.css]] and more.
  */
-.steward-show,
+.bureaucrat-show,
 .sysop-show,
 .autoconfirmed-show,
 .user-show {
