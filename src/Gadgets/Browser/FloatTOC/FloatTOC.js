@@ -4,7 +4,7 @@
  *
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/FloatTOC>
  * @author 安忆 <i@anyi.in>
- * @dependency ext.gadget.i18n, mediawiki.notification, mediawiki.util
+ * @dependency ext.gadget.i18n, mediawiki.notification, mediawiki.storage, mediawiki.util
  */
 /**
  * +--------------------------------------------------------+
@@ -67,6 +67,18 @@ $(function floatTOC() {
     return messages[key] || key;
   };
   var id = 'floatTOC';
+  var config = mw.storage.getObject(id);
+  if (!config) {
+    config = {
+      // 将目录默认打开变更为默认关闭
+      // floatTOC: 'open',
+      // originTOC: 'open',
+      floatTOC: 'close',
+      originTOC: 'close'
+    };
+  }
+  var style = mw.util.addCSS('.mw-notification-area{width:auto;max-width:20em}');
+  style.disabled = true;
   var toc = originToc.cloneNode(true);
   (_toc$querySelector = toc.querySelector('input')) === null || _toc$querySelector === void 0 ? void 0 : _toc$querySelector.remove();
   (_toc$querySelector2 = toc.querySelector('.toctogglespan')) === null || _toc$querySelector2 === void 0 ? void 0 : _toc$querySelector2.remove();
@@ -78,6 +90,17 @@ $(function floatTOC() {
   }).append($('<span>').addClass('citizen-ui-icon mw-ui-icon-wikimedia-reference'), $('<span>').text(message('Contents'))).hide().appendTo($body);
   var isShow;
   var preNotification;
+  var disableStyleTimer;
+  var disableStyle = function disableStyle() {
+    if (disableStyleTimer) {
+      clearTimeout(disableStyleTimer);
+    }
+    disableStyleTimer = setTimeout(function () {
+      if (!isShow) {
+        style.disabled = true;
+      }
+    }, 5000);
+  };
   var showToc = function showToc() {
     var _preNotification2;
     var _isShow = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
@@ -86,19 +109,22 @@ $(function floatTOC() {
     isShow = !!_isShow;
     switch (_isShow) {
       case true:
-        if (sessionStorage.getItem(id) === 'close') {
+        if (config.floatTOC === 'close') {
           $floatTocOpener.fadeIn();
           return;
         }
         break;
       case 'open':
         $floatTocOpener.fadeOut();
-        sessionStorage.setItem(id, 'open');
+        config.floatTOC = 'open';
+        mw.storage.setObject(id, config);
         break;
       default:
         $floatTocOpener.fadeOut();
+        disableStyle();
         return;
     }
+    style.disabled = false;
     _preNotification = mw.notification.notify($floatToc, {
       id: id,
       autoHide: false
@@ -109,7 +135,9 @@ $(function floatTOC() {
       if (target.id === 'close') {
         _preNotification.close();
         $floatTocOpener.fadeIn();
-        sessionStorage.setItem(id, 'close');
+        config.floatTOC = 'close';
+        mw.storage.setObject(id, config);
+        disableStyle();
       }
     });
     return _preNotification;
@@ -131,9 +159,7 @@ $(function floatTOC() {
   if (!$body.hasClass('skin-citizen')) {
     return;
   }
-  // 使TOC默认状态为关闭，除非用户已手动指定
-  sessionStorage.getItem("".concat(id, "-originTOC")) ? {} : sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
-  var isCollapse = sessionStorage.getItem("".concat(id, "-originTOC")) === 'close';
+  var isCollapse = config.originTOC === 'close';
   var $originTocHeading = $('#toc #mw-toc-heading');
   var $originTocItem = $('#toc ul');
   var originTocHeadingText = $originTocHeading.text();
@@ -143,11 +169,13 @@ $(function floatTOC() {
   $originTocHeading.css('cursor', 'pointer').text("".concat(originTocHeadingText).concat(isCollapse ? message(' (Click to expand)') : message(' (Click to collapse)'))).on('click', function () {
     isCollapse = !isCollapse;
     if (isCollapse) {
-      sessionStorage.setItem("".concat(id, "-originTOC"), 'close');
       $originTocHeading.text("".concat(originTocHeadingText).concat(message(' (Click to expand)')));
+      config.originTOC = 'close';
+      mw.storage.setObject(id, config);
     } else {
-      sessionStorage.setItem("".concat(id, "-originTOC"), 'open');
       $originTocHeading.text("".concat(originTocHeadingText).concat(message(' (Click to collapse)')));
+      config.originTOC = 'open';
+      mw.storage.setObject(id, config);
     }
     $originTocItem.fadeToggle();
   });
