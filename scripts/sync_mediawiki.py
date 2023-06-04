@@ -2,7 +2,7 @@
 本同步脚本文件采用GPLv3授权
 @license: <https://www.gnu.org/licenses/gpl-3.0.zh-cn.html>
 @author: <github@Blossomstripe>
-@source: <https://github.com/TopRealm/InterfaceCodes/blob/master/.github/workflows/sync_mediawiki.yml>
+@source: <https://github.com/TopRealm/InterfaceCodes/blob/master/scripts/sync_mediawiki.py>
 """
 import os
 import subprocess as sp
