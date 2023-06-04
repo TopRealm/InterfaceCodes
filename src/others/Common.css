@@ -1,35 +1,175 @@
-/* <nowiki> */
 /**
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <zh.wikipedia.org/wiki/MediaWiki:Common.css>
- * @source <en.wikipedia.org/wiki/MediaWiki:Gadget-responsiveContentBase.css>
- * @source <www.mediawiki.org/wiki/Snippets/Horizontal_lists>
+ * @base <https://zh.wikipedia.org/wiki/MediaWiki:Common.css>
+ * @base <https://en.wikipedia.org/wiki/MediaWiki:Common.css>
+ * @base <https://en.wikipedia.org/wiki/MediaWiki:Gadget-responsiveContentBase.css>
+ * @base <https://www.mediawiki.org/wiki/Snippets/Horizontal_lists>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Global/Common>
  */
 /**
- * 这里的样式仅为桌面版用户加载。
- * 为登录用户加载，请编辑[[MediaWiki:Group-user.css]]。
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
  */
+/* <nowiki> */
+/* stylelint-disable selector-not-notation */
+/* stylelint-disable media-feature-name-no-vendor-prefix */
+
 /**
- * All-page CSS rules
+ * 此处的CSS只会在桌面版加载
+ * 为登录用户加载，请编辑[[MediaWiki:Group-user.css]]
  */
-/* Default styling for HTML elements */
-/* Reset default styling for <dfn> */
+
+/* 重置<html>默认样式 */
+html {
+	tab-size: 4;
+}
+
+/* 移动端显示相关类（.nomobile, .mobileonly, .onlymobile） */
+@media screen and (max-width: 768px) {
+	.nomobile {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.mobileonly,
+	.onlymobile {
+		display: none;
+	}
+}
+
+/* 设置某元素背景颜色与上级元素相同（.same-bg） */
+.same-bg {
+	background: none;
+}
+
+/* 解决<cite>定位内文字显示为斜体的问题 */
+cite {
+	font-style: normal;
+}
+
+/* 重置<dfn>默认样式 */
 dfn {
 	font-style: inherit;
 }
 
+/* 重置<q>引号 */
+q {
+	/* 双引号：“”；单引号：‘’ */
+	quotes: '“' '”' '‘' '’';
+}
+
+q:lang(zh-hant) {
+	/* 外引号：「」；内引号：『』 */
+	quotes: '「' '」' '『' '』';
+}
+
+q:lang(en) {
+	/* 外引号：""；内引号：'' */
+	quotes: '"' '"' "'" "'";
+}
+
+/* 字库调用优先顺序 */
 body,
 input {
-	font-family: 'Noto Sans', 'Source Sans 3', 'Source Sans Pro', 'Noto Sans SC', 'Source Han Sans SC', Helvetica, Roboto, SFProDisplay-Regular, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC',
-		'STHeiti SC', 'WenQuanYi Micro Hei', -apple-system, BlinkMacSystemFont, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-family: 'Noto Sans', 'Source Sans 3', 'Source Sans Pro', 'Noto Sans SC', 'Source Han Sans SC', Helvetica,
+		Roboto, SFProDisplay-Regular, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'STHeiti SC', 'WenQuanYi Micro Hei',
+		-apple-system, BlinkMacSystemFont, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+		'Segoe UI Symbol';
 }
 
 body:lang(zh-hant),
 input:lang(zh-hant) {
-	font-family: 'Noto Sans', 'Source Sans 3', 'Source Han Sans TC', 'Noto Sans TC', 'Source Sans Pro', Helvetica, Roboto, SFProDisplay-Regular, 'PingFang TC', 'Hiragino Sans CNS', 'Heiti TC',
-		'STHeiti TC', 'WenQuanYi Micro Hei', -apple-system, BlinkMacSystemFont, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-family: 'Noto Sans', 'Source Sans 3', 'Source Han Sans TC', 'Noto Sans TC', 'Source Sans Pro', Helvetica,
+		Roboto, SFProDisplay-Regular, 'PingFang TC', 'Hiragino Sans CNS', 'Heiti TC', 'STHeiti TC',
+		'WenQuanYi Micro Hei', -apple-system, BlinkMacSystemFont, system-ui, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+code,
+div.CodeMirror,
+kbd,
+pre,
+samp,
+tt,
+.content code,
+.content kbd,
+.content pre,
+.content samp,
+.mw-editfont-monospace,
+.screenplay,
+.ve-ui-mwWikitextSurface .ve-ce-attachedRootNode {
+	font-family: 'Noto Mono', 'Source Code Pro', 'Source Han Mono SC', Consolas, Monaco, Courier, monospace,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+code:lang(zh-hant),
+div.CodeMirror:lang(zh-hant),
+kbd:lang(zh-hant),
+pre:lang(zh-hant),
+samp:lang(zh-hant),
+tt:lang(zh-hant),
+.content code:lang(zh-hant),
+.content kbd:lang(zh-hant),
+.content pre:lang(zh-hant),
+.content samp:lang(zh-hant),
+.mw-editfont-monospace:lang(zh-hant),
+.screenplay:lang(zh-hant),
+.ve-ui-mwWikitextSurface .ve-ce-attachedRootNode:lang(zh-hant) {
+	font-family: 'Noto Mono', 'Source Code Pro', 'Source Han Mono TC', Consolas, Monaco, Courier, monospace,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.mw-body dt,
+.mw-body h1,
+.mw-body h2,
+.mw-body h3,
+.mw-body h4,
+.mw-body h5,
+.mw-body h6,
+#mw-related-navigation h2,
+#mw-site-navigation h2,
+#mw-site-navigation .sidebar-chunk h3,
+#p-logo-text a,
+#personal h2,
+.mw-logo-wordmark {
+	font-family: 'Noto Serif', 'Source Serif', 'Noto Serif SC', 'Source Han Serif SC', 'Linux Libertine', Georgia,
+		'Times New Roman', Times, STSong, SimSun, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.mw-body dt:lang(zh-hant),
+.mw-body h1:lang(zh-hant),
+.mw-body h2:lang(zh-hant),
+.mw-body h3:lang(zh-hant),
+.mw-body h4:lang(zh-hant),
+.mw-body h5:lang(zh-hant),
+.mw-body h6:lang(zh-hant),
+#mw-related-navigation h2:lang(zh-hant),
+#mw-site-navigation h2:lang(zh-hant),
+#mw-site-navigation .sidebar-chunk h3:lang(zh-hant),
+#p-logo-text a:lang(zh-hant),
+#personal h2:lang(zh-hant),
+.mw-logo-wordmark:lang(zh-hant) {
+	font-family: 'Noto Serif', 'Source Serif', 'Noto Serif TC', 'Source Han Serif TC', 'Linux Libertine', Georgia,
+		'Times New Roman', Times, MingLiU, SimSun, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+/* 字号 */
+big {
+	font-size: 1.2em;
+}
+
+small {
+	font-size: 0.9em;
 }
 
 .mw-editfont-monospace,
@@ -38,79 +178,16 @@ input:lang(zh-hant) {
 	font-size: 14px !important;
 }
 
-.content code,
-.content kbd,
-.content pre,
-.content samp,
-.screenplay,
-.ve-ui-mwWikitextSurface .ve-ce-attachedRootNode,
-div.CodeMirror,
-.mw-editfont-monospace,
-code,
-kbd,
-pre,
-samp,
-tt {
-	font-family: 'Noto Mono', 'Source Code Pro', 'Source Han Mono SC', Consolas, Monaco, Courier, monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-}
-
-.content code:lang(zh-hant),
-.content kbd:lang(zh-hant),
-.content pre:lang(zh-hant),
-.content samp:lang(zh-hant),
-.screenplay:lang(zh-hant),
-.ve-ui-mwWikitextSurface .ve-ce-attachedRootNode:lang(zh-hant),
-div.CodeMirror:lang(zh-hant),
-.mw-editfont-monospace:lang(zh-hant),
-code:lang(zh-hant),
-kbd:lang(zh-hant),
-pre:lang(zh-hant),
-samp:lang(zh-hant),
-tt:lang(zh-hant) {
-	font-family: 'Noto Mono', 'Source Code Pro', 'Source Han Mono TC', Consolas, Monaco, Courier, monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-}
-
-.mw-body h1,
-.mw-body h2,
-.mw-body h3,
-.mw-body h4,
-.mw-body h5,
-.mw-body h6,
-.mw-body dt,
-#mw-related-navigation h2,
-#mw-site-navigation h2,
-#personal h2,
-#p-logo-text a,
-.mw-logo-wordmark,
-#mw-site-navigation .sidebar-chunk h3 {
-	font-family: 'Noto Serif', 'Source Serif', 'Noto Serif SC', 'Source Han Serif SC', 'Linux Libertine', 'Georgia', 'Times New Roman', 'Times', 'STSong', 'SimSun', serif, 'Apple Color Emoji',
-		'Segoe UI Emoji', 'Segoe UI Symbol';
-}
-
-.mw-body h1:lang(zh-hant),
-.mw-body h2:lang(zh-hant),
-.mw-body h3:lang(zh-hant),
-.mw-body h4:lang(zh-hant),
-.mw-body h5:lang(zh-hant),
-.mw-body h6:lang(zh-hant),
-.mw-body dt:lang(zh-hant),
-#mw-related-navigation h2:lang(zh-hant),
-#mw-site-navigation h2:lang(zh-hant),
-#personal h2:lang(zh-hant),
-#p-logo-text a:lang(zh-hant),
-.mw-logo-wordmark:lang(zh-hant),
-#mw-site-navigation .sidebar-chunk h3:lang(zh-hant) {
-	font-family: 'Noto Serif', 'Source Serif', 'Noto Serif TC', 'Source Han Serif TC', 'Linux Libertine', 'Georgia', 'Times New Roman', 'Times', 'MingLiU', 'SimSun', serif, 'Apple Color Emoji',
-		'Segoe UI Emoji', 'Segoe UI Symbol';
+/* 断字设置 */
+.nowrap,
+.nowrap a::before,
+.nowrap .selflink::before {
+	white-space: nowrap;
 }
 
 .CodeMirror-wrap pre.CodeMirror-line,
 .CodeMirror-wrap pre.CodeMirror-line-like {
 	word-break: break-all;
-}
-
-html {
-	tab-size: 4;
 }
 
 pre,
@@ -125,28 +202,44 @@ pre,
 	word-wrap: break-word !important;
 }
 
+/* 参考来源列表字号 */
+ol.references,
+div.reflist {
+	margin-bottom: 0.5em;
+
+	/* 默认字号 */
+	font-size: 90%;
+}
+
+div.reflist ol.references {
+	/* 重置包含于<div class="reflist">参考列表的字号 */
+	font-size: 100%;
+}
+
+div.reflist ol.references,
+div.notelist ol.references {
+	/* 继承母列表的自定义列表类型 */
+	list-style-type: inherit;
+}
+
 ol.references .mw-extended-references {
 	margin-bottom: 0.3em;
 	margin-left: 1.25em;
 }
 
-/* Make the list of references smaller */
-ol.references,
-div.reflist {
-	/* Default font-size */
-	margin-bottom: 0.5em;
-	font-size: 90%;
-}
-
-div.reflist ol.references {
-	font-size: 100%;
-	/* Reset font-size when nested in div.reflist */
-}
-
-div.reflist ol.references,
-div.notelist ol.references {
-	list-style-type: inherit;
-	/* Enable custom list style types */
+/* Reduce page jumps by hiding collapsed/dismissed content */
+.client-js .mw-special-Watchlist #watchlist-message,
+.client-js .collapsible:not( .mw-made-collapsible).collapsed > tbody > tr:not(:first-child),
+/* Avoid FOUC/reflows on collapsed elements. */
+/* This copies MediaWiki's solution for T42812 to apply to innercollapse/outercollapse (T325115). */
+/* TODO: Use :is() selector at some reasonable future when support is good for Most Clients */
+/* Reference: <gerrit.wikimedia.org/g/mediawiki/core/+/ecda06cb2aef55b77c4b4d7ecda492d634419ead/resources/src/jquery/jquery.makeCollapsible.styles.less#75> */
+.client-js .outercollapse .innercollapse.mw-collapsible:not( .mw-made-collapsible ) > p,
+.client-js .outercollapse .innercollapse.mw-collapsible:not( .mw-made-collapsible ) > table,
+.client-js .outercollapse .innercollapse.mw-collapsible:not( .mw-made-collapsible ) > thead + tbody,
+.client-js .outercollapse .innercollapse.mw-collapsible:not( .mw-made-collapsible ) tr:not( :first-child ),
+.client-js .outercollapse .innercollapse.mw-collapsible:not( .mw-made-collapsible ) .mw-collapsible-content {
+	margin-top: 0.3em;
 }
 
 /* Reset top margin for lists embedded in columns */
@@ -161,8 +254,8 @@ div.notelist ol.references {
 }
 
 /* Avoid list items from breaking between columns */
-.mw-parser-output div.columns li,
-.mw-parser-output div.columns dd dd {
+.mw-parser-output div.columns dd dd,
+.mw-parser-output div.columns li {
 	break-inside: avoid-column;
 	-webkit-column-break-inside: avoid;
 	page-break-inside: avoid;
@@ -170,62 +263,39 @@ div.notelist ol.references {
 
 /* Highlight clicked reference in blue to help navigation */
 ol.references li:target,
-sup.reference:target,
-span.citation:target {
+span.citation:target,
+sup.reference:target {
 	background-color: #def;
 }
 
-/*黑幕啊*/
-
-span.heimu a.external,span.heimu a.external:visited,span.heimu a.extiw,span.heimu a.extiw:visited {
-    color: #252525
-}
-.heimu,.heimu a,a .heimu,.heimu a.new {
-    background-color: #252525;
-    color: #252525;
-    text-shadow: none
-}
-body:not(.heimu_toggle_on) .heimu:hover,body:not(.heimu_toggle_on) .heimu:active,body:not(.heimu_toggle_on) .heimu.off {
-    transition: color .13s linear;
-    color: #fff
-}
-body:not(.heimu_toggle_on) .heimu:hover a,body:not(.heimu_toggle_on) a:hover .heimu,body:not(.heimu_toggle_on) .heimu.off a,body:not(.heimu_toggle_on) a:hover .heimu.off {
-    transition: color .13s linear;
-    color: #add8e6
-}
-body:not(.heimu_toggle_on) .heimu.off .new,body:not(.heimu_toggle_on) .heimu.off .new:hover,body:not(.heimu_toggle_on) .new:hover .heimu.off,body:not(.heimu_toggle_on) .heimu.off .new,body:not(.heimu_toggle_on) .heimu.off .new:hover,body:not(.heimu_toggle_on) .new:hover .heimu.off {
-    transition: color .13s linear;
-    color: #ba0000
-}
-
 /* 处理灰色链接，比如未开通的轨道交通车站 */
+a .graylink,
 a.graylink,
-.graylink a,
-a .graylink {
+.graylink a {
 	color: #888;
 }
 
+a:visited .graylink,
 a:visited.graylink,
-.graylink a:visited,
-a:visited .graylink {
+.graylink a:visited {
 	color: #666;
 }
 
+a.new .graylink,
 a.new.graylink,
-.graylink a.new,
-a.new .graylink {
+.graylink a.new {
 	color: #a77;
 }
 
+a:visited.new .graylink,
 a:visited.new.graylink,
-.graylink a:visited.new,
-a:visited.new .graylink {
+.graylink a:visited.new {
 	color: #955;
 }
 
+a.selflink .graylink,
 a.selflink.graylink,
-.graylink a.selflink,
-a.selflink .graylink {
+.graylink a.selflink {
 	color: #333;
 }
 
@@ -236,10 +306,10 @@ a.selflink .graylink {
  * 4. HTML formulae
  * 5. Ref tags with group names <ref group="Note"> → "[Note 1]"
 */
-.nowrap,
-.nowraplinks a,
 span.texhtml,
-sup.reference a {
+sup.reference a,
+.nowrap,
+.nowraplinks a {
 	white-space: nowrap;
 }
 
@@ -282,10 +352,6 @@ sup.reference a {
 }
 
 /* Display nested lists inline */
-.hlist.inline,
-.hlist.inline dl,
-.hlist.inline ol,
-.hlist.inline ul,
 .hlist dl dl,
 .hlist dl ol,
 .hlist dl ul,
@@ -294,13 +360,17 @@ sup.reference a {
 .hlist ol ul,
 .hlist ul dl,
 .hlist ul ol,
-.hlist ul ul {
+.hlist ul ul,
+.hlist.inline,
+.hlist.inline dl,
+.hlist.inline ol,
+.hlist.inline ul {
 	display: inline;
 }
 
 /* Hide empty list items */
-.hlist .mw-empty-li,
-.hlist .mw-empty-elt {
+.hlist .mw-empty-elt,
+.hlist .mw-empty-li {
 	display: none;
 }
 
@@ -362,34 +432,32 @@ sup.reference a {
 	margin-bottom: 0;
 }
 
-.same-bg {
-	background: none;
-}
-
 /* 解决wikitable折叠后<caption>显示问题 */
 .wikitable.mw-collapsed caption {
 	display: block;
 }
 
-/* 解决<cite>定位内文字显示为斜体的问题 */
-cite {
-	font-style: normal;
+/* Styling for jQuery makeCollapsible, matching that of collapseButton */
+.mw-parser-output .mw-collapsible-toggle:not(.mw-ui-button) {
+	padding-right: 0.2em;
+	padding-left: 0.2em;
+	font-weight: normal;
 }
 
-@media screen and (max-width: 768px) {
-	.nomobile {
-		display: none;
-	}
+.mw-collapsible-leftside-toggle .mw-collapsible-toggle {
+	/* @noflip */
+	float: left;
 }
 
-@media screen and (min-width: 768px) {
-	.mobileonly,
-	.onlymobile {
-		display: none;
-	}
+/* Lists in wikitable data cells are always left-aligned */
+.wikitable td ul,
+.wikitable td ol,
+.wikitable td dl {
+	/* @noflip */
+	text-align: left;
 }
 
-/* [[Template:Hatnote]]、[[Template:Notice]]等模板 */
+/* {{Hatnote}}、{{Notice}}等模板 */
 .hatnote,
 .notice,
 #spoiler {
@@ -418,11 +486,6 @@ div.hatnote + div.hatnote {
 	text-decoration: none !important;
 }
 
-/* 页底文字太小 */
-#footer ul li {
-	font-size: small;
-}
-
 /* 页底二维码 */
 #footer-info-copyright > .wechat {
 	width: 72px;
@@ -431,23 +494,7 @@ div.hatnote + div.hatnote {
 	font-size: 0.8em;
 }
 
-/* 解决small标签中文字体太小 */
-small {
-	font-size: 0.9em;
-}
-
-big {
-	font-size: 1.2em;
-}
-
-/* For Extension:Graph */
-.nowrap,
-.nowrap a::before,
-.nowrap .selflink::before {
-	white-space: nowrap;
-}
-
-/* For [[Template:Coord]] */
+/* {{Coord}}模板 */
 .geo-default,
 .geo-multi-punct {
 	display: none;
@@ -457,69 +504,75 @@ big {
 	display: inline;
 }
 
-.longitude,
-.latitude {
+.latitude,
+.longitude {
 	white-space: nowrap;
 }
 
-/* For PDF icons, add [[File:PDF icon.svg]] */
+/* 替换PDF链接图标；参见[[File:PDF icon.svg]] */
 #bodyContent a[href$='.pdf'].external,
-#bodyContent a[href*='.pdf?'].external,
-#bodyContent a[href*='.pdf#'].external,
 #bodyContent a[href$='.PDF'].external,
-#bodyContent a[href*='.PDF?'].external,
-#bodyContent a[href*='.PDF#'].external {
+#bodyContent a[href*='.pdf#'].external,
+#bodyContent a[href*='.PDF#'].external,
+#bodyContent a[href*='.pdf?'].external,
+#bodyContent a[href*='.PDF?'].external {
 	padding-right: 20px;
-	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAbCAYAAABm409WAAAB8UlEQVR4AWKAARYWlm9A6j8pmI2N7SmQ5mQAdFsOMHIGYRhuVNu2GdS2zT+o7Ua1bduOatsNa/dsr83v9k0yc1j9l9k9fcl7GDzP6CCnSpYsaZ45cyY9f/5cViRJotKlSzuLFSv2DhJZgu3bt5PcWrFiBTVo0IDt5Jfrc7lgCWRIhAVcEgpJcARZd1IjIAIfrytNWKBQKCg8PNwtEIMlJvBRYLgJkms2rNqwdJmACVwsC5gcrqzV+H+XsuUsgRKABWZqnWY1iyhqN45xhQ5UrmF/NF4i07FTQgEDLDDBhoAUtRrZE2o3ouR6zUjZqJVQwAALTLAhIBatNIUs9x8RYr58nXTzlxDa1b0GsHasEuP4HOPOfbwP0a9cy/vcBOhE2f/+I3tEJKHQphkziVCOuHhyJKcQyrBpO2GO9cVrQtl//EIg9C/AypXN2xHKcvMOFxgPHyMcA0ROrS6LAOM5y5/A+v4j4rYDCBSAvuRQLmCFsbKOyPr8FT/PLIL6zXB8bjvA0SCqDt1lHNGCZayNC9g52z5/JRQuO8dHpJuzEBD2SnjUA4ejHeE7w07QZzp7Ee24G1+CJtqYWg0pqWELrEQoYIAFpgKCtJpN+yODylawXpq/CJcrFDDAYtyg/zYtVAL+f5FQwHATuP1nJxiwGDcdD1lPcArjD1EAAAAASUVORK5CYII=');
-	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 16'%3E%3Cpath fill='%23fff' d='M1.708 15.633V.367h7.008l3.586 3.583v11.683z'/%3E%3Cpath d='m8.564.734 3.37 3.368v11.163H2.076V.734h6.489M8.868 0H1.34v16h11.328V3.798z'/%3E%3Cpath fill='%23fff' d='M12.302 15.633H1.708V.367h7.008l.083.083v3.42h3.423l.08.08z'/%3E%3Cpath d='M8.432.734v3.503h3.503v11.029h-9.86V.734h6.357M8.867 0H1.341v16h11.328V3.798l-.296-.295H9.165V.298zm2.318 3.293H9.411V1.5l1.774 1.73z'/%3E%3Cpath d='m9.778 2.37.57.556h-.57V2.37m-.23-1.25h-.505v2.54h2.509v-.585z'/%3E%3Cg fill='%23ed1c24'%3E%3Cpath d='M13.644 12.321H.366v-5.36l.677-.676v.85h11.924v-.85l.677.676z'/%3E%3Cpath d='m13.266 7.005.08.08v4.938H.664V7.085l.08-.08v.43h12.521v-.43m-.596-1.44v1.273H1.34V5.564L.067 6.838v5.782h13.875V6.838z'/%3E%3C/g%3E%3Cpath d='M2.145 11.733V7.915h1.398q.311 0 .593.065.282.058.493.211.212.147.335.394.13.24.13.599 0 .352-.13.605-.123.252-.335.417-.211.158-.487.24-.276.077-.576.077h-.41v1.21zm1.01-2.009h.364q.3 0 .44-.14.148-.142.148-.4t-.159-.364-.452-.106h-.34zM5.716 11.733V7.915h1.128q.435 0 .793.106.364.105.623.334t.399.588q.147.358.147.863t-.141.87-.4.599q-.252.235-.605.346-.346.112-.757.112zm1.01-.81h.06q.205 0 .387-.048.182-.052.311-.176.135-.123.212-.34t.076-.553-.076-.546-.212-.329q-.129-.117-.311-.158-.182-.047-.388-.047h-.059zM9.487 11.733V7.915h2.49v.846h-1.48v.728h1.27v.846h-1.27v1.398z' fill='%23fff'/%3E%3C/svg%3E");
-	background-position: center right;
-	background-repeat: no-repeat;
+	background: no-repeat 100%/16px
+		url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAbCAMAAABRPb9kAAAAnFBMVEUAAAAJCQkAAAAGBgbsGibqGiOPFBlHDhE5Dg8iDA3tHCUGBgbtHCTuGyQMDAwHBwcAAAD////tHCQAAADuJS27u7v3lZn6w8WGhob0eHz80tT6vL/5srXrHiZ3d3fxUVfd3d32iI3zaG4hISH95udjY2PyWF7+8vP83t/819j4n6OhaWy2VFjwQkjmHCPiGyLt7e31gYZYWFjvNTx0vtNSAAAAEXRSTlMA+AzWRBf8+vn58uni2f7CGZi35rQAAADWSURBVHjandADmsUwFIbhXBvnr4NrG/vf29RIxt/j87YRY6xmlRrUWV5t6+S9xpNCaj7lzdZWIxcNctEhFwNCmZqQns2AxyJqVtMhzY+h1TOh1wrno64J3VGLDdG+uFqXNoYM6qZsrXAEBmAn5WmFq5TuDlhKKQMghoCOBwrmtNnQE4I4X+awsknOybU3+xBsIAfPoyCEaCqIaF4sJQKEoA7RH8vlO4cVEALn5FaWWvEdgCvnIlA48Qz6d/Me9z5Ys9k5e1rnTrP5zev+B7aO1jYFyyiED7SaLK1LMuvVAAAAAElFTkSuQmCC');
+	background: no-repeat 100%/16px
+		url("data:image/svg+xml;background-position:100%;background-repeat:no-repeat;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 16'%3E%3Cpath fill='%23fff' d='M1.708 15.633V.367h7.008l3.586 3.583v11.683z'/%3E%3Cpath d='M8.564.734l3.37 3.368v11.163H2.076V.734h6.489M8.868 0H1.34v16h11.328V3.798z'/%3E%3Cpath fill='%23fff' d='M12.302 15.633H1.708V.367h7.008l.083.083v3.42h3.423l.08.08z'/%3E%3Cpath d='M8.432.734v3.503h3.503v11.029h-9.86V.734h6.357M8.867 0H1.341v16h11.328V3.798l-.296-.295H9.165V.298zm2.318 3.293H9.411V1.5l1.774 1.73z'/%3E%3Cpath d='M9.778 2.37l.57.556h-.57V2.37m-.23-1.25h-.505v2.54h2.509v-.585z'/%3E%3Cg fill='%23ed1c24'%3E%3Cpath d='M13.644 12.321H.366v-5.36l.677-.676v.85h11.924v-.85l.677.676z'/%3E%3Cpath d='M13.266 7.005l.08.08v4.938H.664V7.085l.08-.08v.43h12.521v-.43m-.596-1.44v1.273H1.34V5.564L.067 6.838v5.782h13.875V6.838z'/%3E%3C/g%3E%3Cpath d='M2.145 11.733V7.915h1.398q.311 0 .593.065.282.058.493.211.212.147.335.394.13.24.13.599 0 .352-.13.605-.123.252-.335.417-.211.158-.487.24-.276.077-.576.077h-.41v1.21zm1.01-2.009h.364q.3 0 .44-.14.148-.142.148-.4t-.159-.364-.452-.106h-.34zm2.561 2.009V7.915h1.128q.435 0 .793.106.364.105.623.334t.399.588q.147.358.147.863t-.141.87-.4.599q-.252.235-.605.346-.346.112-.757.112zm1.01-.81h.06q.205 0 .387-.048.182-.052.311-.176.135-.123.212-.34t.076-.553-.076-.546-.212-.329q-.129-.117-.311-.158-.182-.047-.388-.047h-.059zm2.761.81V7.915h2.49v.846h-1.48v.728h1.27v.846h-1.27v1.398z' fill='%23fff'/%3E%3C/svg%3E");
 }
 
-/* For external interwiki links */
-.mw-parser-output a.extiw:not([href*='.wiki.zorua.top']),
-.mw-parser-output a.extiw:not([href*='.wiki.zorua.top']):visited {
-	color: #0a8;
+/* 非求闻跨站链接以绿色标记 */
+.mw-parser-output a.extiw:not([href*='.qiuwenbaike.cn']):not([href*='.qiuwen.wiki']) {
+	color: #084;
 }
 
-/* [[Template:僻字]] */
+.mw-parser-output a.extiw:not([href*='.qiuwenbaike.cn']):not([href*='.qiuwen.wiki']):visited {
+	color: #062;
+}
+
+/* {{僻字}} */
 .inline-unihan {
 	border-bottom: 1px dotted;
 	cursor: help;
-	font-family: 'Noto Sans', 'Source Sans 3', 'Source Sans Pro', 'Noto Sans SC', 'Source Han Sans SC', Helvetica, Roboto, SFProDisplay-Regular, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC',
-		'STHeiti SC', 'WenQuanYi Micro Hei', -apple-system, BlinkMacSystemFont, system-ui, 'Plangothic P1', 'Plangothic P2', '方正宋体S-超大字符集', '方正宋体S-超大字符集(SIP)', '文泉驿等宽正黑',
-		'BabelStone Han', HanaMinB, FZSong-Extended, 'Arial Unicode MS', 'Code2002', DFSongStd, unifont, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-family: 'Noto Sans', 'Source Sans 3', 'Source Sans Pro', 'Noto Sans SC', 'Source Han Sans SC', Helvetica,
+		Roboto, SFProDisplay-Regular, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'STHeiti SC', 'WenQuanYi Micro Hei',
+		-apple-system, BlinkMacSystemFont, system-ui, 'Plangothic P1', 'Plangothic P2', '方正宋体S-超大字符集',
+		'方正宋体S-超大字符集(SIP)', '文泉驿等宽正黑', 'BabelStone Han', HanaMinB, FZSong-Extended, 'Arial Unicode MS',
+		'Code2002', DFSongStd, unifont, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 	font-variant: normal;
 }
 
 .inline-unihan:lang(zh-hant) {
-	font-family: 'Noto Sans', 'Source Sans 3', 'Source Han Sans TC', 'Noto Sans TC', 'Source Sans Pro', Helvetica, Roboto, SFProDisplay-Regular, 'PingFang TC', 'Hiragino Sans CNS', 'Heiti TC',
-		'STHeiti TC', 'WenQuanYi Micro Hei', -apple-system, BlinkMacSystemFont, system-ui, 'Plangothic P1', 'Plangothic P2', '方正宋体S-超大字符集', '方正宋体S-超大字符集(SIP)', '文泉驿等宽正黑',
-		'BabelStone Han', HanaMinB, FZSong-Extended, 'Arial Unicode MS', 'Code2002', DFSongStd, unifont, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-family: 'Noto Sans', 'Source Sans 3', 'Source Han Sans TC', 'Noto Sans TC', 'Source Sans Pro', Helvetica,
+		Roboto, SFProDisplay-Regular, 'PingFang TC', 'Hiragino Sans CNS', 'Heiti TC', 'STHeiti TC',
+		'WenQuanYi Micro Hei', -apple-system, BlinkMacSystemFont, system-ui, 'Plangothic P1', 'Plangothic P2',
+		'方正宋体S-超大字符集', '方正宋体S-超大字符集(SIP)', '文泉驿等宽正黑', 'BabelStone Han', HanaMinB,
+		FZSong-Extended, 'Arial Unicode MS', 'Code2002', DFSongStd, unifont, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 /**
  * Page-specific rules
  */
+
 /* Gadgets-definition大字号 */
 .rootpage-MediaWiki_Gadgets-definition .mw-parser-output li {
-	font-family: 'Noto Mono', 'Source Code Pro', 'Source Han Mono SC', Consolas, Monaco, Courier, monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-family: 'Noto Mono', 'Source Code Pro', 'Source Han Mono SC', Consolas, Monaco, Courier, monospace,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 	font-size: 1.2em;
 	overflow-wrap: break-word;
 }
 
 .rootpage-MediaWiki_Gadgets-definition:lang(zh-hant) .mw-parser-output li {
-	font-family: 'Noto Mono', 'Source Code Pro', 'Source Han Mono TC', Consolas, Monaco, Courier, monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-family: 'Noto Mono', 'Source Code Pro', 'Source Han Mono TC', Consolas, Monaco, Courier, monospace,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 /* [[Special:小工具]]行距 */
-.rootpage-rootpage-Special_小工具 p {
+.mw-special-Gadgets p {
 	margin: 0;
-}
-
-/* 最近更改说明不自动换行 */
-.mw-changeslist-legend dd {
-	white-space: nowrap;
 }
 
 /* 注册页面样式 */
@@ -532,10 +585,20 @@ big {
 	float: none !important;
 }
 
+.mw-special-CreateAccount .mw-ui-container #signupstart {
+	flex: 1 1 100%;
+}
+
 .mw-special-CreateAccount .mw-ui-container #userloginForm {
 	display: flex;
 	flex: 1 1 100px;
 	margin: 2em;
+}
+
+@media screen and (max-width: 768px) {
+	.mw-special-CreateAccount .mw-ui-container #userloginForm {
+		flex: 1 1 100%;
+	}
 }
 
 .mw-special-CreateAccount .mw-createacct-benefits-container {
@@ -546,6 +609,7 @@ big {
 /**
  * Screen-specific rules
  */
+
 /* 编辑提交界面按钮部分的样式 */
 .mw-summary-preset {
 	display: inline;
@@ -578,19 +642,30 @@ big {
 	background-color: #ffa !important;
 }
 
+/* 默认隐藏“编辑选定修订版本的标签” */
+.mw-history-editchangetags-button {
+	display: none;
+}
+
+.mw-log-editchangetags-button {
+	display: none;
+}
+
 /* 上传界面 */
 #mwe-upwiz-upload-ctrl-flickr-container {
 	display: none;
 }
 
 /* 文件信息页面 */
+
 /* 仅需要用于文件名字空间的，请编辑[[File:Filepage.css]] */
 .licensetpl_wrapper,
 .licensetpl_metadata {
 	display: none;
 }
 
-.fileinfotpl-type-information {
+.fileinfotpl-type-information,
+.fileinfotpl-type-artwork {
 	width: 95%;
 	padding: 5px;
 	border-width: 2px;
@@ -603,42 +678,56 @@ big {
 }
 
 @media (max-width: 768px) {
-	.fileinfotpl-type-information {
+	.fileinfotpl-type-information,
+	.fileinfotpl-type-artwork {
 		width: 100%;
 		max-width: 100%;
 	}
 }
 
-.fileinfotpl-type-information td {
+.fileinfotpl-type-information td,
+.fileinfotpl-type-artwork td {
 	padding: 0.5em;
 	background-color: #f7f8ff;
 	vertical-align: top;
 }
 
-.fileinfotpl-type-information td.fileinfo-paramfield {
+.fileinfotpl-type-information td.fileinfo-paramfield,
+.fileinfotpl-type-artwork td.fileinfo-paramfield {
 	width: 5em;
 	background-color: #def;
 	font-weight: bold;
 	text-align: right;
 }
 
-.fileinfotpl-type-information tbody > tr:first-child > td:first-child {
+.fileinfotpl-type-information tbody > tr:first-child > td:first-child,
+.fileinfotpl-type-artwork tbody > tr:first-child > td:first-child {
 	border-radius: 5px 0 0;
 }
 
-.fileinfotpl-type-information tbody > tr:first-child > td:last-child {
+.fileinfotpl-type-information tbody > tr:first-child > td:last-child,
+.fileinfotpl-type-artwork tbody > tr:first-child > td:last-child {
 	border-radius: 0 5px 0 0;
 }
 
-.fileinfotpl-type-information tbody > tr:last-child > td:first-child {
+.fileinfotpl-type-information tbody > tr:last-child > td:first-child,
+.fileinfotpl-type-artwork tbody > tr:last-child > td:first-child {
 	border-radius: 0 0 0 5px;
 }
 
-.fileinfotpl-type-information tbody > tr:last-child > td:last-child {
+.fileinfotpl-type-information
+	tbody
+	> tr:last-child
+	> td:last-child
+	.fileinfotpl-type-artwork
+	tbody
+	> tr:last-child
+	> td:last-child {
 	border-radius: 0 0 5px;
 }
 
-.fileinfotpl-type-information .fn {
+.fileinfotpl-type-information .fn,
+.fileinfotpl-type-artwork .fn {
 	display: none;
 }
 
@@ -647,44 +736,68 @@ table.filehistory {
 	overflow: auto;
 }
 
-/* Multimedia Viewer */
+/* 多媒体查看器（Multimedia Viewer） */
 .mw-mmv-repo-button-commons,
 .mw-mmv-description-page-button[href*='wikipedia'],
 .mw-mmv-description-page-button[href*='wikimedia'] {
 	display: none !important;
 }
 
-/* Makes the background of a framed image white instead of gray. */
-/* Only visible with transparent images. */
-/* See #Framed_image_background_color */
-div.thumb div a img {
-	background-color: #f8f9fa;
+/* 仅当图像具有透明背景时，在图像描述页上显示棋盘格背景；参见[[File:Checker-16x16.svg]] */
+#file img {
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGElEQVQYV2N4DwX/oYBhgARgDJjEAAkAAEC99wFuu0VFAAAAAElFTkSuQmCC')
+		repeat;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M0 0h8v16h8V8H0z' opacity='.07'/%3E%3C/svg%3E")
+		repeat;
 }
 
-
-/* Main page */
+/* 求闻百科首页背景图 */
 @media screen {
-	.page-有兽档案馆_首页.action-view #firstHeading {
-		display: none !important;
-	}
+	.page-Qiuwen_首页.skin-citizen.action-view .mw-body,
+	.page-Qiuwen_首页.skin-vector.action-view .mw-body,
+	.page-Qiuwen_首页.skin-gongbi.action-view #mw-content,
+	.page-Template_首页.skin-citizen.action-view .mw-body,
+	.page-Template_首页.skin-vector.action-view .mw-body,
+	.page-Template_首页.skin-gongbi.action-view #mw-content {
+		background: url('//tu.zhongwen.wiki/images/qiuwen/thumb/7/7d/Qiuwen_Icon_Background_%28faded%29.svg/128px-Qiuwen_Icon_Background_%28faded%29.svg.png')
+			repeat;
 
-	.page-有兽档案馆_首页.action-view .mw-redirectedfrom {
-		display: none !important;
-	}
-
-	/* 禁止无聊者删除首页 */
-	.page-有兽档案馆_首页.action-view #mw-page-header-links,
-	.page-有兽档案馆_首页.action-view #mw-related-navigation,
-	.page-有兽档案馆_首页.action-view #ca-delete,
-	.page-有兽档案馆_首页.action-view .vector-article-toolbar {
-		display: none !important;
+		/* background: linear-gradient( to bottom, rgba( 251, 252, 254, .5 ), rgba( 251, 252, 254, .5 ) ), url( "//tu.zhongwen.wiki/images/qiuwen/thumb/4/4d/Qiuwen_icon_background.svg/125px-Qiuwen_icon_background.svg.png" ) repeat; */
 	}
 }
 
-/* 隐藏主页编辑栏 */
+/* 隐藏首页的页顶、页尾及其他无用要素 */
+.page-Qiuwen_首页.action-view .mw-indicators,
+.page-Qiuwen_首页.action-view #contentSub,
+.page-Qiuwen_首页.action-view #siteSub,
+.page-Qiuwen_首页.action-view .firstHeading,
+.page-Qiuwen_首页.action-view .mw-redirectedfrom,
+.page-Qiuwen_首页.action-view .vector-article-toolbar,
+.page-Qiuwen_首页.action-view #mw-page-header-links,
+.page-Qiuwen_首页.action-view #mw-related-navigation {
+	display: none !important;
+}
+
+/* 禁止删除首页 */
+.rootpage-Qiuwen_首页 #ca-delete,
+.rootpage-Qiuwen_首页 #deleteconfirm,
+.rootpage-Template_首页 #ca-delete,
+.rootpage-Template_首页 #deleteconfirm {
+	display: none !important;
+}
 
 /* 隐藏首页下方的Catlink */
-.page-有兽档案馆_首页.action-view #catlinks {
+.page-Qiuwen_首页.action-view #catlinks {
+	display: none;
+}
+
+/* 隐藏首页下方的“最后编辑于” */
+.page-Qiuwen_首页 #footer-info-lastmod {
+	display: none;
+}
+
+/* 隐藏首页下方的Easy Archive未启用提示 */
+.page-Qiuwen_首页 #easy_archive_enable_notice {
 	display: none;
 }
 
@@ -693,30 +806,21 @@ div.thumb div a img {
 	display: none;
 }
 
-@media screen {
-	.page-Fanmade_同人主页.action-view .mw-body-header {
-		display: none !important;
-	}
-}
-
-/* 隐藏同人主页标题与编辑栏 */
-
-/* 隐藏同人主页下方的Catlink */
-.page-Fanmade_同人主页.action-view #catlinks {
-	display: none;
-}
-
-/* 未归类 */
-/* For display uneditable section */
+/* 设置禁止编辑的页面，不显示编辑按钮 */
 .noedit .editsection,
 .noedit .mw-editsection {
 	display: none;
 }
 
-/* other */
+/* 其他样式 */
 span.lanLabel {
 	padding-left: 0.5em;
 	color: #72777d;
+}
+
+tt span.bot {
+	margin: 0 -6px 0 1px;
+	font-size: 12px;
 }
 
 tt span.minor {
@@ -729,12 +833,7 @@ tt span.newpage {
 	font-size: 12px;
 }
 
-tt span.bot {
-	margin: 0 -6px 0 1px;
-	font-size: 12px;
-}
-
-/* 用于封禁类模板，如Template:Uw-block1 */
+/* 用于封禁类模板，如{{Uw-block1}} */
 div.user-block {
 	padding: 5px;
 	border: 1px solid #a2a9b1;
@@ -748,36 +847,12 @@ div.user-block {
 	}
 }
 
-#wpSummary,
-#wpSummaryLabel,
-input#wpSummary,
-input.mw-summary {
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-/**
- * Allow limiting of which header levels are shown in a TOC;
- * <div class="toclimit-3">, for instance, will limit to
- * showing ==headings== and ===headings=== but no further
- * (as long as there are no =headings= on the page, which
- * there shouldn't be according to the MoS).
- */
-.toclimit-2 .toclevel-2,
-.toclimit-3 .toclevel-3,
-.toclimit-4 .toclevel-4,
-.toclimit-5 .toclevel-5,
-.toclimit-6 .toclevel-6,
-.toclimit-7 .toclevel-7 {
-	display: none;
-}
-
 /* Pie chart test: Transparent borders */
 .transborder {
 	border: solid transparent;
 }
 
-/* [[Template:Fact]] */
+/* {{Fact}} */
 .template-facttext {
 	padding: 0.3em 0;
 	margin: -0.3em 0;
@@ -785,12 +860,26 @@ input.mw-summary {
 }
 
 /**
- * Hide stuff meant for accounts with special permissions. Made visible again in
- * [[MediaWiki:Group-sysop.css]], [[Mediawiki:Group-autoconfirmed.css]],
+ * Hide stuff meant for accounts with special permissions.
+ * Made visible again in [[MediaWiki:Group-sysop.css]],
+ * [[Mediawiki:Group-autoconfirmed.css]],
  * [[MediaWiki:Group-user.css]] and more.
  */
- 
- 
+.steward-show,
+.sysop-show,
+.autoconfirmed-show,
+.user-show {
+	display: none;
+}
+
+.senioreditor-show,
+.patroller-show,
+.transwiki-show,
+.templateeditor-show,
+.autoreviewer-show {
+	display: none;
+}
+
 /* HACK to workaround VE and badly written CGroups */
 .noteTA {
 	display: none;
@@ -802,20 +891,15 @@ input.mw-summary {
 	text-align: left;
 }
 
-/* Wikiplus */
-.Wikiplus-InterBox {
-	max-width: 90vw;
-}
-
 /* [[MediaWiki:Noarticletext]] */
 .noarticletext {
-	font-family: 'Noto Serif', 'Source Serif', 'Noto Serif SC', 'Source Han Serif SC', 'Linux Libertine', 'Georgia', 'Times New Roman', 'Times', 'STSong', 'SimSun', serif, 'Apple Color Emoji',
-		'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-family: 'Noto Serif', 'Source Serif', 'Noto Serif SC', 'Source Han Serif SC', 'Linux Libertine', Georgia,
+		'Times New Roman', Times, STSong, SimSun, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 .noarticletext:lang(zh-hant) {
-	font-family: 'Noto Serif', 'Source Serif', 'Noto Serif TC', 'Source Han Serif TC', 'Linux Libertine', 'Georgia', 'Times New Roman', 'Times', 'MingLiU', 'SimSun', serif, 'Apple Color Emoji',
-		'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-family: 'Noto Serif', 'Source Serif', 'Noto Serif TC', 'Source Han Serif TC', 'Linux Libertine', Georgia,
+		'Times New Roman', Times, MingLiU, SimSun, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 .noarticletext-core {
@@ -840,6 +924,60 @@ input.mw-summary {
 	font-size: 120%;
 }
 
+/* [[MediaWiki:Blockedtext]] */
+#mw-blockedtext {
+	width: 100%;
+	padding: 0;
+	border: 2px solid #eaecf0;
+	border-radius: 0.25em;
+	margin: 1.25em 0;
+}
+
+#mw-blockedtext-title {
+	color: #d33;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+#mw-blockedtext-subtitle {
+	display: inline-block;
+	padding: 0 2em;
+	border-radius: 3px;
+	text-align: center;
+}
+
+#mw-blockedtext-detail,
+#mw-blockedtext-appeal {
+	padding: 0.75em 1em;
+	border: 0;
+	border-radius: 0.25em;
+	margin: 1em;
+	background: #eaecf0;
+	color: #2a4b8d;
+}
+
+#mw-blockedtext-reason {
+	margin-bottom: 0.5em;
+}
+
+#mw-blockedtext-reason-text {
+	color: #d33;
+}
+
+#mw-blockedtext-reason-text,
+#mw-blockedtext-expire-text,
+#mw-blockedtext-userip-text,
+#mw-blockedtext-blockid-text {
+	margin: 0.5em;
+}
+
+#mw-blockedtext-userwarn {
+	margin: 1.25em 0;
+	color: #d33;
+	font-size: 1.25em;
+	text-align: center;
+}
+
 /* “权限错误”页面提示 */
 ul.permissions-errors {
 	margin: auto !important;
@@ -859,20 +997,20 @@ ul.permissions-errors + hr {
 	display: none;
 }
 
-/* 编辑界面“→ 前往编辑区” */
-/* Copied from .mw-ui-button */
+/**
+ * 编辑界面“→ 前往编辑区”
+ * Copied from .mw-ui-button
+ */
 .mw-continue-editing a {
 	display: inline-block;
 	min-width: 4em;
 	max-width: 28.75em;
 	min-height: 32px;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 5px 12px;
 	border: 1px solid #a2a9b1;
 	border-radius: 0;
 	margin: 0;
-	-webkit-appearance: none;
 	appearance: none;
 	background-color: #f8f9fa;
 	color: #202122;
@@ -880,9 +1018,8 @@ ul.permissions-errors + hr {
 	font-family: inherit;
 	font-size: 1em;
 	font-weight: bold;
-	line-height: 1.28571429em;
+	line-height: 1.2857em;
 	text-align: center;
-	-webkit-transition: background-color 100ms, color 100ms, border-color 100ms, box-shadow 100ms;
 	transition: background-color 100ms, color 100ms, border-color 100ms, box-shadow 100ms;
 	vertical-align: middle;
 }
@@ -898,34 +1035,32 @@ ul.permissions-errors + hr {
 	max-width: 90vw;
 }
 
-/* Mobile optimization */
+/* 移动端优化 */
 @media only screen and (max-width: 768px) {
 	/* !important to ignore inline styles */
+
 	/* .mw-body-content to increase specificity */
 	.mw-body-content table {
-		float: none !important;
-		margin-left: auto !important;
-		margin-right: auto !important;
-	}
-
-	.mw-body-content table {
 		overflow: auto;
-		overflow-y: hidden;
-		overflow-x: auto;
 		max-width: 100% !important;
+		margin-right: auto !important;
+		margin-left: auto !important;
+		float: none !important;
+		overflow-x: auto;
+		overflow-y: hidden;
 	}
 
 	.mw-body-content .thumb {
-		float: none;
-		clear: none;
 		margin: 0.5em auto;
+		clear: none;
+		float: none;
 	}
 
 	.mw-body-content .thumbinner {
-		margin: 0 auto;
 		max-width: 100%;
 		box-sizing: border-box;
 		border: 0;
+		margin: 0 auto;
 		background-color: transparent;
 	}
 
@@ -954,8 +1089,8 @@ ul.permissions-errors + hr {
 	}
 
 	.mw-body-content .image > img {
-		max-width: 100%;
 		min-width: 20px;
+		max-width: 100%;
 		height: auto;
 		object-fit: contain;
 	}
@@ -965,7 +1100,10 @@ ul.permissions-errors + hr {
 	}
 }
 
-@media only screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 768px) and (min-resolution: 1.5dppx) {
+/* stylelint-disable-next-line media-feature-name-no-unknown */
+@media only screen and (max-width: 768px) and (min-device-pixel-ratio: 1.5),
+	only screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5),
+	only screen and (max-width: 768px) and (min-resolution: 1.5dppx) {
 	@supports (object-fit: contain) {
 		.mw-body-content div.thumbinner {
 			width: 100% !important;
@@ -973,10 +1111,75 @@ ul.permissions-errors + hr {
 
 		.mw-body-content div.thumbinner .thumbimage {
 			width: 100%;
-			object-fit: contain;
 			max-height: 60vh;
+			object-fit: contain;
 		}
 	}
+}
+
+/* Minimum thumb width */
+figure[typeof~='mw:File/Thumb'],
+figure[typeof~='mw:File/Frame'],
+.thumbinner {
+	min-width: 100px;
+}
+
+/* Parsoid Cite支持 */
+a[rel='mw:referencedBy']::before {
+	content: '^';
+	font-weight: bold;
+}
+
+span[rel='mw:referencedBy']::before {
+	content: '^ ';
+}
+
+span[rel='mw:referencedBy'] > a::before {
+	content: counter(mw-references, decimal) '.' counter(mw-ref-linkback, decimal) !important;
+	font-weight: bold;
+}
+
+.mw-ref > a[data-mw-group='upper-roman']::after {
+	content: '[' counter(mw-Ref, upper-roman) ']';
+}
+
+.mw-ref > a[data-mw-group='lower-greek']::after {
+	content: '[' counter(mw-Ref, lower-greek) ']';
+}
+
+.mw-ref > a[data-mw-group='lower-roman']::after {
+	content: '[' counter(mw-Ref, lower-roman) ']';
+}
+
+.mw-ref > a[data-mw-group='lower-alpha']::after {
+	content: '[' counter(mw-Ref, lower-alpha) ']';
+}
+
+.mw-ref > a[data-mw-group='upper-alpha']::after {
+	content: '[' counter(mw-Ref, upper-alpha) ']';
+}
+
+/*黑幕啊*/
+
+span.heimu a.external,span.heimu a.external:visited,span.heimu a.extiw,span.heimu a.extiw:visited {
+    color: #252525
+}
+.heimu,.heimu a,a .heimu,.heimu a.new {
+    background-color: #252525;
+    color: #252525;
+    text-shadow: none
+}
+body:not(.heimu_toggle_on) .heimu:hover,body:not(.heimu_toggle_on) .heimu:active,body:not(.heimu_toggle_on) .heimu.off {
+    transition: color .13s linear;
+    color: #fff
+}
+body:not(.heimu_toggle_on) .heimu:hover a,body:not(.heimu_toggle_on) a:hover .heimu,body:not(.heimu_toggle_on) .heimu.off a,body:not(.heimu_toggle_on) a:hover .heimu.off {
+    transition: color .13s linear;
+    color: #add8e6
+}
+body:not(.heimu_toggle_on) .heimu.off .new,body:not(.heimu_toggle_on) .heimu.off .new:hover,body:not(.heimu_toggle_on) .new:hover .heimu.off,body:not(.heimu_toggle_on) .heimu.off .new,body:not(.heimu_toggle_on) .heimu.off .new:hover,body:not(.heimu_toggle_on) .new:hover .heimu.off {
+    transition: color .13s linear;
+    color: #ba0000
 }
 
 /* </nowiki> */
