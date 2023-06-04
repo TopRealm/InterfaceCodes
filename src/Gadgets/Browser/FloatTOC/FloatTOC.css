@@ -19,7 +19,7 @@
  */
 /* <nowiki> */
 #floatTOC {
-	padding: 1em;
+	padding: 0.5rem;
 	cursor: auto;
 }
 
@@ -27,21 +27,47 @@
 	overflow: auto;
 	max-height: 80vh;
 	margin: 0 auto;
-	border-radius: 10px;
-	font-size: 16px;
-	font-family: Kaiti;
-	font-weight: Bold;
-	line-height: 18px;
 
 	/* 赤魇重写部分 */
 	margin-top: 0;
 	background: rgba(240, 255, 240, 0.6);
-	height: 15rem;
+	border-radius: 10px;
+	font-size: 16px;
+	font-family: Kaiti;
+	font-weight: Bold;
+}
+
+.skin-vector-legacy #floatTOC .toc {
+	display: block;
+	max-height: 90vh;
+	padding-top: 1em;
+	font-size: 1em;
+	word-break: keep-all;
+}
+
+#floatTOC ul {
+	padding-right: 1rem;
+}
+
+#floatTOC #close {
+	display: block;
+	margin-bottom: -2rem;
+	cursor: pointer;
+	text-align: right;
+}
+
+#floatTOC #close:hover {
+	text-decoration: underline;
+}
+
+.skin-vector-legacy #floatTOC #close {
+	margin-bottom: -1.35em;
 }
 
 #floatToc-opener {
 	position: fixed;
-	top: 15.5%;
+	z-index: 13;
+	top: 10.5%;
 	right: 2rem;
 	display: flex;
 	width: 2rem;
@@ -51,7 +77,9 @@
 	align-items: center;
 	justify-content: center;
 	padding: 0.5rem;
+	border-radius: 25px;
 	backdrop-filter: saturate(50%) blur(16px);
+	background: rgb(255 255 255 / 95%);
 	box-shadow: 0 0 2px 2px rgb(0 0 0 / 10%);
 	cursor: pointer;
 	font-size: 0.5rem;
@@ -61,13 +89,6 @@
 	background: #EBFFEF;
 	text-align: center;
 	z-index: 999;
-}
-
-#floatTOC #close {
-	display: block;
-	margin-bottom: -2rem;
-	cursor: pointer;
-	text-align: right;
 }
 
 @media screen and (max-width: 720px), screen and (max-height: 800px) {
@@ -82,18 +103,6 @@
 	opacity: 0.6;
 }
 
-.skin-vector-legacy #floatTOC .toc {
-	display: block;
-	max-height: 90vh;
-	padding-top: 1em;
-	font-size: 1em;
-	word-break: keep-all;
-}
-
-.skin-vector-legacy #floatTOC #close {
-	margin-bottom: -1.35em;
-}
-
 .skin-vector-legacy #floatToc-opener {
 	top: 2rem;
 	background: #f8f9fa;
@@ -104,6 +113,7 @@
 	display: none;
 }
 
+/* 赤魇重写部分 */
 #mw-toc-heading {
 	font-size: 10px;
 	font-family: Kaiti;
