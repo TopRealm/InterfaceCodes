@@ -130,4 +130,10 @@ header.mw-body-header{
 	margin-top: calc(2 * var(--space-md));
 }
 
+/* 图片简介样式 */
+.navpopup{
+	background:#fffff0;
+	border-radius:10px;
+}
+
 /* </nowiki> */
