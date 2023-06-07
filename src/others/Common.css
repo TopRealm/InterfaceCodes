@@ -774,6 +774,17 @@ table.filehistory {
 	display: none;
 }
 
+/* 隐藏同人主页标题与编辑栏 */
+@media screen {
+	.page-Fanmade_同人主页.action-view .mw-body-header {
+		display: none !important;
+	}
+}
+/* 隐藏同人主页下方的Catlink */
+.page-Fanmade_同人主页.action-view #catlinks {
+	display: none;
+}
+
 /* 设置禁止编辑的页面，不显示编辑按钮 */
 .noedit .editsection,
 .noedit .mw-editsection {
