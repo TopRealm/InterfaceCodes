@@ -1161,7 +1161,7 @@ body:not(.heimu_toggle_on) .heimu.off .new,body:not(.heimu_toggle_on) .heimu.off
     color: #ba0000
 }
 
-/* 非求闻跨站链接以绿色标记 */
+/* 非本站跨站链接以绿色标记 */
 .mw-parser-output a.extiw:not([href*='.zorua.top']) {
 	color: #084;
 }
