@@ -48,16 +48,16 @@ $(function loginToEdit() {
         'zh-hant': '編輯'
       }),
       dialogTitle: localize({
-        en: 'Welcome to 有兽档案馆!',
-        ja: '有兽档案馆へようこそ！',
+        en: 'Welcome to Youshou Archives!',
+        ja: '有獣アーカイブスへようこそ！',
         'zh-hans': '欢迎来到有兽档案馆！',
-        'zh-hant': '歡迎來到有兽档案馆！'
+        'zh-hant': '歡迎來到有獸檔案館！'
       }),
       dialogMessage: localize({
         en: 'You have not yet logged in. Register and log in to your account to contribute.',
-        ja: 'あなたはまだ有兽档案馆にログインしていません。アカウントを作成し、ログインして有兽档案馆を改善することができます。',
+        ja: 'あなたはまだ有獣アーカイブスにログインしていません。アカウントを作成し、ログインして有獣アーカイブスを改善することができます。',
         'zh-hans': '您尚未登录到有兽档案馆。您可以注册并登录账号，帮助完善有兽档案馆。',
-        'zh-hant': '您尚未登錄到有兽档案馆。您可以注冊並登錄賬戶，幫助完善有兽档案馆。'
+        'zh-hant': '您尚未登錄到有獸檔案館。您可以注冊並登錄賬戶，幫助完善有獸檔案館。'
       })
     };
   };
