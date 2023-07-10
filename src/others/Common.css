@@ -1170,4 +1170,9 @@ body:not(.heimu_toggle_on) .heimu.off .new,body:not(.heimu_toggle_on) .heimu.off
 	color: #062;
 }
 
+/* 添加 tabber 首行缩进 */
+.tabber__panel {
+	text-indent: 2em;
+}
+
 /* </nowiki> */
