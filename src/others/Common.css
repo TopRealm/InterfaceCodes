@@ -1175,4 +1175,13 @@ body:not(.heimu_toggle_on) .heimu.off .new,body:not(.heimu_toggle_on) .heimu.off
 	text-indent: 2em;
 }
 
+.draftat {
+	border: 0;
+	background: #eaecf0;
+	color: #2a4b8d;
+	text-align: center;
+	padding: 1em 0;
+	margin: 0;
+	padding-top: 1em;
+}
 /* </nowiki> */
