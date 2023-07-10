@@ -51,6 +51,7 @@
 	width: 95%; /* Make all mboxes the same width regardless of text length */
 	flex: 1 1 95%;
 	padding: 0.25em 0.9em; /* 0.9em left/right */
+	line-height: 1.55em;
 	/* The message body cell(s) */
 	border: 0;
 }
