@@ -67,7 +67,7 @@ $(function loginToEdit() {
   };
   var isCitizen = mw.config.get('skin') === 'citizen';
   var loginURL = "/wiki/Special:Userlogin?returnto=".concat(mw.util.rawurlencode(mw.config.get('wgPageName')));
- var registerURL = "/wiki/Special:CreateAccount?returnto=".concat(mw.util.rawurlencode(mw.config.get('wgPageName')));
+  var registerURL = "/wiki/Special:CreateAccount?returnto=".concat(mw.util.rawurlencode(mw.config.get('wgPageName')));
   var openDialog = function openDialog() {
     var messageDialog = new OO.ui.MessageDialog();
     var windowManager = new OO.ui.WindowManager();
