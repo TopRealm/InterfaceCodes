@@ -67,8 +67,7 @@ $(function loginToEdit() {
   };
   var isCitizen = mw.config.get('skin') === 'citizen';
   var loginURL = "/wiki/Special:Userlogin?returnto=".concat(mw.util.rawurlencode(mw.config.get('wgPageName')));
-//开放注册后改为：var registerURL = "/wiki/Special:CreateAccount?returnto=".concat(mw.util.rawurlencode(mw.config.get('wgPageName')));
-  var registerURL = "/wiki/%E6%9C%89%E5%85%BD%E6%A1%A3%E6%A1%88%E9%A6%86:%E5%8A%A0%E5%85%A5%E6%88%91%E4%BB%AC";
+  var registerURL = "/wiki/Special:CreateAccount?returnto=".concat(mw.util.rawurlencode(mw.config.get('wgPageName')));
   var openDialog = function openDialog() {
     var messageDialog = new OO.ui.MessageDialog();
     var windowManager = new OO.ui.WindowManager();
