@@ -2,7 +2,7 @@
 /**
  * SPDX-License-Identifier: CC-BY-NC-SA-3.0-CN
  * _addText: '{{Gadget Header|license=cc-by-nc-sa-3.0-cn|import=no}}'
-  * @source <https://github.com/MoegirlPediaInterfaceAdmins/MoegirlPediaInterfaceCodes/blob/master/src/gadgets/UserLinkAvatar/MediaWiki:Gadget-UserLinkAvatar.js>
+ * @source <https://github.com/MoegirlPediaInterfaceAdmins/MoegirlPediaInterfaceCodes/blob/master/src/gadgets/UserLinkAvatar/MediaWiki:Gadget-UserLinkAvatar.js>
  * @source <https://github.com/TopRealm/InterfaceCodes/blob/master/src/Gadgets/Appearance/UserLinkAvatar/UserLinkAvatar.js>
  * @author Mogirlpedia Contributers.
  * @author zorua<zorua@vip.qq.com>
