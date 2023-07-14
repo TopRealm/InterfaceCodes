@@ -16,84 +16,113 @@
  * |  Please discuss changes at Talk page before editing.   |
  * +--------------------------------------------------------+
  */
-
-/* </nowiki> */
-
-
+ 
 "use strict";
-(() => {
-    const defaults = {
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function () {
+    var defaults = {
         src: "data-src",
         srcset: "data-srcset",
         selector: ".lazyload",
         root: null,
         rootMargin: "0px",
-        threshold: 0,
+        threshold: 0
     };
-
-    /**
-    * Merge two or more objects. Returns a new object.
-    * @private
-    * @param {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-    * @param {Object}   objects  The objects to merge together
-    * @returns {Object}          Merged values of defaults and options
-    */
-    const extend = (_deep, ..._args) => {
-
-        const extended = {};
-        const deep = typeof _deep === "boolean" ? _deep : false;
-        const args = [...typeof _deep !== "boolean" ? [_deep] : [], ..._args];
-
-        /* Merge the object into the extended object */
-        const merge = (obj) => {
-            for (const prop in obj) {
+    var extend = function (_deep) {
+        var e_1, _a;
+        var _args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            _args[_i - 1] = arguments[_i];
+        }
+        var extended = {};
+        var deep = typeof _deep === "boolean" ? _deep : false;
+        var args = __spreadArray(__spreadArray([], __read(typeof _deep !== "boolean" ? [_deep] : []), false), __read(_args), false);
+        var merge = function (obj) {
+            for (var prop in obj) {
                 if (Object.prototype.hasOwnProperty.bind(obj)(prop)) {
-                    /* If deep merge and property is an object, merge properties */
                     if (deep && Object.prototype.toString.bind(obj[prop])() === "[object Object]") {
                         extended[prop] = extend(true, extended[prop], obj[prop]);
-                    } else {
+                    }
+                    else {
                         extended[prop] = obj[prop];
                     }
                 }
             }
         };
-
-        /* Loop through each object and conduct a merge */
-        for (const obj of args) {
-            merge(obj);
+        try {
+            for (var args_1 = __values(args), args_1_1 = args_1.next(); !args_1_1.done; args_1_1 = args_1.next()) {
+                var obj = args_1_1.value;
+                merge(obj);
+            }
         }
-
+        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+        finally {
+            try {
+                if (args_1_1 && !args_1_1.done && (_a = args_1["return"])) _a.call(args_1);
+            }
+            finally { if (e_1) throw e_1.error; }
+        }
         return extended;
     };
-
-    class LazyLoad {
-        constructor(images, options) {
+    var LazyLoad = (function () {
+        function LazyLoad(images, options) {
             this.settings = extend(defaults, options || {});
             this.images = images || document.querySelectorAll(this.settings.selector);
             this.observer = null;
             this.init();
         }
-        init() {
-
-            /* Without observers load everything and bail out early. */
+        LazyLoad.prototype.init = function () {
             if (!window.IntersectionObserver) {
                 this.loadImages();
                 return;
             }
-
-            const self = this;
-            const observerConfig = {
+            var self = this;
+            var observerConfig = {
                 root: this.settings.root,
                 rootMargin: this.settings.rootMargin,
-                threshold: [this.settings.threshold],
+                threshold: [this.settings.threshold]
             };
-
-            this.observer = new IntersectionObserver((entries) => {
-                Array.prototype.forEach.bind(entries)((entry) => {
+            this.observer = new IntersectionObserver(function (entries) {
+                Array.prototype.forEach.bind(entries)(function (entry) {
                     if (entry.isIntersecting) {
                         self.observer.unobserve(entry.target);
-                        const src = entry.target.getAttribute(self.settings.src);
-                        const srcset = entry.target.getAttribute(self.settings.srcset);
+                        var src = entry.target.getAttribute(self.settings.src);
+                        var srcset = entry.target.getAttribute(self.settings.srcset);
                         if ("img" === entry.target.tagName.toLowerCase()) {
                             if (src) {
                                 entry.target.src = src;
@@ -101,33 +130,32 @@
                             if (srcset) {
                                 entry.target.srcset = srcset;
                             }
-                        } else {
-                            entry.target.style.backgroundImage = `url(${src})`;
+                        }
+                        else {
+                            entry.target.style.backgroundImage = "url(".concat(src, ")");
                         }
                     }
                 });
             }, observerConfig);
-
-            Array.prototype.forEach.bind(this.images)((image) => {
+            Array.prototype.forEach.bind(this.images)(function (image) {
                 self.observer.observe(image);
             });
-        }
-        loadAndDestroy() {
+        };
+        LazyLoad.prototype.loadAndDestroy = function () {
             if (!this.settings) {
                 return;
             }
             this.loadImages();
             this.destroy();
-        }
-        loadImages() {
+        };
+        LazyLoad.prototype.loadImages = function () {
             if (!this.settings) {
                 return;
             }
-
-            const self = this;
-            Array.prototype.forEach.bind(this.images)((image) => {
-                const src = image.getAttribute(self.settings.src);
-                const srcset = image.getAttribute(self.settings.srcset);
+            var self = this;
+            Array.prototype.forEach.bind(this.images)(function (image) {
+                var src = image.getAttribute(self.settings.src);
+                var srcset = image.getAttribute(self.settings.srcset);
                 if ("img" === image.tagName.toLowerCase()) {
                     if (src) {
                         image.src = src;
@@ -135,29 +163,30 @@
                     if (srcset) {
                         image.srcset = srcset;
                     }
-                } else {
-                    image.style.backgroundImage = `url('${src}')`;
+                }
+                else {
+                    image.style.backgroundImage = "url('".concat(src, "')");
                 }
             });
-        }
-        destroy() {
+        };
+        LazyLoad.prototype.destroy = function () {
             if (!this.settings) {
                 return;
             }
             this.observer.disconnect();
             this.settings = null;
-        }
-    }
-
-
-    window.lazyload = (images, options) => new LazyLoad(images, options);
-
+        };
+        return LazyLoad;
+    }());
+    window.lazyload = function (images, options) { return new LazyLoad(images, options); };
     if (window.jQuery) {
         jQuery.fn.lazyload = function (_options) {
-            const options = _options || {};
-            options.attribute ||= "data-src";
+            var options = _options || {};
+            options.attribute || (options.attribute = "data-src");
             new LazyLoad(this.toArray(), options);
             return this;
         };
     }
 })();
+
+/* </nowiki> */
