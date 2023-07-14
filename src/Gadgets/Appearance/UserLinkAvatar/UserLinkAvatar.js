@@ -26,12 +26,12 @@
 (function () {
     var magnifierOn = +mw.user.options.get("gadget-userLinkAvatarMagnifier", 0) === 1;
     var $window = $(window);
-    var loadingImage = "https://img.moegirl.org.cn/common/d/d1/Windows_10_loading.gif";
+    var loadingImage = "https://wiki.zorua.top/images/d/de/Ajax-loader.gif";
     $window.on("load.UserLinkAvatar", function () {
         var images = [];
         $(".mw-userlink:not(.user-avatar-added)").each(function (_, ele) {
             var item = $(ele);
-            var src = "https://commons.moegirl.org.cn/extensions/Avatar/avatar.php?user=".concat(encodeURIComponent(item.text()));
+            var src = "https://wiki.zorua.top/extensions/Avatar/avatar.php?user=".concat(encodeURIComponent(item.text()));
             var img = $("<img/>").on("error", function () {
                 window.setTimeout(function () {
                     img.closest(".userlink-avatar").remove();
@@ -60,7 +60,7 @@
                 });
                 images.push(magnifierImg_1[0]);
                 bigAvatar.on("click", function () {
-                    window.open("https://commons.moegirl.org.cn/index.php?title=Special%3A\u67E5\u770B\u5934\u50CF&user=".concat(encodeURIComponent(item.text())), "_blank");
+                    window.open("https://wiki.zorua.top/index.php?title=Special%3A\u67E5\u770B\u5934\u50CF&user=".concat(encodeURIComponent(item.text())), "_blank");
                     return false;
                 }).append($("<div/>", {
                     attr: {
