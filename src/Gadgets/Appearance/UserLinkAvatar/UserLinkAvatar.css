@@ -1,13 +1,26 @@
 /* <nowiki> */
 /**
- * SPDX-License-Identifier: CC-BY-SA-4.0
- * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
- *
+ * SPDX-License-Identifier: CC-BY-NC-SA 3.0
+ * _addText: '{{Gadget Header|license=Cc-by-nc-sa-3.0-cn|import=no}}'
+ * @source <https://github.com/MoegirlPediaInterfaceAdmins/MoegirlPediaInterfaceCodes/blob/master/src/gadgets/UserLinkAvatar/MediaWiki:Gadget-UserLinkAvatar.css>
  * @source <https://github.com/TopRealm/InterfaceCodes/blob/master/src/Gadgets/Appearance/UserLinkAvatar/UserLinkAvatar.css>
- * @author ZoruaFox <zoruaa@vip.qq.com>.
+ * @author Mogirlpedia Contributers.
+ * @author zorua<zorua@vip.qq.com>
+*/
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
  */
 
-img.userlink-avatar {
+/* </nowiki> */
+img.userlink-avatar-small {
     margin-left: 0.2em;
     margin-right: 0.2em;
     width: 1.5em;
@@ -15,4 +28,28 @@ img.userlink-avatar {
     margin-top: -0.2em;
 }
 
-/* </nowiki> */
+.userlink-avatar-large {
+    display: none;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    padding: 1.5em;
+    border: solid #A7D7F9 1px;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.userlink-avatar-large img {
+    min-width: 128px;
+}
+
+.userlink-avatar-hover,
+.userlink-avatar-hover .userlink-avatar-small {
+    position: relative;
+    cursor: pointer;
+}
+
+.userlink-avatar-hover:hover .userlink-avatar-large {
+    display: block;
+    z-index: 91;
+}
