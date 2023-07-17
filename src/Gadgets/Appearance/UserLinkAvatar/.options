@@ -1,1 +1,1 @@
-ResourceLoader|default|type=general|dependencies=user.options
+ResourceLoader|default|type=general|dependencies=user.options,ext.gadget.jQueryLazyload
