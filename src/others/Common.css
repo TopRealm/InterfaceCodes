@@ -81,7 +81,7 @@ q:lang(en) {
 /* 字库调用优先顺序 */
 body,
 input {
-	font-family: 'Noto Sans', 'Source Sans 3', 'Source Sans Pro', 'Noto Sans SC', 'Source Han Sans SC', Helvetica,
+	font-family: 'LXGW WenKai', 'LXGW WenKai Mono', 'Noto Sans', 'Source Sans 3', 'Source Sans Pro', 'Noto Sans SC', 'Source Han Sans SC', Helvetica,
 		Roboto, SFProDisplay-Regular, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'STHeiti SC', 'WenQuanYi Micro Hei',
 		-apple-system, BlinkMacSystemFont, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
 		'Segoe UI Symbol';
@@ -89,7 +89,7 @@ input {
 
 body:lang(zh-hant),
 input:lang(zh-hant) {
-	font-family: 'Noto Sans', 'Source Sans 3', 'Source Han Sans TC', 'Noto Sans TC', 'Source Sans Pro', Helvetica,
+	font-family: 'LXGW WenKai', 'LXGW WenKai Mono', 'Noto Sans', 'Source Sans 3', 'Source Han Sans TC', 'Noto Sans TC', 'Source Sans Pro', Helvetica,
 		Roboto, SFProDisplay-Regular, 'PingFang TC', 'Hiragino Sans CNS', 'Heiti TC', 'STHeiti TC',
 		'WenQuanYi Micro Hei', -apple-system, BlinkMacSystemFont, system-ui, sans-serif, 'Apple Color Emoji',
 		'Segoe UI Emoji', 'Segoe UI Symbol';
