@@ -1,13 +1,23 @@
-'use strict';
-/* <nowiki> */
 /**
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <zh.wikipedia.org/wiki/MediaWiki:Common.js>
- * @source <meta.wikimedia.org/wiki/MediaWiki:Gadget-SousPages.js>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/UserJS>
+ * @dependency ext.gadget.i18n, mediawiki.storage, mediawiki.util
  */
-/* 这里的任何JavaScript将只为注册用户加载 */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
+'use strict';
 (function ($, mw) {
     if (window.UserJS) {
         return;
