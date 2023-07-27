@@ -1,3 +1,22 @@
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0|import=no}}'
+ *
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/libPolyfill>
+ * @dependency ext.gadget.i18n, mediawiki.storage, mediawiki.util
+ */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
 "use strict";
 (function () {
     var REGEX = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
@@ -35,3 +54,4 @@
         crypto.randomUUID = function () { return v4(); };
     }
 })();
+/* </nowiki> */
