@@ -30,9 +30,6 @@ $(function codeLinks() {
   // by John Gruber, from https://daringfireball.net/2010/07/improved_regex_for_matching_urls
   var URLRegExp = /\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))/i;
   var processComment = function processComment(node) {
-    var wikilinkMatch = null;
-    var templateMatch = null;
-    var URLMatch = null;
     var textNode = node.firstChild; // always a text node.
     if (!textNode) {
       return;
@@ -41,7 +38,10 @@ $(function codeLinks() {
     if (!textContent) {
       return;
     }
-    while ((wikilinkMatch = /\[\[([^|{}[\]\n]+)?(?:\|.*?)?]]/.exec(textContent)) || (templateMatch = /(\{\{(?:#invoke:)?)([^|{}[\]\n#]+)(?=\||}})/i.exec(textContent)) || (URLMatch = URLRegExp.exec(textContent))) {
+    var wikilinkMatch = /\[\[([^|{}[\]\n]+)?(?:\|.*?)?]]/.exec(textContent);
+    var templateMatch = /(\{\{(?:#invoke:)?)([^|{}[\]\n#]+)(?=\||}})/i.exec(textContent);
+    var URLMatch = URLRegExp.exec(textContent);
+    while (wikilinkMatch || templateMatch || URLMatch) {
       var _index, _ref;
       var link = document.createElement('a');
       var start = (_index = (_ref = wikilinkMatch || templateMatch || URLMatch) === null || _ref === void 0 ? void 0 : _ref.index) !== null && _index !== void 0 ? _index : 0;
@@ -83,7 +83,7 @@ $(function codeLinks() {
       var codeBlock = _step.value;
       for (var _i3 = 0, _arr3 = ['c', 'c1', 'cm']; _i3 < _arr3.length; _i3++) {
         var commentClass = _arr3[_i3];
-        var _iterator3 = _createForOfIteratorHelper(codeBlock.querySelectorAll(commentClass)),
+        var _iterator3 = _createForOfIteratorHelper(codeBlock.querySelectorAll(".".concat(commentClass))),
           _step3;
         try {
           for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
@@ -166,7 +166,7 @@ $(function codeLinks() {
       return;
     }
     var stringValue = (_string$firstChild = string.firstChild) === null || _string$firstChild === void 0 ? void 0 : _string$firstChild.nodeValue;
-    if (!stringValue || !/^["'](?:module|mod):/i.test(stringValue)) {
+    if (!stringValue || !/^["'](?:module|模[组組块]):/i.test(stringValue)) {
       return;
     }
     var prev = string.previousElementSibling;
@@ -225,8 +225,8 @@ $(function codeLinks() {
       link.appendChild(firstChild);
       element.appendChild(link); // put link inside syntax-highlighted string
     };
-    // Link module names to module pages, or to the section in the Scribunto
-    // manual.
+    // Link module names to module pages,
+    // or to the section in the Scribunto manual.
     for (var _i2 = 0, _arr2 = [].concat(moduleNames, dataModuleNames); _i2 < _arr2.length; _i2++) {
       var _module$firstChild;
       var module = _arr2[_i2];
@@ -234,9 +234,8 @@ $(function codeLinks() {
       if (!_stringValue) {
         return;
       }
-      // eslint-disable-next-line unicorn/prefer-string-slice
       var moduleName = _stringValue.substring(1, _stringValue.length - 1);
-      var linkPage = /^mod(?:ule)?:/i.test(moduleName) ? moduleName : "Help:Lua".concat(moduleName);
+      var linkPage = /^(module|模[组組块])?:/i.test(moduleName) ? moduleName : "Help:Lua#".concat(moduleName);
       addLink(module, linkPage);
     }
   }
