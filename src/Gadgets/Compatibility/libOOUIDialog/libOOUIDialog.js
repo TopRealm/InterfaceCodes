@@ -1,3 +1,22 @@
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ *
+ * @source <https://github.com/TopRealm/InterfaceCodes/tree/master/src/Gadgets/Compatibility/libOOUIDialogs>
+ * @dependency ext.gadget.i18n, mediawiki.storage, mediawiki.util
+ */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -150,3 +169,4 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     var sanity = $("<span>");
     window.oouiDialog.sanitize = function (text) { return sanity.text(text).html(); };
 })();
+/* </nowiki> */
