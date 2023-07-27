@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0|import=no}}'
  *
- * @source <https://github.com/TopRealm/InterfaceCodes/blob/ZoruaFox-patch-1/src/Gadgets/Compatibility/libPolyfill>
+ * @source <https://github.com/TopRealm/InterfaceCodes/blob/master/src/Gadgets/Compatibility/libPolyfill>
  */
 /**
  * +--------------------------------------------------------+
