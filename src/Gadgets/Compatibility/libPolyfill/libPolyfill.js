@@ -1,3 +1,21 @@
+/**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0|import=no}}'
+ *
+ * @source <https://github.com/TopRealm/InterfaceCodes/blob/ZoruaFox-patch-1/src/Gadgets/Compatibility/libPolyfill>
+ */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |        Changes to this page affect many users.         |
+ * |  Please discuss changes at Talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
 "use strict";
 (function () {
     var script = document.createElement("script");
@@ -18,3 +36,4 @@
         value: polyfillPromise,
     });
 })();
+/* </nowiki> */
