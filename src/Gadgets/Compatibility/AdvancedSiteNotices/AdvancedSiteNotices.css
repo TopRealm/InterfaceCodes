@@ -2,8 +2,22 @@
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <zh.wikipedia.org/wiki/MediaWiki:Gadget-AdvancedSiteNotices.css>
+ * @base <https://zh.wikipedia.org/wiki/MediaWiki:Gadget-AdvancedSiteNotices.js>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/AdvancedSiteNotices>
+ * @dependency ext.gadget.i18n, mediawiki.api, mediawiki.storage, mediawiki.util
  */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
 #asn-area {
 	display: flex;
 	height: 4em;
@@ -48,3 +62,5 @@
 	color: #36c;
 	text-decoration: none;
 }
+
+/* </nowiki> */
