@@ -1,1 +1,1 @@
-ResourceLoader|default|dependencies=ext.gadget.SiteCommonJS,jquery.cookie,mediawiki.api,mediawiki.util|targets=desktop,mobile
+ResourceLoader|default|dependencies=ext.gadget.i18n,mediawiki.api,mediawiki.storage,mediawiki.util
