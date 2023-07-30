@@ -1,0 +1,10 @@
+addReviewers: true
+
+addAssignees: false
+
+numberOfReviewers: 0
+
+reviewers:
+  - ZoruaFox
+  - Blossomstripe
+  - qimi142857
