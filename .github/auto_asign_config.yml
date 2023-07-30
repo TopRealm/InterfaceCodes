@@ -1,0 +1,13 @@
+addReviewers: true
+
+addAssignees: author
+
+reviewers:
+  - ZoruaFox
+  - Blossomstripe
+  - qimi142857
+
+assignees:
+  - ZoruaFox
+  - Blossomstripe
+  - qimi142857
