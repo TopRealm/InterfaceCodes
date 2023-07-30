@@ -18,14 +18,12 @@
  * +--------------------------------------------------------+
  */
 /* <nowiki> */
-'use strict';
-
 $(function pagePatroller() {
-  if (mw.config.get('wgNamespaceNumber') < 0) {
+  if (mw.config.get('wgNamespaceNumber') < 0 || mw.config.get('wgPageName') === '有兽档案馆:首页' || $('.noarticletext').length > 0) {
     return;
   }
   var weekdays = ['日', '一', '二', '三', '四', '五', '六'];
-  var loading = window.wgULS('正在加载本页面的巡查者……', '正在加載本頁面的巡查者……');
+  var loading = window.wgULS('正在加载此页面的巡查者……', '正在加載此頁面的巡查者……');
   var $patroller;
   if (mw.config.get('skin') === 'citizen') {
     $patroller = $('<section>').attr('id', 'footer-info-patroller').addClass('page-info__item').text(loading);
@@ -36,9 +34,9 @@ $(function pagePatroller() {
   }
   $('#footer-info, .page-info').prepend($patroller);
   // 针对有巡查权限的用户优化。
-  // 如果页面上能看到巡查按钮，那一定没被巡查过。
+  // 若页面上能看到巡查按钮，那一定没被巡查过。
   if ($('.patrollink').length) {
-    $patroller.text(window.wgULS('本页面尚未被巡查。', '本頁面尚未被巡查。'));
+    $patroller.text(window.wgULS('此页面尚未被巡查。', '此頁面尚未被巡查。'));
     return;
   }
   $.ajax({
@@ -81,18 +79,18 @@ $(function pagePatroller() {
       if (cts && new Date(cts) > date) {
         html = '';
       } else {
-        ts = "".concat(date.getUTCFullYear(), "\u5E74").concat(date.getUTCMonth() + 1, "\u6708").concat(date.getUTCDate(), "\u65E5 (").concat(weekdays[date.getUTCDay()], ") ").concat("0".concat(date.getUTCHours()).slice(-2), ":").concat("0".concat(date.getUTCMinutes()).slice(-2), " (UTC)");
+        ts = "".concat(date.getUTCFullYear(), "\u5E74").concat(date.getUTCMonth() + 1, "\u6708").concat(date.getUTCDate(), "\u65E5 (\u661F\u671F").concat(weekdays[date.getUTCDay()], ") ").concat("0".concat(date.getUTCHours()).slice(-2), ":").concat("0".concat(date.getUTCMinutes()).slice(-2), " (UTC)");
         var p = mw.config.get('wgArticlePath');
-        user = "<a href=\"".concat(p.replace('$1', "User:".concat(user)), "\">").concat(user, "</a>\uFF08<a href=\"").concat(p.replace('$1', "User talk:".concat(user)), "\">").concat(window.wgULS('讨论', '討論'), "</a> | <a href=\"").concat(p.replace('$1', "Special:Contributions/".concat(user)), "\">").concat(window.wgULS('贡献', '貢獻'), "</a><span class=\"sysop-show\"> | <a href=\"").concat(p.replace('$1', "Special:BlockUser/".concat(user)), "\">\u5C01\u7981</a></span>\uFF09");
+        user = "<a href=\"".concat(p.replace('$1', "User:".concat(user)), "\">").concat(user, "</a>");
         if (action === 'patrol') {
-          html = "".concat(window.wgULS('本页面于', '本頁面於') + ts, "\u7531").concat(user, "\u5DE1\u67E5\u3002");
+          html = "".concat(window.wgULS('此页面于', '此頁面於') + ts, "\u7531").concat(user, "\u5DE1\u67E5\u3002");
         }
       }
     }
     if (html !== '') {
       $patroller.html(html);
     } else {
-      $patroller.text(window.wgULS('本页面尚未被巡查，或已自动标为已巡查。', '本頁面尚未被巡查，或已自動標爲已巡查。'));
+      $patroller.text(window.wgULS('此页面尚未被巡查，或已自动标为已巡查。', '此頁面尚未被巡查，或已自動標爲已巡查。'));
     }
   }).fail(function (_jqXHR, _textStatus, errorThrown) {
     console.error("[PagePatroller]: ".concat(errorThrown));
