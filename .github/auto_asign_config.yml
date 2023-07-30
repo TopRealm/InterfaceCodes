@@ -1,13 +1,8 @@
 addReviewers: true
 
-addAssignees: author
+addAssignees: false
 
 reviewers:
-  - ZoruaFox
-  - Blossomstripe
-  - qimi142857
-
-assignees:
   - ZoruaFox
   - Blossomstripe
   - qimi142857
