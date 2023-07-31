@@ -24,7 +24,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     var get = function get(obj, attr, defret) {
       return obj.hasAttribute(attr) ? obj.getAttribute(attr) : defret;
     };
-    var RRDPage = 'LIB:版本删除提报';
+    var RRDPage = 'LIB talk:版本删除提报';
     var config = {
       checkboxes: {},
       others: {}
