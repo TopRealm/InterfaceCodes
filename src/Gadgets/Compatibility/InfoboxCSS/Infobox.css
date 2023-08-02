@@ -1,30 +1,41 @@
-/* <nowiki> */
 /**
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <zh.wikipedia.org/wiki/MediaWiki:Common.css>
+ * @base <https://zh.wikipedia.org/wiki/MediaWiki:Common.css>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/InfoboxCSS>
  */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
 /**
  * Infobox template style
  * Including Vertical Navbox
  */
+
 .infobox,
 .vertical-navbox {
 	position: relative;
-	display: flex;
+	display: table;
 	width: 100% !important;
 	max-width: 100% !important;
-	flex: 1 1 100%;
-	flex-flow: column nowrap;
+	box-sizing: border-box;
 	padding: 0.2em;
 	border: 1px solid #a2a9b1;
-	margin: auto 0 2em;
+	margin: 1em 0;
 	background-color: #f8f9fa;
 	color: #000;
 	float: none !important;
 	font-size: 90%;
-	box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -54,19 +65,11 @@
 	text-align: center !important;
 }
 
-.infobox tbody > tr > td,
-.infobox tbody > tr > th,
-.vertical-navbox tbody > tr > td,
-.vertical-navbox tbody > tr > th {
-	flex: 1 0;
-}
-
 .infobox tbody > tr > td img,
 .infobox tbody > tr > th img,
 .vertical-navbox tbody > tr > td img,
 .vertical-navbox tbody > tr > th img {
 	max-width: 100% !important;
-	object-fit: contain;
 }
 
 .infobox td:only-child,
@@ -84,19 +87,9 @@
 	border: 0;
 }
 
-.infobox > tbody,
-.infobox > caption,
-.vertical-navbox > tbody,
-.vertical-navbox > caption {
-	display: flex;
-	flex-flow: column nowrap;
-}
-
 .infobox > tbody > tr,
 .vertical-navbox > tbody > tr {
-	display: flex;
 	min-width: 100%;
-	flex-flow: row wrap;
 }
 
 .mw-content-ltr .infobox,
@@ -172,11 +165,41 @@
 .infobox.geography .mergedrow td,
 .infobox.geography .mergedrow th {
 	padding: 0 0.6em 0.2em;
+	border: 0;
 }
 
 .infobox.geography .mergedbottomrow td,
 .infobox.geography .mergedbottomrow th {
 	padding: 0 0.6em 0.4em;
+}
+
+.infobox.geography .maptable td,
+.infobox.geography .maptable th {
+	padding: 0;
+	border: 0;
+}
+
+.infobox-data-without-label {
+	text-align: center;
+}
+
+.infobox-subbox {
+	width: auto;
+	min-width: 100%;
+	padding: 0;
+	border: none;
+	margin: -3px;
+	background: transparent;
+	clear: none;
+	float: none;
+}
+
+.infobox:not(.infobox-subbox) {
+	line-height: 1.5em;
+}
+
+.infobox-header-row {
+	text-align: center;
 }
 
 /* </nowiki> */
