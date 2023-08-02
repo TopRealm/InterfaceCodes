@@ -1,10 +1,22 @@
-/* <nowiki> */
 /**
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <zh.wikipedia.org/wiki/MediaWiki:Common.css>
+ * @base <https://zh.wikipedia.org/wiki/MediaWiki:Common.css>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/MboxCSS>
  */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+/* <nowiki> */
 /* Styles for all mboxes */
 
 .mbox {
@@ -51,14 +63,14 @@
 	width: 95%; /* Make all mboxes the same width regardless of text length */
 	flex: 1 1 95%;
 	padding: 0.25em 0.9em; /* 0.9em left/right */
-	line-height: 1.7em;
+
 	/* The message body cell(s) */
 	border: 0;
 }
 
 .mbox-image,
 .mbox-imageright {
-	flex: 10 0 50px;
+	flex: 1 0 40px;
 	border: 0;
 	text-align: center;
 }
@@ -75,7 +87,7 @@
 
 .mbox-image img,
 .mbox-imageright img {
-	max-width: 65px;
+	max-width: 45px;
 	object-fit: contain;
 	text-align: center;
 }
@@ -83,6 +95,7 @@
 .mbox-empty-cell {
 	width: 1px;
 	padding: 0;
+
 	/* An empty narrow cell */
 	border: 0;
 }
@@ -199,6 +212,7 @@
 }
 
 /* Code for compact mbox */
+
 /* Remove borders, backgrounds, padding, etc. */
 .compact-mbox .mbox {
 	display: block;
@@ -231,6 +245,7 @@ body.mediawiki .compact-mbox .mbox-small-left {
 }
 
 /* Style for compact mbox */
+
 /* Hide the images */
 .compact-mbox .mbox-text .mbox-image,
 .compact-mbox .mbox-text .mbox-imageright,
@@ -244,13 +259,15 @@ body.mediawiki .compact-mbox .mbox-small-left {
 }
 
 .mbox-inside .tmbox.mbox-small {
-	font-size: 100%; /* set in "mbox-small" above.				*/
+	font-size: 100%; /* set in "mbox-small" above.                */
+
 	/* "small" tmboxes should not be small when */
-	line-height: 1.5em; /* also "nested", so reset styles that are  */
+	line-height: 1.5em; /* also "nested", so reset styles that are */
 }
 
 .mediawiki .mbox-inside .tmbox {
 	width: 100%; /* For Safari and Opera */
+
 	/* For tmboxes inside other templates. The "mediawiki" */
 	margin: 2px 0; /* class ensures that this declaration overrides other */
 }
@@ -269,10 +286,6 @@ body.mediawiki .compact-mbox .mbox-small-left {
 	margin: 0.2em 0;
 	background: #f8f9fa; /* Default "system" gray */
 	clear: both;
-}
-
-.fmbox-system {
-	background: #f8f9fa;
 }
 
 .fmbox-warning {
@@ -310,6 +323,7 @@ body.mediawiki .compact-mbox .mbox-small-left {
 body.mediawiki .mbox-small {
 	max-width: 320px;
 	margin: 4px 0 4px 1em !important;
+
 	/* For the "small=yes" option. */
 	clear: both;
 	float: right;
@@ -319,6 +333,7 @@ body.mediawiki .mbox-small {
 
 body.mediawiki .mbox-small-left {
 	width: 240px;
+
 	/* For the "small=left" option. */
 	margin: 4px 1em 4px 0 !important;
 	border-collapse: collapse;
