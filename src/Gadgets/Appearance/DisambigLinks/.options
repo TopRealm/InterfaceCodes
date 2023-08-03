@@ -1,1 +1,1 @@
-type=styles|default|dependencies=mediawiki.api,mediawiki.Title|rights=edit|targets=desktop,mobile
+type=styles|dependencies=mediawiki.api,mediawiki.Title|rights=edit|targets=desktop,mobile
