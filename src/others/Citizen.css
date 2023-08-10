@@ -149,4 +149,12 @@ header.mw-body-header{
 	margin-top: calc(2 * var(--space-md));
 }
 
+/* 目录 (TOC) */
+@media screen and (max-width: 720px) {
+	.toc,
+	#toc {
+		clear: both;
+	}
+}
+
 /* </nowiki> */
