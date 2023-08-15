@@ -157,4 +157,10 @@ header.mw-body-header{
 	}
 }
 
+/* 隐藏页边 */
+.page-LIB_首页.action-view .citizen-body {
+	grid-area: unset;
+}
+
+
 /* </nowiki> */
