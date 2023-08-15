@@ -24,16 +24,14 @@
 }
 
 #floatTOC .toc {
-	overflow: auto;
 	max-height: 80vh;
+	padding-top: 0;
 	margin: 0 auto;
-
 	/* 赤魇重写部分 */
 	margin-top: 0;
 	background: rgba(240, 255, 240, 0.6);
 	border-radius: 10px;
 	font-size: 16px;
-	font-family: Kaiti;
 	font-weight: Bold;
 }
 
@@ -42,26 +40,34 @@
 	max-height: 90vh;
 	padding-top: 1em;
 	font-size: 1em;
-	word-break: keep-all;
+	word-break: normal;
 }
 
 #floatTOC ul {
 	padding-right: 1rem;
 }
 
+#floatTOC .toc > ul {
+	overflow: auto;
+	max-height: 70vh;
+	border-bottom: 1px solid #cdcdcd;
+}
+
 #floatTOC #close {
-	display: block;
-	margin-bottom: -2rem;
+	position: relative;
+	top: 1em;
+	width: 1rem;
+	height: 1rem;
 	cursor: pointer;
-	text-align: right;
+	float: right;
 }
 
 #floatTOC #close:hover {
-	text-decoration: underline;
+	filter: drop-shadow(0 0 1px #000);
 }
 
 .skin-vector-legacy #floatTOC #close {
-	margin-bottom: -1.35em;
+	top: 0;
 }
 
 #floatToc-opener {
@@ -83,12 +89,6 @@
 	box-shadow: 0 0 2px 2px rgb(0 0 0 / 10%);
 	cursor: pointer;
 	font-size: 0.5rem;
-
-	/* 赤魇重写部分 */
-	border-radius: 10px;
-	background: #EBFFEF;
-	text-align: center;
-	z-index: 999;
 }
 
 @media screen and (max-width: 720px), screen and (max-height: 800px) {
@@ -98,35 +98,57 @@
 	}
 }
 
-.skin-citizen #floatToc-opener span:last-child {
-	color: #000;
+#floatToc-opener:active {
+	box-shadow: inset 0 0 2px 2px rgb(0 0 0 / 10%);
+}
+
+#floatToc-opener:hover {
+	box-shadow: 0 0 4px 4px rgb(0 0 0 / 10%);
+}
+
+#floatToc-opener span {
 	opacity: 0.6;
 }
 
-.skin-vector-legacy #floatToc-opener {
-	top: 2rem;
-	background: #f8f9fa;
-	font-size: 0.95em;
+#floatToc-opener span:first-child {
+	position: relative;
+	width: 2.5em;
+	height: 2.5em;
+}
+
+#floatToc-opener span:last-child {
+	color: #000;
 }
 
 .ve-activated #floatToc-opener {
 	display: none;
 }
 
-/* 赤魇重写部分 */
-#mw-toc-heading {
-	font-size: 10px;
-	font-family: Kaiti;
-	font-weight: Bold;
-	height: 30px;
+.skin-citizen #toc {
+	clear: both;
 }
 
-#toc {
-	background: rgba(240, 255, 240, 0.8);
-	border-radius: 10px;
-	font-size: 16px;
-	font-family: Kaiti;
-	font-weight: Bold;
+.skin-citizen #toc .toctitle {
+	display: flex;
+	align-items: baseline;
+	cursor: pointer;
+}
+
+.skin-citizen #toc .toctitle h2 {
+	flex: 1;
+}
+
+.skin-citizen #toc .toctitle .oo-ui-indicatorElement-indicator {
+	position: relative;
+	margin-left: -1.125rem;
+}
+
+.skin-citizen #toc .toctitle .oo-ui-indicatorElement-indicator.collapse {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 
 /* </nowiki> */
