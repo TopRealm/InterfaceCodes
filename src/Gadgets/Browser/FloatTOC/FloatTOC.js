@@ -4,7 +4,7 @@
  *
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/FloatTOC>
  * @author 安忆 <i@anyi.in>
- * @dependency ext.gadget.i18n, mediawiki.notification, mediawiki.storage, mediawiki.util
+ * @dependency ext.gadget.i18n, mediawiki.notification, mediawiki.storage, mediawiki.util, oojs-ui.styles.icons-editing-citation, oojs-ui.styles.icons-interactions, oojs-ui.styles.icons-movement
  */
 /**
  * +--------------------------------------------------------+
@@ -13,23 +13,21 @@
  * |      All changes should be made in the repository,     |
  * |              otherwise they will be lost.              |
  * +--------------------------------------------------------+
- * |        Changes to this page affect many users.         |
- * |  Please discuss changes at Talk page before editing.   |
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
  * +--------------------------------------------------------+
  */
 /* <nowiki> */
-'use strict';
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 $(function floatTOC() {
   var _toc$querySelector, _toc$querySelector2;
-  var $body = $('body');
-  if (mw.config.get('wgAction') !== 'view' || !('IntersectionObserver' in window) || !($body.hasClass('skin-citizen') || $body.hasClass('skin-vector-legacy'))) {
+  var skin = mw.config.get('skin');
+  if (mw.config.get('wgAction') !== 'view' || !(['citizen', 'vector'].indexOf(skin) !== -1) || !('IntersectionObserver' in window)) {
     return;
   }
   var originToc = document.querySelector('#toc');
@@ -40,20 +38,24 @@ $(function floatTOC() {
     var _i18n = i18n,
       localize = _i18n.localize;
     return {
+      Close: localize({
+        ja: '閉じる',
+        'zh-hans': '关闭',
+        'zh-hant': '關閉'
+      }),
       Contents: localize({
         ja: '目次',
-        'zh-hans': '目录',
-        'zh-hant': '目錄'
+        zh: '目录'
       }),
-      ' (Click to collapse)': localize({
-        ja: '（クリックして折り畳み）',
-        'zh-hans': '（点击以折叠）',
-        'zh-hant': '（點擊以摺叠）'
+      Collapse: localize({
+        ja: '折り畳み',
+        'zh-hans': '折叠',
+        'zh-hant': '摺叠'
       }),
-      ' (Click to expand)': localize({
-        ja: '（クリックして展開）',
-        'zh-hans': '（点击以展开）',
-        'zh-hant': '（點擊以展開）'
+      Expand: localize({
+        ja: '展開',
+        'zh-hans': '展开',
+        'zh-hant': '展開'
       })
     };
   };
@@ -61,31 +63,42 @@ $(function floatTOC() {
   var message = function message(key) {
     return messages[key] || key;
   };
-  var id = 'floatTOC';
-  var config = mw.storage.getObject(id);
+  var ID = 'floatTOC';
+  var config = mw.storage.getObject(ID);
   if (!config) {
     config = {
-      // 将目录默认打开变更为默认关闭
-      // floatTOC: 'open',
-      // originTOC: 'open',
-      floatTOC: 'close',
-      originTOC: 'close'
+      floatTOC: window.outerHeight < window.outerWidth ? 'open' : 'close',
+      originTOC: 'open'
     };
   }
-  var style = mw.util.addCSS('.mw-notification-area{width:auto;max-width:20em}');
+  var style = mw.util.addCSS('.mw-notification-area{right:unset;width:auto;max-width:20em}.mw-notification{-webkit-transform:translateX(-999px);-moz-transform:translateX(-999px);transform:translateX(-999px)}.mw-notification-visible{-webkit-transform:translateX(0);-moz-transform:translateX(0);transform:translateX(0)}');
   style.disabled = true;
   var toc = originToc.cloneNode(true);
   (_toc$querySelector = toc.querySelector('input')) === null || _toc$querySelector === void 0 ? void 0 : _toc$querySelector.remove();
   (_toc$querySelector2 = toc.querySelector('.toctogglespan')) === null || _toc$querySelector2 === void 0 ? void 0 : _toc$querySelector2.remove();
   var $toc = $(toc);
-  var $floatToc = $toc.clone().removeAttr('id').prepend($('<span>').attr('id', 'close').text("×"));
+  var $floatToc = $toc.clone().removeAttr('id').prepend($('<span>').addClass('oo-ui-indicatorElement-indicator oo-ui-icon-close').attr({
+    id: 'close',
+    title: message('Close'),
+    role: 'button',
+    tabindex: '0'
+  }));
   var $floatTocOpener = $('<div>').attr({
+    'class': 'noprint',
     id: 'floatToc-opener',
-    title: message('Contents')
-  }).append($('<span>').addClass('citizen-ui-icon mw-ui-icon-wikimedia-reference'), $('<span>').text(message('Contents'))).hide().appendTo($body);
+    title: message('Contents'),
+    role: 'button',
+    tabindex: '0'
+  }).append($('<span>').addClass('oo-ui-indicatorElement-indicator oo-ui-icon-reference'), $('<span>').text(message('Contents'))).hide().appendTo(document.body);
   var isShow;
   var preNotification;
   var disableStyleTimer;
+  var checkPressedKey = function checkPressedKey(event) {
+    if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') {
+      return true;
+    }
+    return false;
+  };
   var disableStyle = function disableStyle() {
     if (disableStyleTimer) {
       clearTimeout(disableStyleTimer);
@@ -96,7 +109,72 @@ $(function floatTOC() {
       }
     }, 5000);
   };
-  var showToc = function showToc() {
+  var storeState = function storeState(target, state) {
+    config[target] = state;
+    mw.storage.setObject(ID, config);
+  };
+  var collapseOriginToc = function collapseOriginToc() {
+    if (skin !== 'citizen') {
+      return;
+    }
+    var isCollapse = config.originTOC === 'close';
+    var $originTocTitle = $('#toc .toctitle');
+    var $originTocItem = $('#toc ul');
+    var $tocToggle = $('<span>').addClass('oo-ui-indicatorElement-indicator oo-ui-icon-downTriangle');
+    var getToggleElement = function getToggleElement() {
+      var $element = $tocToggle.clone();
+      $element = isCollapse ? $element.attr('title', message('Expand')) : $element.attr('title', message('Collapse')).addClass('collapse');
+      return $element;
+    };
+    var collapseToggle = function collapseToggle() {
+      var $element = $originTocTitle.find('.oo-ui-indicatorElement-indicator');
+      $element.toggleClass('collapse');
+      if (isCollapse) {
+        $element.attr('title', message('Expand'));
+      } else {
+        $element.attr('title', message('Collapse'));
+      }
+    };
+    $originTocTitle.append(getToggleElement());
+    $originTocTitle.on('click', function () {
+      isCollapse = !isCollapse;
+      isCollapse ? storeState('originTOC', 'close') : storeState('originTOC', 'open');
+      collapseToggle();
+      $originTocItem.fadeToggle();
+    });
+    if (isCollapse) {
+      $originTocItem.fadeOut();
+    }
+  };
+  var smoothScroll = function smoothScroll(event) {
+    if (skin === 'citizen') {
+      return;
+    }
+    var target = event.target;
+    var $target = $(target).parent();
+    var href = $target.attr('href');
+    if (!href) {
+      return;
+    }
+    var anchorOffset = $(href).offset();
+    if (!anchorOffset) {
+      return;
+    }
+    event.preventDefault();
+    $('html, body').animate({
+      scrollTop: "".concat(anchorOffset.top, "px")
+    }, {
+      duration: 660,
+      easing: 'swing'
+    });
+  };
+  var closeNotification = function closeNotification(notification) {
+    notification.close();
+    $floatTocOpener.fadeIn();
+    storeState('floatTOC', 'close');
+    disableStyle();
+  };
+  var tocToggle = function tocToggle() {
     var _preNotification2;
     var _isShow = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
     var _preNotification = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
@@ -111,8 +189,7 @@ $(function floatTOC() {
         break;
       case 'open':
         $floatTocOpener.fadeOut();
-        config.floatTOC = 'open';
-        mw.storage.setObject(id, config);
+        storeState('floatTOC', 'open');
         break;
       default:
         $floatTocOpener.fadeOut();
@@ -120,21 +197,29 @@ $(function floatTOC() {
         return;
     }
     style.disabled = false;
-    _preNotification = mw.notification.notify($floatToc, {
-      id: id,
-      autoHide: false
-    });
-    _preNotification.$notification.on('click', function (event) {
-      event.stopPropagation();
-      var target = event.target;
-      if (target.id === 'close') {
-        _preNotification.close();
-        $floatTocOpener.fadeIn();
-        config.floatTOC = 'close';
-        mw.storage.setObject(id, config);
-        disableStyle();
-      }
-    });
+    if (_preNotification) {
+      _preNotification.start();
+    } else {
+      _preNotification = mw.notification.notify($floatToc, {
+        classes: 'noprint',
+        id: ID,
+        autoHide: false
+      });
+      var notificationHandler = function notificationHandler(event) {
+        if (checkPressedKey(event)) {
+          return;
+        }
+        event.stopPropagation();
+        var target = event.target;
+        if (target.id === 'close') {
+          closeNotification(_preNotification);
+        } else {
+          smoothScroll(event);
+        }
+      };
+      _preNotification.$notification.on('click', notificationHandler);
+      _preNotification.$notification.on('keydown', notificationHandler);
+    }
     return _preNotification;
   };
   // eslint-disable-next-line compat/compat
@@ -145,34 +230,17 @@ $(function floatTOC() {
       return;
     }
     var intersectionRatio = entry.intersectionRatio;
-    preNotification = showToc(intersectionRatio === 0, preNotification);
+    preNotification = tocToggle(intersectionRatio === 0, preNotification);
   });
   observer.observe(originToc);
-  $floatTocOpener.on('click', function () {
-    preNotification = showToc('open');
-  });
-  if (!$body.hasClass('skin-citizen')) {
-    return;
-  }
-  var isCollapse = config.originTOC === 'close';
-  var $originTocHeading = $('#toc #mw-toc-heading');
-  var $originTocItem = $('#toc ul');
-  var originTocHeadingText = $originTocHeading.text();
-  if (isCollapse) {
-    $originTocItem.fadeOut();
-  }
-  $originTocHeading.css('cursor', 'pointer').text("".concat(originTocHeadingText).concat(isCollapse ? message(' (Click to expand)') : message(' (Click to collapse)'))).on('click', function () {
-    isCollapse = !isCollapse;
-    if (isCollapse) {
-      $originTocHeading.text("".concat(originTocHeadingText).concat(message(' (Click to expand)')));
-      config.originTOC = 'close';
-      mw.storage.setObject(id, config);
-    } else {
-      $originTocHeading.text("".concat(originTocHeadingText).concat(message(' (Click to collapse)')));
-      config.originTOC = 'open';
-      mw.storage.setObject(id, config);
+  collapseOriginToc();
+  var openerHandler = function openerHandler(event) {
+    if (checkPressedKey(event)) {
+      return;
     }
-    $originTocItem.fadeToggle();
-  });
+    preNotification = tocToggle('open');
+  };
+  $floatTocOpener.on('click', openerHandler);
+  $floatTocOpener.on('keydown', openerHandler);
 });
 /* </nowiki> */
