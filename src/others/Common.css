@@ -660,14 +660,6 @@ div.hatnote + div.hatnote {
 	border-collapse: inherit;
 }
 
-@media (max-width: 768px) {
-	.fileinfotpl-type-information,
-	.fileinfotpl-type-artwork {
-		width: 100%;
-		max-width: 100%;
-	}
-}
-
 .fileinfotpl-type-information td,
 .fileinfotpl-type-artwork td {
 	padding: 0.5em;
@@ -685,27 +677,37 @@ div.hatnote + div.hatnote {
 
 .fileinfotpl-type-information tbody > tr:first-child > td:first-child,
 .fileinfotpl-type-artwork tbody > tr:first-child > td:first-child {
+	-webkit-border-radius: 5px 0 0;
+	-moz-border-radius: 5px 0 0;
+	-ms-border-radius: 5px 0 0;
+	-o-border-radius: 5px 0 0;
 	border-radius: 5px 0 0;
 }
 
 .fileinfotpl-type-information tbody > tr:first-child > td:last-child,
 .fileinfotpl-type-artwork tbody > tr:first-child > td:last-child {
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+	-ms-border-radius: 0 5px 0 0;
+	-o-border-radius: 0 5px 0 0;
 	border-radius: 0 5px 0 0;
 }
 
 .fileinfotpl-type-information tbody > tr:last-child > td:first-child,
 .fileinfotpl-type-artwork tbody > tr:last-child > td:first-child {
+	-webkit-border-radius: 0 0 0 5px;
+	-moz-border-radius: 0 0 0 5px;
+	-ms-border-radius: 0 0 0 5px;
+	-o-border-radius: 0 0 0 5px;
 	border-radius: 0 0 0 5px;
 }
 
-.fileinfotpl-type-information
-	tbody
-	> tr:last-child
-	> td:last-child
-	.fileinfotpl-type-artwork
-	tbody
-	> tr:last-child
-	> td:last-child {
+.fileinfotpl-type-information tbody > tr:last-child > td:last-child,
+.fileinfotpl-type-artwork tbody > tr:last-child > td:last-child {
+	-webkit-border-radius: 0 0 5px;
+	-moz-border-radius: 0 0 5px;
+	-ms-border-radius: 0 0 5px;
+	-o-border-radius: 0 0 5px;
 	border-radius: 0 0 5px;
 }
 
@@ -714,9 +716,76 @@ div.hatnote + div.hatnote {
 	display: none;
 }
 
+@media (max-width: 768px) {
+	.fileinfotpl-type-information,
+	.fileinfotpl-type-artwork {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.fileinfotpl-type-information tbody,
+	.fileinfotpl-type-artwork tbody {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.fileinfotpl-type-information tr,
+	.fileinfotpl-type-artwork tr {
+		display: flex;
+		flex: 1 1 100%;
+		flex-wrap: wrap;
+	}
+
+	.fileinfotpl-type-information td,
+	.fileinfotpl-type-artwork td {
+		flex: 1 1 100%;
+	}
+
+	.fileinfotpl-type-information td.fileinfo-paramfield,
+	.fileinfotpl-type-artwork td.fileinfo-paramfield {
+		text-align: center;
+	}
+
+	.fileinfotpl-type-information tbody > tr:first-child > td:first-child,
+	.fileinfotpl-type-artwork tbody > tr:first-child > td:first-child {
+		-webkit-border-radius: 5px 5px 0 0;
+		-moz-border-radius: 5px 5px 0 0;
+		-ms-border-radius: 5px 5px 0 0;
+		-o-border-radius: 5px 5px 0 0;
+		border-radius: 5px 5px 0 0;
+	}
+
+	.fileinfotpl-type-information tbody > tr:last-child > td:first-child,
+	.fileinfotpl-type-artwork tbody > tr:last-child > td:first-child {
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		-ms-border-radius: 0;
+		-o-border-radius: 0;
+		border-radius: 0;
+	}
+
+	.fileinfotpl-type-information tbody > tr:last-child > td:last-child,
+	.fileinfotpl-type-artwork tbody > tr:last-child > td:last-child {
+		-webkit-border-radius: 0 0 5px 5px;
+		-moz-border-radius: 0 0 5px;
+		-ms-border-radius: 0 0 5px;
+		-o-border-radius: 0 0 5px;
+		border-radius: 0 0 5px;
+	}
+}
+
+/* 文件历史 */
 table.filehistory {
 	display: block;
 	overflow: auto;
+}
+
+/* 隐藏#ca-view-foreign */
+#ca-view-foreign a[href*='wikimedia.org'],
+#ca-view-foreign a[href*='wikipedia.org'] {
+	display: none;
 }
 
 /* 多媒体查看器（Multimedia Viewer） */
