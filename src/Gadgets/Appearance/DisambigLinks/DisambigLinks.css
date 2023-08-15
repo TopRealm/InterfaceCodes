@@ -6,28 +6,38 @@
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/DisambigLinks>
  * @author Kaldari, Cyberpower678, Alexander Misel, Artoria2e5, WaitSpring <me@waitspring.com> and other Qiuwen Baike Contributors.
  */
-a.mw-disambig {
-	color: #f17600;
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
+ * +--------------------------------------------------------+
+ */
+a.mw-disambig::after,
+a.mw-redirect::after {
+	font-weight: normal;
+	line-height: 0;
+	text-indent: 0.1em;
+	vertical-align: super;
 }
 
-a.mw-redirect {
-	color: #93c;
+a.mw-disambig::after {
+	content: '⇄';
+	font-size: 0.75em;
 }
 
-a.mw-disambig.mw-disambig:visited {
-	color: #d2711b;
+a.mw-redirect::after {
+	content: '↳';
+	font-size: 0.9em;
 }
 
-a.mw-redirect:visited {
-	color: #800080;
-}
-
-a.mw-disambig.mw-redirect {
-	color: #ff6421;
-}
-
-a.mw-disambig.mw-redirect:visited {
-	color: #d2711b;
+a.mw-disambig.mw-redirect::after {
+	content: '⇄↳';
+	font-size: 0.75em;
 }
 
 /* </nowiki> */
