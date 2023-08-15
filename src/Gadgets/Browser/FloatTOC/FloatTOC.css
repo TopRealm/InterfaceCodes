@@ -124,10 +124,6 @@
 	display: none;
 }
 
-.skin-citizen #toc {
-	clear: both;
-}
-
 .skin-citizen #toc .toctitle {
 	display: flex;
 	align-items: baseline;
