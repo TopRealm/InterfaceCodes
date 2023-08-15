@@ -27,6 +27,12 @@
 	max-height: 80vh;
 	padding-top: 0;
 	margin: 0 auto;
+	/* 赤魇重写部分 */
+	margin-top: 0;
+	background: rgba(240, 255, 240, 0.6);
+	border-radius: 10px;
+	font-size: 16px;
+	font-weight: Bold;
 }
 
 .skin-vector-legacy #floatTOC .toc {
