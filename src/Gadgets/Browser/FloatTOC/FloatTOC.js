@@ -40,11 +40,6 @@ $(function floatTOC() {
     var _i18n = i18n,
       localize = _i18n.localize;
     return {
-      Close: localize({
-        ja: '閉じる',
-        'zh-hans': '关闭',
-        'zh-hant': '關閉'
-      }),
       Contents: localize({
         ja: '目次',
         'zh-hans': '目录',
@@ -83,7 +78,7 @@ $(function floatTOC() {
   (_toc$querySelector = toc.querySelector('input')) === null || _toc$querySelector === void 0 ? void 0 : _toc$querySelector.remove();
   (_toc$querySelector2 = toc.querySelector('.toctogglespan')) === null || _toc$querySelector2 === void 0 ? void 0 : _toc$querySelector2.remove();
   var $toc = $(toc);
-  var $floatToc = $toc.clone().removeAttr('id').prepend($('<span>').attr('id', 'close').text(message('Close')));
+  var $floatToc = $toc.clone().removeAttr('id').prepend($('<span>').attr('id', 'close').text("×"));
   var $floatTocOpener = $('<div>').attr({
     id: 'floatToc-opener',
     title: message('Contents')
