@@ -497,7 +497,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     if (mw.config.get('wgUserName') || !$element.length) {
       return;
     }
-    var eventHandler = function eventHandler(event) {
+	    var checkPressedKey = function checkPressedKey(event) {
       if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') {
         return;
       }
