@@ -3,8 +3,8 @@
  * _addText: '{{Gadget Header|license=GPL-3.0}}'
  *
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/FloatTOC>
- * @author 安忆 <i@anyi.in>, 赤魇 <chiyansama@Github>
- * @dependency ext.gadget.i18n, mediawiki.notification, mediawiki.util
+ * @author 安忆 <i@anyi.in>
+ * @dependency ext.gadget.i18n, mediawiki.notification, mediawiki.storage, mediawiki.util, oojs-ui.styles.icons-editing-citation, oojs-ui.styles.icons-interactions, oojs-ui.styles.icons-movement
  */
 /**
  * +--------------------------------------------------------+
@@ -13,8 +13,8 @@
  * |      All changes should be made in the repository,     |
  * |              otherwise they will be lost.              |
  * +--------------------------------------------------------+
- * |        Changes to this page affect many users.         |
- * |  Please discuss changes at Talk page before editing.   |
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
  * +--------------------------------------------------------+
  */
 /* <nowiki> */
@@ -27,12 +27,6 @@
 	max-height: 80vh;
 	padding-top: 0;
 	margin: 0 auto;
-	/* 赤魇重写部分 */
-	margin-top: 0;
-	background: rgba(240, 255, 240, 0.6);
-	border-radius: 10px;
-	font-size: 16px;
-	font-weight: Bold;
 }
 
 .skin-vector-legacy #floatTOC .toc {
@@ -47,7 +41,7 @@
 	padding-right: 1rem;
 }
 
-#floatTOC .toc > ul {
+#floatTOC .toc>ul {
 	overflow: auto;
 	max-height: 70vh;
 	border-bottom: 1px solid #cdcdcd;
@@ -91,7 +85,8 @@
 	font-size: 0.5rem;
 }
 
-@media screen and (max-width: 720px), screen and (max-height: 800px) {
+@media screen and (max-width: 720px),
+screen and (max-height: 800px) {
 	.citizen-body-header--sticky #floatToc-opener {
 		top: 21%;
 		right: 1rem;
