@@ -1,1 +1,1 @@
-ResourceLoader|dependencies=ext.gadget.SiteCommonJS,mediawiki.api|targets=desktop,mobile
+WhoIsActive[ResourceLoader|dependencies=ext.gadget.SiteCommonJS,mediawiki.api|targets=desktop,mobile]|WhoIsActive.css|WhoIsActive.js

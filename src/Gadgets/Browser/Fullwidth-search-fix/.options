@@ -1,1 +1,1 @@
-ResourceLoader|dependencies=ext.gadget.i18n,mediawiki.util|targets=desktop,mobile
+Fullwidth-search-fix[ResourceLoader|dependencies=ext.gadget.i18n,mediawiki.util|targets=desktop,mobile]|Fullwidth-search-fix.js

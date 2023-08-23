@@ -1,1 +1,1 @@
-ResourceLoader|dependencies=ext.gadget.i18n|rights=editinterface|targets=desktop,mobile
+TranslateVariants[ResourceLoader|dependencies=ext.gadget.i18n|rights=editinterface|targets=desktop,mobile]|TranslateVariants.js

@@ -1,1 +1,1 @@
-ResourceLoader|default|hidden|targets=desktop,mobile
+NavFrame[ResourceLoader|default|hidden|targets=desktop,mobile]|NavFrame.css|NavFrame.js
