@@ -90,15 +90,8 @@ for block_name in blocks:
     gadgets.sort()
 
     for gadget_name in gadgets:
-        gadget_dir = os.path.join(block_dir, gadget_name)
-        gadget_files = os.listdir(gadget_dir)
-        # 忽略所有以.开头的文件
-        gadget_files = [i for i in gadget_files if (os.path.isfile(os.path.join(gadget_dir, i)) and i[0] != ".")]
-        gadget_files.sort()
-        
         with open(os.path.join(gadget_dir, ".options"), "r", encoding="utf-8") as pfile:
             gadget_options = pfile.read().strip()
-        
         gadget_record = f"* {gadget_options}\n"
         gadgets_def.append(gadget_record)
 
