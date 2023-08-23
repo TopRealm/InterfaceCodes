@@ -90,6 +90,7 @@ for block_name in blocks:
     gadgets.sort()
 
     for gadget_name in gadgets:
+        gadget_dir = os.path.join(block_dir, gadget_name)
         with open(os.path.join(gadget_dir, ".options"), "r", encoding="utf-8") as pfile:
             gadget_options = pfile.read().strip()
         gadget_record = f"* {gadget_options}\n"
