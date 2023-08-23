@@ -1,1 +1,1 @@
-type=styles|default|targets=desktop,mobile
+HideConversionTab[type=styles|default|targets=desktop,mobile]|HideConversionTab.css

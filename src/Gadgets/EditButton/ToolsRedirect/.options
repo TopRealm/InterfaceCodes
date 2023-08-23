@@ -1,1 +1,1 @@
-ResourceLoader|dependencies=jquery.ui|rights=edit|targets=desktop,mobile
+ToolsRedirect[ResourceLoader|dependencies=jquery.ui|rights=edit|targets=desktop,mobile]|ToolsRedirect.css|ToolsRedirect.js

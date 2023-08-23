@@ -1,1 +1,1 @@
-ResourceLoader|default|targets=desktop,mobile
+ScrollUpButton[ResourceLoader|default|targets=desktop,mobile]|ScrollUpButton.js

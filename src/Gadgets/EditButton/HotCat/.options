@@ -1,1 +1,1 @@
-ResourceLoader|default|dependencies= jquery.ui, mediawiki.storage, mediawiki.util,mediawiki.user,user|rights=skipcaptcha|targets=desktop,mobile
+HotCat[ResourceLoader|default|dependencies= jquery.ui, mediawiki.storage, mediawiki.util,mediawiki.user,user|rights=skipcaptcha|targets=desktop,mobile]|HotCat.js|Hotcatcheck.js

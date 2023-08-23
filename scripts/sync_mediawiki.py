@@ -99,7 +99,7 @@ for block_name in blocks:
         with open(os.path.join(gadget_dir, ".options"), "r", encoding="utf-8") as pfile:
             gadget_options = pfile.read().strip()
         
-        gadget_record = f"* {gadget_name}[{gadget_options}]|{'|'.join(gadget_files)}\n"
+        gadget_record = f"* {gadget_options}\n"
         gadgets_def.append(gadget_record)
 
 gadgets_def.append(PAGE_BOTTOM)

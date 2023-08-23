@@ -1,1 +1,1 @@
-ResourceLoader|default|dependencies=jquery.ui,mediawiki.storage,mediawiki.util|rights=edit|targets=desktop,mobile
+Wikicache[ResourceLoader|default|dependencies=jquery.ui,mediawiki.storage,mediawiki.util|rights=edit|targets=desktop,mobile]|Wikicache-load.js

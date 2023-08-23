@@ -1,1 +1,1 @@
-ResourceLoader|hidden|dependencies=ext.gadget.i18n,oojs-ui-core,mediawiki.util|targets=desktop,mobile
+EditFormJS[ResourceLoader|hidden|dependencies=ext.gadget.i18n,oojs-ui-core,mediawiki.util|targets=desktop,mobile]|Editform.js
