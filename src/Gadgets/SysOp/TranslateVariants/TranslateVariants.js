@@ -18,8 +18,6 @@
  * +--------------------------------------------------------+
  */
 /* <nowiki> */
-'use strict';
-
 (function translateVariants() {
   var TranslateVariantsSummary = '自动转换变体自[[$1]] via [[MediaWiki:Gadget-TranslateVariants.js|TranslateVariants]]';
   var main = function main() {
@@ -36,10 +34,16 @@
       'zh-tw': '中國臺灣繁體'
     };
     var result = {};
-    var api = new mw.Api();
+    var api = new mw.Api({
+      ajax: {
+        headers: {
+          'Api-User-Agent': "Qiuwen/1.1 (TranslateVariants/1.1; ".concat(mw.config.get('wgWikiID'), ")")
+        }
+      }
+    });
     var basepagetext = '';
     var table = $('<div>').attr('id', 'TranslateVariants').prependTo('#bodyContent');
-    $('<div>').css('color', 'red').text(window.wgULS('提醒：TranslateVariants工具使用IT及MediaWiki转换组进行自动转换，请确认转换结果是否正确！', '提醒：TranslateVariants工具使用IT及MediaWiki轉換組進行自動轉換，請確認轉換結果是否正確！')).appendTo(table);
+    $('<div>').css('color', '#f00').text(window.wgULS('提醒：TranslateVariants工具使用IT及MediaWiki转换组进行自动转换，请确认转换结果是否正确！', '提醒：TranslateVariants工具使用IT及MediaWiki轉換組進行自動轉換，請確認轉換結果是否正確！')).appendTo(table);
     var defaultlangs = 'zh,zh-hans,zh-cn,zh-my,zh-sg,zh-hant,zh-hk,zh-mo,zh-tw';
     var runlangs = prompt(window.wgULS('转换以下语言（以逗号隔开）：', '轉換以下語言（以逗號隔開）：'), defaultlangs);
     if (runlangs === null) {
@@ -74,7 +78,10 @@
             formatversion: '2'
           });
         }, function (error) {
-          mw.notify("\u89E3\u6790".concat(lang).concat(window.wgULS('时发生错误：', '時發生錯誤：')).concat(error));
+          mw.notify("\u89E3\u6790".concat(lang).concat(window.wgULS('时发生错误：', '時發生錯誤：')).concat(error), {
+            type: 'error',
+            tag: 'TranslateVariant'
+          });
           return null;
         }).then(function (data) {
           if (data !== null) {
@@ -83,15 +90,21 @@
             }), "\">").concat(window.wgULS('编', '編'), "</a>\uFF09</div>")).appendTo(diffTable);
             var page = data['query'].pages[0];
             if (page.missing) {
-              var submit = $('<button>').css('float', 'right').text(window.wgULS('发布页面', '發佈頁面')).appendTo(tool);
-              submit.on('click', function () {
+              var $submit = $('<button>').css('float', 'right').text(window.wgULS('发布页面', '發佈頁面')).appendTo(tool);
+              $submit.on('click', function () {
                 this.remove();
                 api.create(targetTitle, {
                   summary: TranslateVariantsSummary.replace(/\$1/g, mw.config.get('wgPageName'))
                 }, newtext).then(function () {
-                  mw.notify(window.wgULS('已编辑 ', '已編輯 ') + targetTitle);
+                  mw.notify(window.wgULS('已编辑 ', '已編輯 ') + targetTitle, {
+                    type: 'success',
+                    tag: 'TranslateVariant'
+                  });
                 }, function (error) {
-                  mw.notify(window.wgULS('编辑', '編輯 ') + targetTitle + window.wgULS(' 发生错误：', ' 發生錯誤：') + error);
+                  mw.notify(window.wgULS('编辑', '編輯 ') + targetTitle + window.wgULS(' 发生错误：', ' 發生錯誤：') + error, {
+                    type: 'error',
+                    tag: 'TranslateVariant'
+                  });
                 });
               });
               $('<pre>').html(newtext.replace(/[&<>]/gim, function (s) {
@@ -101,10 +114,10 @@
             }
             var diff = page.revisions[0].diff.body;
             if (diff === '') {
-              $('<span>').css('float', 'right').text(window.wgULS('无变更', '無變更')).appendTo(tool);
+              $('<span>').css('float', 'right').text(window.wgULS('无更改', '無變更')).appendTo(tool);
             } else {
-              var _submit = $('<button>').css('float', 'right').text(window.wgULS('发布变更', '發佈變更')).appendTo(tool);
-              _submit.on('click', function () {
+              var _$submit = $('<button>').css('float', 'right').text(window.wgULS('发布更改', '發佈變更')).appendTo(tool);
+              _$submit.on('click', function () {
                 this.remove();
                 api.edit(targetTitle, function () {
                   return {
@@ -113,16 +126,25 @@
                     nocreate: false
                   };
                 }).then(function () {
-                  mw.notify(window.wgULS('已编辑', '已編輯 ') + targetTitle);
+                  mw.notify(window.wgULS('已编辑', '已編輯 ') + targetTitle, {
+                    type: 'success',
+                    tag: 'TranslateVariant'
+                  });
                 }, function (error) {
-                  mw.notify(window.wgULS('编辑', '編輯 ') + targetTitle + window.wgULS(' 发生错误：', ' 發生錯誤：') + error);
+                  mw.notify(window.wgULS('编辑', '編輯 ') + targetTitle + window.wgULS(' 发生错误：', ' 發生錯誤：') + error, {
+                    type: 'error',
+                    tag: 'TranslateVariant'
+                  });
                 });
               });
               $('<table>').addClass('diff').html(diff).prepend('<colgroup><col class="diff-marker"><col class="diff-content"><col class="diff-marker"><col class="diff-content"></colgroup>').appendTo(diffTable);
             }
           }
         }, function (error) {
-          mw.notify(window.wgULS('获取', '取得') + lang + window.wgULS('差异时发生错误：', '差異時發生錯誤：') + error);
+          mw.notify(window.wgULS('获取', '取得') + lang + window.wgULS('差异时发生错误：', '差異時發生錯誤：') + error, {
+            type: 'error',
+            tag: 'TranslateVariant'
+          });
         }).always(function () {
           process();
         });
@@ -170,11 +192,13 @@
     });
   };
   if (/^MediaWiki:[^/]+(\/zh)?$/.test(mw.config.get('wgPageName'))) {
-    var link = mw.util.addPortletLink('p-cactions', '#', window.wgULS('转换变体', '轉換變體'));
-    $(link).on('click', function () {
-      this.remove();
-      main();
-    });
+    var link = mw.util.addPortletLink(document.getElementById('p-cactions') ? 'p-cactions' : 'p-tb', '#', window.wgULS('转换变体', '轉換變體'));
+    if (link) {
+      $(link).on('click', function () {
+        this.remove();
+        main();
+      });
+    }
   }
 })();
 /* </nowiki> */
