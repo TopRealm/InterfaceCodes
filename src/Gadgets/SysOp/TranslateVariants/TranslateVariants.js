@@ -37,7 +37,7 @@
     var api = new mw.Api({
       ajax: {
         headers: {
-          'Api-User-Agent': "Qiuwen/1.1 (TranslateVariants/1.1; ".concat(mw.config.get('wgWikiID'), ")")
+          'Api-User-Agent': "YsArxiv/1.1 (TranslateVariants/1.1; ".concat(mw.config.get('wgWikiID'), ")")
         }
       }
     });
