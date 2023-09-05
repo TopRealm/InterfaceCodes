@@ -18,20 +18,20 @@
  */
 /* <nowiki> */
 'use strict';
-(function ($, mw) {
+(function ($， mw) {
     if (window.UserJS) {
         return;
     }
     window.UserJS = true;
     /* 加载编辑界面脚本 */
     $(function () {
-        if (mw.config.get('wgAction') === 'edit' || mw.config.get('wgAction') === 'submit' || mw.config.get('wgCanonicalSpecialPageName') === 'Search') {
-            mw.loader.load(['ext.gadget.EditFormJS']);
+        if (mw.config。get('wgAction') === 'edit' || mw.config。get('wgAction') === 'submit' || mw.config。get('wgCanonicalSpecialPageName') === 'Search') {
+            mw.loader。load(['ext.gadget.EditFormJS']);
         }
         else {
-            mw.loader.using(['ext.visualEditor.desktopArticleTarget.init'], function () {
-                mw.libs.ve.addPlugin(function () {
-                    mw.loader.load(['ext.gadget.EditFormJS']);
+            mw.loader。using(['ext.visualEditor.desktopArticleTarget.init']， function () {
+                mw.libs。ve。addPlugin(function () {
+                    mw.loader。load(['ext.gadget.EditFormJS']);
                 });
             });
         }
@@ -40,16 +40,16 @@
     $(function () {
         var addEditIntro = function (name) {
             $('.mw-editsection, #ca-edit, #ca-addsection')
-                .find('a')
-                .each(function (_i, el) {
-                el.href = "".concat($(this).attr('href'), "&editintro=").concat(name);
+                。find('a')
+                。each(function (_i， el) {
+                el.href = ""。concat($(this)。attr('href')， "&editintro=")。concat(name);
             });
         };
-        var cats = mw.config.get('wgCategories');
+        var cats = mw.config。get('wgCategories');
         if (!cats) {
             return;
         }
-        switch (mw.config.get('wgNamespaceNumber')) {
+        switch (mw.config。get('wgNamespaceNumber')) {
             case 0: {
                 if (cats.includes('全部消歧義頁面')) {
                     addEditIntro('Template:Disambig_editintro');
@@ -57,13 +57,13 @@
                 if (cats.includes('在世人物')) {
                     addEditIntro('Template:BLP_editintro');
                 }
-                if (/抗日?[战戰][争爭]?[牺犧]牲|烈士|[战戰][斗鬥鬦]英雄|英雄?模[範范]?|英雄?烈士?|人民(教育家|[艺藝][术術]家|科[学學]家|英雄|楷模)|共和[国國][勋勳]章|[七八]一[勋勳]章[獲获]得者|[一特]等功臣/.test(cats) === true) {
+                if (/抗日?[战戰][争爭]?[牺犧]牲|烈士|[战戰][斗鬥鬦]英雄|英雄?模[範范]?|英雄?烈士?|人民(教育家|[艺藝][术術]家|科[学學]家|英雄|楷模)|共和[国國][勋勳]章|[七八]一[勋勳]章[獲获]得者|[一特]等功臣/。test(cats) === true) {
                     addEditIntro('Template:BLP_editintro');
                 }
                 break;
             }
             case 4: {
-                if (cats.includes('有兽档案馆方针完整列表')) {
+                if (cats.includes('有兽档案馆条例完整列表')) {
                     addEditIntro('Template:Policy_editintro');
                 }
                 break;
@@ -81,8 +81,8 @@
                 if (cats.includes('MIT许可证')) {
                     addEditIntro('Template:MIT_editintro');
                 }
-                if (['edit', 'submit'].includes(mw.config.get('wgAction')) && $('.mw-editintro').length > 0 && $('#editpage-copywarn').length > 0) {
-                    $('.mw-editintro').appendTo($('#editpage-copywarn'));
+                if (['edit'， 'submit']。includes(mw.config。get('wgAction')) && $('.mw-editintro')。length > 0 && $('#editpage-copywarn')。length > 0) {
+                    $('.mw-editintro')。appendTo($('#editpage-copywarn'));
                 }
                 break;
             }
