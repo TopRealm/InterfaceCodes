@@ -63,7 +63,7 @@
                 break;
             }
             case 4: {
-                if (cats.includes('有兽档案馆方针完整列表')) {
+                if (cats.includes('有兽档案馆条例完整列表')) {
                     addEditIntro('Template:Policy_editintro');
                 }
                 break;
