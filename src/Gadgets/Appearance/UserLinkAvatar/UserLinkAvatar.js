@@ -1,8 +1,9 @@
 /**
- * SPDX-License-Identifier: CC BY-NC-SA 3.0 CN
- * _addText: '{{Gadget Header|license=cc-by-nc-sa-3.0-cn}}'
+ * SPDX-License-Identifier: CC BY-SA 4.0
+ * _addText: '{{Gadget Header|license=cc-by-sa-4.0|import=no}}'
  *
- * @source <https://zh.moegirl.org.cn/MediaWiki:Gadget-UserLinkAvatar.js>
+ * @base <https://zh.moegirl.org.cn/MediaWiki:Gadget-UserLinkAvatar.js>
+ * @source <https://github.com/TopRealm/InterfaceCodes/blob/master/src/Gadgets/Appearance/UserLinkAvatar/UserLinkAvatar.css>
  * @author Moegirlpedia contributors, ColGem <https://wiki.zorua.top/wiki/User:ColGem>
  */
 /**
