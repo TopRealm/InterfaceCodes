@@ -27,9 +27,13 @@
 	align-content: center;
 	align-items: center;
 	justify-content: center;
-	border-width: 0 0 0 5px;
+	border-width: 0 0 0 0.5em;
 	border-style: solid;
-	border-radius: 5px;
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	-ms-border-radius: 0.5em;
+	-o-border-radius: 0.5em;
+	border-radius: 0.5em;
 	border-left-color: #36c;
 	margin: 0.5em auto;
 	background: #def;
@@ -345,8 +349,10 @@ body.mediawiki .mbox-small-left {
 @media screen and (max-width: 768px) {
 	.mbox,
 	.mbox-small {
-		width: 100%;
-		max-width: 100%;
+		width: 99.5%;
+		width: calc(100% - 0.5em);
+		max-width: 99.5%;
+		max-width: calc(100% - 0.5em);
 		font-size: 0.9em;
 	}
 
