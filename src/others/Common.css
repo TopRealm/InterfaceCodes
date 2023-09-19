@@ -1253,4 +1253,8 @@ body:not(.heimu_toggle_on) .heimu.off .new,body:not(.heimu_toggle_on) .heimu.off
 	margin: 0;
 	padding-top: 1em;
 }
+/* 修复discussiontools以链接开头下划线位置错误 */
+span[data-mw-comment-start] {
+    top: 0 !important;
+}
 /* </nowiki> */
