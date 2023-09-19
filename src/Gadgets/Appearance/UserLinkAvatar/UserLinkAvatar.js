@@ -20,7 +20,7 @@
 /* <nowiki> */
 "use strict";
 (function () {
-  var magnifierOn = +mw.user.options.get("gadget-userLinkAvatarMagnifier", 0) === 1;
+  var magnifierOn = +mw.user.options.get("gadget-UserLinkAvatarMagnifier", 0) === 1;
   var $window = $(window);
   var loadingImage = "https://wiki.zorua.top/images/b/b1/Loading_icon.gif";
   $window.on("load.UserLinkAvatar", function () {
@@ -47,7 +47,7 @@
             src: loadingImage
           },
           on: {
-            error: function error() {
+            error: function () {
               window.setTimeout(function () {
                 magnifierImg_1.closest(".userlink-avatar-large").remove();
               }, 0);
