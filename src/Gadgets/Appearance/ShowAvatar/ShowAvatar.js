@@ -31,7 +31,7 @@ $(function () {
     $("#pt-userpage").before($('<li id="pt-avatar"></li>').append(link));
     if (mw.config.get("wgNamespaceNumber") === 2 && !mw.config.get("wgPageName").includes("/")) {
         var hrefUrl = new mw.Uri(avatarUrl);
-        hrefUrl.path = "wiki/Special:Viewavatar";
+        hrefUrl.path = "/wiki/Special:Viewavatar";
         var srcUrl = new mw.Uri(avatarUrl);
         $(".ns-2 #firstHeading").prepend($("<a/>").attr({
             href: hrefUrl,
