@@ -16,18 +16,13 @@
  * +--------------------------------------------------------+
  */
 /* <nowiki> */
-#p-personal li {
-    margin-top: 1em;
-    margin-bottom: 0.2em;
-}
-
 #pt-userpage {
     background: none !important;
     padding-left: 0 !important;
 }
 
 #pt-avatar {
-    margin-top: 0.25em !important;
+    margin-top: 0em !important;
     margin-bottom: 0 !important;
 }
 
