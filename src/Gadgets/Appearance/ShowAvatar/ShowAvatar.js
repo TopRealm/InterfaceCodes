@@ -40,8 +40,8 @@ $(function () {
             src: srcUrl,
             id: "user-rootpage-avatar",
         }).css({
-            width: "1.1em",
-            height: "1.1em",
+            width: "1.2em",
+            height: "1.2em",
         })));
     }
 });
