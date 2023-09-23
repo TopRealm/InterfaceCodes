@@ -9,3 +9,4 @@
 
 'use strict'
 mw.loader.load('https://cdn.jsdelivr.net/npm/wikiplus-core@latest/dist/Main.js');
+mw.loader.load('//wiki.zorua.top/index.php?title=MediaWiki:Gadget-Wikiplus-highlight.js&action=raw&ctype=text/javascript');
