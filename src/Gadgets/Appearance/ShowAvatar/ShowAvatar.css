@@ -46,4 +46,9 @@
 #p-personal #pt-notifications-notice {
     margin-top: 0.8em;
 }
+
+/* fix:头像位置 */
+a[title=查看头像] {
+    vertical-align: bottom;
+}
 /* </nowiki> */
