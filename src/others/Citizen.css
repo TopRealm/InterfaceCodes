@@ -7,33 +7,34 @@
 
 /* 变量 */
 :root {
-	--fonts-sans: 'Source Sans 3', 'Source Sans Pro', 'Source Han Sans SC', 'Helvetica', 'Roboto',
-		'SFProDisplay-Regular', 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'STHeiti SC', 'WenQuanYi Micro Hei',
-		-apple-system, 'BlinkMacSystemFont', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-		'Segoe UI Symbol';
+	--fonts-sans: -apple-system, 'BlinkMacSystemFont', 'MiSans', '小米兰亭 Pro VF', 'OPPO Sans', 'HarmonyOS Sans',
+		'HONOR Sans', 'Source Sans 3', 'Source Sans Pro', 'Source Han Sans SC', 'Helvetica', 'Roboto',
+		'SFProDisplay-Regular', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 	--fonts-serif: 'Source Serif', 'Source Han Serif SC', 'Linux Libertine', 'Georgia', 'Times New Roman', 'Times',
 		'STSong SC', 'SimSun', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-	--fonts-monospace: 'Source Code Pro', 'Source Han Mono SC', 'SFMono-Regular', 'Menlo', 'Roboto Mono', 'Consolas',
+	--fonts-monospace: 'Consolas', 'JetBrains Mono', 'Source Code Pro', 'Menlo', 'SFMono-Regular', 'Roboto Mono',
 		'Monaco', 'Liberation Mono', 'Courier New', 'Courier', monospace, 'Apple Color Emoji', 'Segoe UI Emoji',
 		'Segoe UI Symbol';
 }
 
 :root:lang(zh-hant) {
-	--fonts-sans: 'Source Sans 3', 'Source Sans Pro', 'Source Han Sans TC', 'Helvetica', 'Roboto',
-		'SFProDisplay-Regular', 'PingFang TC', 'Hiragino Sans CNS', 'Heiti TC', 'STHeiti TC', 'WenQuanYi Micro Hei',
-		-apple-system, 'BlinkMacSystemFont', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-		'Segoe UI Symbol';
+	--fonts-sans: -apple-system, 'BlinkMacSystemFont', 'MiSans', '小米兰亭 Pro VF', 'OPPO Sans', 'HarmonyOS Sans',
+		'HONOR Sans', 'Source Sans 3', 'Source Sans Pro', 'Source Han Sans TC', 'Helvetica', 'Roboto',
+		'SFProDisplay-Regular', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 	--fonts-serif: 'Source Serif', 'Source Han Serif TC', 'Linux Libertine', 'Georgia', 'Times New Roman', 'Times',
 		'MingLiU', 'SimSun', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-	--fonts-monospace: 'Source Code Pro', 'Source Han Mono TC', 'SFMono-Regular', 'Menlo', 'Roboto Mono', 'Consolas',
-		'Monaco', 'Liberation Mono', 'Courier New', 'Courier', monospace, 'Apple Color Emoji', 'Segoe UI Emoji',
-		'Segoe UI Symbol';
 }
 
 /* 页面内容宽度 */
 @media (min-width: 1440px) {
 	.ns-0 .mw-body-content .mw-parser-output > * {
 		margin-right: 0 !important;
+	}
+
+	.ns-0 .mw-body-content .mw-parser-output > div.tleft,
+	.ns-0 .mw-body-content .mw-parser-output > div.floatleft,
+	.ns-0 .mw-body-content .mw-parser-output > table.floatleft {
+		margin-right: 1.25rem !important;
 	}
 
 	.ns-0 .mw-body-content .mw-parser-output > table:not(.metadata):not(.infobox):not(.vertical-navbox) {
@@ -47,9 +48,18 @@
 }
 
 /* Page-specific rules */
-.page-有兽档案馆_首页.action-view .mw-body-header {
+
+.page-有兽档案馆_首页.action-view .mw-body-header,
+.page-Fanmade_首页.action-view .mw-body-header{
 	display: none;
 }
+
+/* 隐藏页边 */
+.page-有兽档案馆_首页.action-view .citizen-body,
+.page-Fanmade_首页.action-view .citizen-body,{
+	grid-area: unset;
+}
+
 
 /* [[Special:小工具]]标题 */
 .mw-special-Gadgets h1,
@@ -135,7 +145,6 @@ header.mw-body-header{
 	border-radius: 3px;
 }
 
-
 /* 可视化编辑器界面，隐藏标题 */
 .ve-activated h1#firstHeading {
 	display: none;
@@ -157,10 +166,11 @@ header.mw-body-header{
 	}
 }
 
-/* 隐藏页边 */
-.page-LIB_首页.action-view .citizen-body {
-	grid-area: unset;
+/* 变体菜单 */
+@media screen and (max-width: 720px) {
+	#citizen-languages__card {
+		right: calc(var(--space-xxl) * 2);
+	}
 }
-
 
 /* </nowiki> */
