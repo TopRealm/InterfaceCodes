@@ -70,6 +70,6 @@ var Scroller = function () {
         return Scroller;
 }();
 
-new Scroller()();
+new Scroller();
 
 /* </nowiki> */
