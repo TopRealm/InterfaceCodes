@@ -53,7 +53,7 @@ var Scroller = function () {
                                 target = 0;
                         }
                         if (target >= this.scroller_item_length) {
-                                target = this.scroller_item_length - 1 -2;
+                                target = this.scroller_item_length - 1;
                         }
 
                         this.scroller_items[target].scrollIntoView();
