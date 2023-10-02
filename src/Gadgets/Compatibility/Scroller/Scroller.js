@@ -1,6 +1,6 @@
 /**
  * SPDX-License-Identifier: CC-BY-SA-4.0
- * _addText: '{{Gadget Header|license=CC-BY-SA-4.0|import=no}}'
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  * @author 白给
  */
 /**
@@ -16,34 +16,60 @@
  */
 /* <nowiki> */
 "use strict";
-class Scroller {
-    constructor() {
-        this.scroller_focus_id = 0
-        this.scroller_items = document.getElementsByClassName('scroller-item')
-        this.scroller_item_length = this.scroller_items.length
 
-        this.e_last_btn = document.getElementById('scroller-last-btn')
-        this.e_next_Btn = document.getElementById('scroller-next-btn')
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-        this.scroller_items[0].classList.add('scroller-item-now')
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-        this.e_last_btn.addEventListener('click', () => { this.scroll_element_intoView(-1) })
-        this.e_next_Btn.addEventListener('click', () => { this.scroll_element_intoView(1) })
-    }
-    scroll_element_intoView(jump) {
-        var target = this.scroller_focus_id + jump
+var Scroller = function () {
+        function Scroller() {
+                var _this = this;
 
-        if (target <= 0) { target = 0 }
-        if (target >= this.scroller_item_length) { target = this.scroller_item_length - 1 }
+                _classCallCheck(this, Scroller);
 
-        this.scroller_items[target].scrollIntoView()
+                this.scroller_focus_id = 0;
+                this.scroller_items = document.getElementsByClassName('scroller-item');
+                this.scroller_item_length = this.scroller_items.length;
 
-        try { this.scroller_items[this.scroller_focus_id].classList.remove('scroller-item-now') } catch { }
-        this.scroller_items[target].classList.add('scroller-item-now')
+                this.e_last_btn = document.getElementById('scroller-last-btn');
+                this.e_next_Btn = document.getElementById('scroller-next-btn');
 
-        this.scroller_focus_id = target
-    }
-}
-(new Scroller())()
+                this.scroller_items[0].classList.add('scroller-item-now');
+
+                this.e_last_btn.addEventListener('click', function () {
+                        _this.scroll_element_intoView(-1);
+                });
+                this.e_next_Btn.addEventListener('click', function () {
+                        _this.scroll_element_intoView(1);
+                });
+        }
+
+        _createClass(Scroller, [{
+                key: 'scroll_element_intoView',
+                value: function scroll_element_intoView(jump) {
+                        var target = this.scroller_focus_id + jump;
+
+                        if (target <= 0) {
+                                target = 0;
+                        }
+                        if (target >= this.scroller_item_length) {
+                                target = this.scroller_item_length - 1;
+                        }
+
+                        this.scroller_items[target].scrollIntoView();
+
+                        try {
+                                this.scroller_items[this.scroller_focus_id].classList.remove('scroller-item-now');
+                        } finally {}
+                        this.scroller_items[target].classList.add('scroller-item-now');
+
+                        this.scroller_focus_id = target;
+                }
+        }]);
+
+        return Scroller;
+}();
+
+new Scroller()();
 
 /* </nowiki> */
