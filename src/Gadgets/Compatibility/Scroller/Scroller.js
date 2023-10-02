@@ -1,6 +1,6 @@
 /**
  * SPDX-License-Identifier: CC-BY-SA-4.0
- * _addText: '{{Gadget Header|license=CC-BY-SA-4.0|import=no}}'
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  * @author 白给
  */
 /**
@@ -29,6 +29,8 @@ var Scroller = function () {
 
                 this.scroller_focus_id = 0;
                 this.scroller_items = document.getElementsByClassName('scroller-item');
+                this.scroller_container = document.getElementsByClassName('scroller-container');
+                this.scroller_item_width = this.scroller_items[0].offsetWidth;
                 this.scroller_item_length = this.scroller_items.length;
 
                 this.e_last_btn = document.getElementById('scroller-last-btn');
@@ -56,7 +58,10 @@ var Scroller = function () {
                                 target = this.scroller_item_length - 1;
                         }
 
-                        this.scroller_items[target].scrollIntoView();
+                        console.log(this.scroller_item_width);
+                        console.log(target);
+
+                        this.scroller_container[0].scrollTo(this.scroller_item_width * target, 0);
 
                         try {
                                 this.scroller_items[this.scroller_focus_id].classList.remove('scroller-item-now');
@@ -71,5 +76,4 @@ var Scroller = function () {
 }();
 
 new Scroller();
-
 /* </nowiki> */
