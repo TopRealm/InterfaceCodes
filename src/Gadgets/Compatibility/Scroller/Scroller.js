@@ -1,6 +1,6 @@
 /**
  * SPDX-License-Identifier: CC-BY-SA-4.0
- * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0|import=no}}'
  * @author 白给
  */
 /**
@@ -53,7 +53,7 @@ var Scroller = function () {
                                 target = 0;
                         }
                         if (target >= this.scroller_item_length) {
-                                target = this.scroller_item_length - 1;
+                                target = this.scroller_item_length - 1 -2;
                         }
 
                         this.scroller_items[target].scrollIntoView();
