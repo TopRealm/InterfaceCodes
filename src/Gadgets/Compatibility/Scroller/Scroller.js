@@ -58,9 +58,6 @@ var Scroller = function () {
                                 target = this.scroller_item_length - 1;
                         }
 
-                        console.log(this.scroller_item_width);
-                        console.log(target);
-
                         this.scroller_container[0].scrollTo(this.scroller_item_width * target, 0);
 
                         try {
