@@ -33,6 +33,8 @@ var Scroller = function () {
                 this.scroller_item_width = this.scroller_items[0].offsetWidth;
                 this.scroller_item_length = this.scroller_items.length;
 
+                if (this.scroller_container.length == 0) {return 0}
+
                 this.e_last_btn = document.getElementById('scroller-last-btn');
                 this.e_next_Btn = document.getElementById('scroller-next-btn');
 
