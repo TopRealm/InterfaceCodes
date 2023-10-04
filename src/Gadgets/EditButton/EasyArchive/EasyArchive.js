@@ -14,122 +14,42 @@
  * |      All changes should be made in the repository,     |
  * |              otherwise they will be lost.              |
  * +--------------------------------------------------------+
- * |        Changes to this page affect many users.         |
- * |  Please discuss changes at Talk page before editing.   |
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
  * +--------------------------------------------------------+
  */
 /* <nowiki> */
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+var _objectHasOwn = function (object, property) {
+  if (typeof object === 'undefined' || object === null) {
+    throw new TypeError('Cannot convert undefined or null to object');
+  }
+  return Object.prototype.hasOwnProperty.call(Object(object), property);
+};
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+/* eslint-disable no-template-curly-in-string, prefer-destructuring */
 (function easyArchive() {
-  if (!('external_config' in window)) {
-    window.external_config = {};
+  if (mw.config.get('wgNamespaceNumber') < 0 || mw.config.get('wgPageName') === '有兽档案馆:首页') {
+    return;
   }
-  if (!('easy_archive' in window.external_config)) {
-    window.external_config.easy_archive = {};
-  }
-  window.external_config.easy_archive.never_enable_on_these_pages_regex = [];
-  window.external_config.easy_archive.never_enable_on_these_namespaces_int = [0];
   if (!window.easy_archive) {
     window.easy_archive = {};
-    (function (object) {
-      var x = 2019;
-      var y = 3;
-      var z = 2;
-      var more = 0;
-      var status = 'se';
-      var build = 89;
-      var version_delim = '.';
-      var version = x.toString(10) + version_delim + y.toString(10) + version_delim + z.toString(10) + (more ? version_delim + more.toString(10) : '');
-      var iteration = status + build.toString(10);
-      var ver = "".concat(version, " / ").concat(iteration);
-      object.version = version;
-      object.iteration = iteration;
-      object.build = build;
-      object.ver = ver;
-      object.version_parsed = {
-        x: x,
-        y: y,
-        z: z,
-        more: more,
-        status: status,
-        build: build
-      };
-    })(window.easy_archive);
-    (function (easy) {
-      // Go repo
-      var Go = function () {
-        var _Go;
-        try {
-          _Go = function () {
-            var _chain = function chain(_go, fn) {
-              var f2 = function f2(_x) {
-                return 0;
-              };
-              var promise = new Promise(function (reso, reje) {
-                f2 = function f2(_x) {
-                  return fn(reso, reje);
-                };
-              });
-              _go.task.then(f2);
-              _go.task = promise;
-            };
-            var GoClass = /*#__PURE__*/function () {
-              function GoClass() {
-                _classCallCheck(this, GoClass);
-                this.task = Promise.resolve();
-                this.chain.apply(this, arguments);
-              }
-              _createClass(GoClass, [{
-                key: "chain",
-                value: function chain() {
-                  var _len = arguments.length;
-                  var fns = Array.from({
-                    length: _len
-                  });
-                  for (var _key = 0; _key < _len; _key++) {
-                    fns[_key] = _key < 0 || arguments.length <= _key ? undefined : arguments[_key];
-                  }
-                  for (var _i2 = 0, _fns = fns; _i2 < _fns.length; _i2++) {
-                    var fn = _fns[_i2];
-                    if (typeof fn === 'function') {
-                      _chain(this, fn);
-                    } else if (_typeof(fn) === 'object' && fn !== null && fn.constructor === Array) {
-                      this.chain.apply(this, _toConsumableArray(fn));
-                    } else {
-                      throw new TypeError('Cannot chain non-function and non-arrays to a Go instance.');
-                    }
-                  }
-                  return this;
-                }
-              }]);
-              return GoClass;
-            }();
-            return GoClass;
-          }();
-        } catch (_unused) {
-          _Go = function _Go() {};
-          _Go.prototype.chain = function (f) {
-            f();
-          };
-        }
-        return _Go;
-      }();
-      var go = new Go();
-      if (!('mw' in window)) {
-        throw new Error('Easy Archive cannot function without mw object.');
-      }
+    (function (easy, _window$easy_archive$) {
       // minified code dependency functions
       var Pare_str = function () {
         var _intep = function intep(celldata) {
@@ -185,7 +105,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
             key: "update",
             value: function update(lookup_key, new_value) {
               if (this.find(lookup_key) === null) {
-                this["new"](lookup_key, new_value);
+                this.new(lookup_key, new_value);
               } else {
                 var new_str = this.str.split(this.left + lookup_key + this.delim);
                 new_str[1] = new_str[1].split(this.right);
@@ -209,14 +129,13 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       // common repo.
       var expose = function () {
         var glb = {
-          url: mw.config.get('wgServer'),
           p: mw.config.get('wgPageName'),
           un: mw.config.get('wgUserName'),
           u: "User:".concat(mw.config.get('wgUserName')),
           ut: "User_talk:".concat(mw.config.get('wgUserName')),
           t: null
         };
-        glb.a = "".concat(glb.url).concat(mw.config.get('wgScriptPath'), "/api.php");
+        glb.a = "".concat(mw.config.get('wgScriptPath'), "/api.php");
         var asyncPost = function asyncPost(url, body, fn) {
           var z1 = 'Content-Type';
           var z2 = 'application/x-www-form-urlencoded';
@@ -260,8 +179,10 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           if (typeof a === 'string') {
             var b = JSON.parse(a);
             if (_typeof(b) === 'object') {
-              // eslint-disable-next-line no-unreachable-loop
               for (var x in b.query.pages) {
+                if (!_objectHasOwn(b.query.pages, x)) {
+                  continue;
+                }
                 var c = b.query.pages[x];
                 return c.revisions[0]['*'];
               }
@@ -276,7 +197,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         var tellPageExist = function tellPageExist(a) {
           try {
             a = JSON.parse(a);
-          } catch (_unused2) {
+          } catch (_unused) {
             return false;
           }
           if (_typeof(a) !== 'object') {
@@ -360,14 +281,11 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       easy.settings_string = '#set%|?									\n' + 'display section delete link	%sec-del|1?	\n' + 'display section archive line	%sec-arc|1?	\n' + 'display control bar at top	%top-bar|0?	\n' + 'archive location				%arc-loc|?	\n' + 'subsection effectiveness		%sub-sec|2?	\n' + 'confirm action				%confirm|0?	\n' + 'is this data initialized		%data-init|0? \n';
       easy.settings = new Pare_str(easy.settings_string);
       easy.my_user_talk = null;
-      try {
-        easy.never_enable_on_these_pages_regex = window.external_config.easy_archive.never_enable_on_these_pages_regex;
-      } catch (_unused3) {
-        easy.never_enable_on_these_pages_regex = [];
-      }
+      easy.never_enable_on_these_pages_regex = (_window$easy_archive$ = window.easy_archive.never_enable_on_these_pages_regex) !== null && _window$easy_archive$ !== void 0 ? _window$easy_archive$ : [];
       easy.dis_support_these_pages_regex = [/^File:.*$/, /^MediaWiki:.*$/, /^Module:.*$/, /^Category:.*$/, /^Template:.*$/, /^Special:.*$/, /^User:.*\/?.*\.js$/, /^User:.*\/?.*\.css$/, /^User:.*\/?.*\.json$/];
       var settings_span_collection = document.querySelectorAll('.easy_archive_data_point_collection');
-      var settings_span = settings_span_collection[0];
+      var _settings_span_collec = _slicedToArray(settings_span_collection, 1),
+        settings_span = _settings_span_collec[0];
       var settings = settings_span ? new Pare_str(settings_span.innerHTML) : new Pare_str('');
       if (settings.find('data-init') === '1') {
         easy.settings_string = settings_span.innerHTML;
@@ -445,8 +363,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
               for (var i = 0; i < this.languages.length; i++) {
                 all_codes = [].concat(_toConsumableArray(all_codes), _toConsumableArray(this.languages[i]));
               }
-              for (var _i3 = 0; _i3 < this.sub_groups.length; _i3++) {
-                all_codes = [].concat(_toConsumableArray(all_codes), _toConsumableArray(this.sub_groups[_i3].all()));
+              for (var _i2 = 0; _i2 < this.sub_groups.length; _i2++) {
+                all_codes = [].concat(_toConsumableArray(all_codes), _toConsumableArray(this.sub_groups[_i2].all()));
               }
               return all_codes;
             }
@@ -467,11 +385,11 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           }, {
             key: "add",
             value: function add() {
-              for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-                args[_key2] = arguments[_key2];
+              for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
               }
-              for (var _i4 = 0, _args = args; _i4 < _args.length; _i4++) {
-                var arg = _args[_i4];
+              for (var _i3 = 0, _args = args; _i3 < _args.length; _i3++) {
+                var arg = _args[_i3];
                 this.add_one(arg);
               }
               return this;
@@ -521,7 +439,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         var group_asian = new Language_proximity_group('asian').add(group_cjk);
         var group_world = new Language_proximity_group('world').add(group_asian, group_european);
         var accepted_languages = function accepted_languages(_raw_lang_code) {
-          var all_acceptable_codes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+          var _ref;
+          var all_acceptable_codes = (_ref = arguments.length <= 2 ? undefined : arguments[2]) !== null && _ref !== void 0 ? _ref : null;
           var processed_lang_code = String(_raw_lang_code).toLowerCase().replace(/[^a-z]/g, '').slice(0, 4);
           var processed_lang_code_short = processed_lang_code.slice(0, 2);
           var best_match = accepted_languages_dict[_raw_lang_code] || accepted_languages_dict[processed_lang_code] || accepted_languages_dict[processed_lang_code_short] || null;
@@ -572,7 +491,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         var page_name = mw.config.get('wgPageName').split(':');
         page_name[0] = '';
         page_name = page_name.join('');
-        page_name = page_name.split('/')[0];
+        var _page_name$split = page_name.split('/');
+        var _page_name$split2 = _slicedToArray(_page_name$split, 1);
+        page_name = _page_name$split2[0];
         var user_name = mw.config.get('wgUserName');
         return user_name.split('_').join('').split(' ').join('') === page_name.split('_').join('').split(' ').join('');
       }();
@@ -585,7 +506,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         if (!easy.lang) {
           easy.lang = {};
         }
-        easy.lang["delete"] = {
+        easy.lang.delete = {
           en_us: 'delete',
           zh_cn: '删除',
           zh_hk: '刪除',
@@ -600,38 +521,38 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         easy.lang.supports = {
           en_us: 'Easy Archive is enabled on this talk page',
           zh_cn: '本讨论页面使用 Easy Archive 快速存档',
-          zh_hk: '本頁使用 Easy Archive',
-          zh_tw: '本頁使用 Easy Archive'
+          zh_hk: '此頁面使用 Easy Archive',
+          zh_tw: '此頁面使用 Easy Archive'
         };
         easy.lang.others_page = {
           en_us: 'Easy Archive is not enabled.',
-          zh_cn: '本页面是他人的用户讨论页面，因此不支持 Easy Archive 快速存档。',
-          zh_hk: '本頁為他人用戶討論頁面，故不支援 Easy Archive 快速存檔。',
-          zh_tw: '本頁為他人用戶討論頁面，故不支援 Easy Archive 快速存檔。'
+          zh_cn: '此页面是他人的用户讨论页面，因此不支持 Easy Archive 快速存档。',
+          zh_hk: '此頁面為他人用戶討論頁面，故不支援 Easy Archive 快速存檔。',
+          zh_tw: '此頁面為他人用戶討論頁面，故不支援 Easy Archive 快速存檔。'
         };
         easy.lang.to_enable = {
           en_us: 'This page is not using Easy Archive.',
-          zh_cn: '本页面没有启用 Easy Archive。',
+          zh_cn: '此页面没有启用 Easy Archive。',
           zh_hk: '本頁没有啟用 Easy Archive。',
           zh_tw: '本頁没有啟用 Easy Archive。'
         };
         easy.lang.enable_on_generic_page = {
-          en_us: '<div>This page is not your user talk page. However Easy Archive still can be used if needed.</div><div>To enable it, add {{Easy Archive|to=[Archive location]}} to this page.</div>',
-          zh_cn: '<div>本页面不是您的用户讨论页面。不过，如果需要，本页面是可以使用 Easy Archive 的。</div><div>如果要在本页面使用 Easy Archive，请加入 {{Easy Archive|to=存档位置}}。</div>',
-          zh_hk: '<div>本頁面不是您的用戶討論頁面。不過，如果需要，本頁面是可以使用 Easy Archive 的。</div><div>如果要在本頁面使用 Easy Archive，請加入 {{Easy Archive|to=存檔位置}}。</div>',
-          zh_tw: '<div>本頁面不是您的用戶討論頁面。不過，如果需要，本頁面是可以使用 Easy Archive 的。</div><div>如果要在本頁面使用 Easy Archive，請加入 {{Easy Archive|to=存檔位置}}。</div>'
+          en_us: '<div>This page is not your user talk page. However Easy Archive still can be used if needed.</div><div>To enable it, add {{Easy Archive|to=[Archive location]}} template to this page.</div>',
+          zh_cn: '<div>此页面不是您的用户讨论页面。不过，若需要，此页面可以启用 Easy Archive。</div><div>若要在此页面使用 Easy Archive，请在页面上添加模板 {{Easy Archive|to=存档位置}}。</div>',
+          zh_hk: '<div>此頁面不是您的用戶討論頁面。不過，若需要，此頁面可以啟用 Easy Archive。</div><div>若要在此頁面使用 Easy Archive，請在頁面上添加模板 {{Easy Archive|to=存檔位置}}。</div>',
+          zh_tw: '<div>此頁面不是您的用戶討論頁面。不過，若需要，此頁面可以啟用 Easy Archive。</div><div>若要在此頁面使用 Easy Archive，請在頁面上添加模板 {{Easy Archive|to=存檔位置}}。</div>'
         };
         easy.lang.please_enable = {
           en_us: '<div>Add {{Easy Archive|to=[Archive location]}} to this page to start using Easy Archive.</div>',
-          zh_cn: '<div>请在本页面加入 {{Easy Archive|to=存档地址}} 来启用 Easy Archive。</div>',
-          zh_hk: '<div>請在本頁加入 {{Easy Archive|to=存檔位置}} 來啟用 Easy Archive。</div>',
-          zh_tw: '<div>請在本頁加入 {{Easy Archive|to=存檔位置}} 來啟用 Easy Archive。</div>'
+          zh_cn: '<div>请在此页面加入 {{Easy Archive|to=存档地址}} 来启用 Easy Archive。</div>',
+          zh_hk: '<div>請在此頁面加入 {{Easy Archive|to=存檔位置}} 來啟用 Easy Archive。</div>',
+          zh_tw: '<div>請在此頁面加入 {{Easy Archive|to=存檔位置}} 來啟用 Easy Archive。</div>'
         };
         easy.lang.please_enable_elaborate = {
           en_us: "<div>You have the Easy Archive functionality enabled but your talk page hasn't been configured yet. </div><div>To take advantage of Easy Archive, add {{Easy Archive|to=[Archive location]}} template to this page.</div>",
-          zh_cn: '<div>您的帐户已经支持 Easy Archive，但是，为了开始使用该功能，您还需要在自己的用户讨论页面上添加模板 {{Easy Archive|to=存档位置}}。</div>',
-          zh_hk: '<div>您的帳戶已經支持 Easy Archive，但是，為了開始使用該功能，您還需要在自己的用戶討論頁面上添加模板 {{Easy Archive|to=存檔位置}}。</div>',
-          zh_tw: '<div>您的帳戶已經支持 Easy Archive，但是，為了開始使用該功能，您還需要在自己的用戶討論頁面上添加模板 {{Easy Archive|to=存檔位置}}。</div>'
+          zh_cn: '<div>您的账号已经支持 Easy Archive，但是，为了开始使用该功能，您还需要在自己的用户讨论页面上添加模板 {{Easy Archive|to=存档位置}}。</div>',
+          zh_hk: '<div>您的賬號已經支持 Easy Archive，但是，為了開始使用該功能，您還需要在自己的用戶討論頁面上添加模板 {{Easy Archive|to=存檔位置}}。</div>',
+          zh_tw: '<div>您的賬號已經支持 Easy Archive，但是，為了開始使用該功能，您還需要在自己的用戶討論頁面上添加模板 {{Easy Archive|to=存檔位置}}。</div>'
         };
         easy.lang.arc_all = {
           en_us: 'Archive all topics',
@@ -709,7 +630,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         };
         easy.lang.stop_manually = {
           en_us: '<div>Cannot turn off Easy Archive automatically. </div><div>To manually discontinue use, delete the template {{Easy Archive|to=[Archive location]}} from this page.</div>',
-          zh_cn: '<div>经过尝试，无法自动停用 Easy Archive。请手动停用。</div><div>请从本页面删除如下模版：{{Easy Archive|to=存档位置}}。</div>',
+          zh_cn: '<div>经过尝试，无法自动停用 Easy Archive。请手动停用。</div><div>请从此页面删除如下模版：{{Easy Archive|to=存档位置}}。</div>',
           zh_hk: '<div>經過嘗試，恕無法自動停用 Easy Archive。請手動停用。</div><div>請從本頁刪除以下模板︰{{Easy Archive|to=存檔位置}}。</div>',
           zh_tw: '<div>經過嘗試，恕無法自動停用 Easy Archive。請手動停用。</div><div>請從本頁刪除以下模板︰{{Easy Archive|to=存檔位置}}。</div>'
         };
@@ -721,7 +642,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         };
         easy.lang.change_manually = {
           en_us: '<div>Cannot update Easy Archive location automatically. </div><div>To update manually, find the template {{Easy Archive|to=[Archive location]}} and update the location.</div>',
-          zh_cn: '<div>无法自动更改 Easy Archive 存档地址。请手动更改。</div><div>请在本页面找到如下模版：{{Easy Archive|to=存档位置}}，并更改存档位置。</div>',
+          zh_cn: '<div>无法自动更改 Easy Archive 存档地址。请手动更改。</div><div>请在此页面找到如下模版：{{Easy Archive|to=存档位置}}，并更改存档位置。</div>',
           zh_hk: '<div>恕無法自動更改 Easy Archive 存檔地址。請手動更改。</div><div>請在本頁找到以下模板︰{{Easy Archive|to=存檔位置}}，并更改存檔位置。</div>',
           zh_tw: '<div>恕無法自動更改 Easy Archive 存檔地址。請手動更改。</div><div>請在本頁找到以下模板︰{{Easy Archive|to=存檔位置}}，并更改存檔位置。</div>'
         };
@@ -793,9 +714,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         };
         easy.lang.page_not_supported = {
           en_us: 'This page is not supported by Easy Archive.',
-          zh_cn: '本页面不支持 Easy Archive。',
-          zh_hk: '本頁面不支持 Easy Archive。',
-          zh_tw: '本頁面不支持 Easy Archive。'
+          zh_cn: '此页面不支持 Easy Archive。',
+          zh_hk: '此頁面不支持 Easy Archive。',
+          zh_tw: '此頁面不支持 Easy Archive。'
         };
         easy.lang.page_not_supported_elaborate = {
           en_us: '<div>These pages are not supported by Easy Archive: </div><div>File, Template, Module, MediaWiki, Category, Special, JavaScript, CSS, JSON.</div>',
@@ -823,15 +744,15 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         };
         easy.lang.problem_with_archive_location_main_space = {
           en_us: '<div>Currently the archive location of this page, "${1}", is under the article namespace, where archives should not be normally directed to. </div><div>Please check if you have the correct archive location.</div>',
-          zh_cn: '<div>本页面目前的存档地址是“${1}”，在条目名称空间之下。</div><div>一般而言不应向条目名称空间进行存档，请检查存档地址。</div>',
-          zh_hk: '<div>本頁面當前的存檔地址是「${1}」，在條目名稱空間之下。</div><div>一般而言不應向條目名稱空間進行存檔，請檢查存檔地址。</div>',
-          zh_tw: '<div>本頁面當前的存檔地址是「${1}」，在條目名稱空間之下。</div><div>一般而言不應向條目名稱空間進行存檔，請檢查存檔地址。</div>'
+          zh_cn: '<div>此页面目前的存档地址是“${1}”，在条目名称空间之下。</div><div>一般而言不应向条目名称空间进行存档，请检查存档地址。</div>',
+          zh_hk: '<div>此頁面當前的存檔地址是「${1}」，在條目名稱空間之下。</div><div>一般而言不應向條目名稱空間進行存檔，請檢查存檔地址。</div>',
+          zh_tw: '<div>此頁面當前的存檔地址是「${1}」，在條目名稱空間之下。</div><div>一般而言不應向條目名稱空間進行存檔，請檢查存檔地址。</div>'
         };
         easy.lang.problem_with_archive_location_same_page = {
           en_us: '<div>Currently the archive location of this page, "${1}", is this page itself, Easy archive cannot operate like this. </div>',
-          zh_cn: '<div>本页面目前的存档地址是“${1}”，和本页面名称相同。Easy Archive 无法按此地址存档。</div>',
-          zh_hk: '<div>本頁面當前的存檔地址是「${1}」，和本頁面名稱相同。Easy Archive 無法按此地址存檔。</div>',
-          zh_tw: '<div>本頁面當前的存檔地址是「${1}」，和本頁面名稱相同。Easy Archive 無法按此地址存檔。</div>'
+          zh_cn: '<div>此页面目前的存档地址是“${1}”，和此页面名称相同。Easy Archive 无法按此地址存档。</div>',
+          zh_hk: '<div>此頁面當前的存檔地址是「${1}」，和此頁面名稱相同。Easy Archive 無法按此地址存檔。</div>',
+          zh_tw: '<div>此頁面當前的存檔地址是「${1}」，和此頁面名稱相同。Easy Archive 無法按此地址存檔。</div>'
         };
         easy.lang.archive_summary = {
           en_us: 'archive section',
@@ -847,7 +768,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         };
         easy.lang.turn_off_summary = {
           en_us: 'Disable Easy Archive on this page.',
-          zh_cn: '在本页面停用 Easy Archive。',
+          zh_cn: '在此页面停用 Easy Archive。',
           zh_hk: '在本頁停用 Easy Archive。',
           zh_tw: '在本頁停用 Easy Archive。'
         };
@@ -872,8 +793,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           }
           return object;
         };
-        var arc_sum = looker_upper(window, ['external_config.easy_archive.user_custom_archive_summary']);
-        var del_sum = looker_upper(window, ['external_config.easy_archive.user_custom_delete_summary']);
+        var arc_sum = looker_upper(window, ['easy_archive.user_custom_archive_summary']);
+        var del_sum = looker_upper(window, ['easy_archive.user_custom_delete_summary']);
         var sanitize_html = function sanitize_html(string) {
           return string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&apos;').replace(/"/g, '&quot;');
         };
@@ -899,7 +820,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
               }
             }
             return lang_content;
-          } catch (_unused4) {
+          } catch (_unused2) {
             return '(!) undefined language content';
           }
         };
@@ -958,35 +879,32 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
               _ding(ml(tag_ding, [section_number.toString(), to]), ding_type, ding_ttl, false, false);
             },
             section_link: function section_link() {
-              var node = document.querySelectorAll(".easy-archive-section-id-span-order-".concat(section_number))[0];
+              var node = document.querySelector(".easy-archive-section-id-span-order-".concat(section_number));
               var pnode = node.parentNode;
               for (var _i = 1; _i < pnode.childNodes.length - 2; _i++) {
                 pnode.childNodes[_i].style.display = 'none';
               }
               node.innerHTML = ml(tag_section);
               node.style.display = 'inline';
-              node.style.color = 'rgba(0,0,0,0.5)';
+              node.style.color = 'rgb(0 0 0/.5)';
             }
           };
           return actions;
         };
-        var delete_section_core = function delete_section_core(section_number, _nominal, callback) {
+        var delete_section_core = function delete_section_core(section_number, _nominal) {
           var actual_section_number = actual_section(section_number);
           report_doneness_ui(_nominal, 'delete', '', 'ongoing').ding();
           expose.d(mw.config.get('wgPageName'), actual_section_number, function () {
             report_doneness_ui(_nominal, 'delete', '', 'done').ding();
             report_doneness_ui(_nominal, 'delete', '', 'done').section_link();
             nominal_sections[section_number] = true;
-            typeof callback === 'function' ? callback() : undefined;
           }, del_sum || ml('delete_summary'));
         };
         easy.delete_section = function (section_number, _nominal) {
           report_doneness_ui(_nominal, 'delete', '', 'ongoing').section_link();
-          go.chain(function (reso) {
-            delete_section_core(section_number, _nominal, reso);
-          });
+          delete_section_core(section_number, _nominal);
         };
-        var archive_section_core = function archive_section_core(section_number, _nominal, callback) {
+        var archive_section_core = function archive_section_core(section_number, _nominal) {
           var actual_section_number = actual_section(section_number);
           var to = easy.settings.find('arc-loc');
           report_doneness_ui(_nominal, 'archive', to, 'ongoing').ding();
@@ -994,15 +912,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
             report_doneness_ui(_nominal, 'archive', to, 'done').ding();
             report_doneness_ui(_nominal, 'archive', to, 'done').section_link();
             nominal_sections[section_number] = true;
-            typeof callback === 'function' ? callback() : undefined;
           }, arc_sum || ml('archive_summary'));
         };
         easy.archive_section = function (section_number, _nominal) {
           var to = easy.settings.find('arc-loc');
           report_doneness_ui(_nominal, 'archive', to, 'ongoing').section_link();
-          go.chain(function (reso) {
-            archive_section_core(section_number, _nominal, reso);
-          });
+          archive_section_core(section_number, _nominal);
         };
         easy.archive_sections = function (starting_section_number, count) {
           if (starting_section_number < 1) {
@@ -1075,14 +990,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
             easy.ding(ml(ntag, nsubst), ntype, nttl, nhist, npersist);
           }
         };
-        // ding and its prerequisites.
-        if (!document.querySelector('#ding')) {
-          document.querySelectorAll('body')[0].insertAdjacentHTML('afterbegin', '<style>#ding button{margin:0 .2em;background:0 0;border:.2em solid #fff;border-radius:9em;padding:0 .7em;box-sizing:border-box;color:inherit;font-weight:inherit}#ding button:active{background:rgba(255,255,255,.6)}</style>');
-          document.querySelectorAll('body')[0].insertAdjacentHTML('afterbegin', '<div id="ding"></div>');
-        }
-        if (!document.querySelector('#ding_history')) {
-          document.querySelectorAll('body')[0].insertAdjacentHTML('afterbegin', '<div id="ding_history"></div>');
-        }
         // real deal here
         // interface injection - prepare
         var i = 0;
@@ -1095,7 +1002,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         var section_archive_interface_inhibit = easy.settings.find('sec-arc') === '0' || easy.settings.find('data-init') === '0';
         var section_delete_interface_html;
         var section_archive_interface_html;
-        var section_id_span_html = '<span class="easy-archive-section-id-span easy-archive-section-id-span-order-@@" style="display: none;">section</span>';
+        var section_id_span_html = '<span class="easy-archive-section-id-span easy-archive-section-id-span-order-@@" style="display:none">section</span>';
         var footer_info_ele;
         var position_of_insertion;
         if (document.querySelector('#footer-info') || document.querySelectorAll('.page-info')) {
@@ -1110,8 +1017,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         // ... interface injection - logic
         if (easy.on_article || easy.on_hist_version) {
           // insert no interface on an article page or a history version.
-        } else if (function (black_list) {
-          var _iterator3 = _createForOfIteratorHelper(black_list),
+        } else if (function (blacklist) {
+          var _iterator3 = _createForOfIteratorHelper(blacklist),
             _step3;
           try {
             for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
@@ -1128,8 +1035,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           return false;
         }(easy.never_enable_on_these_pages_regex)) {
           // insert no interface if the page name is blacklisted.
-        } else if (function (black_list) {
-          var _iterator4 = _createForOfIteratorHelper(black_list),
+        } else if (function (blacklist) {
+          var _iterator4 = _createForOfIteratorHelper(blacklist),
             _step4;
           try {
             for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
@@ -1146,7 +1053,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           return false;
         }(easy.dis_support_these_pages_regex)) {
           // insert not supported notice if the page name indicates that it is not supported.
-          footer_info_ele.insertAdjacentHTML(position_of_insertion, "<div id='easy_archive_enable_notice'><a style='color:inherit' href='javascript:window.easy_archive.elaborate_notice(9623)'>".concat(ml('page_not_supported'), "</a></div>"));
+          footer_info_ele.insertAdjacentHTML(position_of_insertion, "<div id=\"easy_archive_enable_notice\"><a style=\"color:inherit\" href=\"javascript:window.easy_archive.elaborate_notice(9623)\">".concat(ml('page_not_supported'), "</a></div>"));
         } else if (mw.config.get('wgPageName') === easy.settings.find('arc-loc')) {
           easy.elaborate_notice(9220);
         } else if (easy.has_template && !easy.others_user_talk) {
@@ -1162,7 +1069,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
               var ve = /[&?]veaction=edit/.test(ele.childNodes[1].href);
               var child_node_number = ve ? 3 : 1;
               if (ele.parentNode.tagName.toLowerCase() === 'h2' && ele.parentNode.id !== 'firstHeading' && decodeURIComponent(ele.childNodes[child_node_number].href.split(/[&?]title=/)[1].split('&')[0]) === mw.config.get('wgPageName')) {
-                actual = Number.parseInt(ele.childNodes[child_node_number].href.split(/[&?]section=/)[1].split('&')[0]);
+                actual = Number.parseInt(ele.childNodes[child_node_number].href.split(/[&?]section=/)[1].split('&')[0], 10);
                 nominal = i - j + 1;
                 section_delete_interface_html = section_delete_interface_inhibit ? '' : "".concat(pipe_html, "<a href=\"javascript:window.easy_archive.delete_section(").concat(actual, ", ").concat(nominal, ")\">").concat(ml('delete'), "</a>");
                 section_archive_interface_html = section_archive_interface_inhibit ? '' : "".concat(pipe_html, "<a href=\"javascript:window.easy_archive.archive_section(").concat(actual, ", ").concat(nominal, ")\">").concat(ml('archive'), "</a>");
@@ -1185,6 +1092,19 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           // then assert: (easy.my_user_talk === true), (easy.has_template === false).
           // my user talk -- installed easy archive but lacking template.
           footer_info_ele.insertAdjacentHTML(position_of_insertion, "<div id='easy_archive_enable_notice'><a style='color:inherit' href='javascript:window.easy_archive.elaborate_notice(933)'>".concat(ml('please_enable'), "</a></div>"));
+        }
+        if (mw.config.get('skin') === 'citizen') {
+          $('#easy_archive_enable_notice').replaceWith(function () {
+            var $this = $(this);
+            return $('<section>').addClass('page-info__item').attr('id', $this.attr('id')).html($this.html());
+          });
+          mw.util.addCSS('.easy-archive-section-id-span{font-size:.875rem}');
+        }
+        if (['vector', 'vector-2022'].indexOf(mw.config.get('skin')) !== -1) {
+          $('#easy_archive_enable_notice').replaceWith(function () {
+            var $this = $(this);
+            return $('<li>').attr('id', $this.attr('id')).html($this.html());
+          });
         }
       })();
     })(window.easy_archive);

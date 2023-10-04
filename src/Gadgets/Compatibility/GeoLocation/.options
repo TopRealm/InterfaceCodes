@@ -1,1 +1,1 @@
-GeoLocation[ResourceLoader|default|dependencies=ext.gadget.Geo,ext.gadget.i18n,mediawiki.Title,mediawiki.api|targets=desktop,mobile]|GeoLocation.css|GeoLocation.js
+GeoLocation[ResourceLoader|dependencies=ext.gadget.Geo,ext.gadget.i18n,mediawiki.Title,mediawiki.api]|GeoLocation.css|GeoLocation.js
