@@ -1,30 +1,42 @@
 /**
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ *
+ * @base <https://commons.wikimedia.org/wiki/MediaWiki:Gadget-HotCat.js>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/HotCat>
+ * @dependency ext.gadget.i18n, jquery.ui, mediawiki.storage, mediawiki.util, mediawiki.user, user
+ */
+/**
  * +--------------------------------------------------------+
  * |         === WARNING: GLOBAL GADGET FILE ===            |
  * +--------------------------------------------------------+
  * |      All changes should be made in the repository,     |
  * |              otherwise they will be lost.              |
  * +--------------------------------------------------------+
- * |        Changes to this page affect many users.         |
- * |  Please discuss changes at Talk page before editing.   |
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
  * +--------------------------------------------------------+
  */
 /* <nowiki> */
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+var _objectHasOwn = function (object, property) {
+  if (typeof object === 'undefined' || object === null) {
+    throw new TypeError('Cannot convert undefined or null to object');
+  }
+  return Object.prototype.hasOwnProperty.call(Object(object), property);
+};
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-/**
- * SPDX-License-Identifier: CC-BY-SA-4.0
- * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
- *
- * @base <https://commons.wikimedia.org/wiki/MediaWiki:Gadget-HotCat.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/HotCat>
- * @dependency user
- */
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 /**
  * HotCat V2.43
  *
@@ -41,7 +53,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  *
  * Choose whichever license of these you like best :-)
  */
-(function hotCat($, mw) {
+(function hotCat() {
   // Don't use mw.config.get() as that takes a copy of the config, and so doesn't
   // account for values changing, e.g. wgCurRevisionId after a VE edit
   var conf = mw.config.values;
@@ -50,7 +62,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     return; // Not on edit mode
   }
   // Configuration stuff.
-  var HC = window.HotCat = {
+  window.HotCat = {
     // Localize these messages to the main language of your wiki.
     messages: {
       cat_removed: 'removed [[Category:$1]]',
@@ -217,7 +229,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
       (_a = window.HotCat).shortcuts || (_a.shortcuts = {});
       for (var k in map) {
-        if (!Object.prototype.hasOwnProperty.call(map, k) || typeof k !== 'string') {
+        if (!_objectHasOwn(map, k) || typeof k !== 'string') {
           continue;
         }
         var v = map[k];
@@ -233,13 +245,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     }
   };
+  var HC = window.HotCat;
   // More backwards compatibility. We have a few places where we test for the browser: once for
   // Safari < 3.0, and twice for WebKit (Chrome or Safari, any versions)
   var ua = navigator.userAgent.toLowerCase();
   var is_webkit = /applewebkit\/\d+/.test(ua) && !(ua.indexOf('spoofer') !== -1);
   var cat_prefix = null;
   var noSuggestions = false;
-  var LoadTrigger = function LoadTrigger(needed) {
+  var LoadTrigger = /*#__PURE__*/_createClass(function LoadTrigger(needed) {
+    _classCallCheck(this, LoadTrigger);
     // Define methods in a closure so that self reference is available,
     // also allows method calls to be detached.
     var self = this;
@@ -262,58 +276,45 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         self.queue = [];
       }
     };
-  };
-  // Used to delay running the HotCat setup until /local-defaults and localizations have been loaded.
+  }); // Used to delay running the HotCat setup until local-defaults and localizations have been loaded.
   var loadTrigger = new LoadTrigger(2);
-  var load = function load(uri, callback) {
-    var s = document.createElement('script');
-    s.src = uri;
-    var called = false;
-    s.onload = function () {
-      if (!called && callback) {
-        called = true;
-        callback();
-      }
-      if (s.parentNode) {
-        s.remove();
-      }
-    };
-    s.onerror = s.onload;
-    document.head.append(s);
-  };
-  var loadJS = function loadJS(page, callback) {
-    load("".concat(conf.wgServer + conf.wgScript, "?title=").concat(encodeURIComponent(page), "&action=raw&ctype=text/javascript&maxage=86400&smaxage=86400"), callback);
-  };
-  var loadURI = function loadURI(href, callback) {
-    var url = href;
-    if (url.slice(0, 2) === '//') {
-      url = window.location.protocol + url;
-    } else if (url.slice(0, 1) === '/') {
-      url = conf.wgServer + url;
-    }
-    load(url, callback);
-  };
   // Load local configurations, overriding the pre-set default values in the HotCat object above. This is always loaded
   // from the wiki where this script is executing, even if this script itself is hotlinked from Commons. This can
   // be used to change the default settings, or to provide localized interface texts for edit summaries and so on.
-  loadJS('MediaWiki:Gadget-HotCat-local-defaults.js', loadTrigger.loaded);
+  $.ajax({
+    url: mw.config.get('wgScript'),
+    dataType: 'script',
+    data: {
+      title: 'MediaWiki:Gadget-HotCat-local-defaults.js',
+      action: 'raw',
+      ctype: 'text/javascript',
+      maxage: 3600,
+      smaxage: 3600
+    },
+    cache: true
+  }).always(function () {
+    loadTrigger.loaded();
+  });
   // Load localized UI texts. These are the texts that HotCat displays on the page itself. Texts shown in edit summaries
-  // should be localized in /local-defaults above.
+  // should be localized in local-defaults above.
   if (conf.wgUserLanguage === 'en') {
     loadTrigger.loaded();
   } else {
-    // Lupo: somebody thought it would be a good idea to add this. So the default is true, and you have to set it to false
-    // explicitly if you're not on Commons and don't want that.
-    if (window.hotcat_translations_from_commons === undefined) {
-      window.hotcat_translations_from_commons = true;
-    }
-    // Localization hook to localize HotCat messages, tooltips, and engine names for wgUserLanguage.
-    if (window.hotcat_translations_from_commons && !(conf.wgServer.indexOf('//commons') !== -1)) {
-      loadURI("".concat(mw.config.get('wgScript'), "?title=MediaWiki:Gadget-HotCat-").concat(conf.wgUserLanguage, ".js&action=raw&ctype=text/javascript&maxage=86400&smaxage=86400"), loadTrigger.loaded);
-    } else {
-      // Load translations locally
-      loadJS("MediaWiki:Gadget-HotCat-".concat(conf.wgUserLanguage, ".js"), loadTrigger.loaded);
-    }
+    // Load translations locally
+    $.ajax({
+      url: mw.config.get('wgScript'),
+      dataType: 'script',
+      data: {
+        title: 'MediaWiki:Gadget-HotCat-messages.js',
+        action: 'raw',
+        ctype: 'text/javascript',
+        maxage: 3600,
+        smaxage: 3600
+      },
+      cache: true
+    }).always(function () {
+      loadTrigger.loaded();
+    });
   }
   // No further changes should be necessary here.
   // The following regular expression strings are used when searching for categories in wikitext.
@@ -422,12 +423,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
     return str.slice(0, 1).toUpperCase() + str.slice(1);
   };
-  var wikiPagePath = function wikiPagePath(pageName) {
-    return (
-      // Note: do not simply use encodeURI, it doesn't encode '&', which might break if wgArticlePath actually has the $1 in
-      // a query parameter.
-      conf.wgArticlePath.replace('$1', encodeURIComponent(pageName).replace(/%3A/g, ':').replace(/%2F/g, '/'))
-    );
+  var wikiPagePath = function wikiPagePath(pageName)
+  // Note: do not simply use encodeURI, it doesn't encode '&', which might break if wgArticlePath actually has the $1 in
+  // a query parameter.
+  {
+    return conf.wgArticlePath.replace('$1', encodeURIComponent(pageName).replace(/%3A/g, ':').replace(/%2F/g, '/'));
   };
   var escapeRE = function escapeRE(str) {
     return str.replace(/([$()*+.?[\\\]^])/g, '\\$1');
@@ -748,7 +748,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
         if (HC.capitalizePageNames === null) {
           // ResourceLoader's JSParser doesn't like .case, so override eslint.
-          HC.capitalizePageNames = json.query.general["case"] === 'first-letter';
+          HC.capitalizePageNames = json.query.general.case === 'first-letter';
         }
       }
       serverTime = startTime;
@@ -787,7 +787,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       failure.apply(this, args);
     };
     // Must use Ajax here to get the user options and the edit token.
-    $.getJSON("".concat(conf.wgServer + conf.wgScriptPath, "/api.php?format=json&action=query&rawcontinue=&titles=").concat(encodeURIComponent(conf.wgPageName), "&prop=info%7Crevisions%7Clanglinks&inprop=watched&rvprop=content%7Ctimestamp%7Cids%7Cuser&lllimit=500&rvlimit=2&rvdir=newer&rvstartid=").concat(conf.wgCurRevisionId, "&meta=siteinfo%7Cuserinfo%7Ctokens&type=csrf&uiprop=options"), function (json) {
+    $.getJSON("".concat(conf.wgScriptPath, "/api.php?format=json&action=query&rawcontinue=&titles=").concat(encodeURIComponent(conf.wgPageName), "&prop=info%7Crevisions%7Clanglinks&inprop=watched&rvprop=content%7Ctimestamp%7Cids%7Cuser&lllimit=500&rvlimit=2&rvdir=newer&rvstartid=").concat(conf.wgCurRevisionId, "&meta=siteinfo%7Cuserinfo%7Ctokens&type=csrf&uiprop=options"), function (json) {
       setPage(json);
       doEdit(fail);
     }).fail(function (_ref3) {
@@ -845,12 +845,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       commitForm.wpEditToken.value = editToken;
       action = commitForm.wpDiff;
       if (action) {
-        action.name = action.value = 'wpSave';
+        action.value = 'wpSave';
+        action.name = action.value;
       }
     } else {
       action = commitForm.wpSave;
       if (action) {
-        action.name = action.value = 'wpDiff';
+        action.value = 'wpDiff';
+        action.name = action.value;
       }
     }
     var result = {
@@ -895,7 +897,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       // Do not commit if there were errors
       action = commitForm.wpSave;
       if (action) {
-        action.name = action.value = 'wpDiff';
+        action.value = 'wpDiff';
+        action.name = action.value;
       }
     }
     // Fill in the form and submit it
@@ -1063,7 +1066,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return;
     }
     for (var p in params.query.pages) {
-      if (Object.prototype.hasOwnProperty.call(params.query.pages, p)) {
+      if (_objectHasOwn(params.query.pages, p)) {
         resolveOne(params.query.pages[p], toResolve);
       }
     }
@@ -1090,7 +1093,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         args += '%7C';
       }
     }
-    $.getJSON("".concat(conf.wgServer + conf.wgScriptPath, "/api.php?").concat(args), function (json) {
+    $.getJSON("".concat(conf.wgScriptPath, "/api.php?").concat(args), function (json) {
       resolveRedirects(toResolve, json);
       callback(toResolve);
     }).fail(function (req) {
@@ -1123,7 +1126,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         // cursor at the end of the category, and do not display the old suggestion list.
         which.showsList = false;
         var v = actualValue.split('|');
-        which.lastRealInput = which.lastInput = v[0];
+        which.lastInput = v[0];
+        which.lastRealInput = which.lastInput;
         if (v.length > 1) {
           which.currentKey = v[1];
         }
@@ -1170,7 +1174,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       initiateEdit(function (failure) {
         performChanges(failure);
       }, function (msg) {
-        mw.notify(msg);
+        mw.notify(msg, {
+          tag: 'hotCat'
+        });
       });
       return;
     }
@@ -1187,10 +1193,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
               if (!firstDab) {
                 firstDab = element;
               }
-            } else {
-              if (element.acceptCheck(true)) {
-                element.commit();
-              }
+            } else if (element.acceptCheck(true)) {
+              element.commit();
             }
           } else {
             // We didn't disable all the open editors, but we did asynchronous calls. It is
@@ -1209,7 +1213,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         initiateEdit(function (failure) {
           performChanges(failure);
         }, function (msg) {
-          mw.notify(msg);
+          mw.notify(msg, {
+            tag: 'hotCat'
+          });
         });
       }
     });
@@ -1244,7 +1250,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   };
   var suggestionEngines = {
     opensearch: {
-      uri: '/api.php?format=json&action=opensearch&namespace=14&limit=30&search=Category:$1',
+      uri: "".concat(mw.config.get('wgScriptPath'), "/api.php?format=json&action=opensearch&namespace=14&limit=30&search=Category:$1"),
       // $1 = search term
       // Function to convert result of uri into an array of category names
       handler: function handler(queryResult, queryKey) {
@@ -1279,7 +1285,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     },
     internalsearch: {
-      uri: '/api.php?format=json&action=query&list=allpages&apnamespace=14&aplimit=30&apfrom=$1&apprefix=$1',
+      uri: "".concat(mw.config.get('wgScriptPath'), "/api.php?format=json&action=query&list=allpages&apnamespace=14&aplimit=30&apfrom=$1&apprefix=$1"),
       handler: function handler(queryResult) {
         if (queryResult && queryResult.query && queryResult.query.allpages) {
           var titles = queryResult.query.allpages;
@@ -1292,12 +1298,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     },
     exists: {
-      uri: '/api.php?format=json&action=query&prop=info&titles=Category:$1',
+      uri: "".concat(mw.config.get('wgScriptPath'), "/api.php?format=json&action=query&prop=info&titles=Category:$1"),
       handler: function handler(queryResult, queryKey) {
         if (queryResult && queryResult.query && queryResult.query.pages && !queryResult.query.pages[-1]) {
           // Should have exactly 1
           for (var p in queryResult.query.pages) {
-            if (Object.prototype.hasOwnProperty.call(queryResult.query.pages, p)) {
+            if (_objectHasOwn(queryResult.query.pages, p)) {
               var _title = queryResult.query.pages[p].title;
               _title = _title.slice(Math.max(0, _title.indexOf(':') + 1));
               var titles = [_title];
@@ -1314,7 +1320,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     },
     subcategories: {
-      uri: '/api.php?format=json&action=query&list=categorymembers&cmtype=subcat&cmlimit=max&cmtitle=Category:$1',
+      uri: "".concat(mw.config.get('wgScriptPath'), "/api.php?format=json&action=query&list=categorymembers&cmtype=subcat&cmlimit=max&cmtitle=Category:$1"),
       handler: function handler(queryResult) {
         if (queryResult && queryResult.query && queryResult.query.categorymembers) {
           var titles = queryResult.query.categorymembers;
@@ -1327,7 +1333,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     },
     parentcategories: {
-      uri: '/api.php?format=json&action=query&prop=categories&titles=Category:$1&cllimit=max',
+      uri: "".concat(mw.config.get('wgScriptPath'), "/api.php?format=json&action=query&prop=categories&titles=Category:$1&cllimit=max"),
       handler: function handler(queryResult) {
         if (queryResult && queryResult.query && queryResult.query.pages) {
           for (var p in queryResult.query.pages) {
@@ -1874,13 +1880,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         if (this.catLink) {
           this.catLink.style.backgroundColor = 'transparent';
         }
-      } else {
-        if (!onUpload) {
-          try {
-            this.catLink.style.backgroundColor = HC.bg_changed;
-          } catch (_unused3) {
-            /* empty */
-          }
+      } else if (!onUpload) {
+        try {
+          this.catLink.style.backgroundColor = HC.bg_changed;
+        } catch (_unused3) {
+          /* empty */
         }
       }
       checkMultiInput();
@@ -1979,10 +1983,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         resolveMulti(toResolve, function (resolved) {
           if (resolved[0].dab) {
             showDab(resolved[0]);
-          } else {
-            if (resolved[0].acceptCheck(true)) {
-              resolved[0].commit(resolved[0].currentCategory === original ? null : HC.messages.cat_resolved.replace(/\$1/g, original));
-            }
+          } else if (resolved[0].acceptCheck(true)) {
+            resolved[0].commit(resolved[0].currentCategory === original ? null : HC.messages.cat_resolved.replace(/\$1/g, original));
           }
         });
       }
@@ -2059,7 +2061,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         initiateEdit(function (failure) {
           performChanges(failure, self);
         }, function (msg) {
-          mw.notify(msg);
+          mw.notify(msg, {
+            tag: 'hotCat'
+          });
         });
       }
     },
@@ -2096,22 +2100,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         this.normalLinks.style.display = 'none';
         this.undelLink.style.display = '';
         checkMultiInput();
+      } else if (onUpload) {
+        // Remove this editor completely
+        this.removeEditor();
       } else {
-        if (onUpload) {
-          // Remove this editor completely
-          this.removeEditor();
-        } else {
-          this.originalState = this.state;
-          this.state = CategoryEditor.DELETED;
-          this.noCommit = noCommit || HC.del_needs_diff;
-          var self = this;
-          initiateEdit(function (failure) {
-            performChanges(failure, self);
-          }, function (msg) {
-            self.state = self.originalState;
-            mw.notify(msg);
+        this.originalState = this.state;
+        this.state = CategoryEditor.DELETED;
+        this.noCommit = noCommit || HC.del_needs_diff;
+        var self = this;
+        initiateEdit(function (failure) {
+          performChanges(failure, self);
+        }, function (msg) {
+          self.state = self.originalState;
+          mw.notify(msg, {
+            tag: 'hotCat'
           });
-        }
+        });
       }
     },
     restore: function restore(event) {
@@ -2282,7 +2286,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
           var engine_ = _step3.value;
           var engine = suggestionEngines[engine_];
-          var url = conf.wgServer + conf.wgScriptPath + engine.uri.replace(/\$1/g, encodeURIComponent(cleanKey));
+          var url = conf.wgScriptPath + engine.uri.replace(/\$1/g, encodeURIComponent(cleanKey));
           this.makeCall(url, cb, engine, v, cleanKey);
         }
       } catch (err) {
@@ -2316,10 +2320,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         if (!this.engineSelector) {
           this.engineName = null;
         }
-      } else {
-        if (this.engineSelector) {
-          this.engineSelector.style.display = 'none';
-        }
+      } else if (this.engineSelector) {
+        this.engineSelector.style.display = 'none';
       }
       if (queryKey) {
         if (this.lastInput.indexOf(queryKey)) {
@@ -3020,6 +3022,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       newRow.append(labelCell);
       newRow.append(lineCell);
       form.onsubmit = function (oldSubmit) {
+        for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+          args[_key2 - 1] = arguments[_key2];
+        }
         return function () {
           var do_submit = true;
           if (oldSubmit) {
@@ -3027,7 +3032,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
               // eslint-disable-next-line security/detect-eval-with-expression, no-eval
               do_submit = eval(oldSubmit);
             } else if (oldSubmit instanceof Function) {
-              do_submit = oldSubmit.apply(form, arguments);
+              do_submit = oldSubmit.apply(form, [oldSubmit].concat(args));
             }
           }
           if (!do_submit) {
@@ -3219,7 +3224,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   var getPage = function getPage() {
     // We know we have an article here.
     if (conf.wgArticleId) {
-      var url = "".concat(conf.wgServer + conf.wgScriptPath, "/api.php?format=json&callback=HotCat.start&action=query&rawcontinue=&titles=").concat(encodeURIComponent(conf.wgPageName), "&prop=info%7Crevisions&rvprop=content%7Ctimestamp%7Cids&meta=siteinfo&rvlimit=1&rvstartid=").concat(conf.wgCurRevisionId);
+      var url = "".concat(conf.wgScriptPath, "/api.php?format=json&callback=HotCat.start&action=query&rawcontinue=&titles=").concat(encodeURIComponent(conf.wgPageName), "&prop=info%7Crevisions&rvprop=content%7Ctimestamp%7Cids&meta=siteinfo&rvlimit=1&rvstartid=").concat(conf.wgCurRevisionId);
       var s = make('script');
       s.src = url;
       HC.start = function (json) {
@@ -3368,5 +3373,5 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   $(function () {
     run();
   });
-})($, mw);
+})();
 /* </nowiki> */
