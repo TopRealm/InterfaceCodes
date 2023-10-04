@@ -46,7 +46,7 @@
 }
 
 .scroller-item-now {
-    border-color: #58a3ff;
+    border-color: #999;
     transition: all .2s;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 5px 8px rgba(0, 0, 0, 0.0975);
 }
