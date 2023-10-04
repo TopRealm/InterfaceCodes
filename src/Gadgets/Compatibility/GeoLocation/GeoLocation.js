@@ -417,6 +417,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     _context.next = 6;
                     return $.get("".concat(scriptPath, "/api.php"), {
                       action: 'query',
+                      format: 'json',
                       formatversion: '2',
                       list: 'users',
                       ususers: mw.config.get('wgRelevantUserName'),
@@ -463,7 +464,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   case 3:
                     _context2.prev = 3;
                     _context2.next = 6;
-                    return $.getJSON("".concat(scriptPath, "/wiki/User:").concat(mw.config.get('wgUserName'), "/GeoIP.json?action=raw&ctype=application/json"));
+                    return $.getJSON(mw.util.getUrl("User:".concat(mw.config.get('wgRelevantUserName'), "/GeoIP.json"), {
+                      action: 'raw',
+                      ctype: 'application/json'
+                    }));
                   case 6:
                     response = _context2.sent;
                     if (!(response.country === country && (response.region === region || response.region !== '' && region === ''))) {
@@ -482,6 +486,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     _context2.next = 16;
                     return $.post("".concat(scriptPath, "/api.php"), {
                       action: 'edit',
+                      format: 'json',
                       formatversion: '2',
                       contentformat: 'application/json',
                       contentmodel: 'json',
