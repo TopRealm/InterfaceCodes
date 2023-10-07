@@ -1,60 +1,126 @@
 /**
- * SPDX-License-Identifier: CC BY-SA-4.0
+ * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @base <https://www.mediawiki.org/wiki/MediaWiki:Gadget-whoisactive.css>
+ * @base <https://www.mediawiki.org/wiki/MediaWiki:Gadget-whoisactive.js>
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/WhoIsActive>
+ * @dependency ext.gadget.i18n, mediawiki.api
+ */
+/**
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
+ * +--------------------------------------------------------+
  */
 /* <nowiki> */
-.mw-whoisactivegadget-span {
-	overflow: hidden;
-	padding: 0 0.5em;
+.mw-whoisactive-span {
+	display: inline-block;
+	padding: 0 0.5em !important;
 	border: 1px solid #ddd;
-	border-radius: 0.5em;
-	margin: 0 0.5em;
-	font-size: 13px;
-	vertical-align: middle;
+	margin: 0 0.25em;
 	white-space: nowrap;
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	-ms-border-radius: 0.5em;
+	-o-border-radius: 0.5em;
+	border-radius: 0.5em;
+	font-size: 0.8125em;
 }
 
-.mw-whoisactivegadget-thisweek,
-.mw-whoisactivegadget-thismonth {
-	border-color: #14866d;
-	color: #14866d;
+.mw-footer .mw-whoisactive-span {
+	margin-bottom: 0.25em !important;
 }
 
-.mw-whoisactivegadget-thisyear {
+.mw-whoisactive-ThisWeek {
+	border-color: #00af89;
+	color: #00af89 !important;
+}
+
+.mw-whoisactive-ThisMonth {
+	border-color: #36c;
+	color: #36c !important;
+}
+
+.mw-whoisactive-ThisYear {
 	border-color: #a60;
-	color: #a60;
+	color: #a60 !important;
 }
 
-.mw-whoisactivegadget-overayear {
+.mw-whoisactive-OverAYear {
 	border-color: #b32424;
-	color: #b32424;
+	color: #b32424 !important;
 }
 
-.mw-whoisactivegadget-filter-thisweek,
-.mw-whoisactivegadget-filter-thismonth {
-	-webkit-filter: invert(38%) sepia(99%) saturate(328%) hue-rotate(117deg) brightness(91%) contrast(99%);
-	filter: invert(38%) sepia(99%) saturate(328%) hue-rotate(117deg) brightness(91%) contrast(99%);
+.mw-whoisactive-icon {
+	margin: 0;
 }
 
-.mw-whoisactivegadget-filter-thisyear {
-	-webkit-filter: invert(47%) sepia(61%) saturate(4688%) hue-rotate(24deg) brightness(88%) contrast(101%);
-	filter: invert(47%) sepia(61%) saturate(4688%) hue-rotate(24deg) brightness(88%) contrast(101%);
+.mw-whoisactive-icon::before {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 15px;
+	content: '';
+	vertical-align: middle;
 }
 
-.mw-whoisactivegadget-filter-overayear {
-	-webkit-filter: invert(13%) sepia(75%) saturate(3621%) hue-rotate(350deg) brightness(112%) contrast(86%);
-	filter: invert(13%) sepia(75%) saturate(3621%) hue-rotate(350deg) brightness(112%) contrast(86%);
+.mw-whoisactive-icon-ThisWeek::before {
+	/**
+	 * @description userContributions Icon (ltr) from OOjs UI
+	 * @base <https://github.com/wikimedia/oojs-ui/blob/e17952e413cfc00c15cfd861d47463c29062afe7/src/themes/wikimediaui/images/icons/userContributions-ltr.svg>
+	 * @license MIT <https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT>
+	 */
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%2300af89'%3E%3Ccircle cx='15.5' cy='10.5' r='2.5'/%3E%3Cpath d='M1 15h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5 10.6c-3.3 0-4.5 1.6-4.5 2.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z'/%3E%3C/svg%3E");
 }
 
-.client-darkmode .mw-whoisactivegadget-filter-thisweek,
-.client-darkmode .mw-whoisactivegadget-filter-thismonth,
-.client-darkmode .mw-whoisactivegadget-filter-thisyear,
-.client-darkmode .mw-whoisactivegadget-filter-overayear {
-	-webkit-filter: none;
-	filter: none;
+.mw-whoisactive-icon-ThisMonth::before {
+	/**
+	 * @description userContributions Icon (ltr) from OOjs UI
+	 * @base <https://github.com/wikimedia/oojs-ui/blob/e17952e413cfc00c15cfd861d47463c29062afe7/src/themes/wikimediaui/images/icons/userContributions-ltr.svg>
+	 * @license MIT <https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT>
+	 */
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%2336c'%3E%3Ccircle cx='15.5' cy='10.5' r='2.5'/%3E%3Cpath d='M1 15h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5 10.6c-3.3 0-4.5 1.6-4.5 2.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z'/%3E%3C/svg%3E");
+}
+
+.mw-whoisactive-icon-ThisYear::before {
+	/**
+	 * @description userContributions Icon (ltr) from OOjs UI
+	 * @base <https://github.com/wikimedia/oojs-ui/blob/e17952e413cfc00c15cfd861d47463c29062afe7/src/themes/wikimediaui/images/icons/userContributions-ltr.svg>
+	 * @license MIT <https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT>
+	 */
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23a60'%3E%3Ccircle cx='15.5' cy='10.5' r='2.5'/%3E%3Cpath d='M1 15h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5 10.6c-3.3 0-4.5 1.6-4.5 2.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z'/%3E%3C/svg%3E");
+}
+
+.mw-whoisactive-icon-OverAYear::before {
+	/**
+	 * @description userContributions Icon (ltr) from OOjs UI
+	 * @base <https://github.com/wikimedia/oojs-ui/blob/e17952e413cfc00c15cfd861d47463c29062afe7/src/themes/wikimediaui/images/icons/userContributions-ltr.svg>
+	 * @license MIT <https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT>
+	 */
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23b32424'%3E%3Ccircle cx='15.5' cy='10.5' r='2.5'/%3E%3Cpath d='M1 15h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5 10.6c-3.3 0-4.5 1.6-4.5 2.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z'/%3E%3C/svg%3E");
+}
+
+.mw-whoisactive-text {
+	margin-left: 5px;
+	vertical-align: middle;
+}
+
+.skin-citizen .mw-whoisactive-text {
+	font-size: 1.125em;
+}
+
+.mw-whoisactive-notext {
+	font-size: 0 !important;
+	margin-left: 0;
+	clip-path: inset(50%);
 }
 
 /* </nowiki> */
