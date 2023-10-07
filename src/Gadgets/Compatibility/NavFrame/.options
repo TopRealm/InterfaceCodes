@@ -1,1 +1,1 @@
-NavFrame[ResourceLoader|default|hidden|targets=desktop,mobile]|NavFrame.css|NavFrame.js
+NavFrame[ResourceLoader|default|hidden|dependencies=ext.gadget.i18n]|NavFrame.css|NavFrame.js
