@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/LoginToEdit>
- * @dependency ext.gadget.i18n, mediawiki.util, oojs-ui-core, oojs-ui-windows
+ * @dependency ext.gadget.i18n, mediawiki.util, oojs-ui-windows
  */
 /**
  * +--------------------------------------------------------+
@@ -17,8 +17,6 @@
  * +--------------------------------------------------------+
  */
 /* <nowiki> */
-'use strict';
-
 $(function loginToEdit() {
   if (mw.config.get('wgUserName')) {
     return;
@@ -28,33 +26,37 @@ $(function loginToEdit() {
       localize = _i18n.localize;
     return {
       Cancel: localize({
+        en: 'Cancel',
         ja: 'キャンセル',
         'zh-hans': '暂不登录账号',
         'zh-hant': '暫不登入賬戶'
       }),
+      Edit: localize({
+        en: 'Edit',
+        ja: '編集',
+        'zh-hans': '编辑',
+        'zh-hant': '編輯'
+      }),
       Login: localize({
+        en: 'Login',
         ja: 'ログイン',
         'zh-hans': '登录已有账号',
         'zh-hant': '登入已有賬戶'
       }),
       Register: localize({
+        en: 'Register',
         ja: 'アカウントを作成',
         'zh-hans': '注册新的账号',
         'zh-hant': '註冊新的賬戶'
       }),
-      Edit: localize({
-        ja: '編集',
-        'zh-hans': '编辑',
-        'zh-hant': '編輯'
-      }),
-      dialogTitle: localize({
+      DialogTitle: localize({
         en: 'Welcome to Youshou Archives!',
         ja: '有獣アーカイブスへようこそ！',
         'zh-hans': '欢迎来到有兽档案馆！',
         'zh-hant': '歡迎來到有獸檔案館！'
       }),
-      dialogMessage: localize({
-        en: 'You have not yet logged in. Register and log in to your account to contribute.',
+      DialogMessage: localize({
+         en: 'You have not yet logged in. Register and log in to your account to contribute.',
         ja: 'あなたはまだ有獣アーカイブスにログインしていません。アカウントを作成し、ログインして有獣アーカイブスを改善することができます。',
         'zh-hans': '您尚未登录到有兽档案馆。您可以注册并登录账号，帮助完善有兽档案馆。',
         'zh-hant': '您尚未登錄到有獸檔案館。您可以注冊並登錄賬戶，幫助完善有獸檔案館。'
@@ -66,43 +68,43 @@ $(function loginToEdit() {
     return messages[key] || key;
   };
   var isCitizen = mw.config.get('skin') === 'citizen';
-  var loginURL = "/wiki/Special:Userlogin?returnto=".concat(mw.util.rawurlencode(mw.config.get('wgPageName')));
   var registerURL = "/wiki/Special:CreateAccount?returnto=".concat(mw.util.rawurlencode(mw.config.get('wgPageName')));
+  var messageDialog;
+  var windowManager;
+  var windowOpeningData = {
+    title: $('<b>').addClass('oo-ui-window-head').text(message('DialogTitle')),
+    message: $('<span>').addClass('oo-ui-window-foot').text(message('DialogMessage')),
+    actions: [{
+      action: 'login',
+      flags: ['primary', 'progressive'],
+      label: $('<b>').text(message('Login'))
+    }, {
+      action: 'register',
+      flags: 'progressive',
+      label: $('<b>').text(message('Register'))
+    }, {
+      action: 'cancel',
+      flags: ['safe', 'close'],
+      label: $('<b>').text(message('Cancel'))
+    }]
+  };
   var openDialog = function openDialog() {
-    var messageDialog = new OO.ui.MessageDialog();
-    var windowManager = new OO.ui.WindowManager();
-    var windowOpeningData = {
-      title: message('dialogTitle'),
-      message: message('dialogMessage'),
-      actions: [{
-        action: 'login',
-        flags: ['primary', 'progressive'],
-        label: $('<b>').text(message('Login'))
-      }, {
-        action: 'register',
-        flags: 'progressive',
-        label: $('<b>').text(message('Register'))
-      }, {
-        action: 'cancel',
-        flags: ['safe', 'close'],
-        label: $('<b>').text(message('Cancel'))
-      }]
-    };
-    messageDialog.getActionProcess = function (action) {
-      if (action === 'login') {
-        if ('ontouchstart' in document) {
-          location.href = loginURL;
+    if (!windowManager) {
+      messageDialog = new OO.ui.MessageDialog();
+      messageDialog.getActionProcess = function (action) {
+        if (action === 'login') {
+          $('#pt-login').trigger('click');
+        } else if (action === 'register') {
+          location.href = registerURL;
         }
-        $('#pt-login').trigger('click');
-      } else if (action === 'register') {
-        location.href = registerURL;
-      }
-      return new OO.ui.Process(function () {
-        windowManager.clearWindows();
-      });
-    };
-    windowManager.$element.appendTo(document.body);
-    windowManager.addWindows([messageDialog]);
+        return new OO.ui.Process(function () {
+          windowManager.closeWindow(messageDialog);
+        });
+      };
+      windowManager = new OO.ui.WindowManager();
+      windowManager.$element.appendTo(document.body);
+      windowManager.addWindows([messageDialog]);
+    }
     windowManager.openWindow(messageDialog, windowOpeningData);
   };
   var $caViewsource = $('#ca-viewsource');
