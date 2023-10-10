@@ -107,7 +107,7 @@ $(function onlineAdmins() {
             event.preventDefault();
             users = [];
             usersExt = [];
-            stewards = [];
+            bureaucrats = [];
             admins = [];
             patrollers = []; // 最近更改30分钟内的编辑用户
             time = new Date();
@@ -182,7 +182,7 @@ $(function onlineAdmins() {
                               // 找到管理人员，去除adminbot
                               if (!(groups.indexOf('bot') !== -1) && !(BLACK_LIST.indexOf(name) !== -1)) {
                                 if (groups.indexOf('bureaucrat') !== -1) {
-                                  stewards.push(name);
+                                  bureaucrats.push(name);
                                 }
                                 if (groups.indexOf('sysop') !== -1) {
                                   admins.push(name);
@@ -251,7 +251,7 @@ $(function onlineAdmins() {
               adminsstring = ["<p>".concat(message('OnlineWithin30Minutes'), "</p>")];
               onlineCountText = message(' ($1 online):');
               if (bureaucratds.length > 0) {
-                adminsstring.push("<div class=\"onlineadmin-section\">".concat(message('Bureaucrats')).concat(onlineCountText.replace('$1', String(stewards.length)), "<ul class=\"onlineadmin-list\">"));
+                adminsstring.push("<div class=\"onlineadmin-section\">".concat(message('Bureaucrats')).concat(onlineCountText.replace('$1', String(bureaucrats.length)), "<ul class=\"onlineadmin-list\">"));
                 _iterator = _createForOfIteratorHelper(stewards);
                 try {
                   for (_iterator.s(); !(_step = _iterator.n()).done;) {
