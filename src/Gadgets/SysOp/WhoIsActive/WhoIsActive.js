@@ -1,174 +1,159 @@
-'use strict';
-
-/* <nowiki> */
 /**
- * SPDX-License-Identifier: CC BY-SA-4.0
+ * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <zh.wikipedia.org/wiki/User:Vanished_user_1929210/js/OnlineAdmins.js>
+ * @base <https://www.mediawiki.org/wiki/MediaWiki:Gadget-whoisactive.css>
+ * @base <https://www.mediawiki.org/wiki/MediaWiki:Gadget-whoisactive.js>
+ * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/WhoIsActive>
  * @dependency ext.gadget.i18n, mediawiki.api
  */
 /**
- * 原作者：Alexander Misel
- * 逆襲的天邪鬼修改
- * 修改内容：
- * 1. 把菜单移到了「更多」而不是在用户名左面
- * 2. 修正bug
- * 3. 繁簡共榮
- * 4. 等DOM完成再执行
+ * +--------------------------------------------------------+
+ * |         === WARNING: GLOBAL GADGET FILE ===            |
+ * +--------------------------------------------------------+
+ * |      All changes should be made in the repository,     |
+ * |              otherwise they will be lost.              |
+ * +--------------------------------------------------------+
+ * |      Changes to this page may affect many users.       |
+ * |  Please discuss changes at talk page before editing.   |
+ * +--------------------------------------------------------+
  */
-(function ($, mw) {
-  $(function () {
-    var BLACKLIST = ['滥用过滤器'];
-
-        // Create portlet link
-        var portletLinkOnline = mw.util.addPortletLink(
-                'p-cactions',
-                '#',
-                wgULS('在线管理人员', '線上管理人員'));
-
-        var rcstart,
-            rcend,
-            time;
-        var users = [];
-        var bureaucrat = [],
-            admin = [],
-            patroller = [];
-        var api = new mw.Api();
-
-        // Bind click handler
-        $(portletLinkOnline).find('a').click(function(e) {
-            e.preventDefault();
-
-            users = [];
-            var usersExt = [];
-            bureaucrat = [];
-            admin = [];
-            patroller = [];
-
-            // 最近更改30分钟内的编辑用户
-            time = new Date();
-            rcstart = time.toISOString();
-            time.setMinutes(time.getMinutes() - 30);
-            rcend = time.toISOString();
-
-            //API:RecentChanges
-            api.get({
-                format: 'json',
-                action: 'query',
-                list: 'recentchanges',
-                rcprop: 'user',
-                rcstart: rcstart,
-                rcend: rcend,
-                rcshow: '!bot|!anon',
-                rclimit: 500
-            }).done(function(data) {
-                $.each(data.query.recentchanges, function(i, item) {
-                    users[i] = item.user;
-                });
-                api.get({
-                    format: 'json',
-                    action: 'query',
-                    list: 'logevents',
-                    leprop: 'user',
-                    lestart: rcstart,
-                    leend: rcend,
-                    lelimit: 500
-                }).done(function(data) {
-                    $.each(data.query.logevents, function(i, item) {
-                        usersExt[i] = item.user;
-                    });
-
-                    Array.prototype.push.apply(users, usersExt);
-
-                    // 使用者名稱去重與分割
-                    users = $.unique(users.sort());
-
-                    var promises = [];
-                    var mark = function(data) {
-                        $.each(data.query.users, function(i, user) {
-                            // 找到管理员，去除adminbot
-                            if ($.inArray('bot', user.groups) === -1 && $.inArray(user.name, BLACKLIST)) {
-                                if ($.inArray('sysop', user.groups) > -1) {
-                                    admin[i] = user.name;
-                                }
-                                 if ($.inArray('bureaucrat', user.groups) > -1) {
-                                    bureaucrat[i] = user.name;
-                                }
-                                if ($.inArray('patroller', user.groups) > -1) {
-                                    patroller[i] = user.name;
-                                }
-                            }
-                        });
-                    };
-                    for (var i = 0; i < (users.length + 50) / 50; i++) {
-                        promises.push(api.get({
-                                format: 'json',
-                                action: 'query',
-                                list: 'users',
-                                ususers: users.slice(i * 50, (i + 1) * 50).join('|'),
-                                usprop: 'groups'
-                            }).done(mark));
-                    }
-
-                    // 查询用户权限
-                    $.when.apply($, promises).done(function() {
-                        // 消除空值
-                        var filter = function(n) {
-                            return n;
-                        };
-
-                        bureaucrat = bureaucrat.filter(filter);
-                        admin = admin.filter(filter);
-                        patroller = patroller.filter(filter);
-
-                        var userlink = function(user) {
-                            var user2 = user.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&lt;');
-                            return '<a href="/wiki/User:' + user2 + '" target="_blank">' + user2 + '</a>&nbsp;<small style="opacity:.75;">(<a href="/wiki/User talk:' + user2 + '" target="_blank">留言</a>)</small>　';
-                        }
-
-                        if (bureaucrat.length + admin.length + patroller.length > 0) {
-                            var adminsstring = [wgULS('<p>下面是最近30分钟之内在线的管理人员</p>', '<p>下面是最近30分鐘內的線上管理人員</p>')];
-
-                            if (bureaucrat.length > 0) {
-                                adminsstring.push('<p style="word-break:break-all;">' + wgULS('档案理事员', '档案理事员') + ' (' + bureaucrat.length + wgULS('个在线', '個在線') + ')：');
-                                $.each(bureaucrat, function(i, e) {
-                                    adminsstring.push(userlink(e));
-                                });
-                                adminsstring.push('</p>');
-                            }
-
-                            if (admin.length > 0) {
-                                adminsstring.push('<p style="word-break:break-all;">' + wgULS('管理员', '管理員') + ' (' + admin.length + wgULS('个在线', '個在線') + ')：');
-                                $.each(admin, function(i, e) {
-                                    adminsstring.push(userlink(e));
-                                });
-                                adminsstring.push('</p>');
-                            }
-
-                            if (patroller.length > 0) {
-                                adminsstring.push('<p style="word-break:break-all;">' + wgULS('巡查员', '巡查員') + ' (' + patroller.length + wgULS('个在线', '個在線') + ')：');
-                                $.each(patroller, function(i, e) {
-                                    adminsstring.push(userlink(e));
-                                });
-                                adminsstring.push('</p>');
-                            }
-
-                            mw.notify($(adminsstring.join('')));
-                        } else {
-                            mw.notify(wgULS('目前没有管理人员在线。', '目前沒有管理人員在線。'), {
-                              tag: 'onlineAdmins',
-                              type: 'warn'
-              });
-                        }
-                    }).fail(function() {
-                        mw.notify(wgULS('查询时发生错误，请稍后重试。', '查詢時發生錯誤，請稍後重試。'), {
-                              tag: 'onlineAdmins',
-                              type: 'error'
-              });
-                    });
-                });
-            });
+/* <nowiki> */
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+$(function whoIsActive() {
+  if (mw.config.get('wgNamespaceNumber') < 0) {
+    return;
+  }
+  var api = new mw.Api({
+    ajax: {
+      headers: {
+        'Api-User-Agent': "YsArxiv/1.1 (WhoIsActive/1.1; ".concat(mw.config.get('wgWikiID'), ")")
+      }
+    }
+  });
+  var filteredLinks = [];
+  var _mw$config$get = mw.config.get('wgFormattedNamespaces'),
+    localizedUserNamespace = _mw$config$get[2];
+  $('.mw-body-content').find("a[title^=\"User:\"]:not(.mw-changeslist-date):not([href*=\"undo\"]), a[title^=\"".concat(localizedUserNamespace, ":\"]:not(.mw-changeslist-date):not([href*=\"undo\"])")).each(function (_index, element) {
+    var _link$attr;
+    var link = $(element);
+    var href = decodeURI((_link$attr = link.attr('href')) !== null && _link$attr !== void 0 ? _link$attr : '');
+    var userRegex = new RegExp("((User)|(".concat(localizedUserNamespace, ")):(.*?)(?=&|$)"));
+    var username = href.match(userRegex);
+    if (username) {
+      var index = username[0].indexOf('/');
+      if (index === -1) {
+        filteredLinks.push({
+          username: username[0],
+          element: link
         });
+      }
+    }
+  });
+  if (filteredLinks.length === 0) {
+    return;
+  }
+  var i18nMessages = function i18nMessages() {
+    var _i18n = i18n,
+      localize = _i18n.localize;
+    return {
+      OverAYear: localize({
+        en: 'Edited over a year ago',
+        'zh-hans': '一年未有编辑',
+        'zh-hant': '一年未有編輯'
+      }),
+      ThisWeek: localize({
+        en: 'Edited this week',
+        'zh-hans': '一周内有编辑',
+        'zh-hant': '一周內有編輯'
+      }),
+      ThisMonth: localize({
+        en: 'Edited this month',
+        'zh-hans': '一月内有编辑',
+        'zh-hant': '一月內有編輯'
+      }),
+      ThisYear: localize({
+        en: 'Edited this year',
+        'zh-hans': '一年内有编辑',
+        'zh-hant': '一年內有編輯'
+      })
+    };
+  };
+  var messages = i18nMessages();
+  var message = function message(key) {
+    return messages[key] || key;
+  };
+  var getLastActiveMarker = function getLastActiveMarker(timestamp, indicator) {
+    var date = Date.parse(timestamp);
+    var now = Date.now();
+    var diff = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+    var timespan;
+    if (diff > 365) {
+      timespan = 'OverAYear';
+    } else if (diff > 30) {
+      timespan = 'ThisYear';
+    } else if (diff > 7) {
+      timespan = 'ThisMonth';
+    } else {
+      timespan = 'ThisWeek';
+    }
+    var elementName = indicator === true ? 'div' : mw.config.get('skin') === 'citizen' ? 'section' : ['gongbi'].indexOf(mw.config.get('skin')) !== -1 ? 'li' : 'div';
+    // The following classes are used here:
+    // * mw-whoisactive-OverAYear
+    // * mw-whoisactive-ThisYear
+    // * mw-whoisactive-ThisMonth
+    // * mw-whoisactive-ThisWeek
+    var $icon = $("<".concat(elementName, ">")).addClass("mw-whoisactive-span mw-whoisactive-".concat(timespan)).append($('<span>').addClass("mw-whoisactive-icon mw-whoisactive-icon-".concat(timespan)).attr({
+      alt: message(timespan),
+      title: message(timespan)
+    })).append($('<span>').addClass("mw-whoisactive-text".concat(indicator === true ? '  mw-whoisactive-notext' : '')).text(message(timespan)));
+    return $icon;
+  };
+  var _loop = function _loop() {
+    var item = _filteredLinks[_i];
+    var username = item.username;
+    var element = item.element;
+    var params = {
+      action: 'query',
+      list: 'usercontribs',
+      uclimit: 1,
+      ucuser: username
+    };
+    api.get(params).then(function (result) {
+      if (result['query'].usercontribs.length > 0) {
+        var _result$query$usercon = _slicedToArray(result['query'].usercontribs, 1),
+          timestamp = _result$query$usercon[0].timestamp;
+        getLastActiveMarker(timestamp, true).insertAfter(element);
+      }
     });
-})(jQuery, mw);
+  };
+  for (var _i = 0, _filteredLinks = filteredLinks; _i < _filteredLinks.length; _i++) {
+    _loop();
+  }
+  var wgRelevantUserName = mw.config.get('wgRelevantUserName');
+  if (wgRelevantUserName && mw.config.get('wgNamespaceNumber') === 2 && mw.config.get('wgAction') === 'view') {
+    var relevantUserPageName = new mw.Title(wgRelevantUserName, 2).toText();
+    var pageName = new mw.Title(mw.config.get('wgPageName')).toText();
+    if (relevantUserPageName === pageName) {
+      var params = {
+        action: 'query',
+        list: 'usercontribs',
+        uclimit: 1,
+        ucuser: wgRelevantUserName
+      };
+      api.get(params).then(function (result) {
+        if (result['query'].usercontribs.length > 0) {
+          var _result$query$usercon2 = _slicedToArray(result['query'].usercontribs, 1),
+            timestamp = _result$query$usercon2[0].timestamp;
+          getLastActiveMarker(timestamp, false).prependTo($('#footer-info, .page-info'));
+        }
+      });
+    }
+  }
+});
+/* </nowiki> */
