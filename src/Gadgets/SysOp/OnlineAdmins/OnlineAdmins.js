@@ -252,7 +252,7 @@ $(function onlineAdmins() {
               onlineCountText = message(' ($1 online):');
               if (bureaucratds.length > 0) {
                 adminsstring.push("<div class=\"onlineadmin-section\">".concat(message('Bureaucrats')).concat(onlineCountText.replace('$1', String(bureaucrats.length)), "<ul class=\"onlineadmin-list\">"));
-                _iterator = _createForOfIteratorHelper(stewards);
+                _iterator = _createForOfIteratorHelper(bureaucrats);
                 try {
                   for (_iterator.s(); !(_step = _iterator.n()).done;) {
                     element = _step.value;
