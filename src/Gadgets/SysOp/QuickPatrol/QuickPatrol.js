@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: CC-BY-SA-4.0
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/QuickPatrol>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/QuickPatrol>
  * @base <https://meta.wikimedia.org/wiki/User:Xiplus/js/quick-patrol.js>
  * @dependency mediawiki.api, mediawiki.util, ext.gadget.i18n
  */

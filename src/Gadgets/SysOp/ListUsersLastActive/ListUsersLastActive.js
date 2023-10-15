@@ -4,7 +4,7 @@
  *
  * @base <https://meta.wikimedia.org/wiki/User:Xiplus/js/list-user-last-active.js>
  * @base <https://zh.wikipedia.org/w/index.php?title=MediaWiki:Gadget-CommentsinLocalTime.js&oldid=48314651>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/ListUsersLastActive>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/ListUsersLastActive>
  * @dependency ext.gadget.i18n, mediawiki.api
  */
 /**

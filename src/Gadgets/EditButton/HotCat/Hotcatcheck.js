@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @base <https://commons.wikimedia.org/wiki/MediaWiki:Gadget-Hotcatcheck.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/HotCat>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/HotCat>
  * @dependency jquery.ui, mediawiki.storage, mediawiki.util, mediawiki.user
  */
 /**

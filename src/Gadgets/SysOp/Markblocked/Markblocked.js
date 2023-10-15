@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @base <https://en.wikipedia.org/wiki/MediaWiki:Gadget-markblocked.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Markblocked>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Markblocked>
  * @dependency ext.gadget.i18n, mediawiki.util
  */
 /**

@@ -4,7 +4,7 @@
  *
  * @base <https://www.mediawiki.org/wiki/MediaWiki:Gadget-whoisactive.css>
  * @base <https://www.mediawiki.org/wiki/MediaWiki:Gadget-whoisactive.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/WhoIsActive>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/WhoIsActive>
  * @dependency ext.gadget.i18n, mediawiki.api
  */
 /**

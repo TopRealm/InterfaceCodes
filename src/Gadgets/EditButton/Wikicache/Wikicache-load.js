@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @base <https://zh.wikipedia.org/w/index.php?oldid=65190708>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Wikicache>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Wikicache>
  * @dependency ext.gadget.i18n, jquery.ui, mediawiki.storage, mediawiki.util
  */
 /**

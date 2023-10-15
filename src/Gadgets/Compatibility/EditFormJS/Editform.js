@@ -4,7 +4,7 @@
  *
  * @base <https://zh.wikipedia.org/wiki/MediaWiki:Common.js/edit.js>
  * @base <https://github.com/Xi-Plus/MediaWiki-Gadget/blob/master/fix-invalid-self-closed-tags.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/EditFormJS>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/EditFormJS>
  * @dependency ext.gadget.i18n, mediawiki.util, oojs-ui-core
  */
 /**

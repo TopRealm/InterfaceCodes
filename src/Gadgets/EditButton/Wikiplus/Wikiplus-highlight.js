@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=GPL-3.0}}'
  *
  * @base <https://github.com/bhsd-harry/Wikiplus-highlight/blob/main/main.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Wikiplus>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Wikiplus>
  * @author Bhsd <https://github.com/bhsd-harry>
  * @author 机智的小鱼君 <https://github.com/Dragon-Fish>
  * @dependency mediawiki.storage, mediawiki.Title, mediawiki.util

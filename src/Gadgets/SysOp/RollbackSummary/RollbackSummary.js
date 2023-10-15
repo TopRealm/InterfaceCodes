@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @base <https://zh.wikipedia.org/wiki/MediaWiki:Gadget-rollback-summary.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/RollbackSummary>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/RollbackSummary>
  * @dependency ext.gadget.i18n, mediawiki.util
  */
 /**

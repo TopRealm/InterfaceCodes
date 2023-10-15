@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @base <https://meta.wikimedia.org/wiki/User:Bluedeck/source/edit-conflict.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/EditConflict>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/EditConflict>
  * @dependency ext.gadget.Ding, ext.gadget.i18n
  */
 /**

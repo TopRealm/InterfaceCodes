@@ -4,7 +4,7 @@
  *
  * @base <https://zh.wikipedia.org/wiki/MediaWiki:Gadget-easy-archive.js>
  * @base <https://meta.wikimedia.org/w/index.php?oldid=18915644>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/EasyArchive>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/EasyArchive>
  * @dependency ext.gadget.Ding
  */
 /**

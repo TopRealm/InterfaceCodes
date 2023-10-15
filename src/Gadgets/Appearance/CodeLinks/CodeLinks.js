@@ -4,7 +4,7 @@
  *
  * @base <https://en.wiktionary.org/wiki/MediaWiki:Gadget-CodeLinks.js>
  * @base <https://zh.wiktionary.org/wiki/MediaWiki:Gadget-CodeLinks.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/CodeLinks>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/CodeLinks>
  * @dependency mediawiki.util, site
  */
 /**

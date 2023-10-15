@@ -4,7 +4,7 @@
  *
  * @base <https://en.wikipedia.org/wiki/User:Enterprisey/search-shortcuts.js>
  * @base <https://en.wikipedia.org/wiki/User:Guarapiranga/search-shortcuts.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/SearchShortcuts>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/SearchShortcuts>
  */
 /**
  * +--------------------------------------------------------+

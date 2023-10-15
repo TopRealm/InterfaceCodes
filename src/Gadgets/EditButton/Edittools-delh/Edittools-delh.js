@@ -15,7 +15,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @base <https://zh.wikipedia.org/wiki/MediaWiki:Gadget-Edittools-delh.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Edittools-delh>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Edittools-delh>
  * @dependency ext.gadget.Edittools-vector, ext.gadget.i18n
  */
 $(function editToolsDelh() {

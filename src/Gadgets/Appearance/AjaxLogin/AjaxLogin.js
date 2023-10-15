@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: GPL-3.0
  * _addText: '{{Gadget Header|license=GPL-3.0}}'
  *
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/AjaxLogin>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/AjaxLogin>
  * @author 安忆 <i@anyi.in>
  * @dependency ext.gadget.Ding, ext.gadget.i18n, mediawiki.api, oojs-ui-core, oojs-ui-windows, oojs-ui.styles.icons-interactions, oojs-ui.styles.icons-user
  */

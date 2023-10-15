@@ -15,7 +15,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @base <https://zh.wikipedia.org/wiki/MediaWiki:Gadget-popups.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Popups>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Popups>
  * @dependency ext.gadget.i18n
  */
 $(function popupsLoader() {

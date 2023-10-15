@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  * _addText: '{{Gadget Header|license=GPLv2+}}'
  *
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/GeoJS>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/GeoJS>
  * @dependency mediawiki.storage
  */
 /**

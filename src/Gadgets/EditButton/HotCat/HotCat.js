@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
  *
  * @base <https://commons.wikimedia.org/wiki/MediaWiki:Gadget-HotCat.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/HotCat>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/HotCat>
  * @dependency ext.gadget.i18n, jquery.ui, mediawiki.storage, mediawiki.util, mediawiki.user, user
  */
 /**
@@ -161,8 +161,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     // If not, set it to null.
     uncat_regexp: /{{\s*[Uu]ncategorized\s*[^}]*}}\s*(<!--.*?-->\s*)?/g,
     // The images used for the little indication icon. Should not need changing.
-    existsYes: "//wiki.zorua.top/images/thumb/b/be/P_yes.svg/24px-P_yes.svg.png",
-    existsNo: "//wiki.zorua.top/images/thumb/4/42/P_no.svg/24px-P_no.svg.png",
+    existsYes: "//youshou.wiki/images/thumb/b/be/P_yes.svg/24px-P_yes.svg.png",
+    existsNo: "//youshou.wiki/images/thumb/4/42/P_no.svg/24px-P_no.svg.png",
     // a list of categories which can be removed by removing a template
     // key: the category without namespace
     // value: A regexp matching the template name, again without namespace

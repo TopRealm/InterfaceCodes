@@ -4,7 +4,7 @@
  *
  * @base <https://zh.moegirl.org.cn/MediaWiki:Gadget-UserLinkAvatar.js>
  * @source <https://github.com/TopRealm/InterfaceCodes/blob/master/src/Gadgets/Appearance/UserLinkAvatar/UserLinkAvatar.css>
- * @author Moegirlpedia contributors, ColGem <https://wiki.zorua.top/wiki/User:ColGem>
+ * @author Moegirlpedia contributors, ColGem <https://youshou.wiki/wiki/User:ColGem>
  */
 /**
  * +--------------------------------------------------------+
@@ -22,12 +22,12 @@
 (function () {
   var magnifierOn = +mw.user.options.get("gadget-UserLinkAvatarMagnifier", 0) === 1;
   var $window = $(window);
-  var loadingImage = "https://wiki.zorua.top/images/b/b1/Loading_icon.gif";
+  var loadingImage = "https://youshou.wiki/images/b/b1/Loading_icon.gif";
   $window.on("load.UserLinkAvatar", function () {
     var images = [];
     $(".mw-userlink:not(.user-avatar-added)").each(function (_, ele) {
       var item = $(ele);
-      var src = "https://wiki.zorua.top/extensions/Avatar/avatar.php?user=".concat(encodeURIComponent(item.text()));
+      var src = "https://youshou.wiki/extensions/Avatar/avatar.php?user=".concat(encodeURIComponent(item.text()));
       var img = $("<img/>").on("error", function () {
         window.setTimeout(function () {
           img.closest(".userlink-avatar").remove();
@@ -56,7 +56,7 @@
         });
         images.push(magnifierImg_1[0]);
         bigAvatar.on("click", function () {
-          window.open("https://wiki.zorua.top/index.php?title=Special%3A\u67E5\u770B\u5934\u50CF&user=".concat(encodeURIComponent(item.text())), "_blank");
+          window.open("https://youshou.wiki/index.php?title=Special%3A\u67E5\u770B\u5934\u50CF&user=".concat(encodeURIComponent(item.text())), "_blank");
           return false;
         }).append($("<div/>", {
           attr: {

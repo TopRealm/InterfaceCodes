@@ -18,7 +18,7 @@
 /* <nowiki> */
 "use strict";
 $(function () {
-    var avatarUrl = new mw.Uri("https://wiki.zorua.top/");
+    var avatarUrl = new mw.Uri("https://youshou.wiki/");
     avatarUrl.query.user = mw.config.get("wgPageName").replace(/^user:/i, "");
     avatarUrl.path = "/extensions/Avatar/avatar.php";
     var imgUrl = new mw.Uri(avatarUrl);
@@ -27,7 +27,7 @@ $(function () {
         src: imgUrl,
         title: "上传头像",
     });
-    var link = $("<a>").attr("href", "https://wiki.zorua.top/wiki/Special:UploadAvatar").append(img);
+    var link = $("<a>").attr("href", "https://youshou.wiki/wiki/Special:UploadAvatar").append(img);
     $("#pt-userpage").before($('<li id="pt-avatar"></li>').append(link));
     if (mw.config.get("wgNamespaceNumber") === 2 && !mw.config.get("wgPageName").includes("/")) {
         var hrefUrl = new mw.Uri(avatarUrl);

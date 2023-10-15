@@ -4,7 +4,7 @@
  *
  * @base <https://zh.wikipedia.org/wiki/Special:Permalink/59753812>
  * @base <https://zh.wikipedia.org/wiki/MediaWiki:Gadget-ding.css>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Ding>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Ding>
  */
 /**
  * +--------------------------------------------------------+

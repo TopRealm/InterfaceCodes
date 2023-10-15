@@ -21,7 +21,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  * _addText: '{{Gadget Header|license=CC-BY-NC-SA-4.0}}'
  *
  * @base <https://llwiki.org/zh/MediaWiki:Gadget-definitions.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Definitions>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/Definitions>
  * @author Bhsd <https://llwiki.org/zh/User:Bhsd>
  * @dependency jquery.tablesorter, mediawiki.api, oojs-ui-widgets
  */

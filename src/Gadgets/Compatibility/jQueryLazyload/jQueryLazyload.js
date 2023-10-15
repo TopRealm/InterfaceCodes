@@ -3,7 +3,7 @@
  * _addText: '{{Gadget Header|license=MIT}}'
  *
  * @source <https://zh.moegirl.org.cn/MediaWiki:Gadget-jQueryLazyload.js>
- * @author AnnAngela <https://github.com/AnnAngela>, ColGem <https://wiki.zorua.top/wiki/User:ColGem>
+ * @author AnnAngela <https://github.com/AnnAngela>, ColGem <https://youshou.wiki/wiki/User:ColGem>
  */
 /**
  * +--------------------------------------------------------+

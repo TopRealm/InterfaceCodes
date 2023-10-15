@@ -27,7 +27,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  *
  * @base <https://zh.wikipedia.org/wiki/User:Peacearth/DisamAssist.js>
  * @base <https://es.wikipedia.org/wiki/Usuario:Qwertyytrewqqwerty/DisamAssist.js>
- * @source <https://git.qiuwen.wiki/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/DisamAssist>
+ * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/DisamAssist>
  * @dependency mediawiki.api, mediawiki.Title
  */
 /**
