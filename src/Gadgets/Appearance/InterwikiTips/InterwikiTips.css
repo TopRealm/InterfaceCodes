@@ -26,7 +26,7 @@
  }
  
  .mw-parser-output a.extiw:is([href*='.qiuwenbaike.cn'])::before {
-	 content: '//youshou.wiki/images/4/41/“求”网站图标（透明背景；2023版）.svg';
+	 content: url(//youshou.wiki/images/4/41/“求”网站图标（透明背景；2023版）.svg);
 	 font-size: 0.9em;
  }
  
