@@ -27,7 +27,7 @@
  
  .mw-parser-output a.extiw:is([href*='.qiuwenbaike.cn'])::before {
 	display: inline-block;
-	font-size: 0.9em;
+	font-size: 1.0em;
 	width: 1.0em;
 	height: 1.0em;
 	margin-right: 0px;
