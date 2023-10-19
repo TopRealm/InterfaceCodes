@@ -26,14 +26,13 @@
  }
  
  .mw-parser-output a.extiw:is([href*='.qiuwenbaike.cn'])::before {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 5px;
-    content: "";
-    background: url(//youshou.wiki/images/4/41/“求”网站图标（透明背景；2023版）.svg) no-repeat 0 0;
-    background-size: 100%;
-
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin-right: 5px;
+	content: "";
+ 	background: url(//youshou.wiki/images/4/41/“求”网站图标（透明背景；2023版）.svg) no-repeat 0 0;
+	background-size: 100%;
  }
  
  /* </nowiki> */
