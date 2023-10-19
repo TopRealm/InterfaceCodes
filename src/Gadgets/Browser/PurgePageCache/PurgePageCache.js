@@ -82,10 +82,6 @@ $(function purgePageCache() {
       ding(message('Failed'), false, 'warning');
     });
   };
-  var element = mw.util.addPortletLink(document.getElementById('p-cactions') ? 'p-cactions' : 'p-tb', '#', message('Purge'), 'ca-purge', message('PurgeFromServer'));
-  element === null || element === void 0 || (_element$querySelecto = element.querySelector('a')) === null || _element$querySelecto === void 0 || _element$querySelecto.addEventListener('click', function (event) {
-    purgePageCacheMain(event, mw.config.get('wgPageName'));
-  });
   Array.prototype.forEach.call(document.querySelectorAll('a[href*="action=purge"]'), function (_element) {
     var _params$get;
     var params = new URL(_element.href).searchParams;
