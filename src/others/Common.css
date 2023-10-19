@@ -1231,11 +1231,11 @@ body:not(.heimu_toggle_on) .heimu.off .new,body:not(.heimu_toggle_on) .heimu.off
 }
 
 /* 非本站跨站链接以绿色标记 */
-.mw-parser-output a.extiw:not([href*='.zorua.top']) {
+.mw-parser-output a.extiw:not([href*='.youshou.wiki']) {
 	color: #084;
 }
 
-.mw-parser-output a.extiw:not([href*='.zorua.top']):visited {
+.mw-parser-output a.extiw:not([href*='.youshou.wiki']):visited {
 	color: #062;
 }
 
