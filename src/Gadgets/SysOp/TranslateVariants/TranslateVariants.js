@@ -18,8 +18,14 @@
  * +--------------------------------------------------------+
  */
 /* <nowiki> */
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 (function translateVariants() {
-  var TranslateVariantsSummary = '自动转换变体自[[$1]] via [[MediaWiki:Gadget-TranslateVariants.js|TranslateVariants]]';
+  var TranslateVariantsSummary = '自动转换变体自[[$1]]（[[MediaWiki:Gadget-TranslateVariants.js|TranslateVariants]]）';
   var main = function main() {
     var langs = new Set(['zh', 'zh-hans', 'zh-cn', 'zh-my', 'zh-sg', 'zh-hant', 'zh-hk', 'zh-mo', 'zh-tw']);
     var langname = {
@@ -43,6 +49,28 @@
     });
     var basepagetext = '';
     var table = $('<div>').attr('id', 'TranslateVariants').prependTo('#bodyContent');
+    var $submitAll = $('<button>').text(window.wgULS('发布所有更改', '發佈所有變更'));
+    $submitAll.on('click', function () {
+      var $buttons = $('.TranslateVariants-publish-changes');
+      if ($buttons.length === 0) {
+        mw.notify(window.wgULS('没有任何可以发布的更改', '沒有任何變更可發佈'), {
+          tag: 'TranslateVariants',
+          type: 'error'
+        });
+        return;
+      }
+      if (!confirm("".concat(window.wgULS('更改', '發佈')).concat($buttons.length).concat(window.wgULS('个更改', '個變更'), "\uFF1F"))) {
+        mw.notify(window.wgULS('已取消更改', '已取消發佈'), {
+          tag: 'TranslateVariants',
+          type: 'warn'
+        });
+        return;
+      }
+      $buttons.each(function (_index, element) {
+        $(element).trigger('click');
+      });
+    });
+    table.append($('<div>').css('text-align', 'right').append($submitAll));
     $('<div>').css('color', '#f00').text(window.wgULS('提醒：TranslateVariants工具使用IT及MediaWiki转换组进行自动转换，请确认转换结果是否正确！', '提醒：TranslateVariants工具使用IT及MediaWiki轉換組進行自動轉換，請確認轉換結果是否正確！')).appendTo(table);
     var defaultlangs = 'zh,zh-hans,zh-cn,zh-my,zh-sg,zh-hant,zh-hk,zh-mo,zh-tw';
     var runlangs = prompt(window.wgULS('转换以下语言（以逗号隔开）：', '轉換以下語言（以逗號隔開）：'), defaultlangs);
@@ -59,7 +87,7 @@
         return;
       }
       var lang = langqueue.shift();
-      var diffTable = $('<div>').attr('id', 'TranslateVariants-diff-${lang}').appendTo(table);
+      var diffTable = $('<div>').attr('id', "TranslateVariants-diff-".concat(lang)).appendTo(table);
       $('<hr>').appendTo(table);
       var basename = mw.config.get('wgPageName').replace(/\/zh$/, '');
       var targetTitle = lang === 'zh' ? String(basename) : "".concat(basename, "/").concat(lang);
@@ -70,13 +98,14 @@
           prop: 'text'
         }).then(function (data) {
           newtext = $('<div>').html(data).find('#TVcontent').text();
-          return api.post({
+          var _params = {
             action: 'query',
             prop: 'revisions',
             titles: [targetTitle],
             rvdifftotext: newtext,
             formatversion: '2'
-          });
+          };
+          return api.post(_params);
         }, function (error) {
           mw.notify("\u89E3\u6790".concat(lang).concat(window.wgULS('时发生错误：', '時發生錯誤：')).concat(error), {
             type: 'error',
@@ -88,9 +117,10 @@
             var tool = $("<div><a href=\"".concat(mw.util.getUrl(targetTitle), "\">").concat(lang, "\uFF08").concat(langname[lang], "\uFF09</a>\uFF08<a href=\"").concat(mw.util.getUrl(targetTitle, {
               action: 'edit'
             }), "\">").concat(window.wgULS('编', '編'), "</a>\uFF09</div>")).appendTo(diffTable);
-            var page = data['query'].pages[0];
+            var _data$query$pages = _slicedToArray(data['query'].pages, 1),
+              page = _data$query$pages[0];
             if (page.missing) {
-              var $submit = $('<button>').css('float', 'right').text(window.wgULS('发布页面', '發佈頁面')).appendTo(tool);
+              var $submit = $('<button>').addClass('TranslateVariants-publish-changes').css('float', 'right').text(window.wgULS('发布页面', '發佈頁面')).appendTo(tool);
               $submit.on('click', function () {
                 this.remove();
                 api.create(targetTitle, {
@@ -116,7 +146,7 @@
             if (diff === '') {
               $('<span>').css('float', 'right').text(window.wgULS('无更改', '無變更')).appendTo(tool);
             } else {
-              var _$submit = $('<button>').css('float', 'right').text(window.wgULS('发布更改', '發佈變更')).appendTo(tool);
+              var _$submit = $('<button>').addClass('TranslateVariants-publish-changes').css('float', 'right').text(window.wgULS('发布更改', '發佈變更')).appendTo(tool);
               _$submit.on('click', function () {
                 this.remove();
                 api.edit(targetTitle, function () {
@@ -150,25 +180,29 @@
         });
       }
     };
-    api.get({
+    var params = {
       action: 'query',
-      prop: 'revisions',
-      rvprop: ['content', 'timestamp'],
-      titles: [mw.config.get('wgPageName')],
+      format: 'json',
       formatversion: '2',
-      curtimestamp: true
-    }).then(function (data) {
+      prop: 'revisions',
+      titles: [mw.config.get('wgPageName')],
+      curtimestamp: true,
+      rvprop: ['content', 'timestamp']
+    };
+    api.get(params).then(function (data) {
       if (!data['query'] || !data['query'].pages) {
         return $.Deferred().reject('unknown');
       }
-      var page = data['query'].pages[0];
+      var _data$query$pages2 = _slicedToArray(data['query'].pages, 1),
+        page = _data$query$pages2[0];
       if (!page || page.invalid) {
         return $.Deferred().reject('invalidtitle');
       }
       if (page.missing) {
         return $.Deferred().reject('nocreate-missing');
       }
-      var revision = page.revisions[0];
+      var _page$revisions = _slicedToArray(page.revisions, 1),
+        revision = _page$revisions[0];
       return {
         content: revision.content
       };
