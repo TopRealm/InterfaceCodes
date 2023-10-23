@@ -35,5 +35,16 @@
  	background: url(//youshou.wiki/images/4/41/“求”网站图标（透明背景；2023版）.svg) no-repeat 0 0;
 	background-size: 100%;
  }
+
+ .mw-parser-output a.extiw:is([href*='.moegirl.org.cn'])::before {
+	display: inline-block;
+	font-size: 1.0em;
+	width: 1.0em;
+	height: 1.0em;
+	margin-right: 0px;
+	content: "";
+ 	background: url(//youshou.wiki/images/8/88/萌娘百科网站图标.svg) no-repeat 0 0;
+	background-size: 100%;
+ }
  
  /* </nowiki> */
