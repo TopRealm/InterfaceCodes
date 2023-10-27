@@ -1,0 +1,23 @@
+name: CodeQL
+
+on:
+    push:
+        branches: ['master']
+    pull_request:
+        # The branches below must be a subset of the branches above
+        branches: ['master']
+    schedule:
+        - cron: '44 1 * * 0'
+
+jobs:
+    CodeQL:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Initialize CodeQL
+              uses: github/codeql-action/init@v2
+              with:
+                  languages: javascript
+                  config-file: ./.github/codeql-config.yml
+            - name: Perform CodeQL Analysis
+              uses: github/codeql-action/analyze@v2
