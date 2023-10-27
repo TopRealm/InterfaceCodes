@@ -558,12 +558,11 @@ div.hatnote + div.hatnote {
 	margin: 0;
 }
 
-/* 注册页面样式 */
+/* [[Special:CreateAccount]]页面样式 */
 .mw-special-CreateAccount .mw-ui-container {
 	flex-flow: row wrap;
-	align-content: flex-start;
+	place-content: flex-start space-between;
 	align-items: flex-start;
-	justify-content: space-between;
 	margin-right: 0 !important;
 	float: none !important;
 }
