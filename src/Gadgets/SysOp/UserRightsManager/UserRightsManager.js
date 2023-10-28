@@ -27,13 +27,13 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 (function userRightsManager() {
   var pagePermissions = {
-    'LIB_talk:权限申请/申请巡查回退权': 'patroller',
-    'LIB_talk:权限申请/申请优质编辑者': 'autopatroller',
-    'LIB_talk:权限申请/申请确认用户权': 'confirmed',
-    'LIB_talk:权限申请/申请大量消息发送权': 'massmessage-sender',
-    'LIB_talk:权限申请/申请管理员或界面管理员': 'sysop',
-    'LIB_talk:权限申请/申请模板编辑权': 'templateeditor',
-    'LIB_talk:权限申请/申请机器人权限': 'bot',
+    '有兽档案馆_talk:权限申请/申请巡查回退权': 'patroller',
+    '有兽档案馆_talk:权限申请/申请优质编辑者': 'autopatroller',
+    '有兽档案馆_talk:权限申请/申请确认用户权': 'confirmed',
+    '有兽档案馆_talk:权限申请/申请大量消息发送权': 'massmessage-sender',
+    '有兽档案馆_talk:权限申请/申请管理员或界面管理员': 'sysop',
+    '有兽档案馆_talk:权限申请/申请模板编辑权': 'templateeditor',
+    '有兽档案馆_talk:权限申请/申请机器人权限': 'bot',
   };
   var pageName = mw.config.get('wgPageName');
   var permission = pagePermissions[pageName];
