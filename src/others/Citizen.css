@@ -25,6 +25,17 @@
 		'MingLiU', 'SimSun', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
+/* 汉仪有兽焉标题 */
+
+@font-face {
+  font-family: 'HYYouShouYanW';
+  src: url('https://gitcdn.qiuwen.net.cn/YSARXIV/fonts/raw/branch/main/src/HYYouShouYanW.woff') format('woff');
+}
+
+.mw-first-heading {
+  font-family: 'HYYouShouYanW', sans-serif;
+}
+
 /* 页面内容宽度 */
 @media (min-width: 1440px) {
 	.ns-0 .mw-body-content .mw-parser-output > * {
