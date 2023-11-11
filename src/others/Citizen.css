@@ -87,11 +87,10 @@ h1#firstHeading {
 	}
 }
 
-/** 子标题隐藏
+/* 子标题隐藏 */
 #siteSub {
 	display: none;
 }
-*/
 
 /* Page-specific rules */
 
