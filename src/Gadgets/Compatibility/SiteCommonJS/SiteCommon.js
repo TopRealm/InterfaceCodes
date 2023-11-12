@@ -218,6 +218,56 @@ $(function siteCommonJS() {
     $('#mw-content-text a.new').contents().unwrap();
   }
 });
+
+/* 添加按钮提示 */
+  var getI18nMessages = function getI18nMessages() {
+    var _i18n = i18n,
+      localize = _i18n.localize;
+    return {
+      EnableDisableDarkMode: localize({
+        en: "Enable/disable dark mode",
+        "zh-hans": "开启/关闭暗色模式",
+        "zh-hant": "開啓/關閉暗色模式"
+      }),
+      CollapseExpandSidebar: localize({
+        en: "Collapse/expand sidebar",
+        "zh-hans": "展开/隐藏侧边栏",
+        "zh-hant": "展開/隱藏側邊欄"
+      })
+    };
+  };
+  var i18nMessages = getI18nMessages();
+  var getMessage = function getMessage(key) {
+    return i18nMessages[key] || key;
+  };
+
+  var loadTippy = function loadTippy() {
+    mw.loader.using(["ext.DarkMode"]).done(function () {
+      tippy(document.getElementById("darkmode-button"), {
+        arrow: true,
+        content: getMessage("EnableDisableDarkMode"),
+        placement: "left"
+      });
+    });
+    mw.loader.using(["ext.CollapsibleSidebar.js"]).done(function () {
+      tippy(document.getElementById("sidebarButton"), {
+        arrow: true,
+        content: getMessage("CollapseExpandSidebar"),
+        placement: "left"
+      });
+    });
+    if (mw.config.get("skin") === "vector") {
+      mw.loader.using(["ext.CollapsibleSidebar.vector"]).done(function () {
+        tippy(document.getElementById("sidebarCollapse"), {
+          arrow: true,
+          content: getMessage("CollapseExpandSidebar"),
+          placement: "right"
+        });
+      });
+    }
+  };
+
+
 $(function deprecatedFunctions() {
   /**
    * maintenance: Some user scripts may be using the following deprecated functions.
