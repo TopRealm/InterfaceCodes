@@ -1,12 +1,18 @@
 /**
  * SPDX-License-Identifier: CC-BY-SA-4.0
- * _addText: '{{Gadget Header|license=CC-BY-SA-4.0}}'
+ * _addText: 'https://git.qiuwen.net.cn/InterfaceAdmin/QiuwenGadgets/src/branch/master/src/WhoIsActive-pagestyles/branch/master/src/WhoIsActive-pagestyles}}'
  *
- * @base <https://www.mediawiki.org/wiki/MediaWiki:Gadget-whoisactive.css>
- * @base <https://www.mediawiki.org/wiki/MediaWiki:Gadget-whoisactive.js>
- * @source <https://git.qiuwen.net.cn/InterfaceAdmin/Gadgets/src/branch/master/src/Gadgets/WhoIsActive>
- * @dependency ext.gadget.i18n, mediawiki.api
+ * @base {@link https://www.mediawiki.org/wiki/MediaWiki:Gadget-whoisactive.css}
+ * @source {@link https://git.qiuwen.net.cn/InterfaceAdmin/QiuwenGadgets/src/branch/master/src/WhoIsActive-pagestyles}
  */
+/**
+ * userContributions Icon (ltr) from OOjs UI
+ *
+ * @base {@link https://github.com/wikimedia/oojs-ui/blob/e17952e413cfc00c15cfd861d47463c29062afe7/src/themes/wikimediaui/images/icons/userContributions-ltr.svg}
+ * @source {@link https://git.qiuwen.net.cn/InterfaceAdmin/QiuwenGadgets/src/branch/master/src/WhoIsActive/images}
+ * @license MIT {@link https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT}
+ */
+
 /**
  * +--------------------------------------------------------+
  * |         === WARNING: GLOBAL GADGET FILE ===            |
@@ -18,109 +24,76 @@
  * |  Please discuss changes at talk page before editing.   |
  * +--------------------------------------------------------+
  */
+
 /* <nowiki> */
-.mw-whoisactive-span {
+
+/* src/WhoIsActive-pagestyles/WhoIsActive-pagestyles.less */
+.gadget-whoisactive__span {
 	display: inline-block;
 	padding: 0 0.5em !important;
 	border: 1px solid #ddd;
 	margin: 0 0.25em;
 	white-space: nowrap;
-	-webkit-border-radius: 0.5em;
-	-moz-border-radius: 0.5em;
-	-ms-border-radius: 0.5em;
-	-o-border-radius: 0.5em;
-	border-radius: 0.5em;
-	font-size: 0.8125em;
-}
-
-.mw-footer .mw-whoisactive-span {
+	border-radius: 0.25em;
+	font-size: 0.9em;
+  }
+  .mw-footer .gadget-whoisactive__span {
 	margin-bottom: 0.25em !important;
-}
-
-.mw-whoisactive-ThisWeek {
-	border-color: #00af89;
-	color: #00af89 !important;
-}
-
-.mw-whoisactive-ThisMonth {
+  }
+  .ve-activated .mw-footer .gadget-whoisactive__span {
+	display: none;
+  }
+  .gadget-whoisactive__ThisWeek {
+	border-color: #181;
+	color: #181 !important;
+  }
+  .gadget-whoisactive__ThisMonth {
 	border-color: #36c;
 	color: #36c !important;
-}
-
-.mw-whoisactive-ThisYear {
+  }
+  .gadget-whoisactive__ThisYear {
 	border-color: #a60;
 	color: #a60 !important;
-}
-
-.mw-whoisactive-OverAYear {
+  }
+  .gadget-whoisactive__OverAYear {
 	border-color: #b32424;
 	color: #b32424 !important;
-}
-
-.mw-whoisactive-icon {
+  }
+  .gadget-whoisactive__icon {
 	margin: 0;
-}
-
-.mw-whoisactive-icon::before {
+  }
+  .gadget-whoisactive__icon::before {
 	display: inline-block;
 	width: 15px;
 	height: 15px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 15px;
-	content: '';
+	content: "";
 	vertical-align: middle;
-}
-
-.mw-whoisactive-icon-ThisWeek::before {
-	/**
-	 * @description userContributions Icon (ltr) from OOjs UI
-	 * @base <https://github.com/wikimedia/oojs-ui/blob/e17952e413cfc00c15cfd861d47463c29062afe7/src/themes/wikimediaui/images/icons/userContributions-ltr.svg>
-	 * @license MIT <https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT>
-	 */
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%2300af89'%3E%3Ccircle cx='15.5' cy='10.5' r='2.5'/%3E%3Cpath d='M1 15h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5 10.6c-3.3 0-4.5 1.6-4.5 2.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z'/%3E%3C/svg%3E");
-}
-
-.mw-whoisactive-icon-ThisMonth::before {
-	/**
-	 * @description userContributions Icon (ltr) from OOjs UI
-	 * @base <https://github.com/wikimedia/oojs-ui/blob/e17952e413cfc00c15cfd861d47463c29062afe7/src/themes/wikimediaui/images/icons/userContributions-ltr.svg>
-	 * @license MIT <https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT>
-	 */
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%2336c'%3E%3Ccircle cx='15.5' cy='10.5' r='2.5'/%3E%3Cpath d='M1 15h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5 10.6c-3.3 0-4.5 1.6-4.5 2.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z'/%3E%3C/svg%3E");
-}
-
-.mw-whoisactive-icon-ThisYear::before {
-	/**
-	 * @description userContributions Icon (ltr) from OOjs UI
-	 * @base <https://github.com/wikimedia/oojs-ui/blob/e17952e413cfc00c15cfd861d47463c29062afe7/src/themes/wikimediaui/images/icons/userContributions-ltr.svg>
-	 * @license MIT <https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT>
-	 */
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23a60'%3E%3Ccircle cx='15.5' cy='10.5' r='2.5'/%3E%3Cpath d='M1 15h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5 10.6c-3.3 0-4.5 1.6-4.5 2.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z'/%3E%3C/svg%3E");
-}
-
-.mw-whoisactive-icon-OverAYear::before {
-	/**
-	 * @description userContributions Icon (ltr) from OOjs UI
-	 * @base <https://github.com/wikimedia/oojs-ui/blob/e17952e413cfc00c15cfd861d47463c29062afe7/src/themes/wikimediaui/images/icons/userContributions-ltr.svg>
-	 * @license MIT <https://github.com/wikimedia/oojs-ui/blob/master/LICENSE-MIT>
-	 */
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23b32424'%3E%3Ccircle cx='15.5' cy='10.5' r='2.5'/%3E%3Cpath d='M1 15h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5 10.6c-3.3 0-4.5 1.6-4.5 2.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z'/%3E%3C/svg%3E");
-}
-
-.mw-whoisactive-text {
+  }
+  .gadget-whoisactive__icon__ThisWeek::before {
+	background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22%23181%22%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%2210.5%22%20r%3D%222.5%22%2F%3E%3Cpath%20d%3D%22M1%2015h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5%2010.6c-3.3%200-4.5%201.6-4.5%202.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z%22%2F%3E%3C%2Fsvg%3E);
+  }
+  .gadget-whoisactive__icon__ThisMonth::before {
+	background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22%2336c%22%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%2210.5%22%20r%3D%222.5%22%2F%3E%3Cpath%20d%3D%22M1%2015h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5%2010.6c-3.3%200-4.5%201.6-4.5%202.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z%22%2F%3E%3C%2Fsvg%3E);
+  }
+  .gadget-whoisactive__icon__ThisYear::before {
+	background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22%23a60%22%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%2210.5%22%20r%3D%222.5%22%2F%3E%3Cpath%20d%3D%22M1%2015h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5%2010.6c-3.3%200-4.5%201.6-4.5%202.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z%22%2F%3E%3C%2Fsvg%3E);
+  }
+  .gadget-whoisactive__icon__OverAYear::before {
+	background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22%23b32424%22%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%2210.5%22%20r%3D%222.5%22%2F%3E%3Cpath%20d%3D%22M1%2015h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5%2010.6c-3.3%200-4.5%201.6-4.5%202.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7z%22%2F%3E%3C%2Fsvg%3E);
+  }
+  .gadget-whoisactive__text {
 	margin-left: 5px;
 	vertical-align: middle;
-}
-
-.skin-citizen .mw-whoisactive-text {
-	font-size: 1.125em;
-}
-
-.mw-whoisactive-notext {
-	font-size: 0 !important;
+  }
+  .gadget-whoisactive__notext {
+	font-size: 0;
 	margin-left: 0;
+	-webkit-clip-path: inset(50%);
 	clip-path: inset(50%);
-}
-
-/* </nowiki> */
+  }
+  
+  /* </nowiki> */
+  
