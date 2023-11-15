@@ -219,7 +219,7 @@ $(function siteCommonJS() {
   }
 });
 
-/* 添加按钮提示 */
+/** 添加按钮提示
   var getI18nMessages = function getI18nMessages() {
     var _i18n = i18n,
       localize = _i18n.localize;
@@ -266,8 +266,8 @@ $(function siteCommonJS() {
       });
     }
   };
-
-
+无tippy导入计划，暂时搁置 */
+ 
 $(function deprecatedFunctions() {
   /**
    * maintenance: Some user scripts may be using the following deprecated functions.
