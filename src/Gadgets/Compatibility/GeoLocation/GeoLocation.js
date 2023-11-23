@@ -29,7 +29,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 (function () {
   var _geoLocation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-    var i18nMessages, messages, message, _yield$Geo, country, region, countryList, regionList, _countryList, _regionList, getCountryName, getRegionName, scriptPath, getLocation, storeLocation, wgRelevantUserName, relevantUserPageName, pageName;
+    var i18nMessages, messages, message, _yield$Geo, countryOrArea, region, countryOrAreaList, regionList, _countryOrAreaList, _regionList, getcountryOrAreaName, getRegionName, scriptPath, getLocation, storeLocation, wgRelevantUserName, relevantUserPageName, pageName;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
@@ -81,9 +81,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           return Geo();
         case 5:
           _yield$Geo = _context3.sent;
-          country = _yield$Geo.country;
+          countryOrArea = _yield$Geo.countryOrArea;
           region = _yield$Geo.region;
-          countryList = function countryList() {
+          countryOrAreaList = function countryOrAreaList() {
             return {
               AF: '阿富汗',
               AX: '奥兰',
@@ -371,10 +371,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               ZJ: '·浙'
             };
           };
-          _countryList = countryList();
+          _countryOrAreaList = countryOrAreaList();
           _regionList = regionList();
-          getCountryName = function getCountryName(key) {
-            return _countryList[key] || key;
+          getcountryOrAreaName = function getcountryOrAreaName(key) {
+            return _countryOrAreaList[key] || key;
           };
           getRegionName = function getRegionName(key) {
             return _regionList[key] || key;
@@ -401,10 +401,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                         action: 'raw',
                         ctype: 'application/json'
                       })).done(function (response) {
-                        var _getCountryName, _getRegionName;
-                        var countryText = (_getCountryName = getCountryName(response.country)) !== null && _getCountryName !== void 0 ? _getCountryName : '未知';
-                        var regionText = response.country === 'CN' ? (_getRegionName = getRegionName(response.region)) !== null && _getRegionName !== void 0 ? _getRegionName : '' : '';
-                        var indicatorText = "".concat(IPGeolocationDesc).concat(message(':')).concat(countryText).concat(regionText);
+                        var _getcountryOrAreaName, _getRegionName;
+                        var countryOrAreaText = (_getcountryOrAreaName = getcountryOrAreaName(response.country)) !== null && _getcountryOrAreaName !== void 0 ? _getcountryOrAreaName : '未知';
+                        var regionText = response.countryOrArea === 'CN' ? (_getRegionName = getRegionName(response.region)) !== null && _getRegionName !== void 0 ? _getRegionName : '' : '';
+                        var indicatorText = "".concat(IPGeolocationDesc).concat(message(':')).concat(countryOrAreaText).concat(regionText);
                         var spanClass = 'green';
                         appendIcon(indicatorText, spanClass, 'globe');
                       }).fail(function () {
@@ -456,7 +456,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 while (1) switch (_context2.prev = _context2.next) {
                   case 0:
                     wgUserGroups = (_mw$config$get = mw.config.get('wgUserGroups')) !== null && _mw$config$get !== void 0 ? _mw$config$get : [];
-                    if (!(country === '' || wgUserGroups.indexOf('bot') !== -1 || wgUserGroups.indexOf('qiuwen') !== -1 || !mw.config.get('wgUserName') || !(wgUserGroups.indexOf('autoconfirmed') !== -1 || wgUserGroups.indexOf('confirmed') !== -1))) {
+                    if (!(countryOrArea === '' || wgUserGroups.indexOf('bot') !== -1 || wgUserGroups.indexOf('qiuwen') !== -1 || !mw.config.get('wgUserName') || !(wgUserGroups.indexOf('autoconfirmed') !== -1 || wgUserGroups.indexOf('confirmed') !== -1))) {
                       _context2.next = 3;
                       break;
                     }
@@ -470,7 +470,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     }));
                   case 6:
                     response = _context2.sent;
-                    if (!(response.country === country && (response.region === region || response.region !== '' && region === ''))) {
+                    if (!(response.countryOrArea === countryOrArea && (response.region === region || response.region !== '' && region === ''))) {
                       _context2.next = 9;
                       break;
                     }
@@ -491,7 +491,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       contentformat: 'application/json',
                       contentmodel: 'json',
                       title: "User:".concat(mw.config.get('wgUserName'), "/GeoIP.json"),
-                      text: "{\"country\":\"".concat(country, "\",\"region\":\"").concat(region, "\"}"),
+                      text: "{\"countryOrArea\":\"".concat(countryOrArea, "\",\"region\":\"").concat(region, "\"}"),
                       summary: message('Update'),
                       tags: 'GeoLocation',
                       minor: 1,
