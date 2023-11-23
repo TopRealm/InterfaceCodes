@@ -61,7 +61,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
     // Return a juicy Geo object
     return {
-      country: matches[1],
+      countryOrArea: matches[1],
       region: (_matches$ = matches[2]) !== null && _matches$ !== void 0 ? _matches$ : '',
       city: (_matches$2 = matches[3]) !== null && _matches$2 !== void 0 ? _matches$2 : ''
     };
@@ -84,7 +84,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             return response.json();
           case 6:
             data = _context.sent;
-            parts = [data.country, data.region, data.city];
+            parts = [data.countryOrArea, data.region, data.city];
             storageValue = parts.join('-');
             mw.storage.set(storageItemName, storageValue, 3600); // 1 hour
             // Return Geo object
