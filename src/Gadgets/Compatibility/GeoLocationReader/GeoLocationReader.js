@@ -32,7 +32,7 @@
       var WEBMASTER_LIST = [];
     
       // src/GeoLocationReader/modules/name.ts
-      var getCountryName = function getCountryName() {
+      var getcountryOrAreaName = function getcountryOrAreaName() {
         if (["zh-hant", "zh-hk", "zh-mo"].indexOf(mw.config.get("wgUserLanguage")) !== -1) {
           return {
             AF: "阿富汗",
@@ -1112,8 +1112,8 @@
           ZJ: '·浙'
         };
       };
-      var geoCountryName = function geoCountryName() {
-        return getCountryName();
+      var geocountryOrAreaName = function geocountryOrAreaName() {
+        return getcountryOrAreaName();
       };
       var geoRegionName = function geoRegionName() {
         return getRegionName();
@@ -1166,12 +1166,12 @@
       };
     
       // src/GeoLocationReader/modules/core.ts
-      var countryList = geoCountryName;
+      var countryOrAreaList = geocountryOrAreaName;
       var regionList = geoRegionName;
-      var _countryList = countryList();
+      var _countryOrAreaList = countryOrAreaList();
       var _regionList = regionList();
-      var getCountryName2 = function getCountryName2(key) {
-        return _countryList[key] || key;
+      var getcountryOrAreaName2 = function getcountryOrAreaName2(key) {
+        return _countryOrAreaList[key] || key;
       };
       var getRegionName2 = function getRegionName2(key) {
         return _regionList[key] || key;
@@ -1206,11 +1206,11 @@
             rvslots: "main"
           };
           api.get(propRevisionsParams).then(function (data) {
-            var _getCountryName, _getRegionName;
+            var _getcountryOrAreaName, _getRegionName;
             var response = JSON.parse(data["query"].pages[0].revisions[0].slots.main.content);
-            var countryText = (_getCountryName = getCountryName2(response.country)) !== null && _getCountryName !== void 0 ? _getCountryName : getMessage("Unknown");
-            var regionText = response.country === "CN" ? (_getRegionName = getRegionName2(response.region)) !== null && _getRegionName !== void 0 ? _getRegionName : "" : "";
-            var indicatorText = "".concat(countryText).concat(regionText);
+            var countryOrAreaText = (_getcountryOrAreaName = getcountryOrAreaName2(response.countryOrArea)) !== null && _getcountryOrAreaName !== void 0 ? _getcountryOrAreaName : getMessage("Unknown");
+            var regionText = response.countryOrArea === "CN" ? (_getRegionName = getRegionName2(response.region)) !== null && _getRegionName !== void 0 ? _getRegionName : "" : "";
+            var indicatorText = "".concat(countryOrAreaText).concat(regionText);
             var spanClass = "green";
             appendIcon(indicatorText, spanClass, "globe");
           })["catch"](function () {
