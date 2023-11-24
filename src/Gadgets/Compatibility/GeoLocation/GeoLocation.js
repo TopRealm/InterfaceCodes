@@ -402,7 +402,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                         ctype: 'application/json'
                       })).done(function (response) {
                         var _getcountryOrAreaName, _getRegionName;
-                        var countryOrAreaText = (_getcountryOrAreaName = getcountryOrAreaName(response.country)) !== null && _getcountryOrAreaName !== void 0 ? _getcountryOrAreaName : '未知';
+                        var countryOrAreaText = (_getcountryOrAreaName = getcountryOrAreaName(response.countryOrArea)) !== null && _getcountryOrAreaName !== void 0 ? _getcountryOrAreaName : '未知';
                         var regionText = response.countryOrArea === 'CN' ? (_getRegionName = getRegionName(response.region)) !== null && _getRegionName !== void 0 ? _getRegionName : '' : '';
                         var indicatorText = "".concat(IPGeolocationDesc).concat(message(':')).concat(countryOrAreaText).concat(regionText);
                         var spanClass = 'green';
