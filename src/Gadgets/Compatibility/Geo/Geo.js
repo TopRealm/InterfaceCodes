@@ -26,7 +26,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 (function geoJS() {
   var storageItemName = 'GeoIP';
   var defaultGeoInfo = {
-    country: '',
+    countryOrArea: '',
     region: '',
     city: ''
   };
