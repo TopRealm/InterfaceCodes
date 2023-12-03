@@ -312,12 +312,12 @@ window.ProveIt = {
         } finally {
           _iterator2.f();
         }
-        $.get('https://gitcdn.qiuwen.net.cn/Mirror/mediawiki-gadgets-ProveIt/raw/branch/master/i18n/en.json', function (engMsg) {
+        $.get('https://gitcdn.qiuwen.net.cn/YSARXIV/mediawiki-gadgets-ProveIt/raw/branch/master/i18n/en.json', function (engMsg) {
           var englishMessages = _typeof(engMsg) === 'object' ? engMsg : JSON.parse(engMsg);
           delete englishMessages['@metadata'];
           // Get the latest translations to the preferred user language
           var userLanguage = ['zh-cn', 'zh-my', 'zh-sg'].indexOf(mw.config.get('wgUserLanguage')) !== -1 ? 'zh-hans' : ['zh-hk', 'zh-mo', 'zh-tw'].indexOf(mw.config.get('wgUserLanguage')) !== -1 ? 'zh-hant' : mw.config.get('wgUserLanguage');
-          $.get("https://gitcdn.qiuwen.net.cn/Mirror/mediawiki-gadgets-ProveIt/raw/branch/master/i18n/".concat(userLanguage, ".json")).always(function (i18nMsg, status) {
+          $.get("https://gitcdn.qiuwen.net.cn/YSARXIV/mediawiki-gadgets-ProveIt/raw/branch/master/i18n/".concat(userLanguage, ".json")).always(function (i18nMsg, status) {
             $('#proveit-logo-text').text('ProveIt'); // Finish loading
             var translatedMessages = {};
             if (status === 'success') {
