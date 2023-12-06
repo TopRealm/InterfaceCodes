@@ -29,7 +29,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   var isInit = false;
   var doIns = function doIns(link) {
     var text = window.wgULS('短链接', '短網址');
-    var title = window.wgULS('本页短链接：', '本頁短網址：');
+    var title = window.wgULS('已复制本页短链接：', '已復製本頁短網址：');
     var tooltip = window.wgULS('显示该页短链接', '顯示該頁短網址');
     var isCitizen = mw.config.get('skin') === 'citizen';
     var element = document.querySelector('#t-shortlink');
