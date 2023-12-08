@@ -7,26 +7,5 @@
 /* <nowiki> */
 /* 此处的CSS只会影响自动确认用户 */
 
-/* Show hidden items that have class="autoconfirmed-show". */
-div.autoconfirmed-show,
-p.autoconfirmed-show {
-	display: block !important;
-}
-span.autoconfirmed-show,
-small.autoconfirmed-show {
-	display: inline !important;
-}
-table.autoconfirmed-show {
-	display: table !important;
-}
-tr.autoconfirmed-show {
-	display: table-row !important;
-}
-td.autoconfirmed-show {
-	display: table-cell !important;
-}
-li.autoconfirmed-show {
-	display: list-item !important;
-}
 
 /* </nowiki> */
