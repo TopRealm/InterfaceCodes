@@ -318,3 +318,16 @@ $(function deprecatedFunctions() {
    */
 });
 /* </nowiki> */
+
+/*右上角显示头像*/
+$(function () {
+    var loadingImage = "https://youshou.wiki/load.php?modules=skins.citizen.icons.wmui&image=userAvatar&format=original&skin=citizen&version=1qhza";
+    var headeruser = mw.user.getName();  
+    var src = "https://youshou.wiki/extensions/Avatar/avatar.php?user=".concat(headeruser);
+    $('.mw-ui-icon-wikimedia-userAvatar').css({
+    	'width':"75%",
+		'height':"75%",
+        'background-image':"url(" + src + ")"，
+		'background-size': "cover"
+    });
+});
