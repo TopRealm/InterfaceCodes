@@ -217,4 +217,18 @@ header.mw-body-header{
 	}
 }
 
+/* 右上角头像 */
+.mw-ui-icon-wikimedia-userAvatar:before {
+    background-image: none;
+}
+
+.client-darkmode .mw-ui-icon-wikimedia-userAvatar {
+	-webkit-filter:invert(1) hue-rotate(180deg);
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.mw-ui-icon-wikimedia-userAvatar {
+	border-radius: 5px;
+}
+
 /* </nowiki> */
