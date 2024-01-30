@@ -327,7 +327,7 @@ $(function () {
     $('.mw-ui-icon-wikimedia-userAvatar').css({
     	'width':"75%",
 		'height':"75%",
-        'background-image':"url(" + src + ")"，
+        'background-image':"url(" + src + ")",
 		'background-size': "cover"
     });
 });
