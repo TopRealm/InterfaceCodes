@@ -321,11 +321,13 @@ $(function deprecatedFunctions() {
 
 /* 右上角显示头像 */
 $(function () {
-    var username = mw.user.getName().replace(' ','_');  // 避免名称带空格时无法显示头像
+    var username = mw.user.getName()
+	if (username){username = username.replace(' ','_');} //避免名称带空格时无法显示头像
+	else{username=null}
     var src = "https://youshou.wiki/extensions/Avatar/avatar.php?user=".concat(username);
     $('.mw-ui-icon-wikimedia-userAvatar').css({
     	'width':"75%",
-		'height':"75%",
+	'height':"75%",
         'background-image':"url(" + src + ")",
 		'background-size': "cover"
     });
