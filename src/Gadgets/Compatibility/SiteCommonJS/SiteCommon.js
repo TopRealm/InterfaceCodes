@@ -319,11 +319,10 @@ $(function deprecatedFunctions() {
 });
 /* </nowiki> */
 
-/*右上角显示头像*/
+/* 右上角显示头像 */
 $(function () {
-    var loadingImage = "https://youshou.wiki/load.php?modules=skins.citizen.icons.wmui&image=userAvatar&format=original&skin=citizen&version=1qhza";
-    var headeruser = mw.user.getName();  
-    var src = "https://youshou.wiki/extensions/Avatar/avatar.php?user=".concat(headeruser);
+    var username = mw.user.getName().replace(' ','_');  // 避免名称带空格时无法显示头像
+    var src = "https://youshou.wiki/extensions/Avatar/avatar.php?user=".concat(username);
     $('.mw-ui-icon-wikimedia-userAvatar').css({
     	'width':"75%",
 		'height':"75%",
