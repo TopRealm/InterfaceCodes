@@ -1,0 +1,23 @@
+/* 隐藏原有图标 */
+.mw-ui-icon-wikimedia-userAvatar:before {
+    background-image: none;
+}
+
+/* 右上角头像 */
+.mw-ui-icon-wikimedia-userAvatar {
+    width: 75%;
+    height: 75%;
+    border-radius: 5px;
+    background-size: cover;
+}
+
+/* 深色模式适配 */
+.client-darkmode .mw-ui-icon-wikimedia-userAvatar {
+    -webkit-filter: invert(1) hue-rotate(180deg);
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* 去除悬浮时黑色背景 */
+.citizen-header__button:hover {
+    background-color: initial !important;
+}
