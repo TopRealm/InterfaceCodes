@@ -33,6 +33,11 @@ html {
 	tab-size: 4;
 }
 
+/* 覆盖站点原有b标签样式 */
+b{
+	font-weight: bold;
+}
+
 /* 移动端显示相关类（.nomobile, .mobileonly, .onlymobile） */
 @media screen and (max-width: 768px) {
 	.nomobile {
