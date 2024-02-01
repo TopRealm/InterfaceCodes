@@ -28,3 +28,4 @@ $(function () {
         'background-image': 'url(' + src + ')',
     });
 });
+/* </nowiki> */
