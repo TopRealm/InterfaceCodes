@@ -24,7 +24,7 @@ $(function () {
     else {
         var src = 'https://youshou.wiki/images/avatars/default/default.gif'
     }
-    $('.mw-ui-icon-wikimedia-userAvatar').css({
+    $('#citizen-userMenu__buttonCheckbox .mw-ui-icon-wikimedia-userAvatar').css({
         'background-image': 'url(' + src + ')',
     });
 });
