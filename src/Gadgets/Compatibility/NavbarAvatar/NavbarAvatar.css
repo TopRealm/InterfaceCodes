@@ -34,8 +34,4 @@
     filter: invert(1) hue-rotate(180deg);
 }
 
-/* 去除悬浮时黑色背景 */
-.citizen-header__button:hover {
-    background-color: initial !important;
-}
 /* </nowiki> */
