@@ -41,7 +41,7 @@
 }
 
 .scroller-item:hover {
-    border-color: #4096ff;
+    border-color: var(--color-primary--hover);
     transition: all .2s;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .scroller-btn:hover {
-    border-color: #4096ff;
+    border-color: var(--color-primary--hover);
     transition: all .2s;
 }
 
