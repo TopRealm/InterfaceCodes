@@ -221,7 +221,7 @@ header.mw-body-header{
 
 
 /*深色模式颜色主题配置*/
-html.client-darkmode{
+html.client-darkmode body{
 	color-scheme: auto;
 	--color-surface-0: hsl(0,0%,100%);
 	--color-surface-1: hsl(0,0%,90%);
