@@ -101,7 +101,7 @@ h1#firstHeading {
 
 /* 隐藏页边 */
 .page-有兽档案馆_首页.action-view .citizen-body,
-.page-Fanmade_首页.action-view .citizen-body,{
+.page-Fanmade_首页.action-view .citizen-body{
 	grid-area: unset;
 }
 
