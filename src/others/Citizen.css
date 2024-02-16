@@ -228,3 +228,10 @@ html.client-darkmode body{
 	--color-surface-3: hsl(220,17%,87%);
 	--color-surface-4: hsl(213,9%,85%);
 }
+
+/*柔化边框*/
+html{
+	--border-color-base: rgba(0,0,0,0.15);
+    --border-color-base--lighter: rgba(0,0,0,0.1);
+    --border-color-base--darker: rgba(0,0,0,0.8);
+}
