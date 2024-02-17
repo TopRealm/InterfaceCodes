@@ -18,26 +18,24 @@
 /* <nowiki> */
 "use strict";
 
-function Scroller(element){
+function Scroller(element) {
     function wheelHandler(e) {
         if (e.deltaY && !e.deltaX) {
-            e.preventDefault()
-            requestAnimationFrame(() => {
-                element.scrollBy(e.deltaY, 0)
-            })
+            e.preventDefault();
+            requestAnimationFrame(function () {
+                element.scrollBy(e.deltaY, 0);
+            });
         }
     }
-
-    element.addEventListener('wheel', wheelHandler)
-    element.style.scrollSnapType = 'none'
-    return () => {
-        element.removeEventListener('wheel', wheelHandler)
-        element.style.scrollSnapType = ''
-    }
+    element.addEventListener('wheel', wheelHandler);
+    element.style.scrollSnapType = 'none';
+    return function () {
+        element.removeEventListener('wheel', wheelHandler);
+        element.style.scrollSnapType = '';
+    };
 }
-
-const scroller_containers = document.getElementsByClassName('scroller-container')
-for (let index = 0; index < scroller_containers.length; index++) {
-    const element = scroller_containers[index];
-    Scroller(element)
+var scroller_containers = document.getElementsByClassName('scroller-container');
+for (var index = 0; index < scroller_containers.length; index++) {
+    var element = scroller_containers[index];
+    Scroller(element);
 }
