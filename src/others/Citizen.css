@@ -204,6 +204,20 @@ header.mw-body-header{
 	margin-top: calc(2 * var(--space-md));
 }
 
+/*优化条目分类显示效果*/
+.mw-normal-catlinks {
+    font-size: unset;
+    width: 100%;
+    padding: 2em min(1.8em, 4vw) 2em min(1.8em, 4vw);
+    background: rgb(240 248 255 / 65%);
+    border-radius: 10px;
+}
+
+/*优化用户页头像显示*/
+.skin-citizen #user-rootpage-avatar {
+    margin-right: .2em;
+}
+
 /* 目录 (TOC) */
 @media screen and (max-width: 720px) {
 	.toc,
@@ -236,3 +250,4 @@ html{
     --border-color-base--lighter: rgba(0,0,0,0.1);
     --border-color-base--darker: rgba(0,0,0,0.8);
 }
+
