@@ -1,1 +1,1 @@
-Tippy[ResourceLoader|targets=desktop,mobile]|Tippy.js|Tippy.css
+Tippy[ResourceLoader|default|targets=desktop,mobile]|Tippy.js|Tippy.css
