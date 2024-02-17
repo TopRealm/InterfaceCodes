@@ -101,7 +101,7 @@ h1#firstHeading {
 
 /* 隐藏页边 */
 .page-有兽档案馆_首页.action-view .citizen-body,
-.page-Fanmade_首页.action-view .citizen-body,{
+.page-Fanmade_首页.action-view .citizen-body{
 	grid-area: unset;
 }
 
@@ -150,15 +150,14 @@ h1#firstHeading {
 }
 
 /* WIKI背景图 （新年）*/
+/* 原背景图 https://youshou.wiki/images/f/ff/%E6%9C%89%E5%85%BD%E7%84%89%E5%8A%A8%E7%94%BB%E6%88%AA%E5%9B%BE.jpg */
 body {
 	background: url(https://youshou.wiki/images/d/d0/2024%E9%99%A4%E5%A4%95%E8%B4%BA%E5%9B%BE.jpg) repeat fixed 100% 0;
-	background-size: cover;
+	background-size: contain;
 	background-attachment: local;
 }
 .client-darkmode body {
 	background: url(https://youshou.wiki/images/d/d7/2024%E9%99%A4%E5%A4%95%E8%B4%BA%E5%9B%BE-%E5%8F%8D%E8%89%B2.jpg) repeat fixed 100% 0;
-	background-size: cover;
-	background-attachment: local;
 }
 
 /*定制化标题样式*/
@@ -208,6 +207,20 @@ header.mw-body-header{
 	margin-top: calc(2 * var(--space-md));
 }
 
+/*优化条目分类显示效果*/
+.mw-normal-catlinks {
+    font-size: unset;
+    width: 100%;
+    padding: 2em min(1.8em, 4vw) 2em min(1.8em, 4vw);
+    background: rgb(240 248 255 / 65%);
+    border-radius: 10px;
+}
+
+/*优化用户页头像显示*/
+.skin-citizen #user-rootpage-avatar {
+    margin-right: .2em;
+}
+
 /* 目录 (TOC) */
 @media screen and (max-width: 720px) {
 	.toc,
@@ -232,4 +245,11 @@ html.client-darkmode body{
 	--color-surface-2: hsl(210,17%,88%);
 	--color-surface-3: hsl(220,17%,87%);
 	--color-surface-4: hsl(213,9%,85%);
+}
+
+/*柔化边框*/
+html{
+	--border-color-base: rgba(0,0,0,0.15);
+    --border-color-base--lighter: rgba(0,0,0,0.1);
+    --border-color-base--darker: rgba(0,0,0,0.8);
 }
