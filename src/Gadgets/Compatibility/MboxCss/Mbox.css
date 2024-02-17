@@ -222,6 +222,7 @@ body.mediawiki .compact-mbox .mbox-small-left {
   border-width: 1.25px;
   border-style: solid;
   border-color: #a2a9b1;
+  border-radius: 1em;
   margin: 0.25em 0;
   background: #f8f9fa;
   clear: both;
