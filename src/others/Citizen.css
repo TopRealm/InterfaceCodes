@@ -15,6 +15,9 @@
 	--fonts-monospace: 'Consolas', 'JetBrains Mono', 'Source Code Pro', 'Menlo', 'SFMono-Regular', 'Roboto Mono',
 		'Monaco', 'Liberation Mono', 'Courier New', 'Courier', monospace, 'Apple Color Emoji', 'Segoe UI Emoji',
 		'Segoe UI Symbol';
+	--border-color-base: rgba(0,0,0,0.15);
+    --border-color-base--lighter: rgba(0,0,0,0.1);
+    --border-color-base--darker: rgba(0,0,0,0.8);
 }
 
 :root:lang(zh-hant) {
@@ -224,7 +227,7 @@ header.mw-body-header{
 }
 
 /*左上角图标不反色*/
-.client-darkmode .skin-citizen .mw-logo-icon, .client-darkmode .skin-citizen .mw-logo-wordmark {
+.client-darkmode .skin-citizen .mw-logo-icon {
     -webkit-filter: invert(1) hue-rotate(180deg);
 	filter: invert(1) hue-rotate(180deg);
 }
@@ -244,19 +247,16 @@ header.mw-body-header{
 	}
 }
 
-/*柔化边框 保证控件颜色模式一致*/
+/*保证控件颜色模式一致*/
 html{
 	color-scheme: only light;
-	--border-color-base: rgba(0,0,0,0.15);
-    --border-color-base--lighter: rgba(0,0,0,0.1);
-    --border-color-base--darker: rgba(0,0,0,0.8);
 }
 
 /*深色模式颜色主题配置*/
 html.client-darkmode body{
 	/* 因为反色body之后深色模式控件变成了浅色 所以要反回来 怎么样 是不是很神奇 */
 	color-scheme: only light;
-	
+
 	--color-surface-0: hsl(0,0%,100%);
 	--color-surface-1: hsl(0,0%,90%);
 	--color-surface-2: hsl(210,17%,88%);
