@@ -165,6 +165,12 @@ body {
  	background-repeat: repeat-y; 
 }
 
+/*滚动条显示主题色*/
+* {
+    scrollbar-color: var(--color-primary) transparent;
+    caret-color: var(--color-primary);
+}
+
 /*定制化标题样式*/
 header.mw-body-header{
 	border-style:solid;
