@@ -5,52 +5,63 @@
  *
  * @source <zh.wikipedia.org/wiki/MediaWiki:Gadget-hantsect.css>
  */
-/* 以下页面不进行首行缩进 */
-/* 暂无，反正以后可以往这加别的 */
 
-/* 缩进两个字 */
 body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > p,
 body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > p,
 .hansect > p {
-	text-indent: 2em;
+  text-indent: 2em;
 }
-
-body.ns-subject .mw-parser-output > ul,
-body.ns-subject .mw-parser-output > ol,
-body.skin-citizen.ns-subject .mw-parser-output > section > ul,
-body.skin-citizen.ns-subject .mw-parser-output > section > ol,
-.hansect > ul,
-.hansect > ol {
-	margin-left: 2em;
-}
-
-/* 段落内如有其他元素，则不再缩进 */
-body.ns-subject .mw-parser-output > p > *,
-body.skin-citizen.ns-subject .mw-parser-output > section > p > *,
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > p > *,
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > p > *,
 .hansect > p > * {
-	text-indent: 0;
+  text-indent: 0;
 }
-
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > ul,
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > ul,
+.hansect > ul,
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > ol,
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > ol,
+.hansect > ol {
+  margin-left: 3em;
+}
 body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > ul > *:not(ul):not(ol):not(li),
-body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > ol > *:not(ul):not(ol):not(li),
 body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > ul > *:not(ul):not(ol):not(li),
-body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > ol > *:not(ul):not(ol):not(li),
 .hansect > ul > *:not(ul):not(ol):not(li),
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > ol > *:not(ul):not(ol):not(li),
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > ol > *:not(ul):not(ol):not(li),
 .hansect > ol > *:not(ul):not(ol):not(li) {
-	margin-left: 0;
+  margin-left: 0;
 }
-
-/* 行距设置 */
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output ul > li > ul,
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section ul > li > ul,
+.hansect ul > li > ul,
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output ol > li > ul,
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section ol > li > ul,
+.hansect ol > li > ul,
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output ul > li > ol,
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section ul > li > ol,
+.hansect ul > li > ol,
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output ol > li > ol,
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section ol > li > ol,
+.hansect ol > li > ol {
+  margin-left: 1em;
+}
 body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > p,
 body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > p,
-body.ns-subject .mw-parser-output > ul,
-body.ns-subject .mw-parser-output > ol,
-body.skin-citizen.ns-subject .mw-parser-output > section > ul,
-body.skin-citizen.ns-subject .mw-parser-output > section > ol,
 .hansect > p,
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > ul,
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > ul,
 .hansect > ul,
+body.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > ol,
+body.skin-citizen.ns-subject:not(.ext-discussiontools-replytool-enabled):not(.ext-discussiontools-newtopictool-enabled) .mw-parser-output > section > ol,
 .hansect > ol {
-	line-height: 1.75;
+  line-height: 1.75;
+}
+.mw-templatedata-doc-wrap p.mw-templatedata-doc-desc {
+  text-indent: 2em;
+}
+.mw-templatedata-doc-wrap p.mw-templatedata-doc-desc > * {
+  text-indent: 0;
 }
 
 /* </nowiki> */
