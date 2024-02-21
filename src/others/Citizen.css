@@ -226,6 +226,9 @@ header.mw-body-header{
     background: rgb(240 248 255 / 65%);
     border-radius: 10px;
 }
+.mw-normal-catlinks > a {
+    display: inline;
+}
 
 /*优化用户页头像显示*/
 .skin-citizen #user-rootpage-avatar {
