@@ -1049,6 +1049,7 @@ ul.permissions-errors + hr {
 	display: none;
 }
 
+/* 剥离位点：本处在新小工具部署逻辑将被拆分至editform.css */
 /**
  * 编辑界面“→ 前往编辑区”
  * Copied from .mw-ui-button
@@ -1081,6 +1082,7 @@ ul.permissions-errors + hr {
 	background-color: #fff;
 	color: #404244;
 }
+/* 剥离位点结束 */
 
 /* Old jQuery UI dialogs */
 .ui-dialog {
